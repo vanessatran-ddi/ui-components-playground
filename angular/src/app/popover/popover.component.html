@@ -1,6 +1,6 @@
 <h2>Popover</h2>
 <h3>Basic</h3>
-<goab-popover [target]="target">
+<goa-popover>
   <h3>interactable content</h3>
   <p>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi tempora optio
@@ -11,69 +11,51 @@
     vitae similique, laboriosam reiciendis repellat sapiente. Nobis laudantium
     facilis incidunt!
   </p>
-  <goab-button-group>
-    <goab-button type="primary" (onClick)="onClick()">Primary</goab-button>
-    <goab-button type="submit" (onClick)="onClick()">Submit</goab-button>
-    <goab-button type="secondary" (onClick)="onClick()">Secondary</goab-button>
-  </goab-button-group>
-  <ng-template #target>
-    <div style="white-space: nowrap">
-      <goab-button type="secondary" size="compact">Open Popover</goab-button>
-    </div>
-  </ng-template>
-</goab-popover>
-
-
-<h3>Min width and max width</h3>
-<goab-popover minWidth="1000px" [target]="target1">
-  <h3>This is a popover</h3>
-  <p>It can be used for a number of different contexts.</p>
-  <ng-template #target1>
-    <goab-button type="secondary" size="compact">Click me</goab-button>
-  </ng-template>
-</goab-popover>
-
-<goab-popover mt="xs" maxWidth="100px" [target]="target2">
-  <h3>This is a popover</h3>
-  <p>It can be used for a number of different contexts.</p>
-  <ng-template #target2>
-    <goab-button type="secondary" size="compact">Click me</goab-button>
-  </ng-template>
-</goab-popover>
+  <goa-button-group>
+    <goa-button type="primary" (_click)="onClick()">Primary</goa-button>
+    <goa-button type="submit" (_click)="onClick()">Submit</goa-button>
+    <goa-button type="secondary" (_click)="onClick()">Secondary</goa-button>
+  </goa-button-group>
+  <div slot="target" style="white-space: nowrap">
+    <goa-button type="secondary" size="compact">Open Popover</goa-button>
+  </div>
+</goa-popover>
 
 <h3>Dynamic Positioning</h3>
-<goab-block direction="column" gap="4xl">
-  <goab-block style="width: 100%">
-    <goab-popover [target]="dynamicPositionTarget">
+<goa-block direction="column" gap="4xl">
+  <goa-block style="width: 100%">
+    <goa-popover>
       <span>This</span>
-      <ng-template #dynamicPositionTarget>
-        <goab-button type="secondary" size="compact">Click me</goab-button>
-      </ng-template>
-    </goab-popover>
-    <goab-spacer hspacing="fill"></goab-spacer>
-    <goab-popover maxwidth="500px" [target]="compactPopover">
-      <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati
+      <div slot="target" style="white-space: nowrap">
+        <goa-button type="secondary" size="compact">Click me</goa-button>
+      </div>
+    </goa-popover>
+    <goa-spacer hspacing="fill"></goa-spacer>
+    <goa-popover maxwidth="500px">
+      <span
+      >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati
         sapiente natus, asperiores qui eligendi reiciendis. Porro placeat qui
         laboriosam minus nihil nam aliquam necessitatibus! Doloremque corrupti
-        quia ex eligendi deserunt.</span>
-      <ng-template #compactPopover>
-        <goab-button type="secondary" size="compact">Click me</goab-button>
-      </ng-template>
-    </goab-popover>
-  </goab-block>
-  <goab-block style="width: 100%">
-    <goab-spacer hspacing="fill"></goab-spacer>
-    <goab-popover [target]="differentContext">
+        quia ex eligendi deserunt.</span
+      >
+      <div slot="target" style="white-space: nowrap">
+        <goa-button type="secondary" size="compact">Click me</goa-button>
+      </div>
+    </goa-popover>
+  </goa-block>
+  <goa-block style="width: 100%">
+    <goa-spacer hspacing="fill"></goa-spacer>
+    <goa-popover>
       <h3>This is a popover</h3>
       <p>It can be used for a number of different contexts.</p>
-      <ng-template #differentContext>
-        <goab-button type="secondary" size="compact">Click me</goab-button>
-      </ng-template>
-    </goab-popover>
-    <goab-spacer hspacing="fill"></goab-spacer>
-  </goab-block>
-  <goab-block style="width: 100%">
-    <goab-popover [target]="loremTarget">
+      <div slot="target" style="white-space: nowrap">
+        <goa-button type="secondary" size="compact">Click me</goa-button>
+      </div>
+    </goa-popover>
+    <goa-spacer hspacing="fill"></goa-spacer>
+  </goa-block>
+  <goa-block style="width: 100%">
+    <goa-popover>
       <h3>This is a popover</h3>
       <p>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas optio
@@ -81,12 +63,12 @@
         officiis iusto nobis consequuntur quia non ducimus totam ratione? Earum,
         mollitia.
       </p>
-      <ng-template #loremTarget>
-        <goab-button type="secondary" size="compact">Click me</goab-button>
-      </ng-template>
-    </goab-popover>
-    <goab-spacer hspacing="fill"></goab-spacer>
-    <goab-popover maxwidth="500px" [target]="loremCompactTarget">
+      <div slot="target" style="white-space: nowrap">
+        <goa-button type="secondary" size="compact">Click me</goa-button>
+      </div>
+    </goa-popover>
+    <goa-spacer hspacing="fill"></goa-spacer>
+    <goa-popover maxwidth="500px">
       <h3>This is a popover</h3>
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus eligendi
@@ -94,9 +76,9 @@
         Hic, ipsa perferendis. Et reprehenderit consequatur quod minus illo
         amet!
       </p>
-      <ng-template #loremCompactTarget>
-        <goab-button type="secondary" size="compact">Click me</goab-button>
-      </ng-template>
-    </goab-popover>
-  </goab-block>
-</goab-block>
+      <div slot="target" style="white-space: nowrap">
+        <goa-button type="secondary" size="compact">Click me</goa-button>
+      </div>
+    </goa-popover>
+  </goa-block>
+</goa-block>

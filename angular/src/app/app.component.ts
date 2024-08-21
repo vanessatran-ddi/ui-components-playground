@@ -3,7 +3,7 @@ import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {Countries, CountrySubdivisions} from "playground/angular/src/app/countries.data";
 
 @Component({
-  selector: "goab-root",
+  selector: "abgov-root",
   templateUrl: "./app.component.html",
   styles: ``,
 })

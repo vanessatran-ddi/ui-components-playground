@@ -1,73 +1,78 @@
 <h1>Text Area</h1>
-<h2>Using onChange to update value</h2>
 
-<goab-textarea (onChange)="handleExample1($event)" placeholder="Enter text here" [rows]="5"></goab-textarea>
-
-<p>Entered Value: {{ example1 }}</p>
-
-<h2>Using Reactive Form</h2>
-<form [formGroup]="example2Form">
-  <goab-form-item label="Example 2">
-    <goab-textarea formControlName="example2" placeholder="Enter text here"></goab-textarea>
-    <div slot="helptext">Entered value: {{example2Form.get("example2")?.value}}</div>
-  </goab-form-item>
-</form>
-
-<h2>Using ngModel</h2>
-<goab-form-item label="Example3">
-  <goab-textarea [(ngModel)]="example3" placeholder="Enter text here"></goab-textarea>
-  <div slot="helptext">Entered value: {{example3}}</div>
-</goab-form-item>
-
-<hr/>
-<h2>Other examples</h2>
 <div [formGroup]="form">
-  <goab-form-item>
-    <goab-textarea formControlName="textarea" countBy="character" [maxCount]="100"></goab-textarea>
-  </goab-form-item>
-  <goab-form-item>
-    <goab-input formControlName="input" name="foo"></goab-input>
-  </goab-form-item>
+  <goa-form-item>
+    <goa-textarea goaValue formControlName="textarea" showcount="true" countby="character" maxcount="100"></goa-textarea>
+  </goa-form-item>
+  <goa-form-item>
+    <goa-input goaValue formControlName="input"></goa-input>
+  </goa-form-item>
   Textarea Value: {{ form.controls["textarea"].value | json }}
   Input Value: {{ form.controls["input"].value | json }}
 </div>
 
 
+
 <h2>Basic</h2>
-<goab-textarea name="comment-basic" (onChange)="onChange($event)" value="Initial value"></goab-textarea>
-
-
-<h2>Counter</h2>
-<goab-textarea (onChange)="onChange($event)" [value]="boundVal" countBy="word"></goab-textarea>
+<goa-textarea
+  name="comment-basic"
+  (_change)="onChange($event)"
+  value="Initial value"
+></goa-textarea>
 
 <h2>Disabled</h2>
-<goab-textarea name="comment-disabled" [disabled]="true"></goab-textarea>
+<goa-textarea name="comment-disabled" disabled></goa-textarea>
 
 <h2>Placeholder</h2>
-<goab-textarea placeholder="Tell us what you think.." name="comment"></goab-textarea>
+<goa-textarea
+  placeholder="Tell us what you think.."
+  name="comment"
+></goa-textarea>
 
 <h2>Rows</h2>
-<goab-textarea [rows]="4" name="comment"></goab-textarea>
+<goa-textarea rows="4" name="comment"></goa-textarea>
 
 <h2>Error state</h2>
-<goab-textarea [error]="true" name="comment"></goab-textarea>
+<goa-textarea error name="comment"></goa-textarea>
 
 <h2>Binding</h2>
+{{ boundVal }}
+<goa-textarea goaValue name="binding" [(ngModel)]="boundVal"></goa-textarea>
 
 <h2>Margin Spacing</h2>
-<goab-textarea mt="m" mb="xs" ml="xl" mr="2xl" name="comment-basic" (onChange)="onChange($event)"
-  value="Initial value"></goab-textarea>
+<goa-textarea
+  mt="m"
+  mb="xs"
+  ml="xl"
+  mr="2xl"
+  name="comment-basic"
+  (_change)="onChange($event)"
+  value="Initial value"
+></goa-textarea>
 
 <h2>Reactive Binding</h2>
 {{ reactiveFormCtrl.value }}
-<goab-textarea name="binding" [formControl]="reactiveFormCtrl" [value]="reactiveFormCtrl.value"></goab-textarea>
+<goa-textarea
+  goaValue
+  name="binding"
+  [formControl]="reactiveFormCtrl"
+  [value]="reactiveFormCtrl.value"
+></goa-textarea>
 
 <h2>Reactive Binding - Disabled</h2>
-<goab-textarea name="comment" [formControl]="reactiveFormCtrl" [attr.disabled]="true"></goab-textarea>
+<goa-textarea
+  name="comment"
+  goaValue
+  [formControl]="reactiveFormCtrl"
+  [attr.disabled]="true"
+></goa-textarea>
 
 <h2>On Key Press</h2>
-<goab-textarea name="comment-basic" (onKeyPress)="onKeyPress($event)" value="Initial value"></goab-textarea>
-
-<goab-form-item label="Basic" labelSize="regular">
-  <goab-textarea width="60ch" countBy="character" [maxCount]="100" (onChange)="onChange($event)"></goab-textarea>
-</goab-form-item>
+<goa-textarea
+  name="comment-basic"
+  (_keyPress)="onKeyPress($event)"
+  value="Initial value"
+></goa-textarea>
+<goa-form-item label="Basic" labelsize="regular">
+  <goa-textarea width="60ch" showcount="true" countby="character" maxcount="100" (_change)="onChange($event)"></goa-textarea>
+</goa-form-item>

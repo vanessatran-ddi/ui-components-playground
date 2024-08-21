@@ -1,14 +1,15 @@
-import { GoabIcon } from "@abgov/angular-components";
 import { Component } from "@angular/core";
 
 @Component({
-  standalone: true,
   selector: "abgov-icon",
-  templateUrl: "./icon.component.html",
-  imports: [
-    GoabIcon
-  ],
+  templateUrl: "./icon.component.html"
 })
 export class IconComponent {
-  constructor() { }
+  iconTheme = "outline";
+  iconType = "accessibility";
+  constructor() {}
+
+  changeTheme() {
+    this.iconTheme = this.iconTheme === "filled" ? "outline" : "filled";
+  }
 }

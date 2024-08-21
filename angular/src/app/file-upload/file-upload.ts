@@ -1,23 +1,17 @@
-import { GoabFileUploadCard, GoabFileUploadInput } from "@abgov/angular-components";
-import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
-import { ReactiveFormsModule } from "@angular/forms";
-
 interface Uploader {
   upload: (url: string | ArrayBuffer) => void;
   abort: () => void;
 }
-
 interface Upload {
   file: File;
   uploader: Uploader;
 }
-
 class MockUploader implements Uploader {
-  public onprogress: (percent: number) => void = (_: number) => { };
-  public onabort: () => void = () => { };
-  public onfail: (err: string) => void = (_: string) => { };
-  public oncomplete: () => void = () => { };
+  public onprogress: (percent: number) => void = (_: number) => {};
+  public onabort: () => void = () => {};
+  public onfail: (err: string) => void = (_: string) => {};
+  public oncomplete: () => void = () => {};
 
   upload(_url: string | ArrayBuffer) {
     // implement your logic to upload files
@@ -27,29 +21,21 @@ class MockUploader implements Uploader {
     // implement your logic to abort file upload
   }
 }
-
 @Component({
-  standalone: true,
   selector: "abgov-file-upload",
   templateUrl: "./file-upload.html",
-  imports: [
-    GoabFileUploadInput,
-    GoabFileUploadCard,
-    CommonModule,
-  ],
 })
 export class FileUploadComponent {
   uploads: Upload[] = [];
   progressList: Record<string, number> = {};
 
   uploadFile(e: any) {
-    const { file } = e;
+    const { file } = e.detail;
     const reader = new FileReader();
     reader.onload = (ev) => {
       if (!ev.target || !ev.target.result) {
         return;
       }
-
       const url = ev.target.result;
       const uploader = new MockUploader();
 

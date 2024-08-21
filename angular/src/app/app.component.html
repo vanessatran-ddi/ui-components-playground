@@ -1,16 +1,19 @@
 <goa-two-column-layout maxcontentwidth="1400px" navcolumnwidth="30ch">
   <section slot="header">
-    <goa-microsite-header type="alpha" level="alpha" version="UAT"></goa-microsite-header>
-    <goa-app-header heading="Design Systems" maxcontentwidth="1500px" [fullmenubreakpoint]="1700">
-      <a href="/get-started">Get started
-      </a>
-      <a href="/patterns">Patterns and templates</a>
-      <a href="/components">Components</a>
-      <a href="/design-tokens">Styles</a>
+    <goa-microsite-header
+      type="alpha"
+      level="alpha"
+      version="UAT"
+    ></goa-microsite-header>
+    <goa-app-header heading="Design system with a realllllllllllllllllly long title" maxcontentwidth="1500px" [fullmenubreakpoint]="1140">
+      <a href="/app-header">App Header</a>
+      <a href="/app-footer">App Footer</a>
+      <a href="/accordion">Accordion</a>
+      <a href="/badge">Badge</a>
       <a href="/content/capitalization">Content</a>
       <a href="/support">Support</a>
       <a href="https://github.com/GovAlta/ui-components/issues/new/choose" target="_blank">
-        Report a bug
+      Report a bug
       </a>
       <a href="#">Support</a>
       <goa-app-header-menu heading="Tickets" leadingIcon="ticket">
@@ -24,12 +27,7 @@
 
   <section slot="nav">
     <goa-side-menu>
-      <goa-side-menu-group heading="Bugs">
-        <a routerLink="/bug-1734">Bug 1734</a>
-        <a routerLink="/bug-1756">Bug 1756</a>
-      </goa-side-menu-group>
       <goa-side-menu-group heading="Components">
-        <a routerLink="/badge-wrapper">Badge Wrapper</a>
         <a routerLink="/accordion"> Accordion </a>
         <a routerLink="/app-footer"> AppFooter </a>
         <a routerLink="/app-header"> App Header </a>
@@ -41,7 +39,6 @@
         <a routerLink="/chip"> Chip </a>
         <a routerLink="/circular-progress"> Circular Progress </a>
         <a routerLink="/container"> Container </a>
-        <a routerLink="/date-picker">Date picker</a>
         <a routerLink="/divider"> Divider </a>
         <a routerLink="/dropdown"> Dropdown </a>
         <a routerLink="/detail"> Detail </a>
@@ -71,14 +68,153 @@
         <a routerLink="/styles"> Styles </a>
       </goa-side-menu-group>
       <goa-side-menu-group heading="Layouts">
-        <a routerLink="/column-layout">Column layout</a>
         <a routerLink="/two-column-layout"> Two Column Layout </a>
         <a routerLink="/three-column-layout"> Three Column Layout </a>
       </goa-side-menu-group>
     </goa-side-menu>
   </section>
-  <div class="container">
-    <router-outlet></router-outlet>
+  <div class="container" style="display:none;">
+    <form [formGroup]="fg" autocomplete="on" (ngSubmit)="submit">
+<!--      <goa-form-item>-->
+<!--        <goa-input name="input">-->
+<!--          <div slot="leadingContent"><goa-badge type="success" icon></goa-badge></div>-->
+<!--        </goa-input>-->
+<!--      </goa-form-item>-->
+<!--      <goa-form-item>-->
+<!--        <goa-input name="input">-->
+<!--          <div slot="trailingContent">items</div>-->
+<!--        </goa-input>-->
+<!--      </goa-form-item>-->
+<!--      <goa-form-item>-->
+<!--        <goa-input name="input">-->
+<!--          <div slot="leadingContent">$</div>-->
+<!--          <div slot="trailingContent">item</div>-->
+<!--        </goa-input>-->
+<!--      </goa-form-item>-->
+
+<!--      <goa-form-item>-->
+<!--        <goa-input error name="input">-->
+<!--          <div slot="leadingContent"><goa-badge type="success" icon></goa-badge></div>-->
+<!--        </goa-input>-->
+<!--      </goa-form-item>-->
+<!--      <goa-form-item>-->
+<!--        <goa-input error name="input">-->
+<!--          <div slot="trailingContent">items</div>-->
+<!--        </goa-input>-->
+<!--      </goa-form-item>-->
+<!--      <goa-form-item>-->
+<!--        <goa-input disabled name="input">-->
+<!--          <div slot="leadingContent">$</div>-->
+<!--          <div slot="trailingContent">item</div>-->
+<!--        </goa-input>-->
+<!--      </goa-form-item>-->
+      <goa-form-item>
+        <goa-input error name="input">
+          <div slot="leadingContent">$</div>
+          <div slot="trailingContent">item</div>
+        </goa-input>
+      </goa-form-item>
+      <goa-form-item label="Business Name">
+        <goa-input
+          error
+          goaValue
+          autocomplete="email"
+          type="text"
+          name="businessName"
+          [value]="fg.value.businessName"
+          [formControl]="fg.controls.businessName"
+        ></goa-input>
+      </goa-form-item>
+      <goa-form-item label="Business Name">
+        <goa-input
+          goaValue
+          autocomplete="email"
+          type="text"
+          name="businessName"
+          [value]="fg.value.businessName"
+          [formControl]="fg.controls.businessName"
+        ></goa-input>
+      </goa-form-item>
+
+      <goa-form-item label="Country">
+        <goa-dropdown
+          goaValue
+          filterable
+          name="country"
+          [value]="fg.value.country"
+          [formControl]="fg.controls.country"
+          width="30ch"
+        >
+          <goa-dropdown-item
+            *ngFor="let opt of countries"
+            name="country"
+            [value]="opt.code"
+            [label]="opt.name"
+          ></goa-dropdown-item>
+        </goa-dropdown>
+      </goa-form-item>
+
+      <goa-form-item label="Street Address 1">
+        <goa-input
+          goaValue
+          type="text"
+          name="address1"
+          [value]="fg.value.address1"
+          [formControl]="fg.controls.address1"
+        ></goa-input>
+      </goa-form-item>
+      <goa-form-item label="Street Address 2">
+        <goa-input
+          goaValue
+          type="text"
+          name="address2"
+          [value]="fg.value.address2"
+          [formControl]="fg.controls.address2"
+        ></goa-input>
+      </goa-form-item>
+
+      <goa-form-item label="Province/State">
+        <goa-dropdown
+          goaValue
+          filterable
+          *ngIf="fg.value.country && subdivisions[fg.value.country] as subs; else noSubdivisions"
+          name="region"
+          [value]="fg.value.region"
+          [formControl]="fg.controls.region"
+          width="30ch"
+        >
+          <goa-dropdown-item
+            *ngFor="let opt of subs"
+            name="region"
+            [value]="opt.code"
+            [label]="opt.name"
+          ></goa-dropdown-item>
+        </goa-dropdown>
+
+        <ng-template #noSubdivisions>
+          <goa-input
+            goaValue
+            type="text"
+            name="region"
+            [value]="fg.value.region"
+            [formControl]="fg.controls.region"
+          ></goa-input>
+        </ng-template>
+      </goa-form-item>
+
+      <goa-form-item label="Postal Code">
+        <goa-input
+          goaValue
+          type="text"
+          name="postalCode"
+          [value]="fg.value.postalCode"
+          [formControl]="fg.controls.postalCode"
+        ></goa-input>
+      </goa-form-item>
+      <button type="button" (click)="submit()">Submit</button>
+    </form>
   </div>
+  <router-outlet></router-outlet>
+
   <goa-app-footer slot="footer" maxcontentwidth="1400px"></goa-app-footer>
 </goa-two-column-layout>

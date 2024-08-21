@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from "@angular/core";
 
 @Component({
-  selector: "goab-nx-welcome",
+  selector: "abgov-nx-welcome",
   template: `
     <!--
      * * * * * * * * * * * * * * * * * * * * * * * * * * * *

@@ -1,78 +1,16 @@
-import { GoabContainer, GoabDatePicker, GoabDropdown, GoabDropdownItem, GoabFormItem, GoabInput, GoabSpacer } from "@abgov/angular-components";
-import { GoabDatePickerOnChangeDetail, GoabDropdownOnChangeDetail } from "@abgov/ui-components-common";
-import { CommonModule } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { Countries, CountrySubdivisions } from "playground/angular/src/app/dropdown/countries.data";
+import { Component } from "@angular/core";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {Countries, CountrySubdivisions} from "playground/angular/src/app/dropdown/countries.data";
 
 @Component({
-  standalone: true,
   selector: "abgov-dropdown",
   templateUrl: "./dropdown.component.html",
-  imports: [
-    GoabDropdown,
-    GoabDropdownItem,
-    GoabFormItem,
-    GoabContainer,
-    GoabDatePicker,
-    GoabInput,
-    GoabSpacer,
-    ReactiveFormsModule,
-    CommonModule,
-    FormsModule
-  ]
 })
-export class DropdownComponent implements OnInit {
-  example1: string | undefined;
-  example2Form: FormGroup;
-  example3 = "option1";
-
-  constructor(private fb: FormBuilder) {
-    this.example2Form = new FormGroup({
-      dropdownControl: new FormControl('')
-    });
-
-    this.fg = this.fb.group({
-      businessName: [null as (string | null), []],
-      address1: [null as (string | null), []],
-      address2: [null as (string | null), []],
-      locality: [null as (string | null), []],
-      region: [null as (string | null), []],
-      country: [null as (string | null), []],
-      postalCode: [null as (string | null), []]
-    });
-  }
-
-  onChangeExample1(event: GoabDropdownOnChangeDetail) {
-    this.example1 = event.value;
-  }
-
-
-
-
-
-
-  colors: string[] = [];
+export class DropdownComponent {
+  colors: string[] = ["red", "green", "blue"];
   selectedColor = "red";
   boundVal = "";
-  reactiveFormCtrl = new FormControl({ value: "green", disabled: false });
-  disabledFormCtrl = new FormControl({ value: "green", disabled: true });
-
-  dropdownCtrl = new FormControl('');
-  form = new FormGroup({
-    option: new FormControl('')
-  });
-
-  item = new Date();
-  onChange(e: GoabDatePickerOnChangeDetail) {
-    // handle change
-    console.log(e);
-  }
-
-  ngOnInit() {
-    console.log("setting colors in 3 secs")
-    setTimeout(() => this.colors = ["Chris", "James", "John"], 3000);
-  }
+  reactiveFormCtrl = new FormControl({ value: "green", disabled: true });
 
   color = new FormControl("green");
 
@@ -128,11 +66,21 @@ export class DropdownComponent implements OnInit {
 
 
 
+  constructor( private fb: FormBuilder) {
+    this.fg = this.fb.group({
+      businessName: [null as (string|null), []],
+      address1: [null as (string|null), []],
+      address2: [null as (string|null), []],
+      locality: [null as (string|null), []],
+      region: [null as (string|null), []],
+      country: [null as (string|null), []],
+      postalCode: [null as (string|null), []]
+    });
+  }
 
-
-  selectColor(event: GoabDropdownOnChangeDetail) {
+  selectColor(event: any) {
     console.log("Select Color", event);
-    this.selectedColor = event.value || "";
+    this.selectedColor = event.detail.value;
   }
 
   selectProvince(event: any) {
@@ -141,35 +89,5 @@ export class DropdownComponent implements OnInit {
 
   handleSelectChange(event: any) {
     console.log("select change", event.detail.value, event);
-  }
-
-  public readonly fruits = [
-    { value: "ghi789", label: "Cherry" },
-    { value: "jkl012", label: "Date" },
-    { value: "mno345", label: "Elderberry" },
-    { value: "pqr678", label: "Fig" },
-    { value: "stu901", label: "Grape" },
-    { value: "vwx234", label: "Honeydew" },
-    { value: "yza567", label: "Kiwi" },
-    { value: "bcd890", label: "Lemon" }
-  ];
-
-  options = [
-    {
-      value: 'All',
-      displayValue: 'All',
-    },
-    {
-      value: 'One',
-      displayValue: 'One',
-    },
-    {
-      value: 'Two',
-      displayValue: 'Two',
-    }
-  ];
-
-  onChangeDropdown(e: GoabDropdownOnChangeDetail) {
-    console.log(e)
   }
 }

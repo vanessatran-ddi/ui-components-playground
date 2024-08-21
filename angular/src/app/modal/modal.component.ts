@@ -1,23 +1,12 @@
-import { GoabButton, GoabButtonGroup, GoabDropdown, GoabDropdownItem, GoabFormItem, GoabInput, GoabModal } from "@abgov/angular-components";
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 
 @Component({
-  standalone: true,
   selector: "abgov-modal",
-  templateUrl: "./modal.component.html",
-  imports: [
-    GoabModal,
-    GoabButton,
-    GoabButtonGroup,
-    GoabFormItem,
-    GoabInput,
-    GoabDropdown,
-    GoabDropdownItem,
-  ],
+  templateUrl: "./modal.component.html"
 })
 export class ModalComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   transition: "fast" | "slow" | "none" = "fast";
 
@@ -35,6 +24,15 @@ export class ModalComponent {
   isOpen5 = false;
   isOpen6 = false;
   isOpen7 = false;
+  open = false;
+  effectiveDate = new Date();
+  toggleModal() {
+    this.open = !this.open;
+  }
+
+  onChangeEffectiveDate(event: Event) {
+    this.effectiveDate = (event as CustomEvent).detail.value;
+  }
 
   openModal() {
     this.isOpen = true;

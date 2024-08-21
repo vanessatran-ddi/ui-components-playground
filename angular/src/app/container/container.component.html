@@ -1,100 +1,85 @@
 <h1>Container</h1>
 
-
-Dynamic GoABlock
-<goab-block>
-  <div style="background: lightblue; padding: 1rem" *ngFor="let user of users">
-    {{user}}
-  </div>
-</goab-block>
-
-
 <h2>Basic</h2>
-<goab-container type="interactive" accent="thick">
+<goa-container>
   <h2>Detach to use</h2>
   + Add things inside me
-</goab-container>
+</goa-container>
 
 <h2>Large accent bar</h2>
-<goab-container accent="thick">
+<goa-container accent="thick">
   <h2>Heading</h2>
   Content
-</goab-container>
+</goa-container>
 
 <h2>Small accent bar</h2>
-<goab-container accent="thin">
+<goa-container accent="thin">
   <h2>Heading</h2>
   Content
-</goab-container>
+</goa-container>
 
 <h2>Accent bar with text</h2>
-<goab-container accent="thick" [actions]="actions" [title]="title">
-  <ng-template #actions>
-    <goab-button type="secondary" size="compact">Edit</goab-button>
-  </ng-template>
-  <ng-template #title>
-    Group Heading
-  </ng-template>
+<goa-container accent="thick">
+  <div slot="actions">
+    <goa-button type="secondary" size="compact">Edit</goa-button>
+  </div>
+  <div slot="title">Group Heading</div>
   <h2>Heading</h2>
   Content
-</goab-container>
+</goa-container>
 
 <h2>Heading with text only</h2>
-<goab-container accent="thick" [actions]="action2" [title]="title2">
+<goa-container accent="thick">
   <h2>Heading</h2>
   Content
-  <ng-template #action2>
-    <goab-badge type="success" content="Badge Text"></goab-badge>
-  </ng-template>
-  <ng-template #title2>
-    Group Heading
-  </ng-template>
-</goab-container>
+  <div slot="actions">
+    <goa-badge type="success" icon content="Badge Text"></goa-badge>
+  </div>
+  <div slot="title">Group Heading</div>
+</goa-container>
 
 <h2>Nested</h2>
-<goab-container accent="thick" [actions]="actions3">
-  <ng-template #actions3>
-    <goab-button type="primary" size="compact">Assign to me</goab-button>
-  </ng-template>
-
+<goa-container>
+  <div slot="title">The container title</div>
+  <div slot="actions">
+    <goa-button type="primary" size="compact">Assign to me</goa-button>
+  </div>
   <h2>Custom H2</h2>
-  <goab-container accent="thin">
+  <goa-container accent="thin">
     <div>This is a sub container</div>
-  </goab-container>
-</goab-container>
+  </goa-container>
+</goa-container>
 
 <h2>Interactive</h2>
-<goab-container accent="thick" [actions]="actions4" [title]="title4">
-  <ng-template #actions4>
-    <goab-button type="secondary" size="compact">Assign to me</goab-button>
-  </ng-template>
-  <ng-template #title4>
-    The container title
-  </ng-template>
+<goa-container accent="thick">
+  <div slot="actions">
+    <goa-button type="secondary" size="compact">Assign to me</goa-button>
+  </div>
+  <div slot="title">The container title</div>
   <h2>Heading</h2>
   Content
-</goab-container>
+</goa-container>
 
 <h2>Non-interactive</h2>
-<goab-container type="non-interactive">
+<goa-container type="non-interactive">
   <h2>Heading</h2>
   Content
-</goab-container>
+</goa-container>
 
 <h2>Relaxed Padding</h2>
-<goab-container padding="relaxed">
+<goa-container padding="relaxed">
   <h2>Heading</h2>
   Content
-</goab-container>
+</goa-container>
 
 <h2>Compact Padding</h2>
-<goab-container padding="compact">
+<goa-container padding="compact">
   <h2>Heading</h2>
   Content
-</goab-container>
+</goa-container>
 
 <h2>Margin Spacing</h2>
-<goab-container mt="m" mb="xs" ml="xl" mr="2xl">
+<goa-container mt="m" mb="xs" ml="xl" mr="2xl">
   <h2>Detach to use</h2>
   + Add things inside me
-</goab-container>
+</goa-container>

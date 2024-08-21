@@ -1,6 +1,3 @@
-import { GoabBlock, GoabIcon, GoabTable, GoabTableSortHeader } from "@abgov/angular-components";
-import { GoabTableOnSortDetail } from "@abgov/ui-components-common";
-import { NgForOf } from "@angular/common";
 import { Component } from "@angular/core";
 import { faker } from "@faker-js/faker";
 
@@ -12,16 +9,8 @@ interface User {
 }
 
 @Component({
-  standalone: true,
   selector: "abgov-table-component",
   templateUrl: "./table.html",
-  imports: [
-    GoabBlock,
-    GoabTable,
-    GoabTableSortHeader,
-    GoabIcon,
-    NgForOf,
-  ],
 })
 export class TableComponent {
   users: User[] = [];
@@ -29,16 +18,16 @@ export class TableComponent {
   constructor() {
     for (let i = 0; i < 10; i++) {
       this.users.push({
-        id: faker.string.uuid(),
-        firstName: faker.person.firstName(),
-        lastName: faker.person.lastName(),
-        age: faker.number.int({ min: 18, max: 60 }),
+        id: faker.datatype.uuid(),
+        firstName: faker.name.firstName(),
+        lastName: faker.name.lastName(),
+        age: faker.datatype.number({ min: 18, max: 60 }),
       });
     }
   }
 
-  handleSort(event: GoabTableOnSortDetail) {
-    const { sortBy, sortDir } = event;
+  handleSort(event: any) {
+    const { sortBy, sortDir } = event.detail;
     this.users.sort(
       (a: any, b: any) => (a[sortBy] > b[sortBy] ? -1 : 1) * sortDir
     );

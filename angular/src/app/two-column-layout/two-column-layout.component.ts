@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 
 @Component({
-  selector: "goab-two-column-layout",
+  selector: "abgov-two-column-layout",
   templateUrl: "./two-column-layout.component.html",
 })
 export class TwoColumnLayoutComponent {
