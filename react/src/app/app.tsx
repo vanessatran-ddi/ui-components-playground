@@ -7,7 +7,7 @@ import {
   GoabDropdown,
   GoabDropdownItem,
   GoabFormItem,
-  GoABFormStep,
+  GoabFormStep,
   GoabFormStepper,
   GoabMicrositeHeader,
   GoabOneColumnLayout, GoabPages,
@@ -80,8 +80,8 @@ export function App() {
         </section>
 
         <GoabFormStepper step={step} onChange={(details) => setStep(details.step)}>
-          <GoABFormStep text="Step 1" status={statuses[0]}></GoABFormStep>
-          <GoABFormStep text="Step 2" status={statuses[1]}></GoABFormStep>
+          <GoabFormStep text="Step 1" status={statuses[0]}></GoabFormStep>
+          <GoabFormStep text="Step 2" status={statuses[1]}></GoabFormStep>
         </GoabFormStepper>
 
         <GoabPages current={step} mt="xl">
