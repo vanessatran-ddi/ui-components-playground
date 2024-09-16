@@ -13,6 +13,7 @@ interface User {
   templateUrl: "./input-component.component.html",
 })
 export class InputComponentComponent implements OnInit {
+  disabled = false;
   date = new Date();
   boundDate = format(this.date, "yyyy-MM-dd");
   formatDate = format(this.date, "yyyy-MM-dd");
@@ -87,6 +88,16 @@ export class InputComponentComponent implements OnInit {
   handleTrailingIconClick() {
     console.log("handleTrailingIconClick");
   }
+
+  disableDatePicker() {
+    this.reactiveDate2FormCtrl.disable();
+    this.disabled = true;
+  }
+
+  enableDatePicker() {
+    this.reactiveDate2FormCtrl.enable();
+    this.disabled = false;
+  }
 }
 
 function getFirstName(): string {
@@ -102,6 +113,8 @@ function getLastName(): string {
 function getAge(): number {
   return 18 + Math.floor(Math.random() * 60);
 }
+
+
 
 const firstNames = [
   "James",

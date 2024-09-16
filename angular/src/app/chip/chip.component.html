@@ -5,7 +5,7 @@
 
 <h2>Leading icon</h2>
 <goa-chip content="Chip Text" leadingicon="close-circle"></goa-chip>
-
+<goa-chip content="Chip Text" leadingicon="accessibility" icontheme="filled"></goa-chip>
 <h2>Delete event</h2>
 <goa-chip
   *ngFor="let chip of chips"
@@ -20,6 +20,7 @@
   content="Chip Text"
   error="true"
   deletable="true"
+  leadingicon="accessibility"
   (_click)="onClick()"
 ></goa-chip>
 
