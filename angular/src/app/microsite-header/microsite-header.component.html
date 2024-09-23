@@ -11,7 +11,10 @@
 
 <h2>Version</h2>
 <goab-microsite-header type="alpha" version="v1.2.3"></goab-microsite-header>
-
+<goab-microsite-header type="alpha" [version]="versionSlot"></goab-microsite-header>
+<ng-template #versionSlot>
+  <a href="#">Version</a>
+</ng-template>
 <h2>Feedback Url</h2>
 <goab-microsite-header type="alpha" version="v1.2.3" feedbackurl="https://example.com/feedback"></goab-microsite-header>
 
