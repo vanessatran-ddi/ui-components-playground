@@ -50,6 +50,7 @@ import {ThreeColumnLayoutComponent} from "playground/angular/src/app/three-colum
 import {TooltipComponent} from "playground/angular/src/app/tooltip/tooltip.component";
 import {TwoColumnLayoutComponent} from "playground/angular/src/app/two-column-layout/two-column-layout.component";
 import {TabsComponent} from "playground/angular/src/app/tabs/tabs";
+import { PrivacyPortalComponent } from "playground/angular/src/app/privacy-portal-component/privacy-portal.component";
 import {NgForOf, NgIf} from "@angular/common";
 
 // ******
@@ -99,7 +100,8 @@ import {NgForOf, NgIf} from "@angular/common";
     ThreeColumnLayoutComponent,
     TooltipComponent,
     TwoColumnLayoutComponent,
-    TabsComponent
+    TabsComponent,
+    PrivacyPortalComponent
   ],
     imports: [
         BrowserModule,

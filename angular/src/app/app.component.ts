@@ -46,4 +46,7 @@ export class AppComponent implements OnInit {
   submit() {
     console.log("Form  value is ", this.fg.value);
   }
+  print() {
+    console.log("Click me");
+  }
 }

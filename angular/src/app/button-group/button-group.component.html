@@ -45,3 +45,16 @@
   <goa-button type="submit" (_click)="onClick()">Submit</goa-button>
   <goa-button type="secondary" (_click)="onClick()">Secondary</goa-button>
 </goa-button-group>
+
+<h3>Leading icon is out of alignment (#2103)</h3>
+<goa-button-group>
+  <goa-button type="primary" size="compact" (_click)="onClick()">
+    No Icon
+  </goa-button>
+  <goa-button type="primary" size="compact" leadingicon="arrow-forward" (_click)="onClick()">
+    Leading Icon
+  </goa-button>
+  <goa-button type="primary" size="compact" trailingicon="arrow-forward" (_click)="onClick()">
+    Trailing Icon
+  </goa-button>
+</goa-button-group>
