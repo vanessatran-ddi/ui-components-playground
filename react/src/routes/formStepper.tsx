@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   GoAButton,
   GoAFormStep,
@@ -8,13 +8,21 @@ import {
 } from "@abgov/react-components";
 
 export function FormStepperRoute() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const [step, setStep] = useState<number>(2);
   // controlled by the user based on form completion
   const [status, setStatus] = useState<GoAFormStepStatusType[]>([
     "complete",
     "complete",
-    "complete",
-    "complete",
+    "incomplete",
+    "incomplete",
   ]);
   function setPage(page: number) {
     if (page < 1 || page > 4) return;
@@ -22,11 +30,11 @@ export function FormStepperRoute() {
   }
   return (
     <>
-      <GoAFormStepper step={step} onChange={setStep}>
-        <GoAFormStep text="Personal details" status={status[0]} />
-        <GoAFormStep text="Employment history" status={status[1]} />
-        <GoAFormStep text="References" status={status[2]} />
-        <GoAFormStep text="Review" status={status[3]} />
+      <GoAFormStepper step={step} onChange={setStep} mobile={windowWidth < 1024}>
+        <GoAFormStep text="Select department" status={status[0]} />
+        <GoAFormStep text="Provide details" status={status[1]} />
+        <GoAFormStep text="Attach documentation" status={status[2]} />
+        <GoAFormStep text="Review and submit" status={status[3]} />
       </GoAFormStepper>
       <GoAPages current={step} mb="xl">
         <div>1</div>

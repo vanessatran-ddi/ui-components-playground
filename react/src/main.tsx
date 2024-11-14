@@ -39,6 +39,7 @@ import Tabs from "./routes/tabs";
 import { FormStepperRoute } from "./routes/formStepper";
 import Checkbox from "./routes/checbox";
 import {Datepicker} from "./routes/datepicker";
+import { Drawer } from "./routes/drawer";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -63,6 +64,7 @@ root.render(
         <Route path="date-picker" element={<Datepicker/>} />
         <Route path="divider" element={<Divider />} />
         <Route path="dropdown" element={<Dropdown />} />
+        <Route path="drawer" element={<Drawer />} />
         <Route path="file-upload" element={<FileUpload />} />
         <Route path="form-item" element={<FormItem />} />
         <Route path="hero-banner" element={<HeroBanner />} />

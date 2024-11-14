@@ -2,12 +2,12 @@
 
 <span>Current step {{step}}</span>
 
-<goa-form-stepper ml="s" mr="s" [step]="step" (_change)="updateStep($event)">
-  <goa-form-step text="Personal details" [status]="status[0]"></goa-form-step>
-  <goa-form-step text="Employment history" [status]="status[1]"></goa-form-step>
-  <goa-form-step text="References" [status]="status[2]"></goa-form-step>
-  <goa-form-step text="Review" [status]="status[3]"></goa-form-step>
-</goa-form-stepper>
+<goax-form-stepper ml="s" mr="s" [step]="step" (_change)="updateStep($event)">
+  <goax-form-step text="Personal details" [status]="status[0]"></goax-form-step>
+  <goax-form-step text="Employment history" [status]="status[1]"></goax-form-step>
+  <goax-form-step text="References" [status]="status[2]"></goax-form-step>
+  <goax-form-step text="Review" [status]="status[3]"></goax-form-step>
+</goax-form-stepper>
 <goa-pages [current]="step">
   <div>Page 1 content with status: {{status[0]}}</div>
   <div>Page 2 content with status: {{status[1]}}</div>

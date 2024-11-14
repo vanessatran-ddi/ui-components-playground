@@ -6,11 +6,28 @@ import {
   GoAGrid,
 } from "@abgov/react-components";
 import * as React from "react";
+import { useState } from "react";
 
 export default function Accordion() {
+  const [open1, setOpen1] = useState<boolean>(true);
+  const [open2, setOpen2] = useState<boolean>(false);
+
+  const toggleAccordion1 = (open: boolean) => {
+    setOpen1(open);
+    setOpen2(!open);
+  }
+
+  const toggleAccordion2 = (open: boolean) => {
+    setOpen2(open);
+    setOpen1(!open);
+  }
+
   return (
     <>
       <GoAAccordion
+        open={open1}
+        onChange={toggleAccordion1}
+        iconPosition={"right"}
         heading="This is a heading"
         secondaryText="Secondary Text"
         headingContent={<GoABadge type="success" content="Success" />}
@@ -20,68 +37,68 @@ export default function Accordion() {
         placeat aperiam officiis, sit corporis nulla dolorem non vero ex nobis
         aliquam cumque amet asperiores. Vitae amet ullam quas nemo?
       </GoAAccordion>
-      <GoAAccordion heading="This is a heading" secondaryText="Secondary Text">
+      <GoAAccordion heading="This is a heading" secondaryText="Secondary Text" open={open2} onChange={toggleAccordion2}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
         repudiandae ab error exercitationem vero tempora animi odio! Quibusdam
         voluptas laudantium ullam ipsum, fugiat nobis possimus. Cum eum ipsum
         odio ex.
       </GoAAccordion>
 
-      <GoAAccordion
-        heading="This is a heading"
-        secondaryText="Secondary Text"
-        headingContent={
-          <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <GoABadge type="success" content="Success" />
-          </div>
-        }
-      >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-        harum aliquid officia provident recusandae facilis dolor minus magnam
-        commodi, nesciunt maxime quas aut exercitationem optio modi. Ratione
-        commodi maiores aspernatur?
-      </GoAAccordion>
-      <GoAAccordion heading="Just a large heading" headingSize="medium">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
-        similique aut nisi accusamus odio est facere odit dolor sed reiciendis
-        quas nostrum dicta quo voluptates, sint illo consectetur laudantium
-        blanditiis!
-      </GoAAccordion>
-      <GoAAccordion
-        heading="This is a heading"
-        secondaryText="Secondary Text"
-        headingContent={
-          <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <GoABlock>
-              <GoABadge type="success" content="Success" />
-              <GoABadge type="emergency" content="Error" />
-            </GoABlock>
-          </div>
-        }
-      >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-        harum aliquid officia provident recusandae facilis dolor minus magnam
-        commodi, nesciunt maxime quas aut exercitationem optio modi. Ratione
-        commodi maiores aspernatur?
-      </GoAAccordion>
-      <GoAAccordion
-        heading="Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde saepe mollitia quo temporibus tempora quos in, perferendis incidunt ex reiciendis praesentium beatae soluta, impedit enim culpa eum quis animi quas!"
-        secondaryText="Secondary Text"
-        headingContent={
-          <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <GoABlock>
-              <GoABadge type="success" content="Success" />
-              <GoABadge type="emergency" content="Error" />
-            </GoABlock>
-          </div>
-        }
-        open
-      >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
-        repudiandae ab error exercitationem vero tempora animi odio! Quibusdam
-        voluptas laudantium ullam ipsum, fugiat nobis possimus. Cum eum ipsum
-        odio ex.
-      </GoAAccordion>
+      {/*<GoAAccordion*/}
+      {/*  heading="This is a heading"*/}
+      {/*  secondaryText="Secondary Text"*/}
+      {/*  headingContent={*/}
+      {/*    <div style={{ display: "flex", justifyContent: "flex-end" }}>*/}
+      {/*      <GoABadge type="success" content="Success" />*/}
+      {/*    </div>*/}
+      {/*  }*/}
+      {/*>*/}
+      {/*  Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium*/}
+      {/*  harum aliquid officia provident recusandae facilis dolor minus magnam*/}
+      {/*  commodi, nesciunt maxime quas aut exercitationem optio modi. Ratione*/}
+      {/*  commodi maiores aspernatur?*/}
+      {/*</GoAAccordion>*/}
+      {/*<GoAAccordion heading="Just a large heading" headingSize="medium">*/}
+      {/*  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,*/}
+      {/*  similique aut nisi accusamus odio est facere odit dolor sed reiciendis*/}
+      {/*  quas nostrum dicta quo voluptates, sint illo consectetur laudantium*/}
+      {/*  blanditiis!*/}
+      {/*</GoAAccordion>*/}
+      {/*<GoAAccordion*/}
+      {/*  heading="This is a heading"*/}
+      {/*  secondaryText="Secondary Text"*/}
+      {/*  headingContent={*/}
+      {/*    <div style={{ display: "flex", justifyContent: "flex-end" }}>*/}
+      {/*      <GoABlock>*/}
+      {/*        <GoABadge type="success" content="Success" />*/}
+      {/*        <GoABadge type="emergency" content="Error" />*/}
+      {/*      </GoABlock>*/}
+      {/*    </div>*/}
+      {/*  }*/}
+      {/*>*/}
+      {/*  Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium*/}
+      {/*  harum aliquid officia provident recusandae facilis dolor minus magnam*/}
+      {/*  commodi, nesciunt maxime quas aut exercitationem optio modi. Ratione*/}
+      {/*  commodi maiores aspernatur?*/}
+      {/*</GoAAccordion>*/}
+      {/*<GoAAccordion*/}
+      {/*  heading="Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde saepe mollitia quo temporibus tempora quos in, perferendis incidunt ex reiciendis praesentium beatae soluta, impedit enim culpa eum quis animi quas!"*/}
+      {/*  secondaryText="Secondary Text"*/}
+      {/*  headingContent={*/}
+      {/*    <div style={{ display: "flex", justifyContent: "flex-end" }}>*/}
+      {/*      <GoABlock>*/}
+      {/*        <GoABadge type="success" content="Success" />*/}
+      {/*        <GoABadge type="emergency" content="Error" />*/}
+      {/*      </GoABlock>*/}
+      {/*    </div>*/}
+      {/*  }*/}
+      {/*  open*/}
+      {/*>*/}
+      {/*  Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa*/}
+      {/*  repudiandae ab error exercitationem vero tempora animi odio! Quibusdam*/}
+      {/*  voluptas laudantium ullam ipsum, fugiat nobis possimus. Cum eum ipsum*/}
+      {/*  odio ex.*/}
+      {/*</GoAAccordion>*/}
     </>
   );
 }
