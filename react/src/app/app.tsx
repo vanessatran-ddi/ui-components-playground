@@ -1,59 +1,58 @@
 import React, { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import {
-  GoAAppFooter,
-  GoAAppHeader,
-  GoAMicrositeHeader,
-  GoAOneColumnLayout,
-  GoASideMenu,
-  GoASideMenuGroup,
-  GoAPageBlock,
-  GoAFormItem,
-  GoARadioGroup,
-  GoARadioItem,
-  GoAButton,
-  GoASpacer,
-  GoADropdown,
-  GoADropdownItem,
-  GoAInput,
-  GoABlock,
-  GoADatePicker,
-  GoATooltip,
-  GoAIcon,
-  GoABadge,
-  GoAText,
-  GoAModal,
-  GoAButtonGroup,
-  GoATextarea,
-  GoATabs,
-  GoATab,
-  GoADivider,
-  GoAIconButton,
-  GoACircularProgress,
-  GoAContainer,
-  GoADetails,
-  GoAHeroBanner,
-  GoAHeroBannerActions,
-  GoANotification,
-  GoAAppFooterMetaSection,
-  GoAAppFooterNavSection,
-  GoAFileUploadInput,
-  GoAFileUploadCard,
-  GoASideMenuHeading,
-  GoAAccordion,
-  GoASkeleton,
-  GoACheckbox,
-  GoAFormStep,
-  GoAFormStepper,
-  GoAPages,
-  GoACallout,
-  GoAPopover,
-  GoAAppHeaderMenu,
-  GoATable,
-  GoATableSortHeader,
-  GoAGrid,
-  GoALink,
-
+  GoabAppFooter,
+  GoabAppHeader,
+  GoabMicrositeHeader,
+  GoabOneColumnLayout,
+  GoabSideMenu,
+  GoabSideMenuGroup,
+  GoabPageBlock,
+  GoabFormItem,
+  GoabRadioGroup,
+  GoabRadioItem,
+  GoabButton,
+  GoabSpacer,
+  GoabDropdown,
+  GoabDropdownItem,
+  GoabInput,
+  GoabBlock,
+  GoabDatePicker,
+  GoabTooltip,
+  GoabIcon,
+  GoabBadge,
+  GoabText,
+  GoabModal,
+  GoabButtonGroup,
+  GoabTextarea,
+  GoabTabs,
+  GoabTab,
+  GoabDivider,
+  GoabIconButton,
+  GoabCircularProgress,
+  GoabContainer,
+  GoabDetails,
+  GoabHeroBanner,
+  GoabHeroBannerActions,
+  GoabNotification,
+  GoabAppFooterMetaSection,
+  GoabAppFooterNavSection,
+  GoabFileUploadInput,
+  GoabFileUploadCard,
+  GoabSideMenuHeading,
+  GoabAccordion,
+  GoabSkeleton,
+  GoabCheckbox,
+  GoabFormStep,
+  GoabFormStepper,
+  GoabPages,
+  GoabCallout,
+  GoabPopover,
+  GoabAppHeaderMenu,
+  GoabTable,
+  GoabTableSortHeader,
+  GoabGrid,
+  GoabLink,
 } from '@abgov/react-components';
 import '@abgov/style';
 
@@ -83,9 +82,9 @@ export function App() {
     console.log('onChange', name, value);
   }
   const popovertarget = (
-    <GoAButton type="secondary" size="compact">
+    <GoabButton type="secondary" size="compact">
       Click me
-    </GoAButton>
+    </GoabButton>
   );
   const [value, setValue] = useState<string>('');
   function onChangeDropdown(name: string, values: string|string[]) {
@@ -136,43 +135,43 @@ export function App() {
   }
 
   const containeractions = (
-    <GoABlock alignment="center">
-      <GoABadge type="important" content="Badge text" icon={true}></GoABadge>
-      <GoAButton type="tertiary" size="compact" leadingIcon="pencil">
+    <GoabBlock alignment="center">
+      <GoabBadge type="important" content="Badge text" icon={true}></GoabBadge>
+      <GoabButton type="tertiary" size="compact" leadingIcon="pencil">
         Edit
-      </GoAButton>
-    </GoABlock>
+      </GoabButton>
+    </GoabBlock>
   );
 
   const containeractionsinverse = (
-    <GoABlock alignment="center">
-      <GoABadge type="important" content="Badge text" icon={true}></GoABadge>
+    <GoabBlock alignment="center">
+      <GoabBadge type="important" content="Badge text" icon={true}></GoabBadge>
       {/*TODO: do we have variant=inverse?*/}
-      <GoAButton type="tertiary" size="compact" leadingIcon="pencil" variant="destructive">
+      <GoabButton type="tertiary" size="compact" leadingIcon="pencil" variant="destructive">
         Edit
-      </GoAButton>
-    </GoABlock>
+      </GoabButton>
+    </GoabBlock>
   );
 
   return (
-    <GoAOneColumnLayout>
+    <GoabOneColumnLayout>
       <section slot="header">
-        <GoAMicrositeHeader type="alpha" version="PLAYGROUND" />
+        <GoabMicrositeHeader type="alpha" version="PLAYGROUND" />
 
-        <GoAAppHeader url="/" heading="Tom's playground">
-        </GoAAppHeader>
+        <GoabAppHeader url="/" heading="Tom's playground">
+        </GoabAppHeader>
 
-        <GoASpacer vSpacing="3xl"></GoASpacer>
+        <GoabSpacer vSpacing="3xl"></GoabSpacer>
 
-        <GoAAppHeader url="" heading="Service name">
+        <GoabAppHeader url="" heading="Service name">
           <a href="#">Support</a>
-          <GoAAppHeaderMenu heading="More">
+          <GoabAppHeaderMenu heading="More">
             <a href="#">Cases</a>
             <a href="#">Payments</a>
             <a href="#">Outstanding</a>
             <a href="#">Another</a>
             <a href="#">Another</a>
-          </GoAAppHeaderMenu>
+          </GoabAppHeaderMenu>
           <a href="#">Another</a>
           <a href="#">Another</a>
           <a href="#">Another</a>
@@ -180,197 +179,197 @@ export function App() {
           <a href="#" className="interactive">
             Sign in
           </a>
-        </GoAAppHeader>
+        </GoabAppHeader>
 
-        <GoAAppHeader
+        <GoabAppHeader
           url=""
           heading="A header name that spans so far that it goes farther and farther until it hits it's max width or one of the menu items"
         >
           <a href="#">Menu item</a>
           <a href="#">Menu item</a>
           <a href="#">Menu item</a>
-          <GoAAppHeaderMenu heading="Edna Mode" leadingIcon="person-circle">
+          <GoabAppHeaderMenu heading="Edna Mode" leadingIcon="person-circle">
             <a href="#">My profile</a>
             <a href="#">Settings</a>
             <a href="#" className="interactive">
               Sign out
             </a>
-          </GoAAppHeaderMenu>
-        </GoAAppHeader>
+          </GoabAppHeaderMenu>
+        </GoabAppHeader>
 
-        <GoAAppHeader
+        <GoabAppHeader
           url="#"
           heading="Find housing"
         >
           <a href="#">Support</a>
-          <GoAAppHeaderMenu heading="Menu items" leadingIcon="notifications">
+          <GoabAppHeaderMenu heading="Menu items" leadingIcon="notifications">
             <a href="#">Menu item</a>
             <a href="#">Payments</a>
             <a href="#">Outstanding</a>
             <a href="#">Another</a>
             <a href="#">Another</a>
-          </GoAAppHeaderMenu>
+          </GoabAppHeaderMenu>
           <a href="#">Another</a>
 
           <a href="#" className="interactive">
             Sign in
           </a>
-        </GoAAppHeader>
+        </GoabAppHeader>
 
-        <GoAAppHeader
+        <GoabAppHeader
           url="#"
           heading="Pay your traffic ticket"
         >
-          <GoAAppHeaderMenu heading="Tickets" leadingIcon="ticket">
+          <GoabAppHeaderMenu heading="Tickets" leadingIcon="ticket">
             <a href="#">Cases</a>
             <a href="#">Payments</a>
             <a href="#">Outstanding</a>
             <a href="#">Another</a>
             <a href="#">Another</a>
-          </GoAAppHeaderMenu>
+          </GoabAppHeaderMenu>
 
           <a href="#" className="interactive">
             Sign in
           </a>
-        </GoAAppHeader>
+        </GoabAppHeader>
 
-        <GoAAppHeader url="#" heading="Service name">
+        <GoabAppHeader url="#" heading="Service name">
           <a href="#" className="interactive">
             Sign in
           </a>
-        </GoAAppHeader>
+        </GoabAppHeader>
 
-        <GoAAppHeader url="" heading="Service name">
+        <GoabAppHeader url="" heading="Service name">
           <a href="#">Support</a>
           <a href="#">Another</a>
           <a href="#">Another</a>
           <a href="#" className="interactive">
             Sign in
           </a>
-        </GoAAppHeader>
+        </GoabAppHeader>
 
-        <GoAAppHeader url="" maxContentWidth="100%"></GoAAppHeader>
+        <GoabAppHeader url="" maxContentWidth="100%"></GoabAppHeader>
 
       </section>
 
       {/* Main page content here */}
       <section>
         <Outlet />
-        <GoAPageBlock width="full">
-          <GoASpacer vSpacing="2xl"></GoASpacer>
-          <GoATabs onChange={onChange}>
+        <GoabPageBlock width="full">
+          <GoabSpacer vSpacing="2xl"></GoabSpacer>
+          <GoabTabs onChange={onChange}>
 
-            <GoATab heading="All components">
-              <GoABlock gap="2xl" direction="column" mt="3xl">
+            <GoabTab heading="All components">
+              <GoabBlock gap="2xl" direction="column" mt="3xl">
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-                <GoAText size="heading-m" mt="none" mb="xl">
+                <GoabText size="heading-m" mt="none" mb="xl">
                   Badge
-                </GoAText>
+                </GoabText>
 
-                <GoABlock>
-                  <GoABadge type="information" content="Information" icon={true}></GoABadge>
-                  <GoABadge type="important" content="Important" icon={true}></GoABadge>
-                  <GoABadge type="emergency" content="Emergency" icon={true}></GoABadge>
-                  <GoABadge type="success" content="Success" icon={true}></GoABadge>
-                </GoABlock>
+                <GoabBlock>
+                  <GoabBadge type="information" content="Information" icon={true}></GoabBadge>
+                  <GoabBadge type="important" content="Important" icon={true}></GoabBadge>
+                  <GoabBadge type="emergency" content="Emergency" icon={true}></GoabBadge>
+                  <GoabBadge type="success" content="Success" icon={true}></GoabBadge>
+                </GoabBlock>
 
-                <GoABlock>
-                  <GoABadge type="dark" content="Dark" icon={true}></GoABadge>
-                  <GoABadge type="midtone" content="Midtone" icon={true}></GoABadge>
-                  <GoABadge type="light" content="Light" icon={true}></GoABadge>
-                </GoABlock>
+                <GoabBlock>
+                  <GoabBadge type="dark" content="Dark" icon={true}></GoabBadge>
+                  <GoabBadge type="midtone" content="Midtone" icon={true}></GoabBadge>
+                  <GoabBadge type="light" content="Light" icon={true}></GoabBadge>
+                </GoabBlock>
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-                <GoAText size="heading-m" mt="3xl" mb="xl">
+                <GoabText size="heading-m" mt="3xl" mb="xl">
                   Button
-                </GoAText>
+                </GoabText>
 
-                <GoAButtonGroup alignment="start">
-                  <GoAButton>Primary</GoAButton>
-                  <GoAButton type="secondary">Secondary</GoAButton>
-                  <GoAButton type="tertiary">Tertiary</GoAButton>
-                </GoAButtonGroup>
+                <GoabButtonGroup alignment="start">
+                  <GoabButton>Primary</GoabButton>
+                  <GoabButton type="secondary">Secondary</GoabButton>
+                  <GoabButton type="tertiary">Tertiary</GoabButton>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start">
-                  <GoAButton leadingIcon="add">Primary</GoAButton>
-                  <GoAButton type="secondary" leadingIcon="add">
+                <GoabButtonGroup alignment="start">
+                  <GoabButton leadingIcon="add">Primary</GoabButton>
+                  <GoabButton type="secondary" leadingIcon="add">
                     Secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" leadingIcon="add">
+                  </GoabButton>
+                  <GoabButton type="tertiary" leadingIcon="add">
                     Tertiary
-                  </GoAButton>
-                </GoAButtonGroup>
+                  </GoabButton>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start">
-                  <GoAButton trailingIcon="add">Primary</GoAButton>
-                  <GoAButton type="secondary" trailingIcon="add">
+                <GoabButtonGroup alignment="start">
+                  <GoabButton trailingIcon="add">Primary</GoabButton>
+                  <GoabButton type="secondary" trailingIcon="add">
                     Secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" trailingIcon="add">
+                  </GoabButton>
+                  <GoabButton type="tertiary" trailingIcon="add">
                     Tertiary
-                  </GoAButton>
-                </GoAButtonGroup>
+                  </GoabButton>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start" gap="compact">
-                  <GoAButton size="compact">Compact primary</GoAButton>
-                  <GoAButton type="secondary" size="compact">
+                <GoabButtonGroup alignment="start" gap="compact">
+                  <GoabButton size="compact">Compact primary</GoabButton>
+                  <GoabButton type="secondary" size="compact">
                     Compact secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" size="compact">
+                  </GoabButton>
+                  <GoabButton type="tertiary" size="compact">
                     Compact tertiary
-                  </GoAButton>
-                </GoAButtonGroup>
+                  </GoabButton>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start" gap="compact">
-                  <GoAButton size="compact" leadingIcon="add">
+                <GoabButtonGroup alignment="start" gap="compact">
+                  <GoabButton size="compact" leadingIcon="add">
                     Compact primary
-                  </GoAButton>
-                  <GoAButton type="secondary" size="compact" leadingIcon="add">
+                  </GoabButton>
+                  <GoabButton type="secondary" size="compact" leadingIcon="add">
                     Compact secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" size="compact" leadingIcon="add">
+                  </GoabButton>
+                  <GoabButton type="tertiary" size="compact" leadingIcon="add">
                     Compact tertiary
-                  </GoAButton>
-                </GoAButtonGroup>
+                  </GoabButton>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start" gap="compact">
-                  <GoAButton size="compact" trailingIcon="add">
+                <GoabButtonGroup alignment="start" gap="compact">
+                  <GoabButton size="compact" trailingIcon="add">
                     Compact primary
-                  </GoAButton>
-                  <GoAButton type="secondary" size="compact" trailingIcon="add">
+                  </GoabButton>
+                  <GoabButton type="secondary" size="compact" trailingIcon="add">
                     Compact secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" size="compact" trailingIcon="add">
+                  </GoabButton>
+                  <GoabButton type="tertiary" size="compact" trailingIcon="add">
                     Compact tertiary
-                  </GoAButton>
-                </GoAButtonGroup>
+                  </GoabButton>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start">
-                  <GoAButton variant="destructive">Destructive primary</GoAButton>
-                  <GoAButton type="secondary" variant="destructive">
+                <GoabButtonGroup alignment="start">
+                  <GoabButton variant="destructive">Destructive primary</GoabButton>
+                  <GoabButton type="secondary" variant="destructive">
                     Destructive secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" variant="destructive">
+                  </GoabButton>
+                  <GoabButton type="tertiary" variant="destructive">
                     Destructive tertiary
-                  </GoAButton>
-                </GoAButtonGroup>
+                  </GoabButton>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start">
-                  <GoAButton variant="destructive" leadingIcon="add">
+                <GoabButtonGroup alignment="start">
+                  <GoabButton variant="destructive" leadingIcon="add">
                     Destructive primary
-                  </GoAButton>
-                  <GoAButton type="secondary" variant="destructive" leadingIcon="add">
+                  </GoabButton>
+                  <GoabButton type="secondary" variant="destructive" leadingIcon="add">
                     Destructive secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" variant="destructive" leadingIcon="add">
+                  </GoabButton>
+                  <GoabButton type="tertiary" variant="destructive" leadingIcon="add">
                     Destructive tertiary
-                  </GoAButton>
-                </GoAButtonGroup>
+                  </GoabButton>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start">
+                <GoabButtonGroup alignment="start">
                   <GoAButton variant="destructive" trailingIcon="add">
                     Destructive primary
                   </GoAButton>
@@ -380,9 +379,9 @@ export function App() {
                   <GoAButton type="tertiary" variant="destructive" trailingIcon="add">
                     Destructive tertiary
                   </GoAButton>
-                </GoAButtonGroup>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start" gap="compact">
+                <GoabButtonGroup alignment="start" gap="compact">
                   <GoAButton size="compact" variant="destructive">
                     Compact destructive primary
                   </GoAButton>
@@ -392,9 +391,9 @@ export function App() {
                   <GoAButton type="tertiary" size="compact" variant="destructive">
                     Compact destructive tertiary
                   </GoAButton>
-                </GoAButtonGroup>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start" gap="compact">
+                <GoabButtonGroup alignment="start" gap="compact">
                   <GoAButton size="compact" variant="destructive" leadingIcon="add">
                     Compact destructive primary
                   </GoAButton>
@@ -409,9 +408,9 @@ export function App() {
                   <GoAButton type="tertiary" size="compact" variant="destructive" leadingIcon="add">
                     Compact destructive tertiary
                   </GoAButton>
-                </GoAButtonGroup>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start" gap="compact">
+                <GoabButtonGroup alignment="start" gap="compact">
                   <GoAButton size="compact" variant="destructive" trailingIcon="add">
                     Compact destructive primary
                   </GoAButton>
@@ -431,16 +430,16 @@ export function App() {
                   >
                     Compact destructive tertiary
                   </GoAButton>
-                </GoAButtonGroup>
-                <GoAButtonGroup alignment="start">
+                </GoabButtonGroup>
+                <GoabButtonGroup alignment="start">
                   <GoAButton type="start">Start</GoAButton>
-                </GoAButtonGroup>
+                </GoabButtonGroup>
 
-                <GoAText size="heading-s" mt="l" mb="none">
+                <GoabText size="heading-s" mt="l" mb="none">
                   Inverse (experimental)
-                </GoAText>
+                </GoabText>
 
-                <GoAButtonGroup alignment="start" >
+                <GoabButtonGroup alignment="start" >
                   <GoAButton  >
                     Regular primary
                   </GoAButton>
@@ -450,28 +449,28 @@ export function App() {
                   <GoAButton type="tertiary">
                     Regular tertiary
                   </GoAButton>
-                </GoAButtonGroup>
+                </GoabButtonGroup>
 
                 <div style={{ backgroundColor: 'grey', padding: '12px' }}>
-                  <GoAButtonGroup alignment="start" >
+                  <GoabButtonGroup alignment="start" >
                     {/*TODO: Do we have variant=inverse?*/}
-                    <GoAButton variant="destructive"  >
+                    <GoabButton variant="destructive"  >
                       Inverse primary
-                    </GoAButton>
-                    <GoAButton type="secondary" variant="destructive" >
+                    </GoabButton>
+                    <GoabButton type="secondary" variant="destructive" >
                       Inverse secondary
-                    </GoAButton>
-                    <GoAButton type="tertiary" variant="destructive" >
+                    </GoabButton>
+                    <GoabButton type="tertiary" variant="destructive" >
                       Inverse tertiary
-                    </GoAButton>
-                  </GoAButtonGroup>
+                    </GoabButton>
+                  </GoabButtonGroup>
                 </div>
 
-                <GoAText size="heading-s" mt="l" mb="none">
+                <GoabText size="heading-s" mt="l" mb="none">
                   Disabled
-                </GoAText>
+                </GoabText>
 
-                <GoAButtonGroup alignment="start">
+                <GoabButtonGroup alignment="start">
                   <GoAButton disabled={true}>Primary</GoAButton>
                   <GoAButton type="secondary" disabled={true}>
                     Secondary
@@ -479,9 +478,9 @@ export function App() {
                   <GoAButton type="tertiary" disabled={true}>
                     Tertiary
                   </GoAButton>
-                </GoAButtonGroup>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start">
+                <GoabButtonGroup alignment="start">
                   <GoAButton leadingIcon="add" disabled={true}>
                     Primary
                   </GoAButton>
@@ -491,9 +490,9 @@ export function App() {
                   <GoAButton type="tertiary" leadingIcon="add" disabled={true}>
                     Tertiary
                   </GoAButton>
-                </GoAButtonGroup>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start">
+                <GoabButtonGroup alignment="start">
                   <GoAButton trailingIcon="add" disabled={true}>
                     Primary
                   </GoAButton>
@@ -503,9 +502,9 @@ export function App() {
                   <GoAButton type="tertiary" trailingIcon="add" disabled={true}>
                     Tertiary
                   </GoAButton>
-                </GoAButtonGroup>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start" gap="compact">
+                <GoabButtonGroup alignment="start" gap="compact">
                   <GoAButton size="compact" disabled={true}>
                     Cmpact primary
                   </GoAButton>
@@ -515,9 +514,9 @@ export function App() {
                   <GoAButton type="tertiary" size="compact" disabled={true}>
                     Compact tertiary
                   </GoAButton>
-                </GoAButtonGroup>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start" gap="compact">
+                <GoabButtonGroup alignment="start" gap="compact">
                   <GoAButton size="compact" leadingIcon="add" disabled={true}>
                     Compact primary
                   </GoAButton>
@@ -527,9 +526,9 @@ export function App() {
                   <GoAButton type="tertiary" size="compact" leadingIcon="add" disabled={true}>
                     Compact tertiary
                   </GoAButton>
-                </GoAButtonGroup>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start" gap="compact">
+                <GoabButtonGroup alignment="start" gap="compact">
                   <GoAButton size="compact" trailingIcon="add" disabled={true}>
                     Compact primary
                   </GoAButton>
@@ -539,9 +538,9 @@ export function App() {
                   <GoAButton type="tertiary" size="compact" trailingIcon="add" disabled={true}>
                     Compact tertiary
                   </GoAButton>
-                </GoAButtonGroup>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start">
+                <GoabButtonGroup alignment="start">
                   <GoAButton variant="destructive" disabled={true}>
                     Destructive primary
                   </GoAButton>
@@ -551,9 +550,9 @@ export function App() {
                   <GoAButton type="tertiary" variant="destructive" disabled={true}>
                     Destructive tertiary
                   </GoAButton>
-                </GoAButtonGroup>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start">
+                <GoabButtonGroup alignment="start">
                   <GoAButton variant="destructive" leadingIcon="add" disabled={true}>
                     Destructive primary
                   </GoAButton>
@@ -563,9 +562,9 @@ export function App() {
                   <GoAButton type="tertiary" variant="destructive" leadingIcon="add" disabled={true}>
                     Destructive tertiary
                   </GoAButton>
-                </GoAButtonGroup>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start">
+                <GoabButtonGroup alignment="start">
                   <GoAButton variant="destructive" trailingIcon="add" disabled={true}>
                     Destructive primary
                   </GoAButton>
@@ -575,9 +574,9 @@ export function App() {
                   <GoAButton type="tertiary" variant="destructive" trailingIcon="add" disabled={true}>
                     Destructive tertiary
                   </GoAButton>
-                </GoAButtonGroup>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start" gap="compact">
+                <GoabButtonGroup alignment="start" gap="compact">
                   <GoAButton size="compact" variant="destructive" disabled={true}>
                     Compact destructive primary
                   </GoAButton>
@@ -587,9 +586,9 @@ export function App() {
                   <GoAButton type="tertiary" size="compact" variant="destructive" disabled={true}>
                     Compact destructive tertiary
                   </GoAButton>
-                </GoAButtonGroup>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start" gap="compact">
+                <GoabButtonGroup alignment="start" gap="compact">
                   <GoAButton size="compact" variant="destructive" leadingIcon="add" disabled={true}>
                     Compact destructive primary
                   </GoAButton>
@@ -599,9 +598,9 @@ export function App() {
                   <GoAButton type="tertiary" size="compact" variant="destructive" leadingIcon="add" disabled={true}>
                     Compact destructive tertiary
                   </GoAButton>
-                </GoAButtonGroup>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start" gap="compact">
+                <GoabButtonGroup alignment="start" gap="compact">
                   <GoAButton size="compact" variant="destructive" trailingIcon="add" disabled={true}>
                     Compact destructive primary
                   </GoAButton>
@@ -611,29 +610,29 @@ export function App() {
                   <GoAButton type="tertiary" size="compact" variant="destructive" trailingIcon="add" disabled={true}>
                     Compact destructive tertiary
                   </GoAButton>
-                </GoAButtonGroup>
+                </GoabButtonGroup>
 
 
-                <GoAButtonGroup alignment="start">
-                  <GoAButton type="start" disabled={true}>
+                <GoabButtonGroup alignment="start">
+                  <GoabButton type="start" disabled={true}>
                     Disabled start
-                  </GoAButton>
-                </GoAButtonGroup>
+                  </GoabButton>
+                </GoabButtonGroup>
 
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-                <GoAText size="heading-m" mt="3xl" mb="xl">
+                <GoabText size="heading-m" mt="3xl" mb="xl">
                   Button group
-                </GoAText>
+                </GoabText>
 
-                <GoAButtonGroup alignment="start">
-                  <GoAButton>Default</GoAButton>
-                  <GoAButton type="secondary">Button</GoAButton>
-                  <GoAButton type="tertiary">Group</GoAButton>
-                </GoAButtonGroup>
+                <GoabButtonGroup alignment="start">
+                  <GoabButton>Default</GoabButton>
+                  <GoabButton type="secondary">Button</GoabButton>
+                  <GoabButton type="tertiary">Group</GoabButton>
+                </GoabButtonGroup>
 
-                <GoAButtonGroup alignment="start" gap="compact">
+                <GoabButtonGroup alignment="start" gap="compact">
                   <GoAButton size="compact">Compact</GoAButton>
                   <GoAButton type="secondary" size="compact">
                     Button
@@ -641,15 +640,15 @@ export function App() {
                   <GoAButton type="tertiary" size="compact">
                     Group
                   </GoAButton>
-                </GoAButtonGroup>
+                </GoabButtonGroup>
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-                <GoAText size="heading-m" mt="3xl" mb="s">
+                <GoabText size="heading-m" mt="3xl" mb="s">
                   Checkbox
-                </GoAText>
+                </GoabText>
 
-                <GoABlock gap="xl" mb="none" direction="column">
+                <GoabBlock gap="xl" mb="none" direction="column">
                   <GoACheckbox name="item 1" text="Single checkbox option - I consent to..." value=""></GoACheckbox>
 
                   <GoAFormItem label="Basic checkbox list">
@@ -780,15 +779,15 @@ export function App() {
                     <GoACheckbox name="item 3" text="Option 3" value="" mb="none"></GoACheckbox>
                   </GoAFormItem>
 
-                </GoABlock>
+                </GoabBlock>
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-                <GoAText size="heading-m" mt="3xl" mb="xl">
+                <GoabText size="heading-m" mt="3xl" mb="xl">
                   Container
-                </GoAText>
+                </GoabText>
 
-                <GoAGrid gap="xl" minChildWidth="400px">
+                <GoabGrid gap="xl" minChildWidth="400px">
                   <GoAContainer
                     accent="thick"
                     heading="Non-interactive with text"
@@ -886,9 +885,9 @@ export function App() {
 
                     <GoAButton>Button</GoAButton>
                   </GoAContainer>
-                </GoAGrid>
+                </GoabGrid>
 
-                <GoAGrid gap="xl" minChildWidth="400px">
+                <GoabGrid gap="xl" minChildWidth="400px">
                   <GoAContainer
                     accent="thick"
                     heading="Interactive with text"
@@ -986,9 +985,9 @@ export function App() {
 
                     <GoAButton>Button</GoAButton>
                   </GoAContainer>
-                </GoAGrid>
+                </GoabGrid>
 
-                <GoAGrid gap="xl" minChildWidth="400px">
+                <GoabGrid gap="xl" minChildWidth="400px">
                   <GoAContainer
                     accent="thick"
                     heading="Info with text"
@@ -1086,9 +1085,9 @@ export function App() {
 
                     <GoAButton>Button</GoAButton>
                   </GoAContainer>
-                </GoAGrid>
+                </GoabGrid>
 
-                <GoAGrid gap="xl" minChildWidth="400px">
+                <GoabGrid gap="xl" minChildWidth="400px">
                   <GoAContainer
                     accent="thick"
                     heading="Error with text"
@@ -1186,9 +1185,9 @@ export function App() {
 
                     <GoAButton>Button</GoAButton>
                   </GoAContainer>
-                </GoAGrid>
+                </GoabGrid>
 
-                <GoAGrid gap="xl" minChildWidth="400px">
+                <GoabGrid gap="xl" minChildWidth="400px">
                   <GoAContainer
                     accent="thick"
                     heading="Success with text"
@@ -1286,9 +1285,9 @@ export function App() {
 
                     <GoAButton>Button</GoAButton>
                   </GoAContainer>
-                </GoAGrid>
+                </GoabGrid>
 
-                <GoAGrid gap="xl" minChildWidth="400px">
+                <GoabGrid gap="xl" minChildWidth="400px">
                   <GoAContainer
                     accent="thick"
                     heading="Important with text"
@@ -1386,9 +1385,9 @@ export function App() {
 
                     <GoAButton>Button</GoAButton>
                   </GoAContainer>
-                </GoAGrid>
+                </GoabGrid>
 
-                <GoAGrid gap="xl" minChildWidth="400px">
+                <GoabGrid gap="xl" minChildWidth="400px">
                   <GoAContainer
                     accent="thick"
                     heading="Non-interactive, compact with text"
@@ -1487,30 +1486,30 @@ export function App() {
 
                     <GoAButton>Button</GoAButton>
                   </GoAContainer>
-                </GoAGrid>
+                </GoabGrid>
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-                <GoAText size="heading-m" mt="3xl" mb="xl">
+                <GoabText size="heading-m" mt="3xl" mb="xl">
                   Date picker
-                </GoAText>
+                </GoabText>
 
-                <GoABlock gap="2xl" mb="xl" direction="column">
+                <GoabBlock gap="2xl" mb="xl" direction="column">
                   <GoAFormItem label="Select a date">
                     <GoADatePicker
                       name="item"
                       value={new Date(2024, 11, 4)}
                     ></GoADatePicker>
                   </GoAFormItem>
-                </GoABlock>
+                </GoabBlock>
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-                <GoAText size="heading-m" mt="3xl" mb="xl">
+                <GoabText size="heading-m" mt="3xl" mb="xl">
                   Detail
-                </GoAText>
+                </GoabText>
 
-                <GoABlock gap="xl" mb="xl" direction="column">
+                <GoabBlock gap="xl" mb="xl" direction="column">
                   <GoADetails heading="Detail Heading that goes for a long time that is longer and maybe wraps as well because it is so long">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel lacinia metus,
                     sed sodales lectus. Aliquam sed volutpat velit.
@@ -1520,39 +1519,39 @@ export function App() {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel lacinia metus,
                     sed sodales lectus. Aliquam sed volutpat velit.
                   </GoADetails>
-                </GoABlock>
+                </GoabBlock>
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-                <GoAText size="heading-m" mt="3xl" mb="xl">
+                <GoabText size="heading-m" mt="3xl" mb="xl">
                   Divider
-                </GoAText>
-                <GoADivider></GoADivider>
+                </GoabText>
+                <GoabDivider></GoabDivider>
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-                <GoAText size="heading-m" mt="3xl" mb="xl">
+                <GoabText size="heading-m" mt="3xl" mb="xl">
                   Dropdown
-                </GoAText>
+                </GoabText>
 
-                <GoABlock gap="2xl" mb="xl" direction="column">
-                  <GoAFormItem label="Basic dropdown">
+                <GoabBlock gap="2xl" mb="xl" direction="column">
+                  <GoabFormItem label="Basic dropdown">
                     <GoADropdown placeholder="—Select—" name="item" value="" >
                       <GoADropdownItem value="red" label="Red"></GoADropdownItem>
                       <GoADropdownItem value="green" label="Green"></GoADropdownItem>
                       <GoADropdownItem value="blue" label="Blue"></GoADropdownItem>
                     </GoADropdown>
-                  </GoAFormItem>
+                  </GoabFormItem>
 
-                  <GoAFormItem label="Basic dropdown width 100%">
+                  <GoabFormItem label="Basic dropdown width 100%">
                     <GoADropdown placeholder="—Select—" name="item" value="" width="100%">
                       <GoADropdownItem value="red" label="Red"></GoADropdownItem>
                       <GoADropdownItem value="green" label="Green"></GoADropdownItem>
                       <GoADropdownItem value="blue" label="Blue"></GoADropdownItem>
                     </GoADropdown>
-                  </GoAFormItem>
+                  </GoabFormItem>
 
-                  <GoAFormItem label="Dropdown with longest option 100ch" >
+                  <GoabFormItem label="Dropdown with longest option 100ch" >
                     <GoADropdown
                       name="item"
                       value=""
@@ -1561,9 +1560,9 @@ export function App() {
                       <GoADropdownItem value="green" label="abc"></GoADropdownItem>
                       <GoADropdownItem value="blue" label="MMM"></GoADropdownItem>
                     </GoADropdown>
-                  </GoAFormItem>
+                  </GoabFormItem>
 
-                  <GoAFormItem label="Dropdown with longest option 3ch">
+                  <GoabFormItem label="Dropdown with longest option 3ch">
                     <GoADropdown
                       name="item"
                       value=""
@@ -1572,48 +1571,48 @@ export function App() {
                       <GoADropdownItem value="green" label="000"></GoADropdownItem>
                       <GoADropdownItem value="blue" label="000"></GoADropdownItem>
                     </GoADropdown>
-                  </GoAFormItem>
+                  </GoabFormItem>
 
-                  <GoAFormItem label="Dropdown with longest option 20ch and leading icon">
+                  <GoabFormItem label="Dropdown with longest option 20ch and leading icon">
                     <GoADropdown name="item" value="" leadingIcon="mail" >
                       <GoADropdownItem value="red" label="20ch-000000000000000"></GoADropdownItem>
                       <GoADropdownItem value="green" label="acd"></GoADropdownItem>
                       <GoADropdownItem value="blue" label="cde"></GoADropdownItem>
                     </GoADropdown>
-                  </GoAFormItem>
+                  </GoabFormItem>
 
-                  <GoAFormItem label="Filterable dropdown">
+                  <GoabFormItem label="Filterable dropdown">
                     <GoADropdown name="item" value="" filterable={true} >
                       <GoADropdownItem value="red" label="20ch-000000000000000"></GoADropdownItem>
                       <GoADropdownItem value="green" label="acd"></GoADropdownItem>
                       <GoADropdownItem value="blue" label="cde"></GoADropdownItem>
                     </GoADropdown>
-                  </GoAFormItem>
+                  </GoabFormItem>
 
-                  <GoAFormItem label="Dropdown with error" error="Error message.">
+                  <GoabFormItem label="Dropdown with error" error="Error message.">
                     <GoADropdown name="item" value="" error={true} >
                       <GoADropdownItem value="red" label="Red"></GoADropdownItem>
                       <GoADropdownItem value="green" label="Green"></GoADropdownItem>
                       <GoADropdownItem value="blue" label="Blue"></GoADropdownItem>
                     </GoADropdown>
-                  </GoAFormItem>
+                  </GoabFormItem>
 
-                  <GoAFormItem label="Disabled dropdown" helpText="Helper text">
+                  <GoabFormItem label="Disabled dropdown" helpText="Helper text">
                     <GoADropdown name="item" value="" disabled={true} >
                       <GoADropdownItem value="red" label="Red"></GoADropdownItem>
                       <GoADropdownItem value="green" label="Green"></GoADropdownItem>
                       <GoADropdownItem value="blue" label="Blue"></GoADropdownItem>
                     </GoADropdown>
-                  </GoAFormItem>
+                  </GoabFormItem>
 
-                  <GoAFormItem label="Native dropdown" helpText="Helper text">
-                    <GoADropdown name="item" value="" native={true} onChange={onChangeDropdown}>
-                      <GoADropdownItem value="red" label="Red"></GoADropdownItem>
-                      <GoADropdownItem value="green" label="Green"></GoADropdownItem>
-                      <GoADropdownItem value="blue" label="Blue"></GoADropdownItem>
-                    </GoADropdown>
-                  </GoAFormItem>
-                </GoABlock>
+                  <GoabFormItem label="Native dropdown" helpText="Helper text">
+                    <GoabDropdown name="item" value="" native={true} onChange={onChangeDropdown}>
+                      <GoabDropdownItem value="red" label="Red"></GoabDropdownItem>
+                      <GoabDropdownItem value="green" label="Green"></GoabDropdownItem>
+                      <GoabDropdownItem value="blue" label="Blue"></GoabDropdownItem>
+                    </GoabDropdown>
+                  </GoabFormItem>
+                </GoabBlock>
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
@@ -2015,7 +2014,7 @@ export function App() {
                     disabled={true}
                   ></GoAIconButton>
                 </GoABlock>
-              </GoABlock>
+              </GoabBlock>
 
               {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
@@ -3290,7 +3289,7 @@ export function App() {
               </GoABlock>
 
               <GoASpacer vSpacing="4xl"></GoASpacer>
-            </GoATab>
+            </GoabTab>
 
             {/* TAB ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
 
@@ -3668,8 +3667,8 @@ export function App() {
               </GoABlock>
             </GoATab>
 
-          </GoATabs>
-        </GoAPageBlock>
+          </GoabTabs>
+        </GoabPageBlock>
       </section>
 
       <section slot="footer">
@@ -3714,7 +3713,7 @@ export function App() {
           </GoAAppFooterNavSection>
         </GoAAppFooter>
       </section>
-    </GoAOneColumnLayout >
+    </GoabOneColumnLayout >
   );
 }
 
