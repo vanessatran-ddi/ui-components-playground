@@ -52,9 +52,11 @@ import {
   GoabTable,
   GoabTableSortHeader,
   GoabGrid,
-  GoabLink,
+  GoALink,
+
 } from '@abgov/react-components';
 import '@abgov/style';
+import { GoabDropdownOnChangeDetail, GoabSkeletonSize, GoabTextAreaOnChangeDetail } from "@abgov/ui-components-common";
 
 function onChange(tabIndex: number): void {
   console.log('Tab changed to ', tabIndex);
@@ -72,6 +74,8 @@ export function App() {
   const [NoHeaderModalOpen, setNoHeaderModalOpen] = useState<boolean>();
   const [step, setStep] = useState<number>(-1);
   const [step2, setStep2] = useState<number>(-1);
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  const noop = () => {};
   function radio1(name: string, value: string) {
     console.log('onChange', name, value);
   }
@@ -87,11 +91,11 @@ export function App() {
     </GoabButton>
   );
   const [value, setValue] = useState<string>('');
-  function onChangeDropdown(name: string, values: string|string[]) {
-    setValue(value as string);
+  function onChangeDropdown(detail: GoabDropdownOnChangeDetail) {
+    setValue(detail.value as string);
   }
-  function onChangeTextArea(name: string, value: string) {
-    console.log(value);
+  function onChangeTextArea(detail: GoabTextAreaOnChangeDetail) {
+    console.log(detail.value);
   }
   interface User {
     firstName: string;
@@ -146,8 +150,8 @@ export function App() {
   const containeractionsinverse = (
     <GoabBlock alignment="center">
       <GoabBadge type="important" content="Badge text" icon={true}></GoabBadge>
-      {/*TODO: do we have variant=inverse?*/}
-      <GoabButton type="tertiary" size="compact" leadingIcon="pencil" variant="destructive">
+      {/*TODO: add a variant=inverse (styles added)*/}
+      <GoabButton type="tertiary" size="compact" leadingIcon="pencil">
         Edit
       </GoabButton>
     </GoabBlock>
@@ -164,13 +168,13 @@ export function App() {
         <GoabSpacer vSpacing="3xl"></GoabSpacer>
 
         <GoabAppHeader url="" heading="Service name">
-          <a href="#">Support</a>
+          <a href="#">Category 1</a>
           <GoabAppHeaderMenu heading="More">
             <a href="#">Cases</a>
             <a href="#">Payments</a>
             <a href="#">Outstanding</a>
             <a href="#">Another</a>
-            <a href="#">Another</a>
+            <a href="#">Secondary item</a>
           </GoabAppHeaderMenu>
           <a href="#">Another</a>
           <a href="#">Another</a>
@@ -233,13 +237,13 @@ export function App() {
           </a>
         </GoabAppHeader>
 
-        <GoabAppHeader url="#" heading="Service name">
+        <GoabAppHeader url="#" heading="An action oriented Service name">
           <a href="#" className="interactive">
             Sign in
           </a>
         </GoabAppHeader>
 
-        <GoabAppHeader url="" heading="Service name">
+        <GoabAppHeader url="" heading="Other service name">
           <a href="#">Support</a>
           <a href="#">Another</a>
           <a href="#">Another</a>
@@ -257,7 +261,7 @@ export function App() {
         <Outlet />
         <GoabPageBlock width="full">
           <GoabSpacer vSpacing="2xl"></GoabSpacer>
-          <GoabTabs onChange={onChange}>
+          <GoabTabs onChange={(detail) => onChange(detail.tab)}>
 
             <GoabTab heading="All components">
               <GoabBlock gap="2xl" direction="column" mt="3xl">
@@ -269,16 +273,24 @@ export function App() {
                 </GoabText>
 
                 <GoabBlock>
-                  <GoabBadge type="information" content="Information" icon={true}></GoabBadge>
+                  <GoabBadge type="information" content="Information" icon={false}></GoabBadge>
                   <GoabBadge type="important" content="Important" icon={true}></GoabBadge>
                   <GoabBadge type="emergency" content="Emergency" icon={true}></GoabBadge>
                   <GoabBadge type="success" content="Success" icon={true}></GoabBadge>
+
                 </GoabBlock>
 
                 <GoabBlock>
                   <GoabBadge type="dark" content="Dark" icon={true}></GoabBadge>
                   <GoabBadge type="midtone" content="Midtone" icon={true}></GoabBadge>
                   <GoabBadge type="light" content="Light" icon={true}></GoabBadge>
+                </GoabBlock>
+
+                <GoabBlock>
+                  <GoabBadge type="information" content="" icon={true}></GoabBadge>
+                  <GoabBadge type="important" content="" icon={true}></GoabBadge>
+                  <GoabBadge type="emergency" content="" icon={true}></GoabBadge>
+                  <GoabBadge type="success" content="" icon={true}></GoabBadge>
                 </GoabBlock>
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
@@ -370,246 +382,252 @@ export function App() {
                 </GoabButtonGroup>
 
                 <GoabButtonGroup alignment="start">
-                  <GoAButton variant="destructive" trailingIcon="add">
+                  <GoabButton variant="destructive" trailingIcon="add">
                     Destructive primary
-                  </GoAButton>
-                  <GoAButton type="secondary" variant="destructive" trailingIcon="add">
+                  </GoabButton>
+                  <GoabButton type="secondary" variant="destructive" trailingIcon="add">
                     Destructive secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" variant="destructive" trailingIcon="add">
+                  </GoabButton>
+                  <GoabButton type="tertiary" variant="destructive" trailingIcon="add">
                     Destructive tertiary
-                  </GoAButton>
+                  </GoabButton>
                 </GoabButtonGroup>
 
                 <GoabButtonGroup alignment="start" gap="compact">
-                  <GoAButton size="compact" variant="destructive">
+                  <GoabButton size="compact" variant="destructive">
                     Compact destructive primary
-                  </GoAButton>
-                  <GoAButton type="secondary" size="compact" variant="destructive">
+                  </GoabButton>
+                  <GoabButton type="secondary" size="compact" variant="destructive">
                     Compact destructive secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" size="compact" variant="destructive">
+                  </GoabButton>
+                  <GoabButton type="tertiary" size="compact" variant="destructive">
                     Compact destructive tertiary
-                  </GoAButton>
+                  </GoabButton>
                 </GoabButtonGroup>
 
                 <GoabButtonGroup alignment="start" gap="compact">
-                  <GoAButton size="compact" variant="destructive" leadingIcon="add">
+                  <GoabButton size="compact" variant="destructive" leadingIcon="add">
                     Compact destructive primary
-                  </GoAButton>
-                  <GoAButton
+                  </GoabButton>
+                  <GoabButton
                     type="secondary"
                     size="compact"
                     variant="destructive"
                     leadingIcon="add"
                   >
                     Compact destructive secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" size="compact" variant="destructive" leadingIcon="add">
+                  </GoabButton>
+                  <GoabButton type="tertiary" size="compact" variant="destructive" leadingIcon="add">
                     Compact destructive tertiary
-                  </GoAButton>
+                  </GoabButton>
                 </GoabButtonGroup>
 
                 <GoabButtonGroup alignment="start" gap="compact">
-                  <GoAButton size="compact" variant="destructive" trailingIcon="add">
+                  <GoabButton size="compact" variant="destructive" trailingIcon="add">
                     Compact destructive primary
-                  </GoAButton>
-                  <GoAButton
+                  </GoabButton>
+                  <GoabButton
                     type="secondary"
                     size="compact"
                     variant="destructive"
                     trailingIcon="add"
                   >
                     Compact destructive secondary
-                  </GoAButton>
-                  <GoAButton
+                  </GoabButton>
+                  <GoabButton
                     type="tertiary"
                     size="compact"
                     variant="destructive"
                     trailingIcon="add"
                   >
                     Compact destructive tertiary
-                  </GoAButton>
+                  </GoabButton>
                 </GoabButtonGroup>
                 <GoabButtonGroup alignment="start">
-                  <GoAButton type="start">Start</GoAButton>
+                  <GoabButton type="start">Start</GoabButton>
                 </GoabButtonGroup>
+
+
+
+                {/*TODO: Add variant=inverse to button component (styles added)
 
                 <GoabText size="heading-s" mt="l" mb="none">
                   Inverse (experimental)
                 </GoabText>
 
                 <GoabButtonGroup alignment="start" >
-                  <GoAButton  >
+                  <GoabButton  >
                     Regular primary
-                  </GoAButton>
-                  <GoAButton type="secondary"  >
+                  </GoabButton>
+                  <GoabButton type="secondary"  >
                     Regular secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary">
+                  </GoabButton>
+                  <GoabButton type="tertiary">
                     Regular tertiary
-                  </GoAButton>
+                  </GoabButton>
                 </GoabButtonGroup>
 
                 <div style={{ backgroundColor: 'grey', padding: '12px' }}>
                   <GoabButtonGroup alignment="start" >
-                    {/*TODO: Do we have variant=inverse?*/}
-                    <GoabButton variant="destructive"  >
+
+                    <GoabButton variant="inverse"  >
                       Inverse primary
                     </GoabButton>
-                    <GoabButton type="secondary" variant="destructive" >
+                    <GoabButton type="secondary" variant="inverse" >
                       Inverse secondary
                     </GoabButton>
-                    <GoabButton type="tertiary" variant="destructive" >
+                    <GoabButton type="tertiary" variant="inverse" >
                       Inverse tertiary
                     </GoabButton>
                   </GoabButtonGroup>
                 </div>
+
+                  */}
 
                 <GoabText size="heading-s" mt="l" mb="none">
                   Disabled
                 </GoabText>
 
                 <GoabButtonGroup alignment="start">
-                  <GoAButton disabled={true}>Primary</GoAButton>
-                  <GoAButton type="secondary" disabled={true}>
+                  <GoabButton disabled={true}>Primary</GoabButton>
+                  <GoabButton type="secondary" disabled={true}>
                     Secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="tertiary" disabled={true}>
                     Tertiary
-                  </GoAButton>
+                  </GoabButton>
                 </GoabButtonGroup>
 
                 <GoabButtonGroup alignment="start">
-                  <GoAButton leadingIcon="add" disabled={true}>
+                  <GoabButton leadingIcon="add" disabled={true}>
                     Primary
-                  </GoAButton>
-                  <GoAButton type="secondary" leadingIcon="add" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="secondary" leadingIcon="add" disabled={true}>
                     Secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" leadingIcon="add" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="tertiary" leadingIcon="add" disabled={true}>
                     Tertiary
-                  </GoAButton>
+                  </GoabButton>
                 </GoabButtonGroup>
 
                 <GoabButtonGroup alignment="start">
-                  <GoAButton trailingIcon="add" disabled={true}>
+                  <GoabButton trailingIcon="add" disabled={true}>
                     Primary
-                  </GoAButton>
-                  <GoAButton type="secondary" trailingIcon="add" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="secondary" trailingIcon="add" disabled={true}>
                     Secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" trailingIcon="add" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="tertiary" trailingIcon="add" disabled={true}>
                     Tertiary
-                  </GoAButton>
+                  </GoabButton>
                 </GoabButtonGroup>
 
                 <GoabButtonGroup alignment="start" gap="compact">
-                  <GoAButton size="compact" disabled={true}>
+                  <GoabButton size="compact" disabled={true}>
                     Cmpact primary
-                  </GoAButton>
-                  <GoAButton type="secondary" size="compact" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="secondary" size="compact" disabled={true}>
                     Compact secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" size="compact" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="tertiary" size="compact" disabled={true}>
                     Compact tertiary
-                  </GoAButton>
+                  </GoabButton>
                 </GoabButtonGroup>
 
                 <GoabButtonGroup alignment="start" gap="compact">
-                  <GoAButton size="compact" leadingIcon="add" disabled={true}>
+                  <GoabButton size="compact" leadingIcon="add" disabled={true}>
                     Compact primary
-                  </GoAButton>
-                  <GoAButton type="secondary" size="compact" leadingIcon="add" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="secondary" size="compact" leadingIcon="add" disabled={true}>
                     Compact secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" size="compact" leadingIcon="add" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="tertiary" size="compact" leadingIcon="add" disabled={true}>
                     Compact tertiary
-                  </GoAButton>
+                  </GoabButton>
                 </GoabButtonGroup>
 
                 <GoabButtonGroup alignment="start" gap="compact">
-                  <GoAButton size="compact" trailingIcon="add" disabled={true}>
+                  <GoabButton size="compact" trailingIcon="add" disabled={true}>
                     Compact primary
-                  </GoAButton>
-                  <GoAButton type="secondary" size="compact" trailingIcon="add" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="secondary" size="compact" trailingIcon="add" disabled={true}>
                     Compact secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" size="compact" trailingIcon="add" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="tertiary" size="compact" trailingIcon="add" disabled={true}>
                     Compact tertiary
-                  </GoAButton>
+                  </GoabButton>
                 </GoabButtonGroup>
 
                 <GoabButtonGroup alignment="start">
-                  <GoAButton variant="destructive" disabled={true}>
+                  <GoabButton variant="destructive" disabled={true}>
                     Destructive primary
-                  </GoAButton>
-                  <GoAButton type="secondary" variant="destructive" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="secondary" variant="destructive" disabled={true}>
                     Destructive secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" variant="destructive" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="tertiary" variant="destructive" disabled={true}>
                     Destructive tertiary
-                  </GoAButton>
+                  </GoabButton>
                 </GoabButtonGroup>
 
                 <GoabButtonGroup alignment="start">
-                  <GoAButton variant="destructive" leadingIcon="add" disabled={true}>
+                  <GoabButton variant="destructive" leadingIcon="add" disabled={true}>
                     Destructive primary
-                  </GoAButton>
-                  <GoAButton type="secondary" variant="destructive" leadingIcon="add" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="secondary" variant="destructive" leadingIcon="add" disabled={true}>
                     Destructive secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" variant="destructive" leadingIcon="add" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="tertiary" variant="destructive" leadingIcon="add" disabled={true}>
                     Destructive tertiary
-                  </GoAButton>
+                  </GoabButton>
                 </GoabButtonGroup>
 
                 <GoabButtonGroup alignment="start">
-                  <GoAButton variant="destructive" trailingIcon="add" disabled={true}>
+                  <GoabButton variant="destructive" trailingIcon="add" disabled={true}>
                     Destructive primary
-                  </GoAButton>
-                  <GoAButton type="secondary" variant="destructive" trailingIcon="add" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="secondary" variant="destructive" trailingIcon="add" disabled={true}>
                     Destructive secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" variant="destructive" trailingIcon="add" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="tertiary" variant="destructive" trailingIcon="add" disabled={true}>
                     Destructive tertiary
-                  </GoAButton>
+                  </GoabButton>
                 </GoabButtonGroup>
 
                 <GoabButtonGroup alignment="start" gap="compact">
-                  <GoAButton size="compact" variant="destructive" disabled={true}>
+                  <GoabButton size="compact" variant="destructive" disabled={true}>
                     Compact destructive primary
-                  </GoAButton>
-                  <GoAButton type="secondary" size="compact" variant="destructive" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="secondary" size="compact" variant="destructive" disabled={true}>
                     Compact destructive secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" size="compact" variant="destructive" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="tertiary" size="compact" variant="destructive" disabled={true}>
                     Compact destructive tertiary
-                  </GoAButton>
+                  </GoabButton>
                 </GoabButtonGroup>
 
                 <GoabButtonGroup alignment="start" gap="compact">
-                  <GoAButton size="compact" variant="destructive" leadingIcon="add" disabled={true}>
+                  <GoabButton size="compact" variant="destructive" leadingIcon="add" disabled={true}>
                     Compact destructive primary
-                  </GoAButton>
-                  <GoAButton type="secondary" size="compact" variant="destructive" leadingIcon="add" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="secondary" size="compact" variant="destructive" leadingIcon="add" disabled={true}>
                     Compact destructive secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" size="compact" variant="destructive" leadingIcon="add" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="tertiary" size="compact" variant="destructive" leadingIcon="add" disabled={true}>
                     Compact destructive tertiary
-                  </GoAButton>
+                  </GoabButton>
                 </GoabButtonGroup>
 
                 <GoabButtonGroup alignment="start" gap="compact">
-                  <GoAButton size="compact" variant="destructive" trailingIcon="add" disabled={true}>
+                  <GoabButton size="compact" variant="destructive" trailingIcon="add" disabled={true}>
                     Compact destructive primary
-                  </GoAButton>
-                  <GoAButton type="secondary" size="compact" variant="destructive" trailingIcon="add" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="secondary" size="compact" variant="destructive" trailingIcon="add" disabled={true}>
                     Compact destructive secondary
-                  </GoAButton>
-                  <GoAButton type="tertiary" size="compact" variant="destructive" trailingIcon="add" disabled={true}>
+                  </GoabButton>
+                  <GoabButton type="tertiary" size="compact" variant="destructive" trailingIcon="add" disabled={true}>
                     Compact destructive tertiary
-                  </GoAButton>
+                  </GoabButton>
                 </GoabButtonGroup>
 
 
@@ -633,13 +651,13 @@ export function App() {
                 </GoabButtonGroup>
 
                 <GoabButtonGroup alignment="start" gap="compact">
-                  <GoAButton size="compact">Compact</GoAButton>
-                  <GoAButton type="secondary" size="compact">
+                  <GoabButton size="compact">Compact</GoabButton>
+                  <GoabButton type="secondary" size="compact">
                     Button
-                  </GoAButton>
-                  <GoAButton type="tertiary" size="compact">
+                  </GoabButton>
+                  <GoabButton type="tertiary" size="compact">
                     Group
-                  </GoAButton>
+                  </GoabButton>
                 </GoabButtonGroup>
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
@@ -649,135 +667,135 @@ export function App() {
                 </GoabText>
 
                 <GoabBlock gap="xl" mb="none" direction="column">
-                  <GoACheckbox name="item 1" text="Single checkbox option - I consent to..." value=""></GoACheckbox>
+                  <GoabCheckbox name="item 1" text="Single checkbox option - I consent to..." value=""></GoabCheckbox>
 
-                  <GoAFormItem label="Basic checkbox list">
-                    <GoACheckbox
+                  <GoabFormItem label="Basic checkbox list">
+                    <GoabCheckbox
                       name="item 1"
                       text="Option 1"
                       value=""
-                    ></GoACheckbox>
-                    <GoACheckbox
+                    ></GoabCheckbox>
+                    <GoabCheckbox
                       name="item 2"
                       text="Option 2"
                       value=""
-                    ></GoACheckbox>
-                    <GoACheckbox
+                    ></GoabCheckbox>
+                    <GoabCheckbox
                       name="item 3"
                       text="Option 3"
                       value=""
-                    ></GoACheckbox>
-                  </GoAFormItem>
+                    ></GoabCheckbox>
+                  </GoabFormItem>
 
-                  <GoAFormItem label="Basic checkbox list with helper text" helpText="Helper text to help answer the question">
-                    <GoACheckbox
+                  <GoabFormItem label="Basic checkbox list with helper text" helpText="Helper text to help answer the question">
+                    <GoabCheckbox
                       name="item 1"
                       text="Option 1"
                       value=""
-                    ></GoACheckbox>
-                    <GoACheckbox
+                    ></GoabCheckbox>
+                    <GoabCheckbox
                       name="item 2"
                       text="Option 2"
                       value=""
-                    ></GoACheckbox>
-                    <GoACheckbox
+                    ></GoabCheckbox>
+                    <GoabCheckbox
                       name="item 3"
                       text="Option 3"
                       value=""
-                    ></GoACheckbox>
-                  </GoAFormItem>
+                    ></GoabCheckbox>
+                  </GoabFormItem>
 
-                  <GoAFormItem label="Checkbox list with descriptions">
-                    <GoACheckbox
+                  <GoabFormItem label="Checkbox list with descriptions">
+                    <GoabCheckbox
                       name="item 1"
                       text="Option 1"
                       value=""
                       description="here is a description"
-                    ></GoACheckbox>
-                    <GoACheckbox
+                    ></GoabCheckbox>
+                    <GoabCheckbox
                       name="item 2"
                       text="Option 2"
                       value=""
                       description="here is a description"
-                    ></GoACheckbox>
-                    <GoACheckbox
+                    ></GoabCheckbox>
+                    <GoabCheckbox
                       name="item 3"
                       text="Option 3"
                       value=""
                       description="here is a description"
                       disabled={true}
-                    ></GoACheckbox>
-                  </GoAFormItem>
+                    ></GoabCheckbox>
+                  </GoabFormItem>
 
-                  <GoAFormItem label="Checkbox list with some disabled">
-                    <GoACheckbox name="item 1" text="Option 1" value=""></GoACheckbox>
-                    <GoACheckbox name="item 2" text="Option 2" value=""></GoACheckbox>
-                    <GoACheckbox name="item 3" text="Option 3" value="" disabled={true}></GoACheckbox>
-                    <GoACheckbox
+                  <GoabFormItem label="Checkbox list with some disabled">
+                    <GoabCheckbox name="item 1" text="Option 1" value=""></GoabCheckbox>
+                    <GoabCheckbox name="item 2" text="Option 2" value=""></GoabCheckbox>
+                    <GoabCheckbox name="item 3" text="Option 3" value="" disabled={true}></GoabCheckbox>
+                    <GoabCheckbox
                       name="item 4"
                       text="Option 4"
                       value=""
                       disabled={true}
                       checked={true}
-                    ></GoACheckbox>
-                  </GoAFormItem>
+                    ></GoabCheckbox>
+                  </GoabFormItem>
 
-                  <GoAFormItem label="Basic">
-                    <GoACheckbox
+                  <GoabFormItem label="Basic">
+                    <GoabCheckbox
                       name="Option 1"
                       text="An option that wraps a long time until it goes to the next line that wraps a long time until it goes to the next line"
                       value=""
-                    ></GoACheckbox>
-                    <GoACheckbox name="Option 2" text="Option 2" value=""></GoACheckbox>
-                  </GoAFormItem>
+                    ></GoabCheckbox>
+                    <GoabCheckbox name="Option 2" text="Option 2" value=""></GoabCheckbox>
+                  </GoabFormItem>
 
-                  <GoAFormItem label="Checkbox list with error" error="Error message.">
-                    <GoACheckbox name="item 1" text="Option 1" value="" error={true}></GoACheckbox>
-                    <GoACheckbox name="item 2" text="Option 2" value="" error={true}></GoACheckbox>
-                    <GoACheckbox
+                  <GoabFormItem label="Checkbox list with error" error="Error message.">
+                    <GoabCheckbox name="item 1" text="Option 1" value="" error={true}></GoabCheckbox>
+                    <GoabCheckbox name="item 2" text="Option 2" value="" error={true}></GoabCheckbox>
+                    <GoabCheckbox
                       name="item 3"
                       text="Option 3"
                       value=""
                       error={true}
                       disabled={true}
-                    ></GoACheckbox>
-                    <GoACheckbox
+                    ></GoabCheckbox>
+                    <GoabCheckbox
                       name="item 4"
                       text="Option 4"
                       value=""
                       error={true}
                       disabled={true}
                       checked={true}
-                    ></GoACheckbox>
-                  </GoAFormItem>
+                    ></GoabCheckbox>
+                  </GoabFormItem>
 
-                  <GoAFormItem
+                  <GoabFormItem
                     label="Checkbox list with error and helper text"
                     error="Error message."
                     helpText="Helper text"
                   >
-                    <GoACheckbox name="item 1" text="Option 1" value="" error={true}></GoACheckbox>
-                    <GoACheckbox name="item 2" text="Option 2" value="" error={true}></GoACheckbox>
-                    <GoACheckbox name="item 3" text="Option 3" value="" error={true} mb="none"></GoACheckbox>
-                  </GoAFormItem>
+                    <GoabCheckbox name="item 1" text="Option 1" value="" error={true}></GoabCheckbox>
+                    <GoabCheckbox name="item 2" text="Option 2" value="" error={true}></GoabCheckbox>
+                    <GoabCheckbox name="item 3" text="Option 3" value="" error={true} mb="none"></GoabCheckbox>
+                  </GoabFormItem>
 
-                  <GoAFormItem
+                  <GoabFormItem
                     label="Checkbox list with helper text by default"
                     helpText="Helper text"
                   >
-                    <GoACheckbox name="item 1" text="Option 1" value="" ></GoACheckbox>
-                    <GoACheckbox name="item 2" text="Option 2" value="" ></GoACheckbox>
-                    <GoACheckbox name="item 3" text="Option 3" value="" ></GoACheckbox>
-                  </GoAFormItem>
+                    <GoabCheckbox name="item 1" text="Option 1" value="" ></GoabCheckbox>
+                    <GoabCheckbox name="item 2" text="Option 2" value="" ></GoabCheckbox>
+                    <GoabCheckbox name="item 3" text="Option 3" value="" ></GoabCheckbox>
+                  </GoabFormItem>
 
-                  <GoAFormItem
+                  <GoabFormItem
                     label="Checkbox list with helper text and margin-bottom=none set on last checkbox item"
                     helpText="Helper text"
                   >
-                    <GoACheckbox name="item 1" text="Option 1" value="" ></GoACheckbox>
-                    <GoACheckbox name="item 2" text="Option 2" value="" ></GoACheckbox>
-                    <GoACheckbox name="item 3" text="Option 3" value="" mb="none"></GoACheckbox>
-                  </GoAFormItem>
+                    <GoabCheckbox name="item 1" text="Option 1" value="" ></GoabCheckbox>
+                    <GoabCheckbox name="item 2" text="Option 2" value="" ></GoabCheckbox>
+                    <GoabCheckbox name="item 3" text="Option 3" value="" mb="none"></GoabCheckbox>
+                  </GoabFormItem>
 
                 </GoabBlock>
 
@@ -788,704 +806,732 @@ export function App() {
                 </GoabText>
 
                 <GoabGrid gap="xl" minChildWidth="400px">
-                  <GoAContainer
+                  <GoabContainer
                     accent="thick"
                     heading="Non-interactive with text"
                     type="non-interactive"
                     actions={containeractions}
                   >
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer accent="thick" type="non-interactive">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer accent="thick" type="non-interactive">
+                    <GoabText size="heading-l" mb="l">
                       Non-interactive with accent
-                    </GoAText>
+                    </GoabText>
 
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer accent="thin" type="non-interactive">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer accent="thin" type="non-interactive">
+                    <GoabText size="heading-l" mb="l">
                       Non-interactive with accent
-                    </GoAText>
+                    </GoabText>
 
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer type="non-interactive" accent="filled">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer type="non-interactive" accent="filled">
+                    <GoabText size="heading-l" mb="l">
                       Non-interactive filled
-                    </GoAText>
-                    <GoAText size="body-m" mb="2xl">
+                    </GoabText>
+                    <GoabText size="body-m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
                 </GoabGrid>
 
                 <GoabGrid gap="xl" minChildWidth="400px">
-                  <GoAContainer
+                  <GoabContainer
                     accent="thick"
                     heading="Interactive with text"
                     type="interactive"
                     actions={containeractionsinverse}
                   >
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer accent="thick" type="interactive">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer accent="thick" type="interactive">
+                    <GoabText size="heading-l" mb="l">
                       Interactive with accent
-                    </GoAText>
+                    </GoabText>
 
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer accent="thin" type="interactive">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer accent="thin" type="interactive">
+                    <GoabText size="heading-l" mb="l">
                       Interactive with accent
-                    </GoAText>
+                    </GoabText>
 
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer type="interactive" accent="filled">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer type="interactive" accent="filled">
+                    <GoabText size="heading-l" mb="l">
                       Interactive filled
-                    </GoAText>
-                    <GoAText size="body-m" mb="2xl">
+                    </GoabText>
+                    <GoabText size="body-m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
                 </GoabGrid>
 
                 <GoabGrid gap="xl" minChildWidth="400px">
-                  <GoAContainer
+                  <GoabContainer
                     accent="thick"
                     heading="Info with text"
                     type="info"
                     actions={containeractionsinverse}
                   >
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer accent="thick" type="info">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer accent="thick" type="info">
+                    <GoabText size="heading-l" mb="l">
                       Info with accent
-                    </GoAText>
+                    </GoabText>
 
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer accent="thin" type="info">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer accent="thin" type="info">
+                    <GoabText size="heading-l" mb="l">
                       Info with accent
-                    </GoAText>
+                    </GoabText>
 
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer type="info" accent="filled">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer type="info" accent="filled">
+                    <GoabText size="heading-l" mb="l">
                       Info filled
-                    </GoAText>
-                    <GoAText size="body-m" mb="2xl">
+                    </GoabText>
+                    <GoabText size="body-m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
                 </GoabGrid>
 
                 <GoabGrid gap="xl" minChildWidth="400px">
-                  <GoAContainer
+                  <GoabContainer
                     accent="thick"
                     heading="Error with text"
                     type="error"
                     actions={containeractionsinverse}
                   >
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer accent="thick" type="error">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer accent="thick" type="error">
+                    <GoabText size="heading-l" mb="l">
                       Error with accent
-                    </GoAText>
+                    </GoabText>
 
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer accent="thin" type="error">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer accent="thin" type="error">
+                    <GoabText size="heading-l" mb="l">
                       Error with accent
-                    </GoAText>
+                    </GoabText>
 
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer type="error" accent="filled">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer type="error" accent="filled">
+                    <GoabText size="heading-l" mb="l">
                       Error filled
-                    </GoAText>
-                    <GoAText size="body-m" mb="2xl">
+                    </GoabText>
+                    <GoabText size="body-m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
                 </GoabGrid>
 
                 <GoabGrid gap="xl" minChildWidth="400px">
-                  <GoAContainer
+                  <GoabContainer
                     accent="thick"
                     heading="Success with text"
                     type="success"
                     actions={containeractionsinverse}
                   >
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer accent="thick" type="success">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer accent="thick" type="success">
+                    <GoabText size="heading-l" mb="l">
                       Success with accent
-                    </GoAText>
+                    </GoabText>
 
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer accent="thin" type="success">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer accent="thin" type="success">
+                    <GoabText size="heading-l" mb="l">
                       Success with accent
-                    </GoAText>
+                    </GoabText>
 
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer type="success" accent="filled">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer type="success" accent="filled">
+                    <GoabText size="heading-l" mb="l">
                       Success filled
-                    </GoAText>
-                    <GoAText size="body-m" mb="2xl">
+                    </GoabText>
+                    <GoabText size="body-m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
                 </GoabGrid>
 
                 <GoabGrid gap="xl" minChildWidth="400px">
-                  <GoAContainer
+                  <GoabContainer
                     accent="thick"
                     heading="Important with text"
                     type="important"
                     actions={containeractions}
                   >
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer accent="thick" type="important">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer accent="thick" type="important">
+                    <GoabText size="heading-l" mb="l">
                       Important with accent
-                    </GoAText>
+                    </GoabText>
 
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer accent="thin" type="important">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer accent="thin" type="important">
+                    <GoabText size="heading-l" mb="l">
                       Important with accent
-                    </GoAText>
+                    </GoabText>
 
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer type="important" accent="filled">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer type="important" accent="filled">
+                    <GoabText size="heading-l" mb="l">
                       Important filled
-                    </GoAText>
-                    <GoAText size="body-m" mb="2xl">
+                    </GoabText>
+                    <GoabText size="body-m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
                 </GoabGrid>
 
                 <GoabGrid gap="xl" minChildWidth="400px">
-                  <GoAContainer
+                  <GoabContainer
                     accent="thick"
                     heading="Non-interactive, compact with text"
                     type="non-interactive"
                     padding="compact"
                     actions={containeractions}
                   >
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer accent="thick" type="non-interactive" padding="compact">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer accent="thick" type="non-interactive" padding="compact">
+                    <GoabText size="heading-l" mb="l">
                       Non-interactive, compact with accent
-                    </GoAText>
+                    </GoabText>
 
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer accent="thin" type="non-interactive" padding="compact">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer accent="thin" type="non-interactive" padding="compact">
+                    <GoabText size="heading-l" mb="l">
                       Non-interactive, compact with accent
-                    </GoAText>
+                    </GoabText>
 
-                    <GoABadge type="success" content="Badge text" icon={true}></GoABadge>
+                    <GoabBadge type="success" content="Badge text" icon={true}></GoabBadge>
 
-                    <GoAText size="body-m" mt="m" mb="2xl">
+                    <GoabText size="body-m" mt="m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
 
-                  <GoAContainer type="non-interactive" accent="filled" padding="compact">
-                    <GoAText size="heading-l" mb="l">
+                  <GoabContainer type="non-interactive" accent="filled" padding="compact">
+                    <GoabText size="heading-l" mb="l">
                       Non-interactive, compact
-                    </GoAText>
-                    <GoAText size="body-m" mb="2xl">
+                    </GoabText>
+                    <GoabText size="body-m" mb="2xl">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at risus et magna
                       interdum vestibulum in at ligula.
-                    </GoAText>
+                    </GoabText>
 
-                    <GoAFormItem label="Test" helpText="This is some help text." mb="2xl">
-                      <GoAInput
+                    <GoabFormItem label="Test" helpText="This is some help text." mb="2xl">
+                      <GoabInput
                         name="name1"
                         type="text"
                         value=""
                         trailingContent="@gov.ab.ca"
                         width="20ch"
-                      ></GoAInput>
-                    </GoAFormItem>
+                        onChange={noop}
+                      ></GoabInput>
+                    </GoabFormItem>
 
-                    <GoAButton>Button</GoAButton>
-                  </GoAContainer>
+                    <GoabButton>Button</GoabButton>
+                  </GoabContainer>
                 </GoabGrid>
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
@@ -1495,12 +1541,13 @@ export function App() {
                 </GoabText>
 
                 <GoabBlock gap="2xl" mb="xl" direction="column">
-                  <GoAFormItem label="Select a date">
-                    <GoADatePicker
+                  <GoabFormItem label="Select a date">
+                    <GoabDatePicker
                       name="item"
                       value={new Date(2024, 11, 4)}
-                    ></GoADatePicker>
-                  </GoAFormItem>
+                      onChange={noop}
+                    ></GoabDatePicker>
+                  </GoabFormItem>
                 </GoabBlock>
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
@@ -1510,15 +1557,15 @@ export function App() {
                 </GoabText>
 
                 <GoabBlock gap="xl" mb="xl" direction="column">
-                  <GoADetails heading="Detail Heading that goes for a long time that is longer and maybe wraps as well because it is so long">
+                  <GoabDetails heading="Detail Heading that goes for a long time that is longer and maybe wraps as well because it is so long">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel lacinia metus,
                     sed sodales lectus. Aliquam sed volutpat velit.
-                  </GoADetails>
+                  </GoabDetails>
 
-                  <GoADetails heading="Detail Heading">
+                  <GoabDetails heading="Detail Heading">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel lacinia metus,
                     sed sodales lectus. Aliquam sed volutpat velit.
-                  </GoADetails>
+                  </GoabDetails>
                 </GoabBlock>
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
@@ -1536,73 +1583,83 @@ export function App() {
 
                 <GoabBlock gap="2xl" mb="xl" direction="column">
                   <GoabFormItem label="Basic dropdown">
-                    <GoADropdown placeholder="—Select—" name="item" value="" >
-                      <GoADropdownItem value="red" label="Red"></GoADropdownItem>
-                      <GoADropdownItem value="green" label="Green"></GoADropdownItem>
-                      <GoADropdownItem value="blue" label="Blue"></GoADropdownItem>
-                    </GoADropdown>
+                    <GoabDropdown placeholder="—Select—" name="item" value="" onChange={noop}>
+                      <GoabDropdownItem value="red" label="Red"></GoabDropdownItem>
+                      <GoabDropdownItem value="green" label="Green"></GoabDropdownItem>
+                      <GoabDropdownItem value="blue" label="Blue"></GoabDropdownItem>
+                    </GoabDropdown>
                   </GoabFormItem>
 
                   <GoabFormItem label="Basic dropdown width 100%">
-                    <GoADropdown placeholder="—Select—" name="item" value="" width="100%">
-                      <GoADropdownItem value="red" label="Red"></GoADropdownItem>
-                      <GoADropdownItem value="green" label="Green"></GoADropdownItem>
-                      <GoADropdownItem value="blue" label="Blue"></GoADropdownItem>
-                    </GoADropdown>
+                    <GoabDropdown placeholder="—Select—" name="item" value="" width="100%" onChange={noop}>
+                      <GoabDropdownItem value="red" label="Red"></GoabDropdownItem>
+                      <GoabDropdownItem value="green" label="Green"></GoabDropdownItem>
+                      <GoabDropdownItem value="blue" label="Blue"></GoabDropdownItem>
+                    </GoabDropdown>
                   </GoabFormItem>
 
                   <GoabFormItem label="Dropdown with longest option 100ch" >
-                    <GoADropdown
+                    <GoabDropdown
                       name="item"
                       value=""
+                      onChange={noop}
                     >
-                      <GoADropdownItem value="red" label="100ch: ipsum dolor sit amet, consectetur porttitor. Ipsum dolor sit amet, consectetur porttitor."></GoADropdownItem>
-                      <GoADropdownItem value="green" label="abc"></GoADropdownItem>
-                      <GoADropdownItem value="blue" label="MMM"></GoADropdownItem>
-                    </GoADropdown>
+                      <GoabDropdownItem value="red" label="100ch: ipsum dolor sit amet, consectetur porttitor. Ipsum dolor sit amet, consectetur porttitor."></GoabDropdownItem>
+                      <GoabDropdownItem value="green" label="abc"></GoabDropdownItem>
+                      <GoabDropdownItem value="blue" label="MMM"></GoabDropdownItem>
+                    </GoabDropdown>
                   </GoabFormItem>
 
                   <GoabFormItem label="Dropdown with longest option 3ch">
-                    <GoADropdown
+                    <GoabDropdown
                       name="item"
                       value=""
+                      onChange={noop}
                     >
-                      <GoADropdownItem value="red" label="000"></GoADropdownItem>
-                      <GoADropdownItem value="green" label="000"></GoADropdownItem>
-                      <GoADropdownItem value="blue" label="000"></GoADropdownItem>
-                    </GoADropdown>
+                      <GoabDropdownItem value="red" label="000"></GoabDropdownItem>
+                      <GoabDropdownItem value="green" label="000"></GoabDropdownItem>
+                      <GoabDropdownItem value="blue" label="000"></GoabDropdownItem>
+                    </GoabDropdown>
                   </GoabFormItem>
 
                   <GoabFormItem label="Dropdown with longest option 20ch and leading icon">
-                    <GoADropdown name="item" value="" leadingIcon="mail" >
-                      <GoADropdownItem value="red" label="20ch-000000000000000"></GoADropdownItem>
-                      <GoADropdownItem value="green" label="acd"></GoADropdownItem>
-                      <GoADropdownItem value="blue" label="cde"></GoADropdownItem>
-                    </GoADropdown>
+                    <GoabDropdown name="item" value="" leadingIcon="mail" onChange={noop}>
+                      <GoabDropdownItem value="red" label="20ch-000000000000000"></GoabDropdownItem>
+                      <GoabDropdownItem value="green" label="acd"></GoabDropdownItem>
+                      <GoabDropdownItem value="blue" label="cde"></GoabDropdownItem>
+                    </GoabDropdown>
                   </GoabFormItem>
 
                   <GoabFormItem label="Filterable dropdown">
-                    <GoADropdown name="item" value="" filterable={true} >
-                      <GoADropdownItem value="red" label="20ch-000000000000000"></GoADropdownItem>
-                      <GoADropdownItem value="green" label="acd"></GoADropdownItem>
-                      <GoADropdownItem value="blue" label="cde"></GoADropdownItem>
-                    </GoADropdown>
+                    <GoabDropdown name="item" value="" filterable={true} onChange={noop}>
+                      <GoabDropdownItem value="red" label="20ch-000000000000000"></GoabDropdownItem>
+                      <GoabDropdownItem value="green" label="acd"></GoabDropdownItem>
+                      <GoabDropdownItem value="blue" label="cde"></GoabDropdownItem>
+                    </GoabDropdown>
+                  </GoabFormItem>
+
+                  <GoabFormItem label="Filterable dropdown with search icon">
+                    <GoabDropdown name="item" value="" filterable={true} leadingIcon="search" onChange={noop}>
+                      <GoabDropdownItem value="red" label="20ch-000000000000000"></GoabDropdownItem>
+                      <GoabDropdownItem value="green" label="acd"></GoabDropdownItem>
+                      <GoabDropdownItem value="blue" label="cde"></GoabDropdownItem>
+                    </GoabDropdown>
                   </GoabFormItem>
 
                   <GoabFormItem label="Dropdown with error" error="Error message.">
-                    <GoADropdown name="item" value="" error={true} >
-                      <GoADropdownItem value="red" label="Red"></GoADropdownItem>
-                      <GoADropdownItem value="green" label="Green"></GoADropdownItem>
-                      <GoADropdownItem value="blue" label="Blue"></GoADropdownItem>
-                    </GoADropdown>
+                    <GoabDropdown name="item" value="" error={true} onChange={noop}>
+                      <GoabDropdownItem value="red" label="Red"></GoabDropdownItem>
+                      <GoabDropdownItem value="green" label="Green"></GoabDropdownItem>
+                      <GoabDropdownItem value="blue" label="Blue"></GoabDropdownItem>
+                    </GoabDropdown>
                   </GoabFormItem>
 
                   <GoabFormItem label="Disabled dropdown" helpText="Helper text">
-                    <GoADropdown name="item" value="" disabled={true} >
-                      <GoADropdownItem value="red" label="Red"></GoADropdownItem>
-                      <GoADropdownItem value="green" label="Green"></GoADropdownItem>
-                      <GoADropdownItem value="blue" label="Blue"></GoADropdownItem>
-                    </GoADropdown>
+                    <GoabDropdown name="item" value="" disabled={true} onChange={noop}>
+                      <GoabDropdownItem value="red" label="Red"></GoabDropdownItem>
+                      <GoabDropdownItem value="green" label="Green"></GoabDropdownItem>
+                      <GoabDropdownItem value="blue" label="Blue"></GoabDropdownItem>
+                    </GoabDropdown>
                   </GoabFormItem>
 
                   <GoabFormItem label="Native dropdown" helpText="Helper text">
@@ -1616,576 +1673,641 @@ export function App() {
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-                <GoAText size="heading-m" mt="3xl" mb="xl">
+                <GoabText size="heading-m" mt="3xl" mb="xl">
                   File upload
-                </GoAText>
+                </GoabText>
 
-                <GoABlock gap="xl" mb="xl" direction="column">
-                  <GoAFormItem label="Upload a file ">
-                    <GoAFileUploadInput maxFileSize="100MB" variant="button" onSelectFile={() => {/* do nothing */}} />
-                  </GoAFormItem>
+                <GoabBlock gap="xl" mb="xl" direction="column">
+                  <GoabFormItem label="Upload a file ">
+                    <GoabFileUploadInput maxFileSize="100MB" variant="button" onSelectFile={() => {/* do nothing */}} />
+                  </GoabFormItem>
 
-                  <GoAFormItem label="Upload a file">
-                    <GoAFileUploadInput maxFileSize="100MB" onSelectFile={() => {/** do nothing **/}} />
-                  </GoAFormItem>
-                </GoABlock>
+                  <GoabFormItem label="Upload a file">
+                    <GoabFileUploadInput maxFileSize="100MB" onSelectFile={() => {/** do nothing **/}} />
+                  </GoabFormItem>
+                </GoabBlock>
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-                <GoAText size="heading-m" mt="3xl" mb="xl">
+                <GoabText size="heading-m" mt="3xl" mb="xl">
                   Form item
-                </GoAText>
+                </GoabText>
 
-                <GoABlock gap="xl" mb="xl" direction="column">
-                  <GoAFormItem
+                <GoabBlock gap="xl" mb="xl" direction="column">
+                  <GoabFormItem
                     label="Optional input with error and helper text"
                     helpText="This is some help text"
                     error="There is an error."
                     requirement="optional"
                   >
-                    <GoAInput name="name1" type="text" value="" width="20ch" error={true}></GoAInput>
-                  </GoAFormItem>
+                    <GoabInput name="name1" type="text" value="" width="20ch" error={true} onChange={noop}></GoabInput>
+                  </GoabFormItem>
 
-                  <GoAFormItem
+                  <GoabFormItem
                     label="Required input with helper text"
                     helpText="This is some help text"
                     requirement="required"
                   >
-                    <GoAInput name="name1" type="text" value="" width="20ch"></GoAInput>
-                  </GoAFormItem>
+                    <GoabInput name="name1" type="text" value="" width="20ch" onChange={noop}></GoabInput>
+                  </GoabFormItem>
 
-                  <GoAFormItem label="Input with helper text" helpText="This is some help text">
-                    <GoAInput name="name1" type="text" value="" width="20ch"></GoAInput>
-                  </GoAFormItem>
+                  <GoabFormItem label="Input with helper text" helpText="This is some help text">
+                    <GoabInput name="name1" type="text" value="" width="20ch" onChange={noop}></GoabInput>
+                  </GoabFormItem>
 
-                  <GoAFormItem label="Radio with helper text" helpText="This is some help text">
-                    <GoARadioGroup name="item" value="1" onChange={onChangeTextArea}>
-                      <GoARadioItem value="1" label="Option 1"></GoARadioItem>
-                      <GoARadioItem value="2" label="Option 2"></GoARadioItem>
-                      <GoARadioItem value="3" label="Option 3"></GoARadioItem>
-                    </GoARadioGroup>
-                  </GoAFormItem>
+                  <GoabFormItem label="Radio with helper text" helpText="This is some help text">
+                    <GoabRadioGroup name="item" value="1" onChange={onChangeTextArea}>
+                      <GoabRadioItem value="1" label="Option 1"></GoabRadioItem>
+                      <GoabRadioItem value="2" label="Option 2"></GoabRadioItem>
+                      <GoabRadioItem value="3" label="Option 3"></GoabRadioItem>
+                    </GoabRadioGroup>
+                  </GoabFormItem>
 
-                  <GoAFormItem label="Basic checkbox list">
-                    <GoACheckbox
+                  <GoabFormItem label="Basic checkbox list">
+                    <GoabCheckbox
                       name="item 1"
                       text="Option 1"
                       value=""
-                    ></GoACheckbox>
-                    <GoACheckbox
+                    ></GoabCheckbox>
+                    <GoabCheckbox
                       name="item 2"
                       text="Option 2"
                       value=""
-                    ></GoACheckbox>
-                    <GoACheckbox
+                    ></GoabCheckbox>
+                    <GoabCheckbox
                       name="item 3"
                       text="Option 3"
                       value=""
-                    ></GoACheckbox>
-                  </GoAFormItem>
+                    ></GoabCheckbox>
+                  </GoabFormItem>
 
-                  <GoAFormItem label="Dropdown with helper text" helpText="This is some help text">
-                    <GoADropdown name="item" value="" onChange={onChangeDropdown}>
-                      <GoADropdownItem value="red" label="Red"></GoADropdownItem>
-                      <GoADropdownItem value="green" label="Green"></GoADropdownItem>
-                      <GoADropdownItem value="blue" label="Blue"></GoADropdownItem>
-                    </GoADropdown>
-                  </GoAFormItem>
+                  <GoabFormItem label="Dropdown with helper text" helpText="This is some help text">
+                    <GoabDropdown name="item" value="" onChange={onChangeDropdown}>
+                      <GoabDropdownItem value="red" label="Red"></GoabDropdownItem>
+                      <GoabDropdownItem value="green" label="Green"></GoabDropdownItem>
+                      <GoabDropdownItem value="blue" label="Blue"></GoabDropdownItem>
+                    </GoabDropdown>
+                  </GoabFormItem>
 
-                  <GoAFormItem
+                  <GoabFormItem
                     label="Input with large label"
                     labelSize="large"
                   >
-                    <GoAInput name="name1" type="text" value="" width="20ch"></GoAInput>
-                  </GoAFormItem>
+                    <GoabInput name="name1" type="text" value="" width="20ch" onChange={noop}></GoabInput>
+                  </GoabFormItem>
 
-                  <GoAFormItem
+                  <GoabFormItem
                     label="Optional input with a large label size"
                     helpText="This is some help text"
                     labelSize="large"
                     requirement="optional"
                   >
-                    <GoARadioGroup name="item" value="1" onChange={onChangeTextArea}>
-                      <GoARadioItem value="1" label="Option 1"></GoARadioItem>
-                      <GoARadioItem value="2" label="Option 2"></GoARadioItem>
-                      <GoARadioItem value="3" label="Option 3"></GoARadioItem>
-                    </GoARadioGroup>
-                  </GoAFormItem>
+                    <GoabRadioGroup name="item" value="1" onChange={onChangeTextArea}>
+                      <GoabRadioItem value="1" label="Option 1"></GoabRadioItem>
+                      <GoabRadioItem value="2" label="Option 2"></GoabRadioItem>
+                      <GoabRadioItem value="3" label="Option 3"></GoabRadioItem>
+                    </GoabRadioGroup>
+                  </GoabFormItem>
 
-                  <GoAFormItem label="File uploader">
-                    <GoAFileUploadInput maxFileSize="100MB" variant="button" onSelectFile={() => {/** do nothing **/}} />
-                  </GoAFormItem>
+                  <GoabFormItem label="File uploader">
+                    <GoabFileUploadInput maxFileSize="100MB" variant="button" onSelectFile={() => {/** do nothing **/}} />
+                  </GoabFormItem>
 
 
 
-                </GoABlock>
+                </GoabBlock>
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-                <GoAText size="heading-m" mt="3xl" mb="xl">
+                <GoabText size="heading-m" mt="3xl" mb="xl">
                   Form stepper
-                </GoAText>
+                </GoabText>
 
-                <GoABlock gap="xl" mb="xl" direction="column">
-                  <GoAFormStepper testId="foo" onChange={setStep}>
-                    <GoAFormStep text="Personal details" status="complete"></GoAFormStep>
-                    <GoAFormStep text="Employment history" status="incomplete"></GoAFormStep>
-                    <GoAFormStep text="References"></GoAFormStep>
-                    <GoAFormStep text="Review"></GoAFormStep>
-                  </GoAFormStepper>
-                  <GoAPages current={step} mb="3xl">
+                <GoabBlock gap="xl" mb="xl" direction="column">
+                  <GoabFormStepper testId="foo" onChange={(e) => setStep(e.step)}>
+                    <GoabFormStep text="Personal details" status="complete"></GoabFormStep>
+                    <GoabFormStep text="Employment history" status="incomplete"></GoabFormStep>
+                    <GoabFormStep text="References"></GoabFormStep>
+                    <GoabFormStep text="Review"></GoabFormStep>
+                  </GoabFormStepper>
+                  <GoabPages current={step} mb="3xl">
                     <div>Page 1 content</div>
                     <div>Page 2 content</div>
                     <div>Page 3 content</div>
                     <div>Page 4 content</div>
-                  </GoAPages>
+                  </GoabPages>
 
-                  <GoAFormStepper testId="foo" onChange={setStep2}>
-                    <GoAFormStep text="Personal details" status="complete"></GoAFormStep>
-                    <GoAFormStep text="Employment history" status="incomplete"></GoAFormStep>
-                    <GoAFormStep text="References"></GoAFormStep>
-                    <GoAFormStep text="Another"></GoAFormStep>
-                    <GoAFormStep text="Review"></GoAFormStep>
-                  </GoAFormStepper>
-                  <GoAPages current={step2} mb="3xl">
+                  <GoabFormStepper testId="foo" onChange={(e) => setStep2(e.step)}>
+                    <GoabFormStep text="Personal details" status="complete"></GoabFormStep>
+                    <GoabFormStep text="Employment history" status="incomplete"></GoabFormStep>
+                    <GoabFormStep text="References"></GoabFormStep>
+                    <GoabFormStep text="Another"></GoabFormStep>
+                    <GoabFormStep text="Review"></GoabFormStep>
+                  </GoabFormStepper>
+                  <GoabPages current={step2} mb="3xl">
                     <div>Page 1 content</div>
                     <div>Page 2 content</div>
                     <div>Page 3 content</div>
                     <div>Page 4 content</div>
                     <div>Page 5 content</div>
-                  </GoAPages>
-                </GoABlock>
+                  </GoabPages>
+                </GoabBlock>
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-                <GoAText size="heading-m" mt="3xl" mb="xl">
+                <GoabText size="heading-m" mt="3xl" mb="xl">
                   Hero Banner
-                </GoAText>
+                </GoabText>
 
-                <GoABlock gap="xl" mb="xl" direction="column">
-                  <GoAHeroBanner heading="This is a heading that wraps to a second line because it's long">
+                <GoabBlock gap="xl" mb="xl" direction="column">
+                  <GoabHeroBanner heading="This is a heading that wraps to a second line because it's long">
                     Resources are available to help Alberta entrepreneurs and small businesses start,
                     grow and succeed.
-                    <GoAHeroBannerActions>
-                      <GoAButton type="start">Call to action</GoAButton>
-                    </GoAHeroBannerActions>
-                  </GoAHeroBanner>
+                    <GoabHeroBannerActions>
+                      <GoabButton type="start">Call to action</GoabButton>
+                    </GoabHeroBannerActions>
+                  </GoabHeroBanner>
 
-                  <GoAHeroBanner heading="This is a short heading">
+                  <GoabHeroBanner heading="This is a short heading">
                     Resources are available to help Alberta entrepreneurs and small businesses start,
                     grow and succeed.
-                    <GoAHeroBannerActions>
-                      <GoAButton type="start">Call to action</GoAButton>
-                    </GoAHeroBannerActions>
-                  </GoAHeroBanner>
+                    <GoabHeroBannerActions>
+                      <GoabButton type="start">Call to action</GoabButton>
+                    </GoabHeroBannerActions>
+                  </GoabHeroBanner>
 
-                  <GoAHeroBanner
+                  <GoabHeroBanner
                     heading="This is a heading that wraps to a second line because it's long"
                     backgroundUrl="#"
                   >
                     Resources are available to help Alberta entrepreneurs and small businesses start,
                     grow and succeed.
-                    <GoAHeroBannerActions>
-                      <GoAButton type="start">Call to action</GoAButton>
-                    </GoAHeroBannerActions>
-                  </GoAHeroBanner>
+                    <GoabHeroBannerActions>
+                      <GoabButton type="start">Call to action</GoabButton>
+                    </GoabHeroBannerActions>
+                  </GoabHeroBanner>
 
-                  <GoAHeroBanner heading="This is a short heading" backgroundUrl="#">
+                  <GoabHeroBanner heading="This is a short heading" backgroundUrl="#">
                     Resources are available to help Alberta entrepreneurs and small businesses start,
                     grow and succeed.
-                    <GoAHeroBannerActions>
-                      <GoAButton type="start">Call to action</GoAButton>
-                    </GoAHeroBannerActions>
-                  </GoAHeroBanner>
-                </GoABlock>
+                    <GoabHeroBannerActions>
+                      <GoabButton type="start">Call to action</GoabButton>
+                    </GoabHeroBannerActions>
+                  </GoabHeroBanner>
+                </GoabBlock>
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-                <GoAText size="heading-m" mt="3xl" mb="xl">
+                <GoabText size="heading-m" mt="3xl" mb="none">
                   Icon
-                </GoAText>
+                </GoabText>
 
-                <GoAText size="heading-s" mt="3xl" mb="none">
+                <GoabText size="heading-s" mt="xl" mb="none">
                   Tshirt sizing
-                </GoAText>
-                <GoABlock>
-                  <GoATooltip content="2xsmall">
-                    <GoAIcon type="triangle" size="medium" theme="outline" opacity={1}></GoAIcon>
-                  </GoATooltip>
-                  <GoATooltip content="xsmall">
-                    <GoAIcon type="triangle" size="small" theme="outline" opacity={1}/>
-                  </GoATooltip>
-                  <GoATooltip content="small">
-                    <GoAIcon type="triangle" size="small" theme="outline" opacity={1} />
-                  </GoATooltip>
-                  <GoATooltip content="medium">
-                    <GoAIcon type="triangle" size="medium" theme="outline" opacity={1} />
-                  </GoATooltip>
-                  <GoATooltip content="large">
-                    <GoAIcon type="triangle" size="large" theme="outline" opacity={1} />
-                  </GoATooltip>
-                  <GoATooltip content="xlarge">
-                    <GoAIcon type="triangle" size="xlarge" theme="outline" opacity={1} />
-                  </GoATooltip>
-                </GoABlock>
+                </GoabText>
+                <GoabBlock>
+                  {/*TODO: Add 2xsmall and xsmall to icon sizing.
+                  <GoabTooltip content="2xsmall">
+                    <GoabIcon type="triangle" size="2xsmall" theme="outline" opacity={1}></GoabIcon>
+                  </GoabTooltip>
+                  <GoabTooltip content="xsmall">
+                    <GoabIcon type="triangle" size="xsmall" theme="outline" opacity={1}/>
+                  </GoabTooltip>
+                  */}
+                  <GoabTooltip content="small">
+                    <GoabIcon type="triangle" size="small" theme="outline" opacity={1} />
+                  </GoabTooltip>
+                  <GoabTooltip content="medium">
+                    <GoabIcon type="triangle" size="medium" theme="outline" opacity={1} />
+                  </GoabTooltip>
+                  <GoabTooltip content="large">
+                    <GoabIcon type="triangle" size="large" theme="outline" opacity={1} />
+                  </GoabTooltip>
+                  <GoabTooltip content="xlarge">
+                    <GoabIcon type="triangle" size="xlarge" theme="outline" opacity={1} />
+                  </GoabTooltip>
+                </GoabBlock>
 
-                <GoAText size="heading-s" mt="l" mb="none">
+                {/*TODO: Add number sizing to icons as alternative sizing.
+                <GoabText size="heading-s" mt="l" mb="none">
                   Number sizing
-                </GoAText>
-                <GoABlock>
-                  {/*TODO: size can be medium, small, large, xlarge (not number)*/}
-                  <GoAIcon type="triangle" size="small" theme="outline" opacity={1}></GoAIcon>
-                  <GoAIcon type="triangle" size="medium" theme="outline" opacity={1}></GoAIcon>
-                  <GoAIcon type="triangle" size="medium" theme="outline" opacity={1}></GoAIcon>
-                  <GoAIcon type="triangle" size="medium" theme="outline" opacity={1}></GoAIcon>
-                  <GoAIcon type="triangle" size="large" theme="outline" opacity={1}></GoAIcon>
-                  <GoAIcon type="triangle" size="xlarge" theme="outline" opacity={1}></GoAIcon>
-                </GoABlock>
+                </GoabText>
+                <GoabBlock>
+                <GoabTooltip content="Size 1">
+                  <GoabIcon type="triangle" size="1" theme="outline" opacity={1} />
+                </GoabTooltip>
+                <GoabTooltip content="Size 2">
+                  <GoabIcon type="triangle" size="2" theme="outline" opacity={1} />
+                </GoabTooltip>
+                <GoabTooltip content="Size 3">
+                  <GoabIcon type="triangle" size="3" theme="outline" opacity={1} />
+                </GoabTooltip>
+                <GoabTooltip content="Size 4">
+                  <GoabIcon type="triangle" size="4" theme="outline" opacity={1} />
+                </GoabTooltip>
+                <GoabTooltip content="Size 5">
+                  <GoabIcon type="triangle" size="5" theme="outline" opacity={1} />
+                </GoabTooltip>
+                <GoabTooltip content="Size 6">
+                  <GoabIcon type="triangle" size="6" theme="outline" opacity={1} />
+                </GoabTooltip>
+                </GoabBlock>
 
-                <GoAText size="heading-s" mt="l" mb="none">
+                */}
+
+                {/* TODO: rebase with alpha to use inverted
+                <GoabText size="heading-s" mt="l" mb="none">
                   Inverted
-                </GoAText>
-                <div style={{ backgroundColor: '#2F2F2F' }}>
-                  <GoABlock>
-                    <GoAIcon
+                </GoabText>
+                <div style={{ backgroundColor: '#2F2F2F', padding: '8px' }}>
+                  <GoabBlock>
+                    <GoabIcon
                       type="triangle"
-                      // size="1" // TODO: must be true/false instead of a string, rebase with alpha to use it
                       size="small"
                       theme="outline"
                       opacity={1}
-                      inverted="true" // TODO: must be true/false instead of a string, rebase with alpha to use it
-                    ></GoAIcon>
-                    <GoAIcon
+                      inverted={true}
+                    ></GoabIcon>
+                    <GoabIcon
                       type="triangle"
-                      // size="2" TODO: not sure why it is 2, but it must be medium, small..
                       size="medium"
                       theme="outline"
                       opacity={1}
-                      inverted="true" // TODO: must be true/false instead of a string, rebase with alpha to use it
-                    ></GoAIcon>
-                    <GoAIcon
+                      inverted={true}
+                    ></GoabIcon>
+                    <GoabIcon
                       type="triangle"
-                      // size="3" TODO: not sure why it is 3, but it must be medium, small..
-                      size="medium"
+                      size="large"
                       theme="outline"
                       opacity={1}
-                      inverted="true" // TODO: must be true/false instead of a string, rebase with alpha to use it
-                    ></GoAIcon>
-                    <GoAIcon
+                      inverted={true}
+                    ></GoabIcon>
+                    <GoabIcon
                       type="triangle"
-                      // size={4} TODO: not sure why it is 4, but it must be medium, small..
-                      size="medium"
+                      size="xlarge"
                       theme="outline"
                       opacity={1}
-                      inverted="true" // TODO: must be true/false instead of a string, rebase with alpha to use it
-                    ></GoAIcon>
-                    <GoAIcon
-                      type="triangle"
-                      // size={5} TODO: not sure why it is 5, but it must be medium, small..
-                      size="medium"
-                      theme="outline"
-                      opacity={1}
-                      inverted="true" // TODO: must be true/false instead of a string, rebase with alpha to use it
-                    ></GoAIcon>
-                    <GoAIcon
-                      type="triangle"
-                      // size={6} TODO: not sure why it is 6, but it must be medium, small..
-                      size="medium"
-                      theme="outline"
-                      opacity={1}
-                      inverted="true" // TODO: must be true/false instead of a string, rebase with alpha to use it
-                    ></GoAIcon>
-                  </GoABlock>
+                      inverted={true}
+                    ></GoabIcon>
+
+                  </GoabBlock>
                 </div>
+                */}
 
                 {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-                <GoAText size="heading-m" mt="4xl" mb="xl">
+                <GoabText size="heading-m" mt="4xl" mb="xl">
                   Icon button
-                </GoAText>
+                </GoabText>
 
-                <GoABlock>
-                  <GoAIconButton
+                <GoabBlock>
+                  <GoabIconButton
                     variant="color"
                     size="medium"
                     icon="refresh"
                     ariaLabel="Refresh icon"
-                  ></GoAIconButton>
-                  <GoAIconButton
+                  ></GoabIconButton>
+                  <GoabIconButton
                     variant="color"
                     size="large"
                     icon="refresh"
                     ariaLabel="Refresh icon"
-                  ></GoAIconButton>
-                  <GoAIconButton
+                  ></GoabIconButton>
+                  <GoabIconButton
                     variant="color"
                     size="xlarge"
                     icon="refresh"
                     ariaLabel="Refresh icon"
-                  ></GoAIconButton>
-                  <GoAIconButton
+                  ></GoabIconButton>
+                  <GoabIconButton
                     variant="color"
                     size="xlarge"
                     icon="refresh"
                     ariaLabel="Refresh icon"
                     disabled={true}
-                  ></GoAIconButton>
-                </GoABlock>
+                  ></GoabIconButton>
+                </GoabBlock>
                 <div style={{ backgroundColor: '#2F2F2F', padding: '8px' }}>
-                  <GoABlock>
-                    <GoAIconButton
-                      variant="light"
+                  <GoabBlock>
+                    {/*TODO: Thomas: Under folder libs/common/src/lib/common.ts, we don't have GoabIconButtonVariant = "light", I set as "nocolor" first*/}
+                    <GoabIconButton
+                      variant="nocolor"
                       size="medium"
                       icon="refresh"
                       ariaLabel="Refresh icon"
-                    ></GoAIconButton>
-                    <GoAIconButton
-                      variant="light"
+                    ></GoabIconButton>
+                    <GoabIconButton
+                      variant="nocolor"
                       size="large"
                       icon="refresh"
                       ariaLabel="Refresh icon"
-                    ></GoAIconButton>
-                    <GoAIconButton
-                      variant="light"
+                    ></GoabIconButton>
+                    <GoabIconButton
+                      variant="nocolor"
                       size="xlarge"
                       icon="refresh"
                       ariaLabel="Refresh icon"
-                    ></GoAIconButton>
-                    <GoAIconButton
-                      variant="light"
+                    ></GoabIconButton>
+                    <GoabIconButton
+                      variant="nocolor"
                       size="xlarge"
                       icon="refresh"
                       ariaLabel="Refresh icon"
                       disabled={true}
-                    ></GoAIconButton>
-                  </GoABlock>
+                    ></GoabIconButton>
+                  </GoabBlock>
                 </div>
-                <GoABlock>
-                  <GoAIconButton
+                <GoabBlock>
+                  <GoabIconButton
                     variant="dark"
                     size="medium"
                     icon="refresh"
                     ariaLabel="Refresh icon"
-                  ></GoAIconButton>
-                  <GoAIconButton
+                  ></GoabIconButton>
+                  <GoabIconButton
                     variant="dark"
                     size="large"
                     icon="refresh"
                     ariaLabel="Refresh icon"
-                  ></GoAIconButton>
-                  <GoAIconButton
+                  ></GoabIconButton>
+                  <GoabIconButton
                     variant="dark"
                     size="xlarge"
                     icon="refresh"
                     ariaLabel="Refresh icon"
-                  ></GoAIconButton>
-                  <GoAIconButton
+                  ></GoabIconButton>
+                  <GoabIconButton
                     variant="dark"
                     size="xlarge"
                     icon="refresh"
                     ariaLabel="Refresh icon"
                     disabled={true}
-                  ></GoAIconButton>
-                </GoABlock>
-                <GoABlock>
-                  <GoAIconButton
+                  ></GoabIconButton>
+                </GoabBlock>
+                <GoabBlock>
+                  <GoabIconButton
                     variant="destructive"
                     size="medium"
                     icon="refresh"
                     ariaLabel="Refresh icon"
-                  ></GoAIconButton>
-                  <GoAIconButton
+                  ></GoabIconButton>
+                  <GoabIconButton
                     variant="destructive"
                     size="large"
                     icon="refresh"
                     ariaLabel="Refresh icon"
-                  ></GoAIconButton>
-                  <GoAIconButton
+                  ></GoabIconButton>
+                  <GoabIconButton
                     variant="destructive"
                     size="xlarge"
                     icon="refresh"
                     ariaLabel="Refresh icon"
-                  ></GoAIconButton>
-                  <GoAIconButton
+                  ></GoabIconButton>
+                  <GoabIconButton
                     variant="destructive"
                     size="xlarge"
                     icon="refresh"
                     ariaLabel="Refresh icon"
                     disabled={true}
-                  ></GoAIconButton>
-                </GoABlock>
+                  ></GoabIconButton>
+                </GoabBlock>
               </GoabBlock>
 
               {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-              <GoAText size="heading-m" mt="3xl" mb="xl">
+              <GoabText size="heading-m" mt="4xl" mb="xl">
                 Input
-              </GoAText>
+              </GoabText>
 
-              <GoABlock gap="2xl" mb="xl" direction="column">
+              <GoabBlock gap="2xl" mb="xl" direction="column">
 
-                <GoAFormItem label="Basic text input">
-                  <GoAInput name="name1" type="text" value="" width="20ch"></GoAInput>
-                </GoAFormItem>
+                <GoabFormItem label="Basic text input">
+                  <GoabInput name="name1" type="text" value="" width="20ch" onChange={noop}></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem label="Optional text input" requirement="optional">
-                  <GoAInput name="name1" type="text" value="" width="20ch"></GoAInput>
-                </GoAFormItem>
+                <GoabFormItem label="Optional text input" requirement="optional">
+                  <GoabInput name="name1" type="text" value="" width="20ch" onChange={noop}></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem label="Text input that is 100% width">
-                  <GoAInput
+                <GoabFormItem label="Text input that is 100% width">
+                  <GoabInput
                     name="name3"
                     type="text"
                     value=""
                     width="100%"
-                  ></GoAInput>
-                </GoAFormItem>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem label="Text input that is 50% width">
-                  <GoAInput
+                <GoabFormItem label="Text input that is 50% width">
+                  <GoabInput
                     name="name3"
                     type="text"
                     value=""
                     width="50%"
-                  ></GoAInput>
-                </GoAFormItem>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem label="Text input that has no width defined">
-                  <GoAInput
+                <GoabFormItem label="Text input that has no width defined">
+                  <GoabInput
                     name="name3"
                     type="text"
                     value=""
-                  ></GoAInput>
-                </GoAFormItem>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem label="Width is 180ch">
-                  <GoAInput
+                <GoabFormItem label="Width is 180ch">
+                  <GoabInput
                     name="name1"
                     type="text"
                     value=""
                     width="180ch"
-                  ></GoAInput>
-                </GoAFormItem>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem label="Text input with leading content">
-                  <GoAInput
+                <GoabFormItem label="Text input with leading content">
+                  <GoabInput
                     name="name1"
                     type="text"
                     value=""
                     leadingContent="dasd"
                     width="20ch"
-                  ></GoAInput>
-                </GoAFormItem>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem label="Text input with trailing content and 100% width">
-                  <GoAInput
+                <GoabFormItem label="Text input with trailing content and 100% width">
+                  <GoabInput
                     name="name2"
                     type="text"
                     value=""
                     width="100%"
                     trailingContent="@gov.ab.ca"
-                  ></GoAInput>
-                </GoAFormItem>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem label="Text input with 2ch width">
-                  <GoAInput
+                <GoabFormItem label="Text input with 2ch width">
+                  <GoabInput
                     name="name1"
                     type="text"
                     value=""
                     width="2ch"
-                  ></GoAInput>
-                </GoAFormItem>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem label="Text input with 2ch width and leading icon">
-                  <GoAInput
+                <GoabFormItem label="Text input with 2ch width and leading icon">
+                  <GoabInput
                     name="name1"
                     type="text"
                     value=""
                     width="2ch"
                     leadingIcon="bag"
-                  ></GoAInput>
-                </GoAFormItem>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem label="Text input with 2ch width and trailing icon">
-                  <GoAInput
+                <GoabFormItem label="Text input with 2ch width and trailing icon">
+                  <GoabInput
                     name="name1"
                     type="text"
                     value=""
                     width="2ch"
                     trailingIcon="bag"
-                  ></GoAInput>
-                </GoAFormItem>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem label="Text input with 2ch width and leading and trailing content">
-                  <GoAInput
+                <GoabFormItem label="Text input with 2ch width and leading and trailing content">
+                  <GoabInput
                     name="name1"
                     type="text"
                     value=""
                     width="2ch"
                     leadingContent="content"
                     trailingContent="content"
-                  ></GoAInput>
-                </GoAFormItem>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem label="Text input with 80ch width and leading and trailing content">
-                  <GoAInput
+                <GoabFormItem label="Text input with 80ch width and leading and trailing content">
+                  <GoabInput
                     name="name1"
                     type="text"
                     value=""
                     width="80ch"
                     leadingContent="content"
                     trailingContent="content"
-                  ></GoAInput>
-                </GoAFormItem>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem label="Text input with 100% width and leading and trailing content">
-                  <GoAInput
+                <GoabFormItem label="Text input with 80ch width and leading and trailing content and icons">
+                  <GoabInput
+                    name="name1"
+                    type="text"
+                    value=""
+                    width="80ch"
+                    leadingContent="content"
+                    trailingContent="content"
+                    trailingIcon="arrow-back"
+                    leadingIcon="arrow-back"
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
+
+                <GoabFormItem label="Text input with 80ch width and leading content and icons">
+                  <GoabInput
+                    name="name1"
+                    type="text"
+                    value=""
+                    width="80ch"
+                    leadingContent="content"
+                    trailingIcon="arrow-back"
+                    leadingIcon="arrow-back"
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
+
+                <GoabFormItem label="Text input with 80ch width, trailing content and icon">
+                  <GoabInput
+                    name="name1"
+                    type="text"
+                    value=""
+                    width="80ch"
+                    trailingContent="content"
+                    trailingIcon="arrow-back"
+                    leadingIcon="arrow-back"
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
+
+                <GoabFormItem label="Text input with 80ch width and leading and trailing icons">
+                  <GoabInput
+                    name="name1"
+                    type="text"
+                    value=""
+                    width="80ch"
+                    trailingIcon="arrow-back"
+                    leadingIcon="arrow-back"
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
+
+                <GoabFormItem label="Text input with 100% width and leading and trailing content">
+                  <GoabInput
                     name="name1"
                     type="text"
                     value=""
                     width="100%"
                     leadingContent="content"
                     trailingContent="content"
-                  ></GoAInput>
-                </GoAFormItem>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem label="Text input with helper text" helpText="This is some help text." requirement="optional">
-                  <GoAInput
+                <GoabFormItem label="Text input with helper text" helpText="This is some help text." requirement="optional">
+                  <GoabInput
                     name="name1"
                     type="text"
                     value=""
                     width="30ch"
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                  ></GoAInput>
-                </GoAFormItem>
+                <GoabBlock gap="xs" mb="xl" direction="row">
 
-                <GoABlock gap="xs" mb="xl" direction="row">
-
-                  <GoAInput
+                  <GoabInput
                     name="name1"
                     type="text"
                     value=""
                     width="30ch"
                     leadingIcon="search"
-                  ></GoAInput>
+                    onChange={noop}
+                  ></GoabInput>
 
-                  <GoAButton> Search </GoAButton>
-                </GoABlock>
+                  <GoabButton> Search </GoabButton>
+                </GoabBlock>
 
-                <GoAFormItem label="Text input with 60ch width" helpText="This is some help text.">
-                  <GoAInput name="name1" type="text" value="" width="60ch"></GoAInput>
-                </GoAFormItem>
+                <GoabFormItem label="Text input with 60ch width" helpText="This is some help text.">
+                  <GoabInput name="name1" type="text" value="" width="60ch" onChange={noop}></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem
+                <GoabFormItem
                   label="Text input with error"
                   helpText="This is some help text."
                   error="There is an error"
                 >
-                  <GoAInput name="name1" type="text" value="" width="20ch" error={true}></GoAInput>
-                </GoAFormItem>
+                  <GoabInput name="name1" type="text" value="" width="20ch" error={true} onChange={noop}></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem label="Text input with leading and trailing content" error="There is an error">
-                  <GoAInput
+                <GoabFormItem label="Text input with leading and trailing content" error="There is an error">
+                  <GoabInput
                     name="name1"
                     type="text"
                     value=""
@@ -2193,100 +2315,108 @@ export function App() {
                     leadingContent="dad"
                     trailingContent="dasd"
                     error={true}
-                  ></GoAInput>
-                </GoAFormItem>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem label="Text input with leading content" error="There is an error">
-                  <GoAInput
+                <GoabFormItem label="Text input with leading content" error="There is an error">
+                  <GoabInput
                     name="name1"
                     type="text"
                     value=""
                     width="20ch"
                     leadingContent="dasd"
                     error={true}
-                  ></GoAInput>
-                </GoAFormItem>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem
+                <GoabFormItem
                   label="Text input with trailing content"
                   helpText="This is some help text."
                   error="There is an error"
                 >
-                  <GoAInput
+                  <GoabInput
                     name="name1"
                     type="text"
                     value=""
                     width="20ch"
                     trailingContent="dasd"
                     error={true}
-                  ></GoAInput>
-                </GoAFormItem>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem
+                <GoabFormItem
                   label="Text input with leading icon"
                 >
-                  <GoAInput
+                  <GoabInput
                     leadingIcon="mail"
                     name="name1"
                     value=""
                     width="40ch"
-                  ></GoAInput>
-                </GoAFormItem>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem
+                <GoabFormItem
                   label="Text input with trailing icon"
                 >
-                  <GoAInput
+                  <GoabInput
                     trailingIcon="mail"
                     name="name1"
                     value=""
                     width="40ch"
-                  ></GoAInput>
-                </GoAFormItem>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem
+                <GoabFormItem
                   label="Text input that's disabled"
                   helpText="Here is some helper text"
                 >
-                  <GoAInput
+                  <GoabInput
                     disabled={true}
                     name="name1"
                     value=""
                     width="20ch"
-                  ></GoAInput>
-                </GoAFormItem>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem
+                <GoabFormItem
                   label="Text input that's disabled with leading icon"
                 >
-                  <GoAInput
+                  <GoabInput
                     leadingIcon="accessibility"
                     disabled={true}
                     name="name1"
                     value=""
                     width="20ch"
-                  ></GoAInput>
-                </GoAFormItem>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem
+                <GoabFormItem
                   label="Text field with placeholder text"
                 >
-                  <GoAInput
+                  <GoabInput
                     name="name1"
                     placeholder="Placeholder text"
                     value=""
                     width="20ch"
-                  ></GoAInput>
-                </GoAFormItem>
-              </GoABlock>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
+              </GoabBlock>
 
               {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-              <GoAText size="heading-m" mt="4xl" mb="2xl">
+              <GoabText size="heading-m" mt="4xl" mb="2xl">
                 Link
-              </GoAText>
+              </GoabText>
 
-              <GoABlock gap="2xl" mb="xl" direction="column">
+              <GoabBlock gap="2xl" mb="xl" direction="column">
                 <GoALink leadingIcon='add'>
                   Link with a leading icon
                 </GoALink>
@@ -2295,123 +2425,123 @@ export function App() {
                   Link with a trailing icon
                 </GoALink>
 
-              </GoABlock>
+              </GoabBlock>
 
               {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-              <GoAText size="heading-m" mt="3xl" mb="xl">
+              <GoabText size="heading-m" mt="4xl" mb="xl">
                 Microsite header
-              </GoAText>
+              </GoabText>
 
-              <GoABlock gap="3xs" mb="xl" direction="column">
-                <GoAMicrositeHeader type="alpha" headerUrlTarget="blank"></GoAMicrositeHeader>
+              <GoabBlock gap="3xs" mb="xl" direction="column">
+                <GoabMicrositeHeader type="alpha" headerUrlTarget="blank"></GoabMicrositeHeader>
 
-                <GoAMicrositeHeader type="beta" headerUrlTarget="blank"></GoAMicrositeHeader>
+                <GoabMicrositeHeader type="beta" headerUrlTarget="blank"></GoabMicrositeHeader>
 
-                <GoAMicrositeHeader type="live" headerUrlTarget="blank"></GoAMicrositeHeader>
+                <GoabMicrositeHeader type="live" headerUrlTarget="blank"></GoabMicrositeHeader>
 
-                <GoAText size="heading-s" mt="l" mb="s">
+                <GoabText size="heading-s" mt="l" mb="s">
                   Feedback link
-                </GoAText>
+                </GoabText>
 
-                <GoAMicrositeHeader
+                <GoabMicrositeHeader
                   type="alpha"
-                  feedbackUrl="www"
+                  feedbackUrl="www.google.com"
                   feedbackUrlTarget="blank"
                   headerUrlTarget="blank"
-                ></GoAMicrositeHeader>
+                ></GoabMicrositeHeader>
 
-                <GoAMicrositeHeader
+                <GoabMicrositeHeader
                   type="beta"
-                  feedbackUrl="www"
+                  feedbackUrl="www.google.com"
                   feedbackUrlTarget="blank"
                   headerUrlTarget="blank"
-                ></GoAMicrositeHeader>
+                ></GoabMicrositeHeader>
 
-                <GoAMicrositeHeader
+                <GoabMicrositeHeader
                   type="live"
-                  feedbackUrl="www"
+                  feedbackUrl="www.google.com"
                   feedbackUrlTarget="blank"
                   headerUrlTarget="blank"
-                ></GoAMicrositeHeader>
+                ></GoabMicrositeHeader>
 
-                <GoAText size="heading-s" mt="l" mb="s">
+                <GoabText size="heading-s" mt="l" mb="s">
                   Version number
-                </GoAText>
+                </GoabText>
 
-                <GoAMicrositeHeader
+                <GoabMicrositeHeader
                   type="alpha"
                   headerUrlTarget="blank"
                   version="1.2.3"
-                ></GoAMicrositeHeader>
+                ></GoabMicrositeHeader>
 
-                <GoAMicrositeHeader
+                <GoabMicrositeHeader
                   type="beta"
                   headerUrlTarget="blank"
                   version="1.2.3"
-                ></GoAMicrositeHeader>
+                ></GoabMicrositeHeader>
 
-                <GoAMicrositeHeader
+                <GoabMicrositeHeader
                   type="live"
                   headerUrlTarget="blank"
                   version="1.2.3"
-                ></GoAMicrositeHeader>
+                ></GoabMicrositeHeader>
 
-                <GoAText size="heading-s" mt="l" mb="s">
+                <GoabText size="heading-s" mt="l" mb="s">
                   Feedback link and Version number
-                </GoAText>
+                </GoabText>
 
-                <GoAMicrositeHeader
+                <GoabMicrositeHeader
                   type="alpha"
                   feedbackUrl="www"
                   feedbackUrlTarget="blank"
                   headerUrlTarget="blank"
                   version="1.2.3"
-                ></GoAMicrositeHeader>
+                ></GoabMicrositeHeader>
 
-                <GoAMicrositeHeader
+                <GoabMicrositeHeader
                   type="beta"
                   feedbackUrl="www"
                   feedbackUrlTarget="blank"
                   headerUrlTarget="blank"
                   version="1.2.3"
-                ></GoAMicrositeHeader>
+                ></GoabMicrositeHeader>
 
-                <GoAMicrositeHeader
+                <GoabMicrositeHeader
                   type="live"
                   feedbackUrl="www"
                   feedbackUrlTarget="blank"
                   headerUrlTarget="blank"
                   version="1.2.3"
-                ></GoAMicrositeHeader>
-              </GoABlock>
+                ></GoabMicrositeHeader>
+              </GoabBlock>
 
               {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-              <GoAText size="heading-m" mt="3xl" mb="xl">
+              <GoabText size="heading-m" mt="3xl" mb="xl">
                 Modal
-              </GoAText>
+              </GoabText>
 
-              <GoABlock gap="xl" mb="xl" direction="column">
-                <GoAButton
+              <GoabBlock gap="xl" mb="xl" direction="column">
+                <GoabButton
                   type="tertiary"
                   leadingIcon="trash"
                   onClick={() => setDestructiveModalOpen(true)}
                 >
                   Delete my application
-                </GoAButton>
+                </GoabButton>
 
-                <GoAModal
+                <GoabModal
                   heading="Are you sure you want to delete this application?"
                   open={destructiveModalOpen}
                   role="alertdialog"
                   calloutVariant="emergency"
                   actions={
-                    <GoAButtonGroup alignment="end">
-                      <GoAButton type="tertiary" onClick={() => setDestructiveModalOpen(false)}>
+                    <GoabButtonGroup alignment="end">
+                      <GoabButton type="tertiary" onClick={() => setDestructiveModalOpen(false)}>
                         Cancel
-                      </GoAButton>
-                      <GoAButton
+                      </GoabButton>
+                      <GoabButton
                         type="primary"
                         variant="destructive"
                         onClick={() => {
@@ -2419,18 +2549,18 @@ export function App() {
                         }}
                       >
                         Delete application
-                      </GoAButton>
-                    </GoAButtonGroup>
+                      </GoabButton>
+                    </GoabButtonGroup>
                   }
                 >
                   <p>This action cannot be undone. </p>
-                </GoAModal>
+                </GoabModal>
 
-                <GoAButton type="tertiary" onClick={() => setBasicModalOpen(true)}>
+                <GoabButton type="tertiary" onClick={() => setBasicModalOpen(true)}>
                   Open basic modal with close
-                </GoAButton>
+                </GoabButton>
 
-                <GoAModal
+                <GoabModal
                   heading="This is a modal with a close button"
                   open={basicModalOpen}
                   role="alertdialog"
@@ -2440,58 +2570,58 @@ export function App() {
                     This is meant to be dismissed, the user can click outside of the modal or click
                     the close button in the top right corner.
                   </p>
-                </GoAModal>
+                </GoabModal>
 
-                <GoAButton type="tertiary" onClick={() => setBasicModal2Open(true)}>
+                <GoabButton type="tertiary" onClick={() => setBasicModal2Open(true)}>
                   Open basic modal with actions
-                </GoAButton>
+                </GoabButton>
 
-                <GoAModal
+                <GoabModal
                   heading="This is a modal with actions"
                   open={basicModal2Open}
                   role="alertdialog"
                   actions={
-                    <GoAButtonGroup alignment="end">
-                      <GoAButton type="tertiary" onClick={() => setBasicModal2Open(false)}>
+                    <GoabButtonGroup alignment="end">
+                      <GoabButton type="tertiary" onClick={() => setBasicModal2Open(false)}>
                         Cancel
-                      </GoAButton>
-                      <GoAButton
+                      </GoabButton>
+                      <GoabButton
                         type="primary"
                         onClick={() => {
                           setBasicModal2Open(false);
                         }}
                       >
                         Continue
-                      </GoAButton>
-                    </GoAButtonGroup>
+                      </GoabButton>
+                    </GoabButtonGroup>
                   }
                 >
                   <p>This is meant to make the user choose an option in order to continue.</p>
-                </GoAModal>
+                </GoabModal>
 
-                <GoAButton type="tertiary" onClick={() => setContentModalOpen(true)}>
+                <GoabButton type="tertiary" onClick={() => setContentModalOpen(true)}>
                   Open modal with lots of content and actions
-                </GoAButton>
+                </GoabButton>
 
-                <GoAModal
+                <GoabModal
                   heading="This is a modal with lots of content"
                   open={contentModalOpen}
                   maxWidth="1200px"
                   role="alertdialog"
                   actions={
-                    <GoAButtonGroup alignment="end">
-                      <GoAButton type="tertiary" onClick={() => setContentModalOpen(false)}>
+                    <GoabButtonGroup alignment="end">
+                      <GoabButton type="tertiary" onClick={() => setContentModalOpen(false)}>
                         Cancel
-                      </GoAButton>
-                      <GoAButton
+                      </GoabButton>
+                      <GoabButton
                         type="primary"
                         onClick={() => {
                           setContentModalOpen(false);
                         }}
                       >
                         Continue
-                      </GoAButton>
-                    </GoAButtonGroup>
+                      </GoabButton>
+                    </GoabButtonGroup>
                   }
                 >
                   <p>
@@ -2524,13 +2654,13 @@ export function App() {
                     This is a lot of content that make the modal scroll. This is a lot of content
                     that make the modal scroll. This is a lot of content that make the modal scroll.
                   </p>
-                </GoAModal>
+                </GoabModal>
 
-                <GoAButton type="tertiary" onClick={() => setContentModal2Open(true)}>
+                <GoabButton type="tertiary" onClick={() => setContentModal2Open(true)}>
                   Open modal with lots of content and close button
-                </GoAButton>
+                </GoabButton>
 
-                <GoAModal
+                <GoabModal
                   heading="This is a modal with lots of content"
                   open={contentModal2Open}
                   role="alertdialog"
@@ -2566,173 +2696,173 @@ export function App() {
                     This is a lot of content that make the modal scroll. This is a lot of content
                     that make the modal scroll. This is a lot of content that make the modal scroll.
                   </p>
-                </GoAModal>
+                </GoabModal>
 
-                <GoAButton type="tertiary" onClick={() => setBasicModal3Open(true)}>
+                <GoabButton type="tertiary" onClick={() => setBasicModal3Open(true)}>
                   Open basic modal with actions and close button
-                </GoAButton>
+                </GoabButton>
 
-                <GoAModal
+                <GoabModal
                   heading="This is a modal with actions and a close button"
                   open={basicModal3Open}
                   role="alertdialog"
                   onClose={() => setBasicModal3Open(false)}
                   actions={
-                    <GoAButtonGroup alignment="end">
-                      <GoAButton type="tertiary" onClick={() => setBasicModal3Open(false)}>
+                    <GoabButtonGroup alignment="end">
+                      <GoabButton type="tertiary" onClick={() => setBasicModal3Open(false)}>
                         Cancel
-                      </GoAButton>
-                      <GoAButton
+                      </GoabButton>
+                      <GoabButton
                         type="primary"
                         onClick={() => {
                           setBasicModal3Open(false);
                         }}
                       >
                         Continue
-                      </GoAButton>
-                    </GoAButtonGroup>
+                      </GoabButton>
+                    </GoabButtonGroup>
                   }
                 >
                   <p>The use can dismiss the modal by clicking outside of the modal, clicking the close button, or choose an option to continue. </p>
-                </GoAModal>
+                </GoabModal>
 
-                <GoAButton type="tertiary" onClick={() => setNoHeaderModalOpen(true)}>
+                <GoabButton type="tertiary" onClick={() => setNoHeaderModalOpen(true)}>
                   Open modal with no header
-                </GoAButton>
+                </GoabButton>
 
-                <GoAModal
+                <GoabModal
                   heading=""
                   open={NoHeaderModalOpen}
                   role="alertdialog"
                   /* onClose={() => setNoHeaderModalOpen(false)} */
                   actions={
-                    <GoAButtonGroup alignment="end">
-                      <GoAButton type="tertiary" onClick={() => setNoHeaderModalOpen(false)}>
+                    <GoabButtonGroup alignment="end">
+                      <GoabButton type="tertiary" onClick={() => setNoHeaderModalOpen(false)}>
                         Cancel
-                      </GoAButton>
-                      <GoAButton
+                      </GoabButton>
+                      <GoabButton
                         type="primary"
                         onClick={() => {
                           setNoHeaderModalOpen(false);
                         }}
                       >
                         Continue
-                      </GoAButton>
-                    </GoAButtonGroup>
+                      </GoabButton>
+                    </GoabButtonGroup>
                   }
                 >
                   <p>This is a modal with no header. Choose an option to continue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse facilisis quam ac massa commodo fringilla. Sed gravida elit urna, vel rhoncus velit ullamcorper vitae. Phasellus ullamcorper enim et leo dignissim, sed dignissim mi varius.</p>
-                </GoAModal>
+                </GoabModal>
 
-              </GoABlock>
+              </GoabBlock>
 
               {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-              <GoAText size="heading-m" mt="3xl" mb="2xl">
+              <GoabText size="heading-m" mt="3xl" mb="2xl">
                 Notification banner
-              </GoAText>
+              </GoabText>
 
-              <GoABlock gap="xl" mb="4xl" direction="column">
-                <GoANotification type="information">Notification banner message</GoANotification>
+              <GoabBlock gap="xl" mb="4xl" direction="column">
+                <GoabNotification type="information">Notification banner message</GoabNotification>
 
-                <GoANotification type="information">
+                <GoabNotification type="information">
                   Notification banner message that is really long and eventually it wraps around the
                   screen because it's so long that it needs to wrap around the screen
-                </GoANotification>
+                </GoabNotification>
 
-                <GoANotification type="important">Notification banner message</GoANotification>
+                <GoabNotification type="important">Notification banner message</GoabNotification>
 
-                <GoANotification type="emergency">Notification banner message</GoANotification>
+                <GoabNotification type="emergency">Notification banner message</GoabNotification>
 
-                <GoANotification type="event">Notification banner message</GoANotification>
-              </GoABlock>
+                <GoabNotification type="event">Notification banner message</GoabNotification>
+              </GoabBlock>
 
               {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-              <GoAText size="heading-m" mt="3xl" mb="2xl">
+              <GoabText size="heading-m" mt="3xl" mb="2xl">
                 Pagination
-              </GoAText>
+              </GoabText>
 
-              <GoABlock gap="xl" mb="4xl" direction="column">
+              <GoabBlock gap="xl" mb="4xl" direction="column">
 
 
-              </GoABlock>
+              </GoabBlock>
 
               {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-              <GoAText size="heading-m" mt="3xl" mb="xl">
+              <GoabText size="heading-m" mt="3xl" mb="xl">
                 Popover
-              </GoAText>
+              </GoabText>
 
-              <GoABlock gap="xl" mb="4xl" direction="column">
-                <GoAPopover target={popovertarget}>
+              <GoabBlock gap="xl" mb="4xl" direction="column">
+                <GoabPopover target={popovertarget}>
                   <p>This is a popover</p>
                   It can be used for a number of different contexts.
-                </GoAPopover>
-              </GoABlock>
+                </GoabPopover>
+              </GoabBlock>
 
 
               {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-              <GoAText size="heading-m" mt="4xl" mb="xl">
+              <GoabText size="heading-m" mt="4xl" mb="xl">
                 Progress indicator
-              </GoAText>
+              </GoabText>
 
-              <GoABlock>
-                <GoACircularProgress
+              <GoabBlock>
+                <GoabCircularProgress
                   variant="inline"
                   size="small"
                   message="Loading message..."
                   visible={true}
-                ></GoACircularProgress>
-                <GoACircularProgress
+                ></GoabCircularProgress>
+                <GoabCircularProgress
                   variant="inline"
                   size="large"
                   message="Loading message..."
                   visible={true}
-                ></GoACircularProgress>
-              </GoABlock>
+                ></GoabCircularProgress>
+              </GoabBlock>
 
               {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-              <GoAText size="heading-m" mt="3xl" mb="2xl">
+              <GoabText size="heading-m" mt="3xl" mb="2xl">
                 Radio
-              </GoAText>
+              </GoabText>
 
-              <GoABlock gap="xl" mb="xl" direction="column">
-                <GoAFormItem label="Basic radio">
-                  <GoARadioGroup name="item" value="1" onChange={radio1}>
-                    <GoARadioItem value="1" label="Label 1"></GoARadioItem>
-                    <GoARadioItem value="2" label="Label 2"></GoARadioItem>
-                    <GoARadioItem value="3" label="Label 3"></GoARadioItem>
-                    <GoARadioItem value="4" label="Label 4"></GoARadioItem>
-                  </GoARadioGroup>
-                </GoAFormItem>
+              <GoabBlock gap="xl" mb="xl" direction="column">
+                <GoabFormItem label="Basic radio">
+                  <GoabRadioGroup name="item" value="1" onChange={(e) => radio1(e.name, e.value)}>
+                    <GoabRadioItem value="1" label="Label 1"></GoabRadioItem>
+                    <GoabRadioItem value="2" label="Label 2"></GoabRadioItem>
+                    <GoabRadioItem value="3" label="Label 3"></GoabRadioItem>
+                    <GoabRadioItem value="4" label="Label 4"></GoabRadioItem>
+                  </GoabRadioGroup>
+                </GoabFormItem>
 
-                <GoAFormItem label="Radio with helper text" helpText="Helper text here">
-                  <GoARadioGroup name="item" value="1" onChange={radio2}>
-                    <GoARadioItem value="1" label="Label 1"></GoARadioItem>
-                    <GoARadioItem
+                <GoabFormItem label="Radio with helper text" helpText="Helper text here">
+                  <GoabRadioGroup name="item" value="1" onChange={(e) => radio2(e.name, e.value)}>
+                    <GoabRadioItem value="1" label="Label 1"></GoabRadioItem>
+                    <GoabRadioItem
                       value="2"
                       label="Label 2 that wraps to a long wide thing later Label 2 that wraps to a long wide thing later"
-                    ></GoARadioItem>
-                    <GoARadioItem value="3" label="Label 3"></GoARadioItem>
-                    <GoARadioItem value="4" label="Label 4"></GoARadioItem>
-                  </GoARadioGroup>
-                </GoAFormItem>
+                    ></GoabRadioItem>
+                    <GoabRadioItem value="3" label="Label 3"></GoabRadioItem>
+                    <GoabRadioItem value="4" label="Label 4"></GoabRadioItem>
+                  </GoabRadioGroup>
+                </GoabFormItem>
 
-                <GoAFormItem label="Radio with helper text" helpText="Helper text here">
-                  <GoARadioGroup disabled={true} name="item" value="1" onChange={radio2}>
-                    <GoARadioItem value="1" label="Label 1"></GoARadioItem>
-                    <GoARadioItem value="2" label="Label 2"></GoARadioItem>
-                    <GoARadioItem value="3" label="Label 3"></GoARadioItem>
-                    <GoARadioItem value="4" label="Label 4"></GoARadioItem>
-                  </GoARadioGroup>
-                </GoAFormItem>
+                <GoabFormItem label="Radio with helper text" helpText="Helper text here">
+                  <GoabRadioGroup disabled={true} name="item" value="1" onChange={(e) => radio2(e.name, e.value)}>
+                    <GoabRadioItem value="1" label="Label 1"></GoabRadioItem>
+                    <GoabRadioItem value="2" label="Label 2"></GoabRadioItem>
+                    <GoabRadioItem value="3" label="Label 3"></GoabRadioItem>
+                    <GoabRadioItem value="4" label="Label 4"></GoabRadioItem>
+                  </GoabRadioGroup>
+                </GoabFormItem>
 
-                <GoAFormItem label="Radio items with descriptions">
-                  <GoARadioGroup name="selectOne" value="1" onChange={radio3}>
-                    <GoARadioItem
+                <GoabFormItem label="Radio items with descriptions">
+                  <GoabRadioGroup name="selectOne" value="1" onChange={(e) => radio3(e.name, e.value)}>
+                    <GoabRadioItem
                       value="1"
                       label="Option one"
                       description={
@@ -2741,21 +2871,21 @@ export function App() {
                         </span>
                       }
                     />
-                    <GoARadioItem value="2" label="Option two" description="description text" />
-                    <GoARadioItem
+                    <GoabRadioItem value="2" label="Option two" description="description text" />
+                    <GoabRadioItem
                       value="3"
                       label="Option three"
                       description="another description text"
                     />
-                  </GoARadioGroup>
-                </GoAFormItem>
+                  </GoabRadioGroup>
+                </GoabFormItem>
 
-                <GoAFormItem
+                <GoabFormItem
                   label="Radio with descriptions and helper text"
                   helpText="Helper text here"
                 >
-                  <GoARadioGroup name="selectOne" value="1" onChange={radio3}>
-                    <GoARadioItem
+                  <GoabRadioGroup name="selectOne" value="1" onChange={(e) => radio3(e.name, e.value)}>
+                    <GoabRadioItem
                       value="1"
                       label="Option one"
                       description={
@@ -2764,109 +2894,109 @@ export function App() {
                         </span>
                       }
                     />
-                    <GoARadioItem value="2" label="Option two" description="description text" />
-                    <GoARadioItem
+                    <GoabRadioItem value="2" label="Option two" description="description text" />
+                    <GoabRadioItem
                       value="3"
                       label="Option three"
                       description="another description text"
                     />
-                  </GoARadioGroup>
-                </GoAFormItem>
+                  </GoabRadioGroup>
+                </GoabFormItem>
 
-                <GoAFormItem
+                <GoabFormItem
                   label="Radio with error"
                   helpText="Helper text here"
                   error="Error message."
                 >
-                  <GoARadioGroup error={true} name="item" value="1" onChange={radio2}>
-                    <GoARadioItem value="1" label="Label 1"></GoARadioItem>
-                    <GoARadioItem value="2" label="Label 2"></GoARadioItem>
-                    <GoARadioItem value="3" label="Label 3"></GoARadioItem>
-                    <GoARadioItem value="4" label="Label 4"></GoARadioItem>
-                  </GoARadioGroup>
-                </GoAFormItem>
+                  <GoabRadioGroup error={true} name="item" value="1" onChange={(e) => radio2(e.name, e.value)}>
+                    <GoabRadioItem value="1" label="Label 1"></GoabRadioItem>
+                    <GoabRadioItem value="2" label="Label 2"></GoabRadioItem>
+                    <GoabRadioItem value="3" label="Label 3"></GoabRadioItem>
+                    <GoabRadioItem value="4" label="Label 4"></GoabRadioItem>
+                  </GoabRadioGroup>
+                </GoabFormItem>
 
-                <GoAFormItem label="Horizontal inputs" helpText="Helper text here">
-                  <GoARadioGroup orientation="horizontal" name="item" value="1" onChange={radio2}>
-                    <GoARadioItem value="1" label="Label 1"></GoARadioItem>
-                    <GoARadioItem value="2" label="Label 2"></GoARadioItem>
-                  </GoARadioGroup>
-                </GoAFormItem>
+                <GoabFormItem label="Horizontal inputs" helpText="Helper text here">
+                  <GoabRadioGroup orientation="horizontal" name="item" value="1" onChange={(e) =>radio2(e.name, e.value)}>
+                    <GoabRadioItem value="1" label="Label 1"></GoabRadioItem>
+                    <GoabRadioItem value="2" label="Label 2"></GoabRadioItem>
+                  </GoabRadioGroup>
+                </GoabFormItem>
 
-                <GoAFormItem
+                <GoabFormItem
                   label="Disabled radio with item descriptions"
                   helpText="Helper text here"
                 >
-                  <GoARadioGroup disabled={true} name="item" value="1" onChange={radio2}>
-                    <GoARadioItem
+                  <GoabRadioGroup disabled={true} name="item" value="1" onChange={(e) => radio2(e.name, e.value)}>
+                    <GoabRadioItem
                       value="1"
                       label="Label 1"
                       description="description text"
-                    ></GoARadioItem>
-                    <GoARadioItem value="2" label="Label 2"></GoARadioItem>
-                    <GoARadioItem
+                    ></GoabRadioItem>
+                    <GoabRadioItem value="2" label="Label 2"></GoabRadioItem>
+                    <GoabRadioItem
                       value="3"
                       label="Label 3"
                       description="description text"
-                    ></GoARadioItem>
-                    <GoARadioItem value="4" label="Label 4"></GoARadioItem>
-                  </GoARadioGroup>
-                </GoAFormItem>
+                    ></GoabRadioItem>
+                    <GoabRadioItem value="4" label="Label 4"></GoabRadioItem>
+                  </GoabRadioGroup>
+                </GoabFormItem>
 
-                <GoAFormItem label="Disabled radio with error" helpText="Helper text here">
-                  <GoARadioGroup
+                <GoabFormItem label="Disabled radio with error" helpText="Helper text here">
+                  <GoabRadioGroup
                     disabled={true}
                     error={true}
                     name="item"
                     value="1"
-                    onChange={radio2}
+                    onChange={(e) => radio2(e.name, e.value)}
                   >
-                    <GoARadioItem
+                    <GoabRadioItem
                       value="1"
                       label="Label 1"
                       description="description text"
-                    ></GoARadioItem>
-                    <GoARadioItem value="2" label="Label 2"></GoARadioItem>
-                    <GoARadioItem
+                    ></GoabRadioItem>
+                    <GoabRadioItem value="2" label="Label 2"></GoabRadioItem>
+                    <GoabRadioItem
                       value="3"
                       label="Label 3"
                       description="description text"
-                    ></GoARadioItem>
-                    <GoARadioItem value="4" label="Label 4"></GoARadioItem>
-                  </GoARadioGroup>
-                </GoAFormItem>
-              </GoABlock>
+                    ></GoabRadioItem>
+                    <GoabRadioItem value="4" label="Label 4"></GoabRadioItem>
+                  </GoabRadioGroup>
+                </GoabFormItem>
+              </GoabBlock>
 
               {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-              <GoAText size="heading-m" mt="4xl" mb="xl">
+              <GoabText size="heading-m" mt="4xl" mb="xl">
                 Scroll bar
-              </GoAText>
+              </GoabText>
 
-              <GoABlock gap="xl" mb="3xl" direction="column">
-                <GoAButton type="tertiary" onClick={() => setContentModalScrollOpen(true)}>
+              <GoabBlock gap="xl" mb="3xl" direction="column">
+                <GoabButton type="tertiary" onClick={() => setContentModalScrollOpen(true)}>
                   Open modal with lots of content to see scroll bar
-                </GoAButton>
+                </GoabButton>
 
-                <GoAModal
+                <GoabModal
                   heading="This is a modal with lots of content"
                   open={contentModalScrollOpen}
                   maxWidth="400px"
                   role="alertdialog"
                   actions={
-                    <GoAButtonGroup alignment="end">
-                      <GoAButton type="tertiary" onClick={() => setContentModalScrollOpen(false)}>
+                    <GoabButtonGroup alignment="end">
+                      <GoabButton type="tertiary" onClick={() => setContentModalScrollOpen(false)}>
                         Cancel
-                      </GoAButton>
-                      <GoAButton
+                      </GoabButton>
+                      <GoabButton
                         type="primary"
                         onClick={() => {
                           setContentModalScrollOpen(false);
                         }}
                       >
                         Continue
-                      </GoAButton>
-                    </GoAButtonGroup>
+                      </GoabButton>
+                    </GoabButtonGroup>
                   }
                 >
                   <p>
@@ -2899,209 +3029,209 @@ export function App() {
                     This is a lot of content that make the modal scroll. This is a lot of content
                     that make the modal scroll. This is a lot of content that make the modal scroll.
                   </p>
-                </GoAModal>
-              </GoABlock>
+                </GoabModal>
+              </GoabBlock>
 
               {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-              <GoAText size="heading-m" mt="3xl" mb="xl">
+              <GoabText size="heading-m" mt="3xl" mb="xl">
                 Side menu
-              </GoAText>
+              </GoabText>
 
-              <GoABlock gap="3xl" mb="xl" direction="column">
+              <GoabBlock gap="3xl" mb="xl" direction="column">
 
                 <div style={{ maxWidth: '256px' }}>
-                  <GoASideMenu>
+                  <GoabSideMenu>
                     <a href="#">Home</a>
                     <a href="#">Profile</a>
                     <a href="#">About</a>
                     <a href="#">Contact</a>
-                    {/*<GoASideMenuGroup heading="Group heading" icon="person"> TODO: rebase with alpha to be able to use this*/}
-                    <GoASideMenuGroup heading="Group heading">
+                    {/* TODO: rebase with alpha to be able to use this: <GoabSideMenuGroup heading="Group heading" icon="person"> */}
+                    <GoabSideMenuGroup heading="Group heading">
                       <a href="#">Foo</a>
                       <a href="#">Bar ndjkasndnsa dsadsajd saj djsad jkas dka djk jks adjksa djkas dkjas djk askjd asjkd sajkd akjsd asd ksa djkas dja ds </a>
-                    </GoASideMenuGroup>
-                  </GoASideMenu>
+                    </GoabSideMenuGroup>
+                  </GoabSideMenu>
                 </div>
 
-                <GoABlock gap="xl" direction="row">
+                <GoabBlock gap="xl" direction="row">
                   <div style={{ maxWidth: '256px' }}>
-                    <GoASideMenu>
-                      <GoASideMenuHeading>This is a side menu heading</GoASideMenuHeading>
+                    <GoabSideMenu>
+                      <GoabSideMenuHeading>This is a side menu heading</GoabSideMenuHeading>
                       <a href="#">This is a side menu item</a>
                       <a href="#">This is another side menu item</a>
-                      <goa-spacer vspacing="m"></goa-spacer>
-                      <GoASideMenuHeading>This is another side menu heading</GoASideMenuHeading>
+                      <GoabSpacer vSpacing="m"></GoabSpacer>
+                      <GoabSideMenuHeading>This is another side menu heading</GoabSideMenuHeading>
                       <a href="#">Side menu item</a>
                       <a href="#">Side menu item</a>
-                      <goa-spacer vspacing="m"></goa-spacer>
-                      <GoASideMenuHeading>Side menu heading</GoASideMenuHeading>
-                      <GoASideMenuGroup heading="This is a side menu group">
+                      <GoabSpacer vSpacing="m"></GoabSpacer>
+                      <GoabSideMenuHeading>Side menu heading</GoabSideMenuHeading>
+                      <GoabSideMenuGroup heading="This is a side menu group">
                         <a href="#">Foo</a>
                         <a href="#">Bar</a>
-                      </GoASideMenuGroup>
-                      <GoASideMenuGroup heading="This is a side menu group">
+                      </GoabSideMenuGroup>
+                      <GoabSideMenuGroup heading="This is a side menu group">
                         <a href="#">Foo</a>
                         <a href="#">Bar</a>
-                        <GoASideMenuGroup heading="This is a side menu group">
+                        <GoabSideMenuGroup heading="This is a side menu group">
                           <a href="#">Foo</a>
                           <a href="#">Bar</a>
-                          <GoASideMenuGroup heading="This is a side menu group">
+                          <GoabSideMenuGroup heading="This is a side menu group">
                             <a href="#">Foo</a>
                             <a href="#">Bar</a>
-                          </GoASideMenuGroup>
-                        </GoASideMenuGroup>
-                      </GoASideMenuGroup>
-                    </GoASideMenu>
+                          </GoabSideMenuGroup>
+                        </GoabSideMenuGroup>
+                      </GoabSideMenuGroup>
+                    </GoabSideMenu>
                   </div>
 
                   <div style={{ maxWidth: '256px' }}>
-                    <GoASideMenu>
-                      <GoASideMenuHeading icon="home">Nav section 1</GoASideMenuHeading>
+                    <GoabSideMenu>
+                      <GoabSideMenuHeading icon="home">Nav section 1</GoabSideMenuHeading>
                       <a href="#">Home</a>
                       <a href="#">Profile</a>
-                      <goa-spacer vspacing="m"></goa-spacer>
-                      <GoASideMenuHeading icon="pencil">Nav section 2</GoASideMenuHeading>
+                      <GoabSpacer vSpacing="m"></GoabSpacer>
+                      <GoabSideMenuHeading icon="pencil">Nav section 2</GoabSideMenuHeading>
                       <a href="#">About</a>
                       <a href="#">Contact</a>
-                      <goa-spacer vspacing="m"></goa-spacer>
-                      <GoASideMenuHeading>Nav with sub nav</GoASideMenuHeading>
-                      {/*<GoASideMenuGroup heading="Group heading" icon="person"> TODO: rebase with alpha to be able to use this*/}
-                      <GoASideMenuGroup heading="Group heading">
+                      <GoabSpacer vSpacing="m"></GoabSpacer>
+                      <GoabSideMenuHeading>Nav with sub nav</GoabSideMenuHeading>
+                      {/* TODO: rebase with alpha to be able to use: <GoabSideMenuGroup heading="Group heading" icon="person"> */}
+                      <GoabSideMenuGroup heading="Group heading">
                       <a href="#">Foo</a>
                         <a href="#">Bar ndjkasndnsa dsadsajd saj djsad jkas dka djk jks adjksa djkas dkjas djk askjd asjkd sajkd akjsd asd ksa djkas dja ds</a>
-                      </GoASideMenuGroup>
-                    </GoASideMenu>
+                      </GoabSideMenuGroup>
+                    </GoabSideMenu>
                   </div>
-                </GoABlock>
-              </GoABlock>
+                </GoabBlock>
+              </GoabBlock>
 
               {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-              <GoAText size="heading-m" mt="3xl" mb="xl">
+              <GoabText size="heading-m" mt="3xl" mb="xl">
                 Table
-              </GoAText>
+              </GoabText>
 
-              <GoABlock gap="2xl" mb="xl" direction="column">
-                <GoATable width="100%">
+              <GoabBlock gap="2xl" mb="xl" direction="column">
+                <GoabTable width="100%">
                   <thead>
                     <tr>
                       <th>Status</th>
                       <th>Text</th>
-                      <th className="goa-table-number-header">Number</th>
+                      <th className="Goab-table-number-header">Number</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>
-                        <GoABadge type="information" content="Badge text" mt="2xs"></GoABadge>
+                        <GoabBadge type="information" content="Badge text" mt="2xs"></GoabBadge>
                       </td>
                       <td>Lorem ipsum</td>
-                      <td className="goa-table-number-column">1234567890</td>
+                      <td className="Goab-table-number-column">1234567890</td>
                       <td>
-                        <GoAButton type="tertiary" size="compact">Action</GoAButton>
+                        <GoabButton type="tertiary" size="compact">Action</GoabButton>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <GoABadge type="information" content="Badge text" mt="2xs"></GoABadge>
+                        <GoabBadge type="information" content="Badge text" mt="2xs"></GoabBadge>
                       </td>
                       <td>Lorem ipsum</td>
-                      <td className="goa-table-number-column">1234567890</td>
+                      <td className="Goab-table-number-column">1234567890</td>
                       <td>
-                        <GoAButton type="tertiary" size="compact">Action</GoAButton>
+                        <GoabButton type="tertiary" size="compact">Action</GoabButton>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <GoABadge type="information" content="Badge text" mt="2xs"></GoABadge>
+                        <GoabBadge type="information" content="Badge text" mt="2xs"></GoabBadge>
                       </td>
                       <td>Lorem ipsum</td>
-                      <td className="goa-table-number-column">1234567890</td>
+                      <td className="Goab-table-number-column">1234567890</td>
                       <td>
-                        <GoAButton type="tertiary" size="compact">Action</GoAButton>
+                        <GoabButton type="tertiary" size="compact">Action</GoabButton>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <GoABadge type="information" content="Badge text" mt="2xs"></GoABadge>
+                        <GoabBadge type="information" content="Badge text" mt="2xs"></GoabBadge>
                       </td>
                       <td>Lorem ipsum</td>
-                      <td className="goa-table-number-column">1234567890</td>
+                      <td className="Goab-table-number-column">1234567890</td>
                       <td>
-                        <GoAButton type="tertiary" size="compact">Action</GoAButton>
+                        <GoabButton type="tertiary" size="compact">Action</GoabButton>
                       </td>
                     </tr>
                   </tbody>
-                </GoATable>
+                </GoabTable>
 
-                <GoATable width="100%" variant="relaxed">
+                <GoabTable width="100%" variant="relaxed">
                   <thead>
                     <tr>
                       <th>Status</th>
                       <th>Text</th>
-                      <th className="goa-table-number-header">Number</th>
+                      <th className="Goab-table-number-header">Number</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>
-                        <GoABadge type="information" content="Badge text" mt="2xs"></GoABadge>
+                        <GoabBadge type="information" content="Badge text" mt="2xs"></GoabBadge>
                       </td>
                       <td>Lorem ipsum</td>
-                      <td className="goa-table-number-column">1234567890</td>
+                      <td className="Goab-table-number-column">1234567890</td>
                       <td>
-                        <GoAButton type="tertiary" size="compact">Action</GoAButton>
+                        <GoabButton type="tertiary" size="compact">Action</GoabButton>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <GoABadge type="information" content="Badge text" mt="2xs"></GoABadge>
+                        <GoabBadge type="information" content="Badge text" mt="2xs"></GoabBadge>
                       </td>
                       <td>Lorem ipsum</td>
-                      <td className="goa-table-number-column">1234567890</td>
+                      <td className="Goab-table-number-column">1234567890</td>
                       <td>
-                        <GoAButton type="tertiary" size="compact">Action</GoAButton>
+                        <GoabButton type="tertiary" size="compact">Action</GoabButton>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <GoABadge type="information" content="Badge text" mt="2xs"></GoABadge>
+                        <GoabBadge type="information" content="Badge text" mt="2xs"></GoabBadge>
                       </td>
                       <td>Lorem ipsum</td>
-                      <td className="goa-table-number-column">1234567890</td>
+                      <td className="Goab-table-number-column">1234567890</td>
                       <td>
-                        <GoAButton type="tertiary" size="compact">Action</GoAButton>
+                        <GoabButton type="tertiary" size="compact">Action</GoabButton>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <GoABadge type="information" content="Badge text" mt="2xs"></GoABadge>
+                        <GoabBadge type="information" content="Badge text" mt="2xs"></GoabBadge>
                       </td>
                       <td>Lorem ipsum</td>
-                      <td className="goa-table-number-column">1234567890</td>
+                      <td className="Goab-table-number-column">1234567890</td>
                       <td>
-                        <GoAButton type="tertiary" size="compact">Action</GoAButton>
+                        <GoabButton type="tertiary" size="compact">Action</GoabButton>
                       </td>
                     </tr>
                   </tbody>
-                </GoATable>
+                </GoabTable>
 
-                <GoATable onSort={sortData}>
+                <GoabTable onSort={(e) => sortData(e.sortBy, e.sortDir)}>
                   <thead>
                     <tr>
                       <th>
-                        <GoATableSortHeader name="firstName">First name</GoATableSortHeader>
+                        <GoabTableSortHeader name="firstName">First name</GoabTableSortHeader>
                       </th>
                       <th>
-                        <GoATableSortHeader name="lastName">Last name</GoATableSortHeader>
+                        <GoabTableSortHeader name="lastName">Last name</GoabTableSortHeader>
                       </th>
                       <th>
-                        <GoATableSortHeader name="age" direction="asc">
+                        <GoabTableSortHeader name="age" direction="asc">
                           Age
-                        </GoATableSortHeader>
+                        </GoabTableSortHeader>
                       </th>
                     </tr>
                   </thead>
@@ -3114,101 +3244,101 @@ export function App() {
                       </tr>
                     ))}
                   </tbody>
-                </GoATable>
+                </GoabTable>
 
-              </GoABlock>
+              </GoabBlock>
 
               {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-              <GoAText size="heading-m" mt="3xl" mb="2xl">
+              <GoabText size="heading-m" mt="3xl" mb="2xl">
                 Tabs
-              </GoAText>
+              </GoabText>
 
-              <GoABlock gap="xl" mb="xl" direction="column">
-                <GoATabs>
-                  <GoATab heading="Tab 1">
+              <GoabBlock gap="xl" mb="xl" direction="column">
+                <GoabTabs>
+                  <GoabTab heading="Tab 1">
                     Tab 1 content: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                     eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </GoATab>
-                  <GoATab heading="Tab 2 that has a longer name that wraps all thw ay to asdksnadnasda sad sadkasnd asd asd">
+                  </GoabTab>
+                  <GoabTab heading="Tab 2 that has a longer name that wraps all thw ay to asdksnadnasda sad sadkasnd asd asd">
                     Tab 2 content: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                     eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </GoATab>
-                  <GoATab heading="Tab 3">
+                  </GoabTab>
+                  <GoabTab heading="Tab 3">
                     Tab 3 content: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                     eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </GoATab>
-                </GoATabs>
+                  </GoabTab>
+                </GoabTabs>
 
-                <GoATabs>
-                  <GoATab heading="Tab with a tooltip">
-                    <GoATooltip content="Tooltip">
-                      <GoAIcon type="information-circle"></GoAIcon>
-                    </GoATooltip>
-                  </GoATab>
-                  <GoATab heading="Tab">No content</GoATab>
-                </GoATabs>
+                <GoabTabs>
+                  <GoabTab heading="Tab with a tooltip">
+                    <GoabTooltip content="Tooltip">
+                      <GoabIcon type="information-circle"></GoabIcon>
+                    </GoabTooltip>
+                  </GoabTab>
+                  <GoabTab heading="Tab">No content</GoabTab>
+                </GoabTabs>
 
-              </GoABlock>
+              </GoabBlock>
 
               {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-              <GoAText size="heading-m" mt="4xl" mb="2xl">
+              <GoabText size="heading-m" mt="4xl" mb="2xl">
                 Text area
-              </GoAText>
+              </GoabText>
 
-              <GoABlock gap="2xl" mb="xl" direction="column">
+              <GoabBlock gap="2xl" mb="xl" direction="column">
 
-                <GoAFormItem label="Basic text area" labelSize="regular">
-                  <GoATextarea
+                <GoabFormItem label="Basic text area" labelSize="regular">
+                  <GoabTextarea
                     countBy="character"
                     width="60ch"
                     name="item"
                     value={value}
                     onChange={onChangeTextArea}
-                  ></GoATextarea>
-                </GoAFormItem>
+                  ></GoabTextarea>
+                </GoabFormItem>
 
-                <GoAFormItem label="Text area 100% width" labelSize="regular">
-                  <GoATextarea
+                <GoabFormItem label="Text area 100% width" labelSize="regular">
+                  <GoabTextarea
                     placeholder='placeholder content'
                     countBy="character"
                     width="100%"
                     name="item"
                     value={value}
                     onChange={onChangeTextArea}
-                  ></GoATextarea>
-                </GoAFormItem>
+                  ></GoabTextarea>
+                </GoabFormItem>
 
-                <GoAFormItem label="Text area with a character counter" labelSize="regular">
-                  <GoATextarea
+                <GoabFormItem label="Text area with a character counter" labelSize="regular">
+                  <GoabTextarea
                     countBy="character"
                     maxCount={30}
                     width="60ch"
                     name="item"
                     value={value}
                     onChange={onChangeTextArea}
-                  ></GoATextarea>
-                </GoAFormItem>
+                  ></GoabTextarea>
+                </GoabFormItem>
 
-                <GoAFormItem label="Text area with a word counter" labelSize="regular">
-                  <GoATextarea
+                <GoabFormItem label="Text area with a word counter" labelSize="regular">
+                  <GoabTextarea
                     countBy="word"
                     maxCount={30}
                     width="60ch"
                     name="item"
                     value={value}
                     onChange={onChangeTextArea}
-                  ></GoATextarea>
-                </GoAFormItem>
+                  ></GoabTextarea>
+                </GoabFormItem>
 
-                <GoAFormItem
+                <GoabFormItem
                   label="Text area with an error"
                   requirement="optional"
                   helpText="Here is some helper text"
                   error="Error message."
                 >
-                  <GoATextarea
+                  <GoabTextarea
                     error={true}
                     rows={3}
                     name="item"
@@ -3217,15 +3347,15 @@ export function App() {
                     value={value}
                     onChange={onChangeTextArea}
                     width="80ch"
-                  ></GoATextarea>
-                </GoAFormItem>
+                  ></GoabTextarea>
+                </GoabFormItem>
 
-                <GoAFormItem
+                <GoabFormItem
                   label="Text area that's disabled"
                   requirement="optional"
                   helpText="Here is some helper text"
                 >
-                  <GoATextarea
+                  <GoabTextarea
                     disabled={true}
                     rows={3}
                     name="item"
@@ -3233,278 +3363,279 @@ export function App() {
                     maxCount={100}
                     value={value}
                     onChange={onChangeTextArea}
-                  ></GoATextarea>
-                </GoAFormItem>
+                  ></GoabTextarea>
+                </GoabFormItem>
 
-                <GoAContainer>
-                  <GoAFormItem
+                <GoabContainer>
+                  <GoabFormItem
                     label="Text area in a container"
                     requirement="optional"
                     helpText="Here is some helper text"
                   >
-                    <GoATextarea
+                    <GoabTextarea
                       rows={6}
                       name="item"
                       value={value}
                       onChange={onChangeTextArea}
                       width="80ch"
-                    ></GoATextarea>
-                  </GoAFormItem>
-                </GoAContainer>
+                    ></GoabTextarea>
+                  </GoabFormItem>
+                </GoabContainer>
 
-              </GoABlock>
+              </GoabBlock>
 
               {/* Component ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
 
-              <GoAText size="heading-m" mt="4xl" mb="xl">
+              <GoabText size="heading-m" mt="4xl" mb="xl">
                 Tooltip
-              </GoAText>
+              </GoabText>
 
-              <GoABlock gap="xl" mb="3xl" direction="column">
-                <GoATooltip content="Tooltip">
-                  <GoAIcon type="information-circle"></GoAIcon>
-                </GoATooltip>
+              <GoabBlock gap="xl" mb="3xl" direction="column">
+                <GoabTooltip content="Tooltip">
+                  <GoabIcon type="information-circle"></GoabIcon>
+                </GoabTooltip>
 
-                <GoATooltip content="Tooltip that has more content that wraps to a new line">
-                  <GoAIcon type="information-circle"></GoAIcon>
-                </GoATooltip>
+                <GoabTooltip content="Tooltip that has more content that wraps to a new line">
+                  <GoabIcon type="information-circle"></GoabIcon>
+                </GoabTooltip>
 
-                <GoATooltip content="Tooltip with bottom position" position="bottom">
-                  <GoAIcon type="arrow-down"></GoAIcon>
-                </GoATooltip>
+                <GoabTooltip content="Tooltip with bottom position" position="bottom">
+                  <GoabIcon type="arrow-down"></GoabIcon>
+                </GoabTooltip>
 
-                <GoATooltip content="Tooltip with right position" position="left">
-                  <GoAIcon type="arrow-forward"></GoAIcon>
-                </GoATooltip>
+                <GoabTooltip content="Tooltip with right position" position="left">
+                  <GoabIcon type="arrow-forward"></GoabIcon>
+                </GoabTooltip>
 
-                <GoATooltip content="Tooltip on an icon button">
-                  <GoAIconButton
+                <GoabTooltip content="Tooltip on an icon button">
+                  <GoabIconButton
                     variant="color"
                     size="medium"
                     icon="help-circle"
                     ariaLabel="Tooltip"
-                  ></GoAIconButton>
-                </GoATooltip>
+                  ></GoabIconButton>
+                </GoabTooltip>
 
-              </GoABlock>
+              </GoabBlock>
 
-              <GoASpacer vSpacing="4xl"></GoASpacer>
+              <GoabSpacer vSpacing="4xl"></GoabSpacer>
             </GoabTab>
 
             {/* TAB ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
 
-            <GoATab heading="Inputs">
+            <GoabTab heading="Inputs">
 
-              <GoABlock gap="2xl" direction="column" mt="none" mb="4xl">
+              <GoabBlock gap="2xl" direction="column" mt="none" mb="4xl">
 
-                <GoAFormItem label="Text" helpText="Give information that is a small amount of text or numbers.">
-                  <GoAInput
+                <GoabFormItem label="Text" helpText="Give information that is a small amount of text or numbers.">
+                  <GoabInput
                     name="name1"
                     type="text"
                     value=""
                     width="20ch"
-                  ></GoAInput>
-                </GoAFormItem>
+                    onChange={noop}
+                  ></GoabInput>
+                </GoabFormItem>
 
-                <GoAFormItem label="Text area" helpText="Give information that is a large amount of text.">
-                  <GoATextarea name="text area" rows={5} width="600px" countBy="character" maxCount={300}></GoATextarea>
-                </GoAFormItem>
+                <GoabFormItem label="Text area" helpText="Give information that is a large amount of text.">
+                  <GoabTextarea name="text area" rows={5} width="600px" countBy="character" maxCount={300} onChange={noop}></GoabTextarea>
+                </GoabFormItem>
 
-                <GoAFormItem label="Upload" helpText="Give one or more files.">
-                  {/* eslint-disable-next-line @typescript-eslint/no-empty-function */}
-                  <GoAFileUploadInput maxFileSize="100MB" variant="dragdrop" onSelectFile={() => {}} />
-                </GoAFormItem>
+                <GoabFormItem label="Upload" helpText="Give one or more files.">
+                  {/* TODO: add file cards on upload fiel. eslint-disable-next-line @typescript-eslint/no-empty-function */}
+                  <GoabFileUploadInput maxFileSize="100MB" variant="dragdrop" onSelectFile={(file) => console.log(file)} />
+                </GoabFormItem>
 
-                <GoAFormItem label="Radio" helpText="Choose one option from a small number of choices.">
-                  <GoARadioGroup name="school" ariaLabel="are you currently in school?">
-                    <GoARadioItem value="yes" label="Yes"></GoARadioItem>
-                    <GoARadioItem value="no" label="No"></GoARadioItem>
-                  </GoARadioGroup>
-                </GoAFormItem>
+                <GoabFormItem label="Radio" helpText="Choose one option from a small number of choices.">
+                  <GoabRadioGroup name="school" ariaLabel="are you currently in school?" onChange={noop}>
+                    <GoabRadioItem value="yes" label="Yes"></GoabRadioItem>
+                    <GoabRadioItem value="no" label="No"></GoabRadioItem>
+                  </GoabRadioGroup>
+                </GoabFormItem>
 
-                <GoAFormItem label="Dropdown" helpText="Choose one option from a longer list of choices." >
-                  <GoADropdown
+                <GoabFormItem label="Dropdown" helpText="Choose one option from a longer list of choices." >
+                  <GoabDropdown
                     name="item"
                     value=""
                     placeholder="—Select an option—"
-
+                    onChange={noop}
                   >
-                    <GoADropdownItem value="red" label="20ch 000000000000000"></GoADropdownItem>
-                    <GoADropdownItem value="green" label="abc"></GoADropdownItem>
-                    <GoADropdownItem value="blue" label="MMM"></GoADropdownItem>
-                  </GoADropdown>
-                </GoAFormItem>
+                    <GoabDropdownItem value="red" label="20ch 000000000000000"></GoabDropdownItem>
+                    <GoabDropdownItem value="green" label="abc"></GoabDropdownItem>
+                    <GoabDropdownItem value="blue" label="MMM"></GoabDropdownItem>
+                  </GoabDropdown>
+                </GoabFormItem>
 
-                <GoAFormItem label="Filterable dropdown" helpText="Choose one option from a very long list of choices.">
-                  <GoADropdown name="item" value="" filterable={true}>
-                    <GoADropdownItem value="red" label="bcdefghijklmnopqrstuvwxyz"></GoADropdownItem>
-                    <GoADropdownItem value="green" label="abcd"></GoADropdownItem>
-                    <GoADropdownItem value="blue" label="abcde"></GoADropdownItem>
-                  </GoADropdown>
-                </GoAFormItem>
+                <GoabFormItem label="Filterable dropdown" helpText="Choose one option from a very long list of choices.">
+                  <GoabDropdown name="item" value="" filterable={true} leadingIcon="search" onChange={noop}>
+                    <GoabDropdownItem value="red" label="bcdefghijklmnopqrstuvwxyz"></GoabDropdownItem>
+                    <GoabDropdownItem value="green" label="abcd"></GoabDropdownItem>
+                    <GoabDropdownItem value="blue" label="abcde"></GoabDropdownItem>
+                  </GoabDropdown>
+                </GoabFormItem>
 
-                <GoAFormItem label="Checkbox list" helpText="Choose one or more options from a small number of choices.">
-                  <GoACheckbox
+                <GoabFormItem label="Checkbox list" helpText="Choose one or more options from a small number of choices.">
+                  <GoabCheckbox
                     name="item 1"
                     text="Option 1"
                     value=""
-                  ></GoACheckbox>
-                  <GoACheckbox
+                  ></GoabCheckbox>
+                  <GoabCheckbox
                     name="item 2"
                     text="Option 2"
                     value=""
-                  ></GoACheckbox>
-                  <GoACheckbox
+                  ></GoabCheckbox>
+                  <GoabCheckbox
                     name="item 3"
                     text="Option 3"
                     value=""
                     mb="none"
-                  ></GoACheckbox>
-                </GoAFormItem>
+                  ></GoabCheckbox>
+                </GoabFormItem>
 
-                <GoAFormItem label="Checkbox" helpText="Give consent or agree to something.">
-                  <GoACheckbox
+                <GoabFormItem label="Checkbox" helpText="Give consent or agree to something.">
+                  <GoabCheckbox
                     name="item 1"
                     text="I agree to allow the corporation to use my likeness in perpetuity..."
                     value=""
                     mb="none"
 
-                  ></GoACheckbox>
-                </GoAFormItem>
+                  ></GoabCheckbox>
+                </GoabFormItem>
 
-                <GoAFormItem label="Date" helpText="Choose a date from a calendar.">
-                  <GoADatePicker name="item" value={new Date(2024, 8, 27)}></GoADatePicker>
-                </GoAFormItem>
+                <GoabFormItem label="Date" helpText="Choose a date from a calendar.">
+                  <GoabDatePicker name="item" value={new Date(2024, 8, 27)} onChange={noop}></GoabDatePicker>
+                </GoabFormItem>
 
-              </GoABlock>
+              </GoabBlock>
 
-            </GoATab>
+            </GoabTab>
 
             {/* TAB ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
-            <GoATab heading="Tables">
+            <GoabTab heading="Tables">
 
-              <GoABlock gap="xl" mb="xl" direction="column">
+              <GoabBlock gap="xl" mb="xl" direction="column">
 
 
-                <GoATable width="100%">
+                <GoabTable width="100%">
                   <thead>
                     <tr>
                       <th>Status</th>
                       <th>Text</th>
-                      <th className="goa-table-number-header">Number</th>
+                      <th className="Goab-table-number-header">Number</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>
-                        <GoABadge type="information" content="Badge" mt="2xs"></GoABadge>
+                        <GoabBadge type="information" content="Badge" mt="2xs"></GoabBadge>
                       </td>
                       <td>Lorem ipsum</td>
-                      <td className="goa-table-number-column">1234567890</td>
+                      <td className="Goab-table-number-column">1234567890</td>
                       <td>
-                        <GoAButton type="tertiary" size="compact">Action</GoAButton>
+                        <GoabButton type="tertiary" size="compact">Action</GoabButton>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <GoABadge type="information" content="Badge text" mt="2xs"></GoABadge>
+                        <GoabBadge type="information" content="Badge text" mt="2xs"></GoabBadge>
                       </td>
                       <td>Text that runs really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really long	</td>
-                      <td className="goa-table-number-column">1234567890</td>
+                      <td className="Goab-table-number-column">1234567890</td>
                       <td>
-                        <GoAButton type="tertiary" size="compact">Action</GoAButton>
+                        <GoabButton type="tertiary" size="compact">Action</GoabButton>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <GoABadge type="information" content="Badge text" mt="2xs"></GoABadge>
+                        <GoabBadge type="information" content="Badge text" mt="2xs"></GoabBadge>
                       </td>
                       <td>Lorem ipsum</td>
-                      <td className="goa-table-number-column">1234567890</td>
+                      <td className="Goab-table-number-column">1234567890</td>
                       <td>
-                        <GoAButton type="tertiary" size="compact">Action</GoAButton>
+                        <GoabButton type="tertiary" size="compact">Action</GoabButton>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <GoABadge type="information" content="Badge text" mt="2xs"></GoABadge>
+                        <GoabBadge type="information" content="Badge text" mt="2xs"></GoabBadge>
                       </td>
                       <td>Lorem ipsum</td>
-                      <td className="goa-table-number-column">1234567890</td>
+                      <td className="Goab-table-number-column">1234567890</td>
                       <td>
-                        <GoAButton type="tertiary" size="compact">Action</GoAButton>
+                        <GoabButton type="tertiary" size="compact">Action</GoabButton>
                       </td>
                     </tr>
                   </tbody>
-                </GoATable>
+                </GoabTable>
 
-                <GoATable width="100%" variant="relaxed">
+                <GoabTable width="100%" variant="relaxed">
                   <thead>
                     <tr>
                       <th>Status</th>
                       <th>Text</th>
-                      <th className="goa-table-number-header">Number</th>
+                      <th className="Goab-table-number-header">Number</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>
-                        <GoABadge type="information" content="Badge text" mt="2xs"></GoABadge>
+                        <GoabBadge type="information" content="Badge text" mt="2xs"></GoabBadge>
                       </td>
                       <td>Text that runs really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really long</td>
-                      <td className="goa-table-number-column">1234567890</td>
+                      <td className="Goab-table-number-column">1234567890</td>
                       <td>
-                        <GoAButton type="tertiary" size="compact">Action</GoAButton>
+                        <GoabButton type="tertiary" size="compact">Action</GoabButton>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <GoABadge type="information" content="Badge text" mt="2xs"></GoABadge>
+                        <GoabBadge type="information" content="Badge text" mt="2xs"></GoabBadge>
                       </td>
                       <td>Lorem ipsum</td>
-                      <td className="goa-table-number-column">1234567890</td>
+                      <td className="Goab-table-number-column">1234567890</td>
                       <td>
-                        <GoAButton type="tertiary" size="compact">Action</GoAButton>
+                        <GoabButton type="tertiary" size="compact">Action</GoabButton>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <GoABadge type="information" content="Badge text" mt="2xs"></GoABadge>
+                        <GoabBadge type="information" content="Badge text" mt="2xs"></GoabBadge>
                       </td>
                       <td>Lorem ipsum</td>
-                      <td className="goa-table-number-column">1234567890</td>
+                      <td className="Goab-table-number-column">1234567890</td>
                       <td>
-                        <GoAButton type="tertiary" size="compact">Action</GoAButton>
+                        <GoabButton type="tertiary" size="compact">Action</GoabButton>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <GoABadge type="information" content="Badge text" mt="2xs"></GoABadge>
+                        <GoabBadge type="information" content="Badge text" mt="2xs"></GoabBadge>
                       </td>
                       <td>Lorem ipsum</td>
-                      <td className="goa-table-number-column">1234567890</td>
+                      <td className="Goab-table-number-column">1234567890</td>
                       <td>
-                        <GoAButton type="tertiary" size="compact">Action</GoAButton>
+                        <GoabButton type="tertiary" size="compact">Action</GoabButton>
                       </td>
                     </tr>
                   </tbody>
-                </GoATable>
+                </GoabTable>
 
-                <GoATable onSort={sortData}>
+                <GoabTable onSort={(e) => sortData(e.sortBy, e.sortDir)}>
                   <thead>
                     <tr>
                       <th>
                         First name
                       </th>
                       <th>
-                        <GoATableSortHeader name="lastName">Last name</GoATableSortHeader>
+                        <GoabTableSortHeader name="lastName">Last name</GoabTableSortHeader>
                       </th>
                       <th>
-                        <GoATableSortHeader name="age" direction="asc">
+                        <GoabTableSortHeader name="age" direction="asc">
                           Age
-                        </GoATableSortHeader>
+                        </GoabTableSortHeader>
                       </th>
                     </tr>
                   </thead>
@@ -3517,17 +3648,17 @@ export function App() {
                       </tr>
                     ))}
                   </tbody>
-                </GoATable>
+                </GoabTable>
 
 
 
-              </GoABlock>
+              </GoabBlock>
 
-            </GoATab>
+            </GoabTab>
 
             {/* TAB ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
 
-            <GoATab heading="Text">
+            <GoabTab heading="Text">
               <a href="#" className="back-link">
                 Back link
               </a>
@@ -3535,183 +3666,185 @@ export function App() {
               {/* Apply max width to input, not form item for fixed width inputs. */}
 
 
-              <GoAText as="h1" size="heading-xl" mt="2xl" mb="none">
+              <GoabText as="h1" size="heading-xl" mt="2xl" mb="none">
                 Heading extra large as page h1
-              </GoAText>
-              <GoAText size="heading-l" mt="2xl" mb="none">
+              </GoabText>
+              <GoabText size="heading-l" mt="2xl" mb="none">
                 Heading large
-              </GoAText>
-              <GoAText size="heading-m" mt="2xl" mb="none">
+              </GoabText>
+              <GoabText size="heading-m" mt="2xl" mb="none">
                 Heading medium
-              </GoAText>
-              <GoAText size="heading-s" mt="2xl" mb="none">
+              </GoabText>
+              <GoabText size="heading-s" mt="2xl" mb="none">
                 Heading small
-              </GoAText>
-              <GoAText size="heading-xs" mt="2xl" mb="none">
+              </GoabText>
+              <GoabText size="heading-xs" mt="2xl" mb="none">
                 Heading extra small
-              </GoAText>
+              </GoabText>
 
-              <GoAText size="body-l" mt="xl" mb="none">
+              <GoabText size="body-l" mt="xl" mb="none">
                 Body large Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum dignissim erat
                 quis iaculis.
-              </GoAText>
+              </GoabText>
 
-              <GoAText size="body-m" mt="l" mb="xl">
+              <GoabText size="body-m" mt="l" mb="xl">
                 Body medium text, lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum dignissim erat
                 quis iaculis.
-              </GoAText>
-              <GoAText size="body-s" mt="l" mb="xl">
+              </GoabText>
+              <GoabText size="body-s" mt="l" mb="xl">
                 Body small text, lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum dignissim erat
                 quis iaculis.
-              </GoAText>
-              <GoAText size="body-xs" mt="l" mb="xl">
+              </GoabText>
+              <GoabText size="body-xs" mt="l" mb="xl">
                 Body extra small text, lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum dignissim erat
                 quis iaculis.
-              </GoAText>
+              </GoabText>
 
-              <GoAText as="h3" size="heading-l" mt="3xl" mb="4xl">
+              <GoabText as="h3" size="heading-l" mt="3xl" mb="4xl">
                 Text component with margin top and bottom
-              </GoAText>
-              <GoAText as="h3" size="heading-l" mt="4xl">
+              </GoabText>
+              <GoabText as="h3" size="heading-l" mt="4xl">
                 Text component with margin top
-              </GoAText>
-              <GoAText as="h3" size="heading-l" mb="4xl">
+              </GoabText>
+              <GoabText as="h3" size="heading-l" mb="4xl">
                 Text component with margin bottom
-              </GoAText>
+              </GoabText>
 
-            </GoATab>
+            </GoabTab>
 
             {/* TAB ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
-            <GoATab heading="Skeleton loading">
+            <GoabTab heading="Skeleton loading">
 
-              <GoABlock gap="xl" mb="xl" direction="column">
-                <GoAText size="heading-s" mt="none" mb="m">
+              <GoabBlock gap="xl" mb="xl" direction="column">
+                <GoabText size="heading-s" mt="none" mb="m">
                   Image
-                </GoAText>
-                <GoASkeleton type="image" size={1}></GoASkeleton>
-                <GoASkeleton type="image" size={2}></GoASkeleton>
-                <GoASkeleton type="image" size={3}></GoASkeleton>
-                <GoASkeleton type="image" size={4}></GoASkeleton>
+                </GoabText>
+                <GoabSkeleton type="image" size={"1"}></GoabSkeleton>
+                <GoabSkeleton type="image" size={"2"}></GoabSkeleton>
+                <GoabSkeleton type="image" size={"3"}></GoabSkeleton>
+                <GoabSkeleton type="image" size={"4"}></GoabSkeleton>
 
-                <GoAText size="heading-s" mt="3xl" mb="m">
+                <GoabText size="heading-s" mt="3xl" mb="m">
                   Text
-                </GoAText>
-                <GoASkeleton type="text" size={1}></GoASkeleton>
-                <GoASkeleton type="text" size={2}></GoASkeleton>
-                <GoASkeleton type="text" size={3}></GoASkeleton>
-                <GoASkeleton type="text" size={4}></GoASkeleton>
+                </GoabText>
+                <GoabSkeleton type="text" size={"1"}></GoabSkeleton>
+                <GoabSkeleton type="text" size={"2"}></GoabSkeleton>
+                <GoabSkeleton type="text" size={"3"}></GoabSkeleton>
+                <GoabSkeleton type="text" size={"4"}></GoabSkeleton>
 
-                <GoAText size="heading-s" mt="3xl" mb="m">
+                <GoabText size="heading-s" mt="3xl" mb="m">
                   Title
-                </GoAText>
-                <GoASkeleton type="title" size={1}></GoASkeleton>
-                <GoASkeleton type="title" size={2}></GoASkeleton>
-                <GoASkeleton type="title" size={3}></GoASkeleton>
-                <GoASkeleton type="title" size={4}></GoASkeleton>
+                </GoabText>
+                <GoabSkeleton type="title" size={"1"}></GoabSkeleton>
+                <GoabSkeleton type="title" size={"2"}></GoabSkeleton>
+                <GoabSkeleton type="title" size={"3"}></GoabSkeleton>
+                <GoabSkeleton type="title" size={"4"}></GoabSkeleton>
 
-                <GoAText size="heading-s" mt="3xl" mb="m">
+                <GoabText size="heading-s" mt="3xl" mb="m">
                   Text-small
-                </GoAText>
-                <GoASkeleton type="text-small" size={1}></GoASkeleton>
-                <GoASkeleton type="text-small" size={2}></GoASkeleton>
-                <GoASkeleton type="text-small" size={3}></GoASkeleton>
-                <GoASkeleton type="text-small" size={4}></GoASkeleton>
+                </GoabText>
+                <GoabSkeleton type="text-small" size={"1"}></GoabSkeleton>
+                <GoabSkeleton type="text-small" size={"2"}></GoabSkeleton>
+                <GoabSkeleton type="text-small" size={"3"}></GoabSkeleton>
+                <GoabSkeleton type="text-small" size={"4"}></GoabSkeleton>
 
-                <GoAText size="heading-s" mt="3xl" mb="m">
+                <GoabText size="heading-s" mt="3xl" mb="m">
                   Avatar
-                </GoAText>
-                <GoASkeleton type="avatar" size={1}></GoASkeleton>
-                <GoASkeleton type="avatar" size={2}></GoASkeleton>
-                <GoASkeleton type="avatar" size={3}></GoASkeleton>
-                <GoASkeleton type="avatar" size={4}></GoASkeleton>
+                </GoabText>
+                <GoabSkeleton type="avatar" size={"1"}></GoabSkeleton>
+                <GoabSkeleton type="avatar" size={"2"}></GoabSkeleton>
+                <GoabSkeleton type="avatar" size={"3"}></GoabSkeleton>
+                <GoabSkeleton type="avatar" size={"4"}></GoabSkeleton>
 
-                <GoAText size="heading-s" mt="3xl" mb="m">
+                <GoabText size="heading-s" mt="3xl" mb="m">
                   Header
-                </GoAText>
-                <GoASkeleton type="header" size={1}></GoASkeleton>
-                <GoASkeleton type="header" size={2}></GoASkeleton>
-                <GoASkeleton type="header" size={3}></GoASkeleton>
-                <GoASkeleton type="header" size={4}></GoASkeleton>
+                </GoabText>
+                <GoabSkeleton type="header" size={"1"}></GoabSkeleton>
+                <GoabSkeleton type="header" size={"2"}></GoabSkeleton>
+                <GoabSkeleton type="header" size={"3"}></GoabSkeleton>
+                <GoabSkeleton type="header" size={"4"}></GoabSkeleton>
 
-                <GoAText size="heading-s" mt="3xl" mb="m">
+                <GoabText size="heading-s" mt="3xl" mb="m">
                   Paragraph
-                </GoAText>
-                <GoASkeleton type="paragraph" size={1}></GoASkeleton>
-                <GoASkeleton type="paragraph" size={2}></GoASkeleton>
-                <GoASkeleton type="paragraph" size={3}></GoASkeleton>
-                <GoASkeleton type="paragraph" size={4}></GoASkeleton>
+                </GoabText>
+                <GoabSkeleton type="paragraph" size={"1"}></GoabSkeleton>
+                <GoabSkeleton type="paragraph" size={"2"}></GoabSkeleton>
+                <GoabSkeleton type="paragraph" size={"3"}></GoabSkeleton>
+                <GoabSkeleton type="paragraph" size={"4"}></GoabSkeleton>
 
-                <GoAText size="heading-s" mt="3xl" mb="m">
+                <GoabText size="heading-s" mt="3xl" mb="m">
                   Thumbnail
-                </GoAText>
-                <GoASkeleton type="thumbnail" size={1}></GoASkeleton>
-                <GoASkeleton type="thumbnail" size={2}></GoASkeleton>
-                <GoASkeleton type="thumbnail" size={3}></GoASkeleton>
-                <GoASkeleton type="thumbnail" size={4}></GoASkeleton>
+                </GoabText>
+                <GoabSkeleton type="thumbnail" size={"1"}></GoabSkeleton>
+                <GoabSkeleton type="thumbnail" size={"2"}></GoabSkeleton>
+                <GoabSkeleton type="thumbnail" size={"3"}></GoabSkeleton>
+                <GoabSkeleton type="thumbnail" size={"4"}></GoabSkeleton>
 
-                <GoAText size="heading-s" mt="3xl" mb="m">
+                <GoabText size="heading-s" mt="3xl" mb="m">
                   Card
-                </GoAText>
-                <GoASkeleton type="card" size={1} maxWidth="360px"></GoASkeleton>
-                <GoASkeleton type="card" size={2}></GoASkeleton>
-                <GoASkeleton type="card" size={3}></GoASkeleton>
-                <GoASkeleton type="card" size={4}></GoASkeleton>
+                </GoabText>
+                <GoabSkeleton type="card" size={"1"} maxWidth="360px"></GoabSkeleton>
+                <GoabSkeleton type="card" size={"2"}></GoabSkeleton>
+                <GoabSkeleton type="card" size={"3"}></GoabSkeleton>
+                <GoabSkeleton type="card" size={"4"}></GoabSkeleton>
 
-                <GoAText size="heading-s" mt="3xl" mb="m">
+                <GoabText size="heading-s" mt="3xl" mb="m">
                   Profile
-                </GoAText>
-                <GoASkeleton type="profile" size={1}></GoASkeleton>
-                <GoASkeleton type="profile" size={2}></GoASkeleton>
-                <GoASkeleton type="profile" size={3}></GoASkeleton>
-                <GoASkeleton type="profile" size={4}></GoASkeleton>
-              </GoABlock>
-            </GoATab>
+                </GoabText>
+                <GoabSkeleton type="profile" size={"1"}></GoabSkeleton>
+                <GoabSkeleton type="profile" size={"2"}></GoabSkeleton>
+                <GoabSkeleton type="profile" size={"3"}></GoabSkeleton>
+                <GoabSkeleton type="profile" size={"4"}></GoabSkeleton>
+              </GoabBlock>
+            </GoabTab>
 
           </GoabTabs>
         </GoabPageBlock>
       </section>
 
       <section slot="footer">
-        <GoAAppFooter url="http://localhost:4200" maxContentWidth="100%">
-          <GoAAppFooterNavSection maxColumnCount={1} heading="Heading">
+        <GoabAppFooter url="http://localhost:4200" maxContentWidth="100%">
+          <GoabAppFooterNavSection maxColumnCount={1} heading="Heading">
             <a href="g.html">Link 123we</a>
             <a href="h.html">Link 2</a>
             <a href="i.html">Link 3</a>
             <a href="j.html">Other thing</a>
-          </GoAAppFooterNavSection>
-          <GoAAppFooterNavSection maxColumnCount={1} heading="Heading">
+          </GoabAppFooterNavSection>
+          <GoabAppFooterNavSection maxColumnCount={1} heading="Heading">
             <a href="g.html">Link 123we</a>
             <a href="h.html">Link 2</a>
             <a href="i.html">Link 3</a>
             <a href="j.html">Other thing</a>
-          </GoAAppFooterNavSection>
-          <GoAAppFooterMetaSection>
+          </GoabAppFooterNavSection>
+          <GoabAppFooterMetaSection>
             <a href="privacy.html">Meta link</a>
             <a href="disclaimer.html">Meta link</a>
             <a href="accessibility.html">Meta link</a>
             <a href="using-alberta.html">Meta link</a>
-          </GoAAppFooterMetaSection>
-        </GoAAppFooter>
+          </GoabAppFooterMetaSection>
+        </GoabAppFooter>
 
-        <GoAAppFooter maxContentWidth="100%"> </GoAAppFooter>
+        <GoabAppFooter maxContentWidth="100%"> </GoabAppFooter>
+        <GoabAppFooter maxContentWidth="100%" url="http://localhost:4200"> </GoabAppFooter>
 
-        <GoAAppFooter maxContentWidth="100%">
-          <GoAAppFooterMetaSection>
+
+        <GoabAppFooter maxContentWidth="100%">
+          <GoabAppFooterMetaSection>
             <a href="privacy.html">Meta link</a>
             <a href="disclaimer.html">Meta link</a>
             <a href="accessibility.html">Meta link</a>
             <a href="using-alberta.html">Meta link</a>
-          </GoAAppFooterMetaSection>
-        </GoAAppFooter>
+          </GoabAppFooterMetaSection>
+        </GoabAppFooter>
 
-        <GoAAppFooter maxContentWidth="100%">
-          <GoAAppFooterNavSection maxColumnCount={1}>
+        <GoabAppFooter maxContentWidth="100%">
+          <GoabAppFooterNavSection maxColumnCount={1}>
             <a href="g.html">Link 1</a>
             <a href="h.html">Link 2</a>
             <a href="i.html">Link 3</a>
             <a href="j.html">Other thing</a>
-          </GoAAppFooterNavSection>
-        </GoAAppFooter>
+          </GoabAppFooterNavSection>
+        </GoabAppFooter>
       </section>
     </GoabOneColumnLayout >
   );
