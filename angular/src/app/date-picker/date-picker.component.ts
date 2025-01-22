@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { GoabButton, GoabDatePicker } from "@abgov/angular-components";
+import { GoabButton, GoabDatePicker, GoabFormItem } from "@abgov/angular-components";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { GoabDatePickerOnChangeDetail } from "@abgov/ui-components-common";
 
@@ -9,12 +9,22 @@ import { GoabDatePickerOnChangeDetail } from "@abgov/ui-components-common";
  templateUrl: "./date-picker.component.html",
  imports: [
    GoabDatePicker,
+   GoabFormItem,
    FormsModule,
    ReactiveFormsModule,
    GoabButton
  ]
 })
 export class DatePickerComponent {
+
+  item = new Date();
+  dateOnChange(event: GoabDatePickerOnChangeDetail) {
+    // handle change
+    console.log(event.value);
+  }
+
+
+
   selectedDate: undefined|Date = new Date();
   form: FormGroup;
 

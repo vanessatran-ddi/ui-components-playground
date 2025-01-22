@@ -17,4 +17,8 @@
 <goab-date-picker (onChange)="handleDateChange($event)" name="date-picker"></goab-date-picker>
 
 
+<goab-form-item label="Item">
+  <goab-date-picker (onChange)="dateOnChange($event)" name="item" value="Mon Jan 20 2025 13:34:31 GMT-0700 (Mountain Standard Time)"></goab-date-picker>
+</goab-form-item>
+
 <goab-button (onClick)="reset()">Reset</goab-button>
