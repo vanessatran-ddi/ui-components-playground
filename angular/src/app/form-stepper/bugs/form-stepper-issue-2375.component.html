@@ -1,0 +1,57 @@
+<h3>Issue 2375</h3>
+
+
+<goa-callout>
+  <p>Issue is: If I have a form stepper, maximum 6 steps, I want to have 6th step icon changed to Complete, when I complete the step 6. But I still want to have the Form Stepper on my screen.</p>
+  <p><strong>web-components version 1.20.0: Works, because 1.20.0, we don't validate the [step], must be <= 6</strong></p>
+</goa-callout>
+
+<goa-form-stepper
+  (_change)="updateCurrentStep($event)"
+  ml="s"
+  mr="s"
+  [step]="paymentBatchStatusStep"
+  class="non-clickable-stepper"
+  data-automation-id="payment-stepper"
+>
+  <goa-form-step text="New" status="" [status]="paymentBatchStatusArray[0].status"></goa-form-step>
+  <goa-form-step text="Under Review" status="" [status]="paymentBatchStatusArray[1].status"></goa-form-step>
+  <goa-form-step
+    class="text-nowrap"
+    text="EO Recommendation"
+    status=""
+    [status]="paymentBatchStatusArray[2].status"
+  ></goa-form-step>
+  <goa-form-step text="AO Approval" status="" [status]="paymentBatchStatusArray[3].status"></goa-form-step>
+  <goa-form-step
+    text="step 5"
+    status=""
+    [status]="paymentBatchStatusArray[4].status"
+  ></goa-form-step>
+  <goa-form-step
+    text="step 6"
+    status=""
+    [final]="isFinal"
+    [status]="paymentBatchStatusArray[5].status"
+  ></goa-form-step>
+</goa-form-stepper>
+
+<goa-container>
+  <p>Current step: {{paymentBatchStatusStep}}</p>
+  <p>Final page: {{isFinal}}</p>
+  <ul>
+    <li *ngFor="let item of paymentBatchStatusArray">
+      {{item.stageSequence}} : {{item.status}}
+    </li>
+  </ul>
+</goa-container>
+
+<div style="display: flex; justify-content: space-between">
+  <goa-button (_click)="setPage(paymentBatchStatusStep - 1)" type="secondary"
+  >Previous</goa-button
+  >
+
+  <goa-button (_click)="setPage(paymentBatchStatusStep + 1)" type="primary">
+   Next
+  </goa-button>
+</div>

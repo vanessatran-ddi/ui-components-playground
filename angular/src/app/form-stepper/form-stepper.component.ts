@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-
 @Component({
   selector: "abgov-form-stepper",
   templateUrl: "./form-stepper.component.html",

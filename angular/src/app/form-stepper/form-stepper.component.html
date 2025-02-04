@@ -1,26 +1,29 @@
 <h1>Form Stepper</h1>
 
-<span>Current step {{step}}</span>
+<!--<span>Current step {{step}}</span>-->
 
-<goax-form-stepper ml="s" mr="s" [step]="step" (_change)="updateStep($event)">
-  <goax-form-step text="Personal details" [status]="status[0]"></goax-form-step>
-  <goax-form-step text="Employment history" [status]="status[1]"></goax-form-step>
-  <goax-form-step text="References" [status]="status[2]"></goax-form-step>
-  <goax-form-step text="Review" [status]="status[3]"></goax-form-step>
-</goax-form-stepper>
-<goa-pages [current]="step">
-  <div>Page 1 content with status: {{status[0]}}</div>
-  <div>Page 2 content with status: {{status[1]}}</div>
-  <div>
-    Page 3 content with current status: {{status[2]}}
-  </div>
-  <div>
-    Page 4 content with current status: {{status[3]}}
-  </div>
-</goa-pages>
-<div style="display: flex; justify-content: space-between">
-  <goa-button (_click)="setPage(step - 1)" type="secondary"
-  >Previous</goa-button
-  >
-  <goa-button (_click)="setPage(step + 1)" type="primary">Next</goa-button>
-</div>
+<!--<goax-form-stepper ml="s" mr="s" [step]="step" (_change)="updateStep($event)">-->
+<!--  <goax-form-step text="Personal details" [status]="status[0]"></goax-form-step>-->
+<!--  <goax-form-step text="Employment history" [status]="status[1]"></goax-form-step>-->
+<!--  <goax-form-step text="References" [status]="status[2]"></goax-form-step>-->
+<!--  <goax-form-step text="Review" [status]="status[3]"></goax-form-step>-->
+<!--</goax-form-stepper>-->
+<!--<goa-pages [current]="step">-->
+<!--  <div>Page 1 content with status: {{status[0]}}</div>-->
+<!--  <div>Page 2 content with status: {{status[1]}}</div>-->
+<!--  <div>-->
+<!--    Page 3 content with current status: {{status[2]}}-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    Page 4 content with current status: {{status[3]}}-->
+<!--  </div>-->
+<!--</goa-pages>-->
+<!--<div style="display: flex; justify-content: space-between">-->
+<!--  <goa-button (_click)="setPage(step - 1)" type="secondary"-->
+<!--  >Previous</goa-button-->
+<!--  >-->
+<!--  <goa-button (_click)="setPage(step + 1)" type="primary">Next</goa-button>-->
+<!--</div>-->
+
+<h2>Bugs:</h2>
+<abgov-form-stepper-issue-2375></abgov-form-stepper-issue-2375>

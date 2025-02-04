@@ -52,6 +52,9 @@ import {TwoColumnLayoutComponent} from "playground/angular/src/app/two-column-la
 import {TabsComponent} from "playground/angular/src/app/tabs/tabs";
 import { PrivacyPortalComponent } from "playground/angular/src/app/privacy-portal-component/privacy-portal.component";
 import {NgForOf, NgIf} from "@angular/common";
+import {
+  FormStepperIssue2375Component,
+} from "playground/angular/src/app/form-stepper/bugs/form-stepper-issue-2375.component";
 
 // ******
 // Routes
@@ -79,6 +82,7 @@ import {NgForOf, NgIf} from "@angular/common";
     FileUploadComponent,
     FormItemComponent,
     FormStepperComponent,
+    FormStepperIssue2375Component,
     GridComponent,
     HeroBannerComponent,
     IconButtonComponent,
