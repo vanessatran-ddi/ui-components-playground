@@ -1711,6 +1711,11 @@ export function App() {
                     <GoabInput name="name1" type="text" value="" width="20ch" onChange={noop}></GoabInput>
                   </GoabFormItem>
 
+                  <GoabFormItem
+                    label="with aria label trailing icon">
+                    <GoabInput name="name1" type="text" value="" onChange={noop} trailingIcon="add" trailingIconAriaLabel="vanessa" onTrailingIconClick={noop}></GoabInput>
+                  </GoabFormItem>
+
                   <GoabFormItem label="Input with helper text" helpText="This is some help text">
                     <GoabInput name="name1" type="text" value="" width="20ch" onChange={noop}></GoabInput>
                   </GoabFormItem>

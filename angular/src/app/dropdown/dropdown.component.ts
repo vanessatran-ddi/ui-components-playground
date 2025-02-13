@@ -3,7 +3,7 @@ import { GoabDatePickerOnChangeDetail, GoabDropdownOnChangeDetail } from "@abgov
 import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { Countries, CountrySubdivisions } from "playground/angular/src/app/dropdown/countries.data";
+import { Countries, CountrySubdivisions } from "./countries.data";
 
 @Component({
   standalone: true,
@@ -23,7 +23,7 @@ import { Countries, CountrySubdivisions } from "playground/angular/src/app/dropd
   ]
 })
 export class DropdownComponent implements OnInit {
-  example1: string | undefined;
+  example1 = "red";
   example2Form: FormGroup;
   example3 = "option1";
 
@@ -44,7 +44,7 @@ export class DropdownComponent implements OnInit {
   }
 
   onChangeExample1(event: GoabDropdownOnChangeDetail) {
-    this.example1 = event.value;
+    this.example1 = `${event.value}`;
   }
 
 
