@@ -1,41 +1,18 @@
 <h1>Dropdown</h1>
-
-<hr />
-
-<!--<div>Selected Color: {{ reactiveFormCtrl.value }}</div>-->
-<!--<goa-button (_click)="reactiveFormCtrl.setValue('red')" type="tertiary">-->
-<!--  Update to red-->
-<!--</goa-button>-->
-<!--<br />-->
-
-<!--<goa-dropdown goaValue name="colors123" native="true" [formControl]="reactiveFormCtrl">-->
-<!--  <goa-dropdown-item-->
-<!--    *ngFor="let color of colors"-->
-<!--    [value]="color"-->
-<!--    [label]="color"-->
-<!--  ></goa-dropdown-item>-->
-<!--</goa-dropdown>-->
-
-<!--<goa-dropdown goaValue name="colors123" [formControl]="reactiveFormCtrl">-->
-<!--  <goa-dropdown-item-->
-<!--    *ngFor="let color of colors"-->
-<!--    [value]="color"-->
-<!--    [label]="color"-->
-<!--  ></goa-dropdown-item>-->
-<!--</goa-dropdown>-->
 <div [style]="{
     width: '80%',
     'border': '2px solid #cacaca',
   }"
 >
+  <p>Selected country is: {{selectedCountry}}</p>
 <goa-dropdown
   width="100%"
   goaValue
-  filterable
   relative="true"
   name="country"
-  [value]="fg.value.country"
-  [formControl]="fg.controls.country"
+  filterable
+  (_change)="onChangeCountry($event)"
+  [value]="selectedCountry"
   maxheight="1000px"
 >
   <goa-dropdown-item
@@ -47,7 +24,6 @@
 </goa-dropdown>
 </div>
 <hr/>
-<!--<button>stop</button>-->
 
 
 <form [formGroup]="fg" novalidate autocomplete="on">

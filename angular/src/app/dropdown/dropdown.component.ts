@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {Countries, CountrySubdivisions} from "playground/angular/src/app/dropdown/countries.data";
+import {Countries, CountrySubdivisions} from "./countries.data";
 
 @Component({
   selector: "abgov-dropdown",
@@ -34,6 +34,11 @@ export class DropdownComponent {
   };
 
   pcities: string[] = [];
+  selectedCountry = "";
+
+  onChangeCountry(event: Event) {
+    this.selectedCountry = (event as CustomEvent).detail.value;
+  }
 
   isMobile = window.matchMedia("(any-pointer:coarse)").matches;
   disabled = false;
