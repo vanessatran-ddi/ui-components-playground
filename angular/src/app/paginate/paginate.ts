@@ -3,6 +3,7 @@ import { GoabPaginationOnChangeDetail } from "@abgov/ui-components-common";
 import { NgForOf } from "@angular/common";
 import { Component } from "@angular/core";
 import { faker } from "@faker-js/faker";
+import { PaginateShowXExampleComponent } from "./paginate-show-x-example.component";
 
 interface User {
   id: string;
@@ -19,6 +20,7 @@ interface User {
     GoabPagination,
     GoabTable,
     NgForOf,
+    PaginateShowXExampleComponent
   ]
 })
 export class PaginateComponent {
