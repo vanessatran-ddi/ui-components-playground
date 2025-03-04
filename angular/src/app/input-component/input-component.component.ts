@@ -10,6 +10,7 @@ import {
 } from "@abgov/angular-components";
 import { JsonPipe, NgTemplateOutlet } from "@angular/common";
 import { GoabInputOnChangeDetail } from "@abgov/ui-components-common";
+import { Issue2409Component } from "./issue-2409.component";
 
 interface User {
   firstName: string;
@@ -30,7 +31,8 @@ interface User {
     ReactiveFormsModule,
     FormsModule,
     GoabFormItemSlot,
-    NgTemplateOutlet
+    NgTemplateOutlet,
+    Issue2409Component
   ],
 })
 export class InputComponentComponent implements OnInit {

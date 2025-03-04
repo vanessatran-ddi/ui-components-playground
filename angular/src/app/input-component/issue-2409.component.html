@@ -1,0 +1,32 @@
+<h3>Issue 2409: Input: width property inconsistencies</h3>
+<goab-form-item label="Text input with 100px width">
+  <goab-input
+    name="name1"
+    type="text"
+    value=""
+    width="100px"
+    placeholder="A long placeholder does it work nowadays"
+  ></goab-input>
+</goab-form-item>
+
+<goab-form-item label="Text input with 100px width, leading/trailing icons">
+  <goab-input
+    name="name1"
+    type="text"
+    placeholder="A long placeholder does it work nowadays"
+    value=""
+    width="100px"
+    trailingIcon="arrow-back"
+    leadingIcon="arrow-back"
+  ></goab-input>
+</goab-form-item>
+
+<goab-form-item label="Search input with 100px width">
+  <goab-input
+    name="name1"
+    type="search"
+    value=""
+    width="50%"
+    leadingIcon="search"
+  ></goab-input>
+</goab-form-item>
