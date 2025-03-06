@@ -22,3 +22,10 @@
 </goab-form-item>
 
 <goab-button (onClick)="reset()">Reset</goab-button>
+
+<h2>Dynamically update min and max</h2>
+
+<goab-form-item label="Test Clearing Date" mb="3xl">
+  <goab-date-picker [formControl]="dateCtrl" [value]="dateCtrl.value" [min]="minimumDate" />
+</goab-form-item>
+<goab-button (onClick)="setMinimumDate()">Set Minimum Date</goab-button>
