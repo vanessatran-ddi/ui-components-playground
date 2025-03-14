@@ -1,0 +1,51 @@
+<goa-drawer
+  [open]="open"
+  [position]="position"
+  heading="Filters"
+  (_close)="closeDrawer()"
+>
+  <goab-form-item label="Entry status">
+    <goab-checkbox [checked]="" text="Drafted"></goab-checkbox>
+    <goab-checkbox [checked]="" text="Completed"></goab-checkbox>
+  </goab-form-item>
+
+  <goab-form-item label="Assigned to - Region">
+    <goab-checkbox [checked]="" text="Calgary"></goab-checkbox>
+    <goab-checkbox [checked]="" text="Central"></goab-checkbox>
+    <goab-checkbox [checked]="" text="Edmonton"></goab-checkbox>
+    <goab-checkbox [checked]="" text="North"></goab-checkbox>
+    <goab-checkbox [checked]="" text="South"></goab-checkbox>
+  </goab-form-item>
+
+<!--  <goab-form-item label="Assigned to">-->
+<!--    <goab-dropdown value="" (onChange)="onChangeAssignedTo($event)">-->
+<!--      <goab-dropdown-item value="red" label="Red"></goab-dropdown-item>-->
+<!--      <goab-dropdown-item value="red1" label="Red1"></goab-dropdown-item>-->
+<!--      <goab-dropdown-item value="red2" label="Red2"></goab-dropdown-item>-->
+<!--      <goab-dropdown-item value="red3" label="Red3"></goab-dropdown-item>-->
+<!--    </goab-dropdown>-->
+<!--  </goab-form-item>-->
+
+  <goab-form-item label="Taken by - Region">
+    <goab-checkbox [checked]="" text="Calgary"></goab-checkbox>
+    <goab-checkbox [checked]="" text="Central"></goab-checkbox>
+    <goab-checkbox [checked]="" text="Edmonton"></goab-checkbox>
+    <goab-checkbox [checked]="" text="North"></goab-checkbox>
+    <goab-checkbox [checked]="" text="South"></goab-checkbox>
+  </goab-form-item>
+  <goab-form-item label="Date taken">
+    <goab-radio-group name="date-taken" [value]="dateTaken" (onChange)="changeDateTaken($event)">
+      <goab-radio-item value="24" label="Last 24 hours"></goab-radio-item>
+      <goab-radio-item value="72" label="Label 72 hours"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+  <div slot="actions">
+    <goab-button (onClick)="closeDrawer()">Apply</goab-button>
+  </div>
+</goa-drawer>
+
+<goab-button-group>
+  <goab-button (onClick)="openDrawer('right')">Open Drawer From Right</goab-button>
+  <goab-button (onClick)="openDrawer('left')">Open Drawer From Left</goab-button>
+  <goab-button (onClick)="openDrawer('bottom')">Open Drawer From Bottom</goab-button>
+</goab-button-group>

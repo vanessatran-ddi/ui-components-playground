@@ -47,6 +47,7 @@ import { Bug1734 } from "./bugs/bug-1734";
 import { Bug1756 } from "./bugs/bug-1756";
 import { ColumnLayoutComponent } from "playground/angular/src/app/column-layout/column-layout.component";
 import { DatePickerComponent } from "playground/angular/src/app/date-picker/date-picker.component";
+import { DrawerComponent } from "playground/angular/src/app/drawer/drawer.component";
 
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
@@ -65,6 +66,7 @@ const routes: Routes = [
   { path: "container", component: ContainerComponent },
   { path: "detail", component: DetailComponent },
   { path: "divider", component: DividerComponent },
+  { path: "drawer", component: DrawerComponent },
   { path: "dropdown", component: DropdownComponent },
   { path: "file-upload", component: FileUploadComponent },
   { path: "form-item", component: FormItemComponent },
