@@ -25,6 +25,7 @@ export function App() {
             <GoabSideMenuGroup heading="Components">
               <Link to="/">Home</Link>
               <Link to="/pagination">Pagination</Link>
+              <Link to="/drawer">Drawer</Link>
 
               {/* Add links here */}
             </GoabSideMenuGroup>
