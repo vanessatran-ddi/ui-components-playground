@@ -1,0 +1,32 @@
+<goab-button (onClick)="onClick()">
+  Filters
+</goab-button>
+<goab-drawer heading="Filters" [open]="open" (onClose)="onClose()" position="right" [actions]="actions">
+  <goab-form-item label="Entry status">
+    <goab-checkbox text="Draft" value="draft" name="entryStatus"></goab-checkbox>
+    <goab-checkbox text="Published" value="published" name="entryStatus"></goab-checkbox>
+  </goab-form-item>
+  <goab-form-item label="Assigned to - Region">
+    <goab-checkbox text="Calgary" value="calgary" name="region"></goab-checkbox>
+    <goab-checkbox text="Central" value="central" name="region"></goab-checkbox>
+    <goab-checkbox text="Edmonton" value="edmonton" name="region"></goab-checkbox>
+    <goab-checkbox text="North" value="north" name="region"></goab-checkbox>
+    <goab-checkbox text="South" value="south" name="region"></goab-checkbox>
+  </goab-form-item>
+  <goab-form-item label="Taken by - Region" mt="xs">
+    <goab-checkbox text="Calgary" value="calgary" name="region"></goab-checkbox>
+    <goab-checkbox text="Central" value="central" name="region"></goab-checkbox>
+    <goab-checkbox text="Edmonton" value="edmonton" name="region"></goab-checkbox>
+    <goab-checkbox text="North" value="north" name="region"></goab-checkbox>
+    <goab-checkbox text="South" value="south" name="region"></goab-checkbox>
+  </goab-form-item>
+  <goab-form-item label="Date taken" mt="xs">
+    <goab-radio-group name="dateTaken" (onChange)="radioOnChange($event)">
+      <goab-radio-item value="24" label="Last 24 hours"></goab-radio-item>
+      <goab-radio-item value="72" label="Last 72 hours"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+  <ng-template #actions>
+    <goab-button (onClick)="closeDrawer()">Apply</goab-button>
+  </ng-template>
+</goab-drawer>
