@@ -2,52 +2,55 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
 import { AccordionComponent } from "./accordion/accordion.component";
-import { AppFooterComponent } from "playground/angular/src/app/app-footer/app-footer.component";
-import { AppHeaderComponent } from "playground/angular/src/app/app-header/app-header.component";
-import { BadgeComponent } from "playground/angular/src/app/badge/badge.component";
-import { ButtonComponent } from "playground/angular/src/app/button-component/button.component";
-import { ButtonGroupComponent } from "playground/angular/src/app/button-group/button-group.component";
-import { CalloutComponent } from "playground/angular/src/app/callout/callout.component";
-import { CheckboxComponent } from "playground/angular/src/app/checkbox/checkbox.component";
-import { ChipComponent } from "playground/angular/src/app/chip/chip.component";
-import { CircularProgressComponent } from "playground/angular/src/app/circular-progress/circular-progress.component";
+import { AppFooterComponent } from "./app-footer/app-footer.component";
+import { AppHeaderComponent } from "./app-header/app-header.component";
+import { BadgeComponent } from "./badge/badge.component";
+import { ButtonComponent } from "./button-component/button.component";
+import { ButtonGroupComponent } from "./button-group/button-group.component";
+import { CalloutComponent } from "./callout/callout.component";
+import { CheckboxComponent } from "./checkbox/checkbox.component";
+import { ChipComponent } from "./chip/chip.component";
+import { CircularProgressComponent } from "./circular-progress/circular-progress.component";
 import { ContainerComponent } from "./container/ContainerComponent";
-import { DetailComponent } from "playground/angular/src/app/detail/detail";
-import { DividerComponent } from "playground/angular/src/app/divider/divider.component";
-import { DropdownComponent } from "playground/angular/src/app/dropdown/dropdown.component";
-import { FileUploadComponent } from "playground/angular/src/app/file-upload/file-upload";
-import { FormItemComponent } from "playground/angular/src/app/form-item/form-item.component";
-import { FormStepperComponent } from "playground/angular/src/app/form-stepper/form-stepper.component";
-import { GridComponent } from "playground/angular/src/app/grid/grid";
-import { HeroBannerComponent } from "playground/angular/src/app/hero-banner/hero-banner.component";
-import { IconButtonComponent } from "playground/angular/src/app/icon-button/icon-button.component";
-import { IconComponent } from "playground/angular/src/app/icon/icon.component";
-import { InputComponentComponent } from "playground/angular/src/app/input-component/input-component.component";
-import { MicrositeHeaderComponent } from "playground/angular/src/app/microsite-header/microsoft-header.component";
-import { ModalComponent } from "playground/angular/src/app/modal/modal.component";
-import { NavigationLinkComponent } from "playground/angular/src/app/navigation-link/navigation-link.component";
+import { DetailComponent } from "./detail/detail";
+import { DividerComponent } from "./divider/divider.component";
+import { DropdownComponent } from "./dropdown/dropdown.component";
+import { FileUploadComponent } from "./file-upload/file-upload";
+import { FormItemComponent } from "./form-item/form-item.component";
+import { FormStepperComponent } from "./form-stepper/form-stepper.component";
+import { GridComponent } from "./grid/grid";
+import { HeroBannerComponent } from "./hero-banner/hero-banner.component";
+import { IconButtonComponent } from "./icon-button/icon-button.component";
+import { IconComponent } from "./icon/icon.component";
+import { InputComponentComponent } from "./input-component/input-component.component";
+import { MicrositeHeaderComponent } from "./microsite-header/microsoft-header.component";
+import { ModalComponent } from "./modal/modal.component";
+import { NavigationLinkComponent } from "./navigation-link/navigation-link.component";
 import {
   NotificationBannerComponent
-} from "playground/angular/src/app/notification-banner/notification-banner.component";
-import { PaginateComponent } from "playground/angular/src/app/paginate/paginate";
-import { PopoverComponent } from "playground/angular/src/app/popover/popover.component";
-import { RadioComponent } from "playground/angular/src/app/radio/radio.component";
-import { SideMenuComponent } from "playground/angular/src/app/sidemenu/sidemenu.component";
-import { SkeletonComponent } from "playground/angular/src/app/skeleton/skeleton.component";
-import { SpacingComponent } from "playground/angular/src/app/spacing/spacing";
-import { StylesComponent } from "playground/angular/src/app/styles/styles.component";
-import { TableComponent } from "playground/angular/src/app/table/table";
-import { TextAreaComponent } from "playground/angular/src/app/text-area/text-area.component";
-import { ThreeColumnLayoutComponent } from "playground/angular/src/app/three-column-layout/three-column-layout.component";
-import { TooltipComponent } from "playground/angular/src/app/tooltip/tooltip.component";
-import { TwoColumnLayoutComponent } from "playground/angular/src/app/two-column-layout/two-column-layout.component";
-import { TabsComponent } from "playground/angular/src/app/tabs/tabs";
-import { ComponentWrapperPage } from "playground/angular/src/app/component-wrapper";
+} from "./notification-banner/notification-banner.component";
+import { PaginateComponent } from "./paginate/paginate";
+import { PopoverComponent } from "./popover/popover.component";
+import { RadioComponent } from "./radio/radio.component";
+import { SideMenuComponent } from "./sidemenu/sidemenu.component";
+import { SkeletonComponent } from "./skeleton/skeleton.component";
+import { SpacingComponent } from "./spacing/spacing";
+import { StylesComponent } from "./styles/styles.component";
+import { TableComponent } from "./table/table";
+import { TextAreaComponent } from "./text-area/text-area.component";
+import { ThreeColumnLayoutComponent } from "./three-column-layout/three-column-layout.component";
+import { TooltipComponent } from "./tooltip/tooltip.component";
+import { TwoColumnLayoutComponent } from "./two-column-layout/two-column-layout.component";
+import { TabsComponent } from "./tabs/tabs";
+import { ComponentWrapperPage } from "./component-wrapper";
 import { Bug1734 } from "./bugs/bug-1734";
 import { Bug1756 } from "./bugs/bug-1756";
-import { ColumnLayoutComponent } from "playground/angular/src/app/column-layout/column-layout.component";
-import { DatePickerComponent } from "playground/angular/src/app/date-picker/date-picker.component";
-import { DrawerComponent } from "playground/angular/src/app/drawer/drawer.component";
+import { ColumnLayoutComponent } from "./column-layout/column-layout.component";
+import { DatePickerComponent } from "./date-picker/date-picker.component";
+import { DrawerComponent } from "./drawer/drawer.component";
+import { Issue2365Component } from "./issues/2365/issue-2365.component";
+import { Issue2466Component } from "./issues/2466/issue-2466.component";
+import { Issue2003Component } from "./issues/2003/issue-2003.component";
 
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
@@ -95,6 +98,10 @@ const routes: Routes = [
   { path: "tabs", component: TabsComponent },
   { path: "column-layout", component: ColumnLayoutComponent},
   { path: "date-picker", component: DatePickerComponent},
+
+  { path: "2365", component: Issue2365Component },
+  { path: "2466", component: Issue2466Component },
+  { path: "2003", component: Issue2003Component },
   { path: "", redirectTo: "/", pathMatch: "full" },
 ];
 

@@ -22,9 +22,13 @@ export function App() {
       <div style={{ display: "flex" }}>
         <section style={{ flex: "0 0 250px" }}>
           <GoabSideMenu>
+            <GoabSideMenuGroup heading="Bugs">
+              <Link to="/2446">Popover inside a scrolling modal</Link>
+            </GoabSideMenuGroup>
             <GoabSideMenuGroup heading="Components">
               <Link to="/">Home</Link>
               <Link to="/pagination">Pagination</Link>
+
 
               {/* Add links here */}
             </GoabSideMenuGroup>

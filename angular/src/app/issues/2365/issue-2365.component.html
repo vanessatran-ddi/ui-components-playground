@@ -1,0 +1,28 @@
+<h1>Checkbox with slotted description</h1>
+<goab-form-item label="Select one or more options">
+  <goab-checkbox [checked]="true" name="optionOne" text="Option one" [description]="descriptionTemplate">
+    <ng-template #descriptionTemplate>
+      <span>Help text with a <a href="#">link</a>.</span>
+    </ng-template>
+  </goab-checkbox>
+  <goab-checkbox [checked]="false" name="optionTwo" text="Option two" description="Is a string" />
+  <goab-checkbox [checked]="false" name="optionThree" text="Option three" />
+</goab-form-item>
+
+
+
+<h1>Radio with slotted description</h1>
+<goab-form-item label="Select one option" [formGroup]="form">
+  <goab-radio-group name="selectOne"  formControlName="selectOne">
+    <goab-radio-item value="1" label="Option one" [description]="optionOneDescription">
+      <ng-template #optionOneDescription>
+        Help text with a <a href="#">link</a>.
+      </ng-template>
+    </goab-radio-item>
+    <goab-radio-item value="2" label="Option two" description="Is a string"></goab-radio-item>
+    <goab-radio-item value="3" label="Option three"></goab-radio-item>
+  </goab-radio-group>
+</goab-form-item>
+
+
+

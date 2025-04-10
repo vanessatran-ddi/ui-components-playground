@@ -13,4 +13,9 @@ import { Component } from "@angular/core";
 })
 export class AppFooterComponent {
   constructor() { }
+  handleClickLink(e: Event) {
+    e.preventDefault();
+    e.stopPropagation();
+    alert("Link clicked");
+  }
 }

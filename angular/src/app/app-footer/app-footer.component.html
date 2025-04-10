@@ -8,7 +8,7 @@
 <h2>Footer with links to meta information</h2>
 <goab-app-footer id="meta-only">
   <goab-app-footer-meta-section slot="meta">
-    <a href="privacy.html">Privacy</a>
+    <a href="privacy.html" (click)="handleClickLink($event)">Privacy with handle click</a>
     <a href="disclaimer.html">Disclaimer</a>
     <a href="accessibility.html">Accessibility</a>
     <a href="using-alberta.html">Using Alberta.ca</a>
@@ -18,7 +18,7 @@
 <h2>Footer with secondary navigation</h2>
 <goab-app-footer id="navigation-only">
   <goab-app-footer-nav-section slot="nav" maxcolumncount="3">
-    <a href="a.html">Arts and culture</a>
+    <a href="a.html" (click)="handleClickLink($event)">Arts and culture with handle click</a>
     <a href="b.html">Education and training</a>
     <a href="c.html">Family and social supports</a>
     <a href="d.html">Housing and community</a>
