@@ -1,0 +1,13 @@
+<h1>Dropdown</h1>
+<goab-form-item label="Basic dropdown">
+  <goab-dropdown name="item" value="" (onChange)="dropdownOnChange($event)" [relative]="true">
+    <goab-dropdown-item value="red" label="Red"></goab-dropdown-item>
+    <goab-dropdown-item value="green" label="Green"></goab-dropdown-item>
+    <goab-dropdown-item value="blue" label="Blue"></goab-dropdown-item>
+  </goab-dropdown>
+</goab-form-item>
+
+<h1>Date picker</h1>
+<goab-form-item label="Item">
+  <goab-date-picker [relative]="true" (onChange)="dateOnChange($event)" name="item" value="Wed Apr 09 2025 13:20:13 GMT-0600 (Mountain Daylight Time)"></goab-date-picker>
+</goab-form-item>
