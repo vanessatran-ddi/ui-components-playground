@@ -1,60 +1,57 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-import { AccordionComponent } from "./accordion/accordion.component";
-import { AppFooterComponent } from "./app-footer/app-footer.component";
-import { AppHeaderComponent } from "./app-header/app-header.component";
-import { BadgeComponent } from "./badge/badge.component";
-import { ButtonComponent } from "./button-component/button.component";
-import { ButtonGroupComponent } from "./button-group/button-group.component";
-import { CalloutComponent } from "./callout/callout.component";
-import { CheckboxComponent } from "./checkbox/checkbox.component";
-import { ChipComponent } from "./chip/chip.component";
-import { CircularProgressComponent } from "./circular-progress/circular-progress.component";
-import { ContainerComponent } from "./container/ContainerComponent";
-import { DetailComponent } from "./detail/detail";
-import { DividerComponent } from "./divider/divider.component";
-import { DropdownComponent } from "./dropdown/dropdown.component";
-import { FileUploadComponent } from "./file-upload/file-upload";
-import { FormItemComponent } from "./form-item/form-item.component";
-import { FormStepperComponent } from "./form-stepper/form-stepper.component";
-import { GridComponent } from "./grid/grid";
-import { HeroBannerComponent } from "./hero-banner/hero-banner.component";
-import { IconButtonComponent } from "./icon-button/icon-button.component";
-import { IconComponent } from "./icon/icon.component";
-import { InputComponentComponent } from "./input-component/input-component.component";
-import { MicrositeHeaderComponent } from "./microsite-header/microsoft-header.component";
-import { ModalComponent } from "./modal/modal.component";
-import { NavigationLinkComponent } from "./navigation-link/navigation-link.component";
-import {
-  NotificationBannerComponent
-} from "./notification-banner/notification-banner.component";
-import { PaginateComponent } from "./paginate/paginate";
-import { PopoverComponent } from "./popover/popover.component";
-import { RadioComponent } from "./radio/radio.component";
-import { SideMenuComponent } from "./sidemenu/sidemenu.component";
-import { SkeletonComponent } from "./skeleton/skeleton.component";
-import { SpacingComponent } from "./spacing/spacing";
-import { StylesComponent } from "./styles/styles.component";
-import { TableComponent } from "./table/table";
-import { TextAreaComponent } from "./text-area/text-area.component";
-import { ThreeColumnLayoutComponent } from "./three-column-layout/three-column-layout.component";
-import { TooltipComponent } from "./tooltip/tooltip.component";
-import { TwoColumnLayoutComponent } from "./two-column-layout/two-column-layout.component";
-import { TabsComponent } from "./tabs/tabs";
+import { AccordionComponent } from "./components/accordion/accordion.component";
+import { AppFooterComponent } from "./components/app-footer/app-footer.component";
+import { AppHeaderComponent } from "./components/app-header/app-header.component";
+import { BadgeComponent } from "./components/badge/badge.component";
+import { ButtonComponent } from "./components/button-component/button.component";
+import { ButtonGroupComponent } from "./components/button-group/button-group.component";
+import { Bug1734 } from "./components/bugs/bug-1734";
+import { CalloutComponent } from "./components/callout/callout.component";
+import { CheckboxComponent } from "./components/checkbox/checkbox.component";
+import { ChipComponent } from "./components/chip/chip.component";
+import { CircularProgressComponent } from "./components/circular-progress/circular-progress.component";
+import { ColumnLayoutComponent } from "./components/column-layout/column-layout.component";
 import { ComponentWrapperPage } from "./component-wrapper";
-import { Bug1734 } from "./bugs/bug-1734";
-import { Bug1756 } from "./bugs/bug-1756";
-import { ColumnLayoutComponent } from "./column-layout/column-layout.component";
-import { DatePickerComponent } from "./date-picker/date-picker.component";
-import { DrawerComponent } from "./drawer/drawer.component";
+import { ContainerComponent } from "./components/container/ContainerComponent";
+import { DatePickerComponent } from "./components/date-picker/date-picker.component";
+import { DetailComponent } from "./components/detail/detail";
+import { DividerComponent } from "./components/divider/divider.component";
+import { DrawerComponent } from "./components/drawer/drawer.component";
+import { DropdownComponent } from "./components/dropdown/dropdown.component";
+import { FileUploadComponent } from "./components/file-upload/file-upload";
+import { FormItemComponent } from "./components/form-item/form-item.component";
+import { FormStepperComponent } from "./components/form-stepper/form-stepper.component";
+import { GridComponent } from "./components/grid/grid";
+import { HeroBannerComponent } from "./components/hero-banner/hero-banner.component";
+import { IconComponent } from "./components/icon/icon.component";
+import { IconButtonComponent } from "./components/icon-button/icon-button.component";
+import { InputComponentComponent } from "./components/input-component/input-component.component";
+import { Issue2003Component } from "./issues/2003/issue-2003.component";
 import { Issue2365Component } from "./issues/2365/issue-2365.component";
 import { Issue2466Component } from "./issues/2466/issue-2466.component";
-import { Issue2003Component } from "./issues/2003/issue-2003.component";
+import { Issue2513Component } from "./issues/2513/issue-2513.component";
+import { MicrositeHeaderComponent } from "./components/microsite-header/microsoft-header.component";
+import { ModalComponent } from "./components/modal/modal.component";
+import { NavigationLinkComponent } from "./components/navigation-link/navigation-link.component";
+import { NotificationBannerComponent } from "./components/notification-banner/notification-banner.component";
+import { PaginateComponent } from "./components/paginate/paginate";
+import { PopoverComponent } from "./components/popover/popover.component";
+import { RadioComponent } from "./components/radio/radio.component";
+import { SideMenuComponent } from "./components/sidemenu/sidemenu.component";
+import { SkeletonComponent } from "./components/skeleton/skeleton.component";
+import { SpacingComponent } from "./components/spacing/spacing";
+import { StylesComponent } from "./components/styles/styles.component";
+import { TableComponent } from "./components/table/table";
+import { TabsComponent } from "./components/tabs/tabs";
+import { TextAreaComponent } from "./components/text-area/text-area.component";
+import { ThreeColumnLayoutComponent } from "./components/three-column-layout/three-column-layout.component";
+import { TooltipComponent } from "./components/tooltip/tooltip.component";
+import { TwoColumnLayoutComponent } from "./components/two-column-layout/two-column-layout.component";
 
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
-  { path: "bug-1756", component: Bug1756 },
   { path: "badge-wrapper", component: ComponentWrapperPage },
   { path: "accordion", component: AccordionComponent },
   { path: "app-footer", component: AppFooterComponent },
@@ -66,7 +63,9 @@ const routes: Routes = [
   { path: "checkbox", component: CheckboxComponent },
   { path: "chip", component: ChipComponent },
   { path: "circular-progress", component: CircularProgressComponent },
+  { path: "column-layout", component: ColumnLayoutComponent },
   { path: "container", component: ContainerComponent },
+  { path: "date-picker", component: DatePickerComponent },
   { path: "detail", component: DetailComponent },
   { path: "divider", component: DividerComponent },
   { path: "drawer", component: DrawerComponent },
@@ -91,17 +90,15 @@ const routes: Routes = [
   { path: "spacing", component: SpacingComponent },
   { path: "styles", component: StylesComponent },
   { path: "table", component: TableComponent },
+  { path: "tabs", component: TabsComponent },
   { path: "textarea", component: TextAreaComponent },
+  { path: "three-column-layout", component: ThreeColumnLayoutComponent },
   { path: "tooltip", component: TooltipComponent },
   { path: "two-column-layout", component: TwoColumnLayoutComponent },
-  { path: "three-column-layout", component: ThreeColumnLayoutComponent },
-  { path: "tabs", component: TabsComponent },
-  { path: "column-layout", component: ColumnLayoutComponent},
-  { path: "date-picker", component: DatePickerComponent},
-
   { path: "2365", component: Issue2365Component },
   { path: "2466", component: Issue2466Component },
   { path: "2003", component: Issue2003Component },
+  { path: "2513", component: Issue2513Component },
   { path: "", redirectTo: "/", pathMatch: "full" },
 ];
 

@@ -1,0 +1,11 @@
+div.card-header {
+  display: flex;
+  flex-direction: row;
+  gap: var(--goa-space-m);
+  align-items: center;
+  padding-bottom: var(--goa-space-s);
+}
+
+div.body-l {
+  font: var(--goa-typography-body-l);
+}

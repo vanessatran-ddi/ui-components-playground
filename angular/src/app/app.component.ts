@@ -1,9 +1,9 @@
-import {Component, OnInit} from "@angular/core";
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from "@angular/core";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {Countries, CountrySubdivisions} from "playground/angular/src/app/countries.data";
+import {Countries, CountrySubdivisions} from "../app/countries.data";
 
 @Component({
-  selector: "goab-root",
+  selector: "abgov-root",
   templateUrl: "./app.component.html",
   styles: ``,
 })

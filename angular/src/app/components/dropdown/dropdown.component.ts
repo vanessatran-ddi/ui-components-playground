@@ -3,7 +3,7 @@ import { GoabDatePickerOnChangeDetail, GoabDropdownOnChangeDetail } from "@abgov
 import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { Countries, CountrySubdivisions } from "playground/angular/src/app/dropdown/countries.data";
+import { Countries, CountrySubdivisions } from "./countries.data";
 
 @Component({
   standalone: true,

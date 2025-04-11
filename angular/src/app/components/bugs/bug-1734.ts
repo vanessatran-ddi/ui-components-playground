@@ -1,11 +1,16 @@
-import { Component } from "@angular/core";
-import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
-import { Countries, CountrySubdivisions } from "playground/angular/src/app/dropdown/countries.data";
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
+import { Countries, CountrySubdivisions } from "../../components/dropdown/countries.data";
+import { NgForOf } from "@angular/common";
 
 @Component({
-  selector: "goa-bug1734",
+  selector: "abgov-bug1734",
   templateUrl: "./bug-1734.html",
+  standalone: true,
+  imports: [ReactiveFormsModule, NgForOf],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
+// eslint-disable-next-line @angular-eslint/component-class-suffix
 export class Bug1734 {
   colors: string[] = ["red", "green", "blue"];
   selectedColor = "red";
@@ -64,17 +69,15 @@ export class Bug1734 {
     postalCode: FormControl<string | null>;
   }>;
 
-
-
   constructor(private fb: FormBuilder) {
     this.fg = this.fb.group({
-      businessName: [null as (string | null), []],
-      address1: [null as (string | null), []],
-      address2: [null as (string | null), []],
-      locality: [null as (string | null), []],
-      region: [null as (string | null), []],
+      businessName: [null as string | null, []],
+      address1: [null as string | null, []],
+      address2: [null as string | null, []],
+      locality: [null as string | null, []],
+      region: [null as string | null, []],
       country: ["CA", []],
-      postalCode: [null as (string | null), []]
+      postalCode: [null as string | null, []],
     });
   }
 
@@ -90,9 +93,4 @@ export class Bug1734 {
   handleSelectChange(event: any) {
     console.log("select change", event.detail.value, event);
   }
-
-
-
-
-
 }
