@@ -49,6 +49,7 @@ import { TextAreaComponent } from "./components/text-area/text-area.component";
 import { ThreeColumnLayoutComponent } from "./components/three-column-layout/three-column-layout.component";
 import { TooltipComponent } from "./components/tooltip/tooltip.component";
 import { TwoColumnLayoutComponent } from "./components/two-column-layout/two-column-layout.component";
+import { TextComponent } from "playground/angular/src/app/components/text/text.component";
 
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
@@ -91,6 +92,7 @@ const routes: Routes = [
   { path: "styles", component: StylesComponent },
   { path: "table", component: TableComponent },
   { path: "tabs", component: TabsComponent },
+  { path: "text", component: TextComponent},
   { path: "textarea", component: TextAreaComponent },
   { path: "three-column-layout", component: ThreeColumnLayoutComponent },
   { path: "tooltip", component: TooltipComponent },
