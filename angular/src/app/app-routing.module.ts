@@ -49,6 +49,7 @@ import { TextAreaComponent } from "./components/text-area/text-area.component";
 import { ThreeColumnLayoutComponent } from "./components/three-column-layout/three-column-layout.component";
 import { TooltipComponent } from "./components/tooltip/tooltip.component";
 import { TwoColumnLayoutComponent } from "./components/two-column-layout/two-column-layout.component";
+import { Issue2433Component } from "playground/angular/src/app/issues/2433/issue-2433.component";
 
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
@@ -99,6 +100,7 @@ const routes: Routes = [
   { path: "2466", component: Issue2466Component },
   { path: "2003", component: Issue2003Component },
   { path: "2513", component: Issue2513Component },
+  { path: "2433", component: Issue2433Component},
   { path: "", redirectTo: "/", pathMatch: "full" },
 ];
 
