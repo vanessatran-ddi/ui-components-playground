@@ -1,0 +1,11 @@
+import { Component } from "@angular/core";
+import { GoabBadge, GoabButton, GoabTab, GoabTable, GoabTabs } from "@abgov/angular-components";
+import { NgForOf } from "@angular/common";
+
+@Component({
+  selector: "abgov-issue-2471",
+  templateUrl: "./issue-2471.component.html",
+  standalone: true,
+  imports: [GoabTabs, GoabTab, GoabTable, GoabBadge, GoabButton, NgForOf],
+})
+export class Issue2471Component {}

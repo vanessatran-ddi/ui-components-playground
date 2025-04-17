@@ -1,11 +1,31 @@
+
+<h4>Issue 1: When loading a page with a Tab on it, the initial tab is loaded into the URL automatically, despite never being selected. If the tab is lower down on the page, this causes the page to scroll automatically down to the Tab location, this is undesirable on an initial page load.</h4>
+
+<h4>Issue 2: hit the back button twice to get to the previous page </h4>
+<p>If you go to a page with a Tabs component on it, two histories are created in the browser history, one with the tab selected (http://localhost:4200/tabs#All) for example, and then another with just the page (http://localhost:4200/tabs) for example. This means you actually need to hit the back button twice to get to the previous page, despite not having selected a tab or anything.
+That being said as well, despite having the tabs change the browser URL and history when you select a tab, if you select a new tab, it will create a new browser history with the old tab in the URL, going back does not actually change the selected tab.
+</p>
+
+<h4>Issue 3: Tabs: Not preserving the query string when it navigates to the tab anchor</h4>
+<p>Load up a page using a URl like http://localhost:4200/tabs?someQueryString=something
+Assuming the page has goa-tabs on it, the page won't load with the query string, only the tab ID</p>
+
+<goab-button (onClick)="refreshPageWithQueryString()">Reload with query string</goab-button>
+<h4>Issue 4: Anchor links to anything within tabs is not working</h4>
+<p>Anchor link not working when linking to anything within our tabs. It seem that our tabs are overriding our URL when loading.</p>
+<div style="height: 500px;"></div>
+
 <goab-tabs (onChange)="tabsOnChange($event)">
-  <goab-tab heading="Tab Item 1">
+  <goab-tab heading="Vanessa space">
     Tab Item 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
   </goab-tab>
-  <goab-tab heading="Tab Item 2">
+  <goab-tab heading="Dustin space">
     Tab Item 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
   </goab-tab>
-  <goab-tab heading="Tab Item 3">
+  <goab-tab heading="Chris space">
     Tab Item 3: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    <div style="height: 500px;"></div>
+    <a id="anchorPoint" href="/2433#tab-2#anchorPoint" style="cursor: pointer;">Click this anchor link to see that it doesn't work</a>
   </goab-tab>
 </goab-tabs>
+

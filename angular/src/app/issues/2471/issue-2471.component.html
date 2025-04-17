@@ -1,0 +1,86 @@
+<goab-tabs [initialTab]="2">
+  <goab-tab heading="All">
+    <goab-table width="100%">
+      <thead>
+      <tr>
+        <th>Status</th>
+        <th>Text</th>
+        <th class="goa-table-number-header">Number</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let i of [0,1,2,3]">
+        <td>
+          <goab-badge type="important" content="Review pending" />
+        </td>
+        <td>Lorem ipsum</td>
+        <td class="goa-table-number-column">1234567890</td>
+        <td>
+          <goab-button type="tertiary">Action</goab-button>
+        </td>
+      </tr>
+      <tr *ngFor="let i of [0,1]">
+        <td>
+          <goab-badge type="information" content="Complete" />
+        </td>
+        <td>Lorem Ipsum</td>
+        <td class="goa-table-number-column">1234567890</td>
+        <td>
+          <goab-button type="tertiary">Action</goab-button>
+        </td>
+      </tr>
+      </tbody>
+    </goab-table>
+  </goab-tab>
+  <goab-tab [heading]="reviewPending">
+    <ng-template #reviewPending>Review pending<goab-badge type="important" content="4"></goab-badge></ng-template>
+    <goab-table width="100%">
+      <thead>
+      <tr>
+        <th>Status</th>
+        <th>Text</th>
+        <th class="goa-table-number-header">Number</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let i of [0,1,2,3]">
+        <td>
+          <goab-badge type="important" content="Review pending" />
+        </td>
+        <td>Lorem ipsum</td>
+        <td class="goa-table-number-column">1234567890</td>
+        <td>
+          <goab-button type="tertiary">Action</goab-button>
+        </td>
+      </tr>
+      </tbody>
+    </goab-table>
+  </goab-tab>
+  <goab-tab [heading]="complete">
+    <ng-template #complete>Complete<goab-badge type="information" content="338"></goab-badge></ng-template>
+    <goab-table width="100%">
+      <thead>
+      <tr>
+        <th>Status</th>
+        <th>Text</th>
+        <th class="goa-table-number-header">Number</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let i of [0,1]">
+        <td>
+          <goab-badge type="information" content="Complete" />
+        </td>
+        <td>Lorem Ipsum</td>
+        <td class="goa-table-number-column">1234567890</td>
+        <td>
+          <goab-button type="tertiary">Action</goab-button>
+        </td>
+      </tr>
+      </tbody>
+    </goab-table>
+  </goab-tab>
+</goab-tabs>
