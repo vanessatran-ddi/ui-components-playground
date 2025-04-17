@@ -8,4 +8,9 @@ import { NgForOf } from "@angular/common";
   standalone: true,
   imports: [GoabTabs, GoabTab, GoabTable, GoabBadge, GoabButton, NgForOf],
 })
-export class Issue2471Component {}
+export class Issue2471Component {
+  refreshPageWithHash() {
+    window.location.hash = "#tab-0"; // First tab is loaded
+    window.location.reload();
+  }
+}
