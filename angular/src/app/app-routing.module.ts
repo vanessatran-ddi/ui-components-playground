@@ -51,7 +51,8 @@ import { TooltipComponent } from "./components/tooltip/tooltip.component";
 import { TwoColumnLayoutComponent } from "./components/two-column-layout/two-column-layout.component";
 import { Issue2433Component } from "./issues/2433/issue-2433.component";
 import { Issue2471Component } from "./issues/2471/issue-2471.component";
-
+import { TextComponent } from "playground/angular/src/app/components/text/text.component";
+7
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
   { path: "badge-wrapper", component: ComponentWrapperPage },
@@ -93,6 +94,7 @@ const routes: Routes = [
   { path: "styles", component: StylesComponent },
   { path: "table", component: TableComponent },
   { path: "tabs", component: TabsComponent },
+  { path: "text", component: TextComponent},
   { path: "textarea", component: TextAreaComponent },
   { path: "three-column-layout", component: ThreeColumnLayoutComponent },
   { path: "tooltip", component: TooltipComponent },
