@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import "@abgov/style";
+import { useEffect, useState } from "react";
 import {
   GoabAppFooter,
   GoabAppHeader,
@@ -27,6 +28,7 @@ export function App() {
             <GoabSideMenuGroup heading="Components">
               <Link to="/">Home</Link>
               <Link to="/pagination">Pagination</Link>
+              <Link to="/drawer">Drawer</Link>
               <Link to="/Text">Text</Link>
 
 
