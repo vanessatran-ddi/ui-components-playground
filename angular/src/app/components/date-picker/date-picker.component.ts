@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { GoabButton, GoabDatePicker, GoabFormItem } from "@abgov/angular-components";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { GoabDatePickerOnChangeDetail } from "@abgov/ui-components-common";
@@ -13,7 +13,8 @@ import { GoabDatePickerOnChangeDetail } from "@abgov/ui-components-common";
    FormsModule,
    ReactiveFormsModule,
    GoabButton
- ]
+ ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class DatePickerComponent {
 

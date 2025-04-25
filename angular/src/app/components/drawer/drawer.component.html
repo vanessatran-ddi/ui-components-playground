@@ -3,6 +3,7 @@
   [position]="form.value.position"
   heading="Filters"
   [actions]="actionSlot"
+  maxSize="500px"
   (onClose)="closeDrawer()"
 >
   <goab-form-item label="Entry status">
@@ -18,14 +19,14 @@
     <goab-checkbox [checked]="" text="South"></goab-checkbox>
   </goab-form-item>
 
-  <!--  <goab-form-item label="Assigned to">-->
-  <!--    <goab-dropdown value="" (onChange)="onChangeAssignedTo($event)">-->
-  <!--      <goab-dropdown-item value="red" label="Red"></goab-dropdown-item>-->
-  <!--      <goab-dropdown-item value="red1" label="Red1"></goab-dropdown-item>-->
-  <!--      <goab-dropdown-item value="red2" label="Red2"></goab-dropdown-item>-->
-  <!--      <goab-dropdown-item value="red3" label="Red3"></goab-dropdown-item>-->
-  <!--    </goab-dropdown>-->
-  <!--  </goab-form-item>-->
+    <goab-form-item label="Assigned to">
+      <goab-dropdown value="" (onChange)="onChangeAssignedTo($event)">
+        <goab-dropdown-item value="red" label="Red"></goab-dropdown-item>
+        <goab-dropdown-item value="red1" label="Red1"></goab-dropdown-item>
+        <goab-dropdown-item value="red2" label="Red2"></goab-dropdown-item>
+        <goab-dropdown-item value="red3" label="Red3"></goab-dropdown-item>
+      </goab-dropdown>
+    </goab-form-item>
 
   <goab-form-item label="Taken by - Region">
     <goab-checkbox [checked]="" text="Calgary"></goab-checkbox>

@@ -32,6 +32,7 @@ export const Drawer = () => {
     <>
       <h1>Drawer</h1>
       <GoabDrawer
+        maxSize={"100px"}
         open={open}
         onClose={() => setOpen(false)}
         position={position}
