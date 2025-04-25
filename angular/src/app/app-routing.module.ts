@@ -52,6 +52,7 @@ import { TwoColumnLayoutComponent } from "./components/two-column-layout/two-col
 import { Issue2433Component } from "./issues/2433/issue-2433.component";
 import { Issue2471Component } from "./issues/2471/issue-2471.component";
 import { Issue2455Component } from "playground/angular/src/app/issues/2455/issue-2455.component";
+import { Issue2441Component } from "playground/angular/src/app/issues/2441/issue-2441.component";
 
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
@@ -105,6 +106,7 @@ const routes: Routes = [
   { path: "2433", component: Issue2433Component},
   { path: "2471", component: Issue2471Component},
   { path: "2455", component: Issue2455Component},
+  { path: "2441", component: Issue2441Component},
   { path: "", redirectTo: "/", pathMatch: "full" },
 ];
 

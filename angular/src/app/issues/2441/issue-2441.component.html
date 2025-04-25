@@ -1,0 +1,22 @@
+<p> Issue: If you resize the browser, the popover of the dropdown will be bigger and not fit into the dropdown's input width.</p>
+<p> Issue: If you make the dropdown at the bottom, popover should be above the dropdown but now it is at the below</p>
+<div style="height: 500px"></div>
+<div style="margin-bottom:30px">
+  <goab-form-item label="Country">
+    <goab-dropdown
+      name="genderId"
+      width="100%"
+      placeholder="--Select Country--"
+      formControlName="countryDropdown"
+    >
+      <goab-dropdown-item value="null" label="--Select Country--"></goab-dropdown-item>
+      @for (country of countries; track country.code) {
+        <goab-dropdown-item [value]="country.code" [label]="country.name">
+        </goab-dropdown-item>
+      }
+    </goab-dropdown>
+  </goab-form-item>
+
+</div>
+
+
