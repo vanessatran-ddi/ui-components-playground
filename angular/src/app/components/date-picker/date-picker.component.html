@@ -1,28 +1,28 @@
 <h1>Date picker</h1>
 
-<!--<h2>ngModel</h2>-->
+<h2>ngModel</h2>
 
-<!--<p>Selected date: {{selectedDate}}</p>-->
-<!--<goab-date-picker [(ngModel)]="selectedDate" name="date-picker"></goab-date-picker>-->
+<p>Selected date: {{selectedDate}}</p>
+<goab-date-picker [(ngModel)]="selectedDate" name="date-picker"></goab-date-picker>
 
 
-<!--<h2>Reactive form</h2>-->
-<!--<form [formGroup]="form">-->
-<!--  <p>Selected Date: {{ form.get('datePicker')?.value }}</p>-->
-<!--  <goab-date-picker formControlName="datePicker" name="date-picker"></goab-date-picker>-->
-<!--</form>-->
+<h2>Reactive form</h2>
+<form [formGroup]="form">
+  <p>Selected Date: {{ form.get('datePicker')?.value }}</p>
+  <goab-date-picker formControlName="datePicker" name="date-picker"></goab-date-picker>
+</form>
 
 
 
 <h2>Using onChange</h2>
 <goa-date-picker name="date-picker1" width="1000px"></goa-date-picker>
-<!--<goab-date-picker (onChange)="handleDateChange($event)" name="date-picker"></goab-date-picker>-->
+<goab-date-picker (onChange)="handleDateChange($event)" name="date-picker"></goab-date-picker>
 
 
-<!--<goab-form-item label="Item">-->
-<!--  <goab-date-picker (onChange)="dateOnChange($event)" name="item" value="Mon Jan 20 2025 13:34:31 GMT-0700 (Mountain Standard Time)"></goab-date-picker>-->
-<!--</goab-form-item>-->
+<goab-form-item label="Item">
+  <goab-date-picker (onChange)="dateOnChange($event)" [value]="item" name="item" value="Mon Jan 20 2025 13:34:31 GMT-0700 (Mountain Standard Time)"></goab-date-picker>
+</goab-form-item>
 
-<!--<goab-button (onClick)="reset()">Reset</goab-button>-->
+<goab-button (onClick)="reset()">Reset</goab-button>
 
 

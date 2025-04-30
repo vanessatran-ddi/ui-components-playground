@@ -51,8 +51,10 @@ import { TooltipComponent } from "./components/tooltip/tooltip.component";
 import { TwoColumnLayoutComponent } from "./components/two-column-layout/two-column-layout.component";
 import { Issue2433Component } from "./issues/2433/issue-2433.component";
 import { Issue2471Component } from "./issues/2471/issue-2471.component";
-import { TextComponent } from "playground/angular/src/app/components/text/text.component";
-7
+import { TextComponent } from "./components/text/text.component";
+import { Issue1219Component } from "./issues/1219/issue-1219.component";
+import { Issue2415Component} from "./issues/2415/issue-2415.component";
+
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
   { path: "badge-wrapper", component: ComponentWrapperPage },
@@ -105,6 +107,8 @@ const routes: Routes = [
   { path: "2513", component: Issue2513Component },
   { path: "2433", component: Issue2433Component},
   { path: "2471", component: Issue2471Component},
+  { path: "1219", component: Issue1219Component},
+  { path: "2415", component: Issue2415Component},
   { path: "", redirectTo: "/", pathMatch: "full" },
 ];
 

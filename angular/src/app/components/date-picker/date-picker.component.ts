@@ -18,7 +18,7 @@ import { GoabDatePickerOnChangeDetail } from "@abgov/ui-components-common";
 })
 export class DatePickerComponent {
 
-  item = new Date();
+  item: Date|undefined = new Date();
   dateOnChange(event: GoabDatePickerOnChangeDetail) {
     // handle change
     console.log(event.value);
@@ -33,6 +33,7 @@ export class DatePickerComponent {
     this.form = new FormGroup({
       datePicker: new FormControl()
     });
+
   }
 
   handleDateChange(event: GoabDatePickerOnChangeDetail) {
@@ -40,6 +41,8 @@ export class DatePickerComponent {
   }
 
   reset() {
-    this.form.reset();
+    // this.form.reset();
+    this.form.setValue({"datePicker": ""});
+    this.item = undefined;
   }
 }
