@@ -54,6 +54,7 @@ import { Issue2471Component } from "./issues/2471/issue-2471.component";
 import { TextComponent } from "./components/text/text.component";
 import { Issue1219Component } from "./issues/1219/issue-1219.component";
 import { Issue2415Component} from "./issues/2415/issue-2415.component";
+import { PublicFormComponent } from "./public-form/public-form.component";
 import { Issue2409Component } from "./issues/2409/issue-2409.component";
 import { Issue2662Component } from "./issues/2662/issue-2662.component";
 import { Issue2408Component } from "./issues/2408/issue-2408.component";
@@ -125,6 +126,7 @@ const routes: Routes = [
   { path: "2410", component: Issue2410Component},
   { path: "1849", component: Issue1849Component},
   { path: "1572", component: Issue1572Component},
+  { path: "public-form", component: PublicFormComponent},
   { path: "", redirectTo: "/", pathMatch: "full" },
 ];
 
