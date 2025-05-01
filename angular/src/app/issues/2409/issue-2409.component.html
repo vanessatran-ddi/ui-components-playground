@@ -1,0 +1,258 @@
+<h1>Ticket #2409</h1>
+<p>width="100px" should ensure total width is 100px even with trailing and/or leadingIcon</p>
+<h1>% based</h1>
+<goab-form-item label="100% width">
+  <goab-input
+    name="name7"
+    type="text"
+    value=""
+    width="100%"
+  ></goab-input>
+</goab-form-item>
+
+<goab-form-item label="50% width + leading icon">
+  <goab-input
+    name="name12"
+    type="text"
+    value=""
+    width="100%"
+    leadingIcon="arrow-back"
+  >
+  </goab-input>
+</goab-form-item>
+
+<goab-form-item label="50% width + trailing icon">
+  <goab-input
+    name="name12"
+    type="text"
+    value=""
+    width="50%"
+    trailingIcon="arrow-forward"
+  >
+  </goab-input>
+</goab-form-item>
+
+<goab-form-item label="50% width, leading/trailing icons">
+  <goab-input
+    name="name8"
+    type="text"
+    value=""
+    width="50%"
+    trailingIcon="arrow-forward"
+    leadingIcon="arrow-back"
+  ></goab-input>
+</goab-form-item>
+
+<goab-form-item label="50% width + leading content">
+  <goab-input
+    name="name12"
+    type="text"
+    value=""
+    width="50%"
+  >
+    <div slot="leadingContent">Leafs</div>
+  </goab-input>
+</goab-form-item>
+
+<goab-form-item label="50% width + trailing content">
+  <goab-input
+    name="name12"
+    type="text"
+    value=""
+    width="50%"
+  >
+    <div slot="trailingContent">Leafs</div>
+  </goab-input>
+</goab-form-item>
+
+<goab-form-item label="50% width + both content">
+  <goab-input
+    name="name12"
+    type="text"
+    value=""
+    width="50%"
+  >
+    <div slot="leadingContent">Leafs</div>
+    <div slot="trailingContent">Leafs</div>
+  </goab-input>
+</goab-form-item>
+
+<goab-form-item label="50% width + leading icon + content">
+  <goab-input
+    name="name10"
+    type="text"
+    value=""
+    width="50%"
+    leadingIcon="arrow-back"
+  >
+    <div slot="leadingContent">Leafs</div>
+  </goab-input>
+</goab-form-item>
+
+<goab-form-item label="50% width + trailing icon + content">
+  <goab-input
+    name="name11"
+    type="text"
+    value=""
+    width="50%"
+    trailingIcon="arrow-forward"
+  >
+    <div slot="trailingContent">Leafs</div>
+  </goab-input>
+</goab-form-item>
+
+<goab-form-item label="50% width + both content + both icons">
+  <goab-input
+    name="name12"
+    type="text"
+    value=""
+    width="50%"
+    leadingIcon="arrow-back"
+    trailingIcon="arrow-forward"
+  >
+    <div slot="leadingContent">Leafs</div>
+    <div slot="trailingContent">Leafs</div>
+  </goab-input>
+</goab-form-item>
+
+
+
+<goab-form-item label="Search input 50% width">
+  <goab-input
+    name="name9"
+    type="search"
+    value=""
+    width="50%"
+    leadingIcon="search"
+  ></goab-input>
+</goab-form-item>
+
+<h1>Pixel based</h1>
+<goab-form-item label="300px width">
+  <goab-input
+    name="name4"
+    type="text"
+    value=""
+    width="300px"
+  ></goab-input>
+</goab-form-item>
+
+<goab-form-item label="300px + trailing icon">
+  <goab-input
+    name="name5"
+    type="text"
+    value=""
+    width="300px"
+    trailingIcon="arrow-forward"
+  ></goab-input>
+</goab-form-item>
+
+<goab-form-item label="300px + leading icons">
+  <goab-input
+    name="name5"
+    type="text"
+    value=""
+    width="300px"
+    leadingIcon="arrow-back"
+  ></goab-input>
+</goab-form-item>
+
+<goab-form-item label="300px + both icons">
+  <goab-input
+    name="name5"
+    type="text"
+    value=""
+    width="300px"
+    trailingIcon="arrow-forward"
+    leadingIcon="arrow-back"
+  ></goab-input>
+</goab-form-item>
+
+<goab-form-item label="300px + search">
+  <goab-input
+    name="name6"
+    type="search"
+    value=""
+    width="300px"
+    leadingIcon="search"
+  ></goab-input>
+</goab-form-item>
+
+<goab-form-item label="300px + leading content">
+  <goab-input
+    name="name5"
+    type="text"
+    value=""
+    width="300px"
+  >
+    <div slot="leadingContent">Oilers</div>
+  </goab-input>
+</goab-form-item>
+
+<goab-form-item label="300px + trailing content">
+  <goab-input
+    name="name5"
+    type="text"
+    value=""
+    width="300px"
+  >
+    <div slot="trailingContent">Oilers</div>
+
+  </goab-input>
+</goab-form-item>
+
+<goab-form-item label="300px + both content">
+  <goab-input
+    name="name5"
+    type="text"
+    value=""
+    width="300px"
+  >
+    <div slot="leadingContent">Oilers</div>
+    <div slot="trailingContent">Oilers</div>
+
+  </goab-input>
+</goab-form-item>
+
+
+
+<goab-form-item label="300px + leading content/icon">
+  <goab-input
+    name="name5"
+    type="text"
+    value=""
+    width="300px"
+    leadingIcon="arrow-back"
+  >
+    <div slot="leadingContent">Oilers</div>
+  </goab-input>
+</goab-form-item>
+
+
+<goab-form-item label="300px + trailing content/icon">
+  <goab-input
+    name="name5"
+    type="text"
+    value=""
+    width="300px"
+    trailingIcon="arrow-forward"
+  >
+    <div slot="trailingContent">Oilers</div>
+
+  </goab-input>
+</goab-form-item>
+
+<goab-form-item label="300px + both content + both icons">
+  <goab-input
+    name="name5"
+    type="text"
+    value=""
+    width="300px"
+    trailingIcon="arrow-forward"
+    leadingIcon="arrow-back"
+  >
+    <div slot="leadingContent">Oilers</div>
+    <div slot="trailingContent">Oilers</div>
+
+  </goab-input>
+</goab-form-item>
