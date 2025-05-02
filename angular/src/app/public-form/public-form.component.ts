@@ -1,6 +1,8 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { Component } from "@angular/core";
 import { PublicFormController } from "@abgov/ui-components-common";
+import { relay } from "@abgov/ui-components-common";
+import { requiredValidator } from "@abgov/ui-components-common";
 
 type Page =
   | "name"
@@ -97,7 +99,7 @@ export class PublicFormComponent extends PublicFormController<Page> {
         break;
     }
 
-    // this.continueTo(dest);
+    this.continueTo(dest);
   }
 
   // ===========
@@ -105,16 +107,16 @@ export class PublicFormComponent extends PublicFormController<Page> {
   // ===========
 
   validateName(e: Event): Page | undefined {
-    // const [firstNameOk] = this.validate("firstname", e, [
-    //   requiredValidator("First name is required"),
-    // ]);
-    // const [lastNameOk] = this.validate("lastname", e, [
-    //   requiredValidator("Last name is required"),
-    // ]);
-    // if (!firstNameOk || !lastNameOk) {
-    //   return;
-    // }
-
+    const [firstNameOk] = this.validate(e, "firstName", [
+      requiredValidator("First name is required"),
+    ]);
+    const [lastNameOk] = this.validate(e, "lastName", [
+      requiredValidator("Last name is required"),
+    ]);
+    if (!firstNameOk || !lastNameOk) {
+      return;
+    }
+    console.log("validateName is called ", e);
     return "sin";
   }
 
