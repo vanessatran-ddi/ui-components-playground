@@ -1,7 +1,13 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
-import { AngularComponentsModule, GoabAppFooter, GoabSideMenu, GoabSideMenuGroup } from "@abgov/angular-components";
+import {
+  AngularComponentsModule,
+  GoabAppFooter,
+  GoabAppHeader,
+  GoabSideMenu,
+  GoabSideMenuGroup,
+} from "@abgov/angular-components";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
@@ -15,9 +21,7 @@ import "@abgov/web-components";
 // ******
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     AngularComponentsModule,
     AppRoutingModule,
@@ -30,6 +34,7 @@ import "@abgov/web-components";
     GoabSideMenu,
     GoabSideMenuGroup,
     GoabAppFooter,
+    GoabAppHeader,
   ],
   providers: [],
   bootstrap: [AppComponent],

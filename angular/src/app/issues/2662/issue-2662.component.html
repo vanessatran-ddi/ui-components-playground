@@ -1,0 +1,23 @@
+<h1>Issue 2662</h1>
+<ul>
+  <li>Use the code above
+  </li>
+  <li>Shrink your screen size to mobile</li>
+  <li>Attempt to click the Menu link
+  </li>
+  <li>
+    Note that it does not expand
+  </li>
+</ul>
+<p>AC: Menu link in AppHeader should expand when clicked on mobile</p>
+<goab-app-header url="https://example.com" heading="Ticket and Fine Payments">
+  <a href="#" class="icon-link">User Guide
+    <goab-icon type="open" ml="s" />
+  </a>
+  <goab-app-header-menu heading="Tickets" leadingIcon="ticket">
+    <a href="#">Cases</a>
+    <a href="#">Payments</a>
+    <a href="#">Outstanding</a>
+  </goab-app-header-menu>
+  <a href="#" class="interactive">Sign in</a>
+</goab-app-header>
