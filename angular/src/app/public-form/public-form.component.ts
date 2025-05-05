@@ -3,7 +3,6 @@ import { Component } from "@angular/core";
 import { PublicFormController } from "@abgov/ui-components-common";
 import { relay } from "@abgov/ui-components-common";
 import { requiredValidator } from "@abgov/ui-components-common";
-import { GoabPublicForm } from "libs/angular-components/src/lib/components/public-form/public-form";
 
 type Page =
   | "name"
@@ -24,7 +23,6 @@ type Page =
   standalone: true,
   templateUrl: "./public-form.component.html",
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [GoabPublicForm],
 })
 export class PublicFormComponent extends PublicFormController<Page> {
   // =====
@@ -66,6 +64,7 @@ export class PublicFormComponent extends PublicFormController<Page> {
   // ======
 
   onPageChange(e: Event, from: Page) {
+    console.log("onPageChange ", (e as CustomEvent).detail);
     let dest: Page | undefined = undefined;
     switch (from) {
       case "name":

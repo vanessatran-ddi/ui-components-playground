@@ -2,7 +2,6 @@
   name="public-form-1"
   (_complete)="showConfirmation($event)"
   (_init)="init($event)"
-  (_stateChange)="getStateChange($event)"
 >
   <goa-public-form-page
     id="name"
@@ -14,7 +13,7 @@
       <goa-form-item name="firstName" label="First name">
         <goa-input name="firstName"></goa-input>
       </goa-form-item>
-      <goa-form-item name="lastName" label="Last name">
+      <goa-form-item name="lastName" label="Last name" public-form-summary-order="1">
         <goa-input name="lastName"></goa-input>
       </goa-form-item>
     </goa-fieldset>
@@ -34,8 +33,17 @@
     heading="Postal Code"
   >
     <goa-fieldset>
-      <goa-form-item id="postal-code-item" label="Postal Code">
-        <goa-input id="postal-code" name="postal-code" />
+      <goa-form-item name="Your City" label="Foo City" helptext="Where you live" public-form-summary-order="3">
+        <goa-input name="city"></goa-input>
+      </goa-form-item>
+      <goa-form-item name="Address" label="Address" public-form-summary-order="4">
+        <goa-textarea name="address"></goa-textarea>
+      </goa-form-item>
+      <goa-form-item name="Postal Code" label="Postal Code" public-form-summary-order="1">
+        <goa-input name="postal-code"></goa-input>
+      </goa-form-item>
+      <goa-form-item name="Date of birth" label="Date of birth" public-form-summary-order="2">
+        <goa-date-picker name="dob" type="input"></goa-date-picker>
       </goa-form-item>
     </goa-fieldset>
   </goa-public-form-page>
