@@ -1,0 +1,20 @@
+<goab-popover [target]="target">
+  <ng-template #target>
+    <goab-button type="secondary" size="compact">Open popover</goab-button>
+  </ng-template>
+
+  <div>Here is the popover content</div>
+
+  <goab-button action="close">Close</goab-button>
+  <goab-icon-button
+    icon="close"
+    action="close">
+  </goab-icon-button>
+  <goab-icon-button
+    icon="trash"
+    action="delete-user"
+    actionArg="123"
+    [actionArgs]="{ userId: '123', type: 'permanent' }">
+  </goab-icon-button>
+</goab-popover>
+
