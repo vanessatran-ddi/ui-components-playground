@@ -1,7 +1,7 @@
-<goa-public-form
+<goab-public-form
   name="public-form-1"
-  (_complete)="showConfirmation($event)"
-  (_init)="init($event)"
+  (onComplete)="showConfirmation($event)"
+  (onInit)="init($event)"
 >
   <goa-public-form-page
     id="name"
@@ -204,7 +204,7 @@
     >
     <goa-text mb="2xl">Phone: <a href="tel:+1-780-123-4567">780-123-4567</a></goa-text>
   </goa-public-form-page>
-</goa-public-form>
+</goab-public-form>
 
 <goa-modal [open]="_showConfirmationModal" heading="Submit application">
   Once submitted you will not be able to apply again until your file has been looked at.

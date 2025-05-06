@@ -1,8 +1,8 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { Component } from "@angular/core";
-import { PublicFormController } from "@abgov/ui-components-common";
-import { relay } from "@abgov/ui-components-common";
+import { GoabFormState, PublicFormController } from "@abgov/ui-components-common";
 import { requiredValidator } from "@abgov/ui-components-common";
+import { GoabPublicForm } from "@abgov/angular-components";
 
 type Page =
   | "name"
@@ -23,6 +23,7 @@ type Page =
   standalone: true,
   templateUrl: "./public-form.component.html",
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [GoabPublicForm],
 })
 export class PublicFormComponent extends PublicFormController<Page> {
   // =====
@@ -39,10 +40,9 @@ export class PublicFormComponent extends PublicFormController<Page> {
   // Functions
   // =========
 
-  showConfirmation(e: Event) {
-    console.log("onComplete event ", e);
-    const { form } = (e as CustomEvent).detail;
-    this._formData = form;
+  showConfirmation(state: GoabFormState) {
+    console.log("onComplete event ", state);
+    this._formData = state.form;
     this._showConfirmationModal = true;
   }
 
