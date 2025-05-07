@@ -621,10 +621,10 @@ export class ComponentWrapperPage {
   }
 
   stepStates: GoabFormStepStatus[] = [
-    "unstarted",
-    "unstarted",
-    "unstarted",
-    "unstarted",
+    "incomplete",
+    "incomplete",
+    "incomplete",
+    "incomplete",
   ]
 
   step = 1;
