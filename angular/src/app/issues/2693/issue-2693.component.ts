@@ -17,6 +17,6 @@ export class Issue2693Component {
   }
 
   private handleDeleteUser(data: any) {
-    alert("Delete is clicked" + JSON.stringify(data))
+    console.log("Delete is clicked" + JSON.stringify(data))
   }
 }
