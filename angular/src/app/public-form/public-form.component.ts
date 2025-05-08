@@ -7,7 +7,18 @@ import {
   PublicFormController,
 } from "@abgov/ui-components-common";
 import { requiredValidator } from "@abgov/ui-components-common";
-import { GoabPublicForm, GoabPublicFormPage } from "@abgov/angular-components";
+import {
+  GoabButton,
+  GoabButtonGroup,
+  GoabCallout,
+  GoabDatePicker, GoabDetails,
+  GoabFieldSet,
+  GoabFormItem,
+  GoabInput, GoabModal,
+  GoabPublicForm,
+  GoabPublicFormPage, GoabRadioGroup, GoabRadioItem, GoabText,
+  GoabTextArea,
+} from "@abgov/angular-components";
 
 type Page =
   | "name"
@@ -28,7 +39,23 @@ type Page =
   standalone: true,
   templateUrl: "./public-form.component.html",
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [GoabPublicForm, GoabPublicFormPage],
+  imports: [
+    GoabPublicForm,
+    GoabPublicFormPage,
+    GoabFieldSet,
+    GoabFormItem,
+    GoabInput,
+    GoabTextArea,
+    GoabDatePicker,
+    GoabRadioGroup,
+    GoabRadioItem,
+    GoabDetails,
+    GoabCallout,
+    GoabText,
+    GoabModal,
+    GoabButtonGroup,
+    GoabButton,
+  ],
 })
 export class PublicFormComponent extends PublicFormController<Page> {
   // =====
@@ -69,6 +96,7 @@ export class PublicFormComponent extends PublicFormController<Page> {
   // ======
 
   onPageChange(e: GoabPublicFormPageOnContinueDetail, from: string) {
+    console.log("onPageChange with e ", e, from);
     let dest: Page | undefined = undefined;
     switch (from) {
       case "name":

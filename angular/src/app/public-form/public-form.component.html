@@ -10,22 +10,22 @@
     [first]="true"
     (onContinue)="onPageChange($event, 'name')"
   >
-    <goa-fieldset>
-      <goa-form-item name="firstName" label="First name">
-        <goa-input name="firstName"></goa-input>
-      </goa-form-item>
-      <goa-form-item name="lastName" label="Last name" public-form-summary-order="1">
-        <goa-input name="lastName"></goa-input>
-      </goa-form-item>
-    </goa-fieldset>
+    <goab-fieldset>
+      <goab-form-item name="firstName" label="First name">
+        <goab-input name="firstName"></goab-input>
+      </goab-form-item>
+      <goab-form-item name="lastName" label="Last name">
+        <goab-input name="lastName"></goab-input>
+      </goab-form-item>
+    </goab-fieldset>
   </goab-public-form-page>
 
   <goab-public-form-page id="sin" (onContinue)="onPageChange($event, 'sin')">
-    <goa-fieldset>
-      <goa-form-item id="sin-item" label="What is your SIN?" labelsize="large">
-        <goa-input id="sin" name="sin" />
-      </goa-form-item>
-    </goa-fieldset>
+    <goab-fieldset>
+      <goab-form-item id="sin-item" label="What is your SIN?" labelSize="large">
+        <goab-input id="sin" name="sin" />
+      </goab-form-item>
+    </goab-fieldset>
   </goab-public-form-page>
 
   <goab-public-form-page
@@ -33,89 +33,90 @@
     (onContinue)="onPageChange($event, 'postalcode')"
     heading="Postal Code"
   >
-    <goa-fieldset>
-      <goa-form-item name="Your City" label="Foo City" helptext="Where you live" public-form-summary-order="3">
-        <goa-input name="city"></goa-input>
-      </goa-form-item>
-      <goa-form-item name="Address" label="Address" public-form-summary-order="4">
-        <goa-textarea name="address"></goa-textarea>
-      </goa-form-item>
-      <goa-form-item name="Postal Code" label="Postal Code" public-form-summary-order="1">
-        <goa-input name="postal-code"></goa-input>
-      </goa-form-item>
-      <goa-form-item name="Date of birth" label="Date of birth" public-form-summary-order="2">
-        <goa-date-picker name="dob" type="input"></goa-date-picker>
-      </goa-form-item>
-    </goa-fieldset>
+    <goab-fieldset>
+      <goab-form-item name="Your city" label="Foo City" helpText="Where you live" public-form-summary-order="3">
+        <goab-input name="city"></goab-input>
+      </goab-form-item>
+      <goab-form-item name="Address" label="Address" public-form-summary-order="4">
+        <goab-textarea name="address"></goab-textarea>
+      </goab-form-item>
+      <goab-form-item name="Postal Code" label="Postal Code" public-form-summary-order="1">
+        <goab-input name="postal-code"></goab-input>
+      </goab-form-item>
+      <goab-form-item name="Date of birth" label="Date of birth" public-form-summary-order="2">
+        <goab-date-picker name="dob" type="input"></goab-date-picker>
+      </goab-form-item>
+    </goab-fieldset>
   </goab-public-form-page>
 
   <goab-public-form-page id="residence" (onContinue)="onPageChange($event, 'residence')">
-    <goa-fieldset>
-      <goa-form-item
+<!--    TODO: There is a problem when using <goab-radio-group inside goa-fieldset-->
+    <goab-fieldset>
+      <goab-form-item
         id="alberta-item"
         label="Do you currently live in Alberta?"
-        labelsize="large"
-        helptext="This service is for residents of Alberta"
+        labelSize="large"
+        helpText="This service is for residents of Alberta"
       >
         <goa-radio-group id="alberta" name="alberta">
           <goa-radio-item value="Yes" label="Yes" />
           <goa-radio-item value="No" label="No" />
         </goa-radio-group>
-      </goa-form-item>
-    </goa-fieldset>
+      </goab-form-item>
+    </goab-fieldset>
   </goab-public-form-page>
 
   <goab-public-form-page
     id="residence-duration"
     (onContinue)="onPageChange($event, 'residence-duration')"
   >
-    <goa-fieldset>
-      <goa-form-item
+    <goab-fieldset>
+      <goab-form-item
         id="duration-item"
         label="How long have you been living in Alberta?"
-        labelsize="large"
+        labelSize="large"
       >
-        <goa-radio-group id="duration" name="duration">
-          <goa-radio-item value="Less than a year" label="Less than a year" />
-          <goa-radio-item value="More than a year" label="More than a year" />
-        </goa-radio-group>
-      </goa-form-item>
-    </goa-fieldset>
+        <goab-radio-group id="duration" name="duration">
+          <goab-radio-item value="Less than a year" label="Less than a year" />
+          <goab-radio-item value="More than a year" label="More than a year" />
+        </goab-radio-group>
+      </goab-form-item>
+    </goab-fieldset>
   </goab-public-form-page>
 
   <goab-public-form-page id="birthdate" (onContinue)="onPageChange($event, 'birthdate')">
-    <goa-fieldset>
-      <goa-form-item
+    <goab-fieldset>
+      <goab-form-item
         id="birthdate-item"
         label="What is your date of birth?"
-        helptext="Your date of birth is required to ensure you meet the minimum age criteria"
-        labelsize="large"
+        helpText="Your date of birth is required to ensure you meet the minimum age criteria"
+        labelSize="large"
       >
-        <goa-form-item id="birth-date-item" label="Birth Date">
-          <goa-input id="birth-date" name="birth-date" type="date" />
-        </goa-form-item>
-      </goa-form-item>
-    </goa-fieldset>
+        <goab-form-item id="birth-date-item" label="Birth Date">
+          <goab-input id="birth-date" name="birth-date" type="date" />
+        </goab-form-item>
+      </goab-form-item>
+    </goab-fieldset>
   </goab-public-form-page>
 
   <goab-public-form-page
     id="currently-employed"
     (onContinue)="onPageChange($event, 'currently-employed')"
   >
-    <goa-fielset>
-      <goa-form-item
+    <goab-fieldset>
+      <goab-form-item
         id="employed-item"
         label="Are you currently employed?"
-        labelsize="large"
+        labelSize="large"
       >
-        <goa-radio-group id="employed" name="employed">
-          <goa-radio-item value="Yes" label="Yes" />
-          <goa-radio-item value="No" label="No" />
-        </goa-radio-group>
+        <goab-radio-group id="employed" name="employed">
+          <goab-radio-item value="Yes" label="Yes" />
+          <goab-radio-item value="No" label="No" />
+        </goab-radio-group>
 
-      </goa-form-item>
-    </goa-fielset>
-    <goa-details heading="What do I do if I am self-employed?">
+      </goab-form-item>
+      </goab-fieldset>
+    <goab-details heading="What do I do if I am self-employed?">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu erat tincidunt,
       consectetur enim ut, rutrum nulla. Praesent sit amet viverra ex. Morbi fermentum
       diam in ullamcorper auctor. Pellentesque aliquet metus sit amet lacinia elementum.
@@ -123,61 +124,61 @@
       Phasellus finibus turpis at diam viverra facilisis. In non lacus viverra, gravida
       magna facilisis, porttitor risus. Mauris consequat libero magna, non cursus velit
       euismod ut. Donec eget turpis eros.
-    </goa-details>
+    </goab-details>
   </goab-public-form-page>
 
   <goab-public-form-page
     id="highest-education"
     (onContinue)="onPageChange($event, 'highest-education')"
   >
-    <goa-fieldset>
-    <goa-form-item
+    <goab-fieldset>
+    <goab-form-item
       id="education-item"
       label="What is the highest level of education you have completed?"
-      labelsize="large"
+      labelSize="large"
     >
-      <goa-radio-group id="education" name="education">
-        <goa-radio-item value="High school" label="High school" />
-        <goa-radio-item value="Post secondary" label="Post secondary" />
-        <goa-radio-item value="Graduate studies" label="Graduate studies" />
-        <goa-radio-item value="None" label="None" />
-        <goa-radio-item value="Other" label="Other" />
-      </goa-radio-group>
-    </goa-form-item>
-    </goa-fieldset>
+      <goab-radio-group id="education" name="education">
+        <goab-radio-item value="High school" label="High school" />
+        <goab-radio-item value="Post secondary" label="Post secondary" />
+        <goab-radio-item value="Graduate studies" label="Graduate studies" />
+        <goab-radio-item value="None" label="None" />
+        <goab-radio-item value="Other" label="Other" />
+      </goab-radio-group>
+    </goab-form-item>
+    </goab-fieldset>
   </goab-public-form-page>
 
   <goab-public-form-page
     id="other-education"
     (onContinue)="onPageChange($event, 'other-education')"
   >
-    <goa-fieldset>
-      <goa-form-item
+    <goab-fieldset>
+      <goab-form-item
         id="other-education-description-item"
         label="Describe your education"
-        labelsize="large"
+        labelSize="large"
       >
-        <goa-textarea id="other-education-description" name="other-education-description" />
-      </goa-form-item>
-    </goa-fieldset>
+        <goab-textarea id="other-education-description" name="other-education-description" />
+      </goab-form-item>
+    </goab-fieldset>
   </goab-public-form-page>
 
   <goab-public-form-page
     id="previously-applied"
     (onContinue)="onPageChange($event, 'previously-applied')"
   >
-    <goa-fieldset>
-      <goa-form-item
+    <goab-fieldset>
+      <goab-form-item
         id="previously-applied-item"
         label="Have you previously applied for this service?"
-        labelsize="large"
+        labelSize="large"
       >
-        <goa-radio-group id="previously-applied" name="previously-applied">
-          <goa-radio-item value="Yes" label="Yes" />
-          <goa-radio-item value="No" label="No" />
-        </goa-radio-group>
-      </goa-form-item>
-    </goa-fieldset>
+        <goab-radio-group id="previously-applied" name="previously-applied">
+          <goab-radio-item value="Yes" label="Yes" />
+          <goab-radio-item value="No" label="No" />
+        </goab-radio-group>
+      </goab-form-item>
+    </goab-fieldset>
   </goab-public-form-page>
 
   <goab-public-form-page id="summary" heading="Summary">
@@ -189,27 +190,27 @@
     heading="You are not eligable"
     buttonText="Back to Alberta.ca"
   >
-    <goa-callout heading="This service is only for Alberta residents" type="important">
+    <goab-callout heading="This service is only for Alberta residents" type="important">
       If you do not live in Alberta you are not able to access this service.
-    </goa-callout>
+    </goab-callout>
 
-    <goa-text mb="2xl">You can now close this window.</goa-text>
+    <goab-text mb="2xl">You can now close this window.</goab-text>
 
-    <goa-text as="h2" mb="l">If you have questions about this application</goa-text>
+    <goab-text tag="h2" mb="l">If you have questions about this application</goab-text>
 
-    <goa-text mb="m">Contact the [ministry area]</goa-text>
-    <goa-text mb="m"
+    <goab-text mb="m">Contact the [ministry area]</goab-text>
+    <goab-text mb="m"
       >Email
-      <a href="mailto:information@gov.ab.ca">information&#64;gov.ab.ca</a></goa-text
+      <a href="mailto:information@gov.ab.ca">information&#64;gov.ab.ca</a></goab-text
     >
-    <goa-text mb="2xl">Phone: <a href="tel:+1-780-123-4567">780-123-4567</a></goa-text>
+    <goab-text mb="2xl">Phone: <a href="tel:+1-780-123-4567">780-123-4567</a></goab-text>
   </goab-public-form-page>
 </goab-public-form>
 
-<goa-modal [open]="_showConfirmationModal" heading="Submit application">
+<goab-modal [open]="_showConfirmationModal" heading="Submit application">
   Once submitted you will not be able to apply again until your file has been looked at.
-  <goa-button-group alignment="end">
-    <goa-button type="tertiary" (_click)="hideConfirmationModal()"> Cancel</goa-button>
-    <goa-button type="primary" (_click)="submitForm()"> Submit</goa-button>
-  </goa-button-group>
-</goa-modal>
+  <goab-button-group alignment="end">
+    <goab-button type="tertiary" (onClick)="hideConfirmationModal()"> Cancel</goab-button>
+    <goab-button type="primary" (onClick)="submitForm()"> Submit</goab-button>
+  </goab-button-group>
+</goab-modal>
