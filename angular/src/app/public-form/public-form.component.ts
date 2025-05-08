@@ -16,7 +16,7 @@ import {
   GoabFormItem,
   GoabInput, GoabModal,
   GoabPublicForm,
-  GoabPublicFormPage, GoabRadioGroup, GoabRadioItem, GoabText,
+  GoabPublicFormPage, GoabPublicFormSummary, GoabRadioGroup, GoabRadioItem, GoabText,
   GoabTextArea,
 } from "@abgov/angular-components";
 
@@ -55,6 +55,7 @@ type Page =
     GoabModal,
     GoabButtonGroup,
     GoabButton,
+    GoabPublicFormSummary,
   ],
 })
 export class PublicFormComponent extends PublicFormController<Page> {
@@ -185,6 +186,7 @@ export class PublicFormComponent extends PublicFormController<Page> {
     // if (value === "No") {
     //   return "ineligible";
     // }
+    console.log("Reach and return residence-duration");
     return "residence-duration";
   }
 

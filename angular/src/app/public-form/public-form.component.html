@@ -34,17 +34,14 @@
     heading="Postal Code"
   >
     <goab-fieldset>
-      <goab-form-item name="Your city" label="Foo City" helpText="Where you live" public-form-summary-order="3">
+      <goab-form-item name="Your city" label="Foo City" helpText="Where you live" [publicFormSummaryOrder]="3">
         <goab-input name="city"></goab-input>
       </goab-form-item>
-      <goab-form-item name="Address" label="Address" public-form-summary-order="4">
-        <goab-textarea name="address"></goab-textarea>
+      <goab-form-item name="Address" label="Address" [publicFormSummaryOrder]="4">
+        <goa-textarea name="address"></goa-textarea>
       </goab-form-item>
-      <goab-form-item name="Postal Code" label="Postal Code" public-form-summary-order="1">
+      <goab-form-item name="Postal Code" label="Postal Code" [publicFormSummaryOrder]="1">
         <goab-input name="postal-code"></goab-input>
-      </goab-form-item>
-      <goab-form-item name="Date of birth" label="Date of birth" public-form-summary-order="2">
-        <goab-date-picker name="dob" type="input"></goab-date-picker>
       </goab-form-item>
     </goab-fieldset>
   </goab-public-form-page>
@@ -105,14 +102,14 @@
   >
     <goab-fieldset>
       <goab-form-item
-        id="employed-item"
+        id="currently-employed"
         label="Are you currently employed?"
         labelSize="large"
       >
-        <goab-radio-group id="employed" name="employed">
-          <goab-radio-item value="Yes" label="Yes" />
-          <goab-radio-item value="No" label="No" />
-        </goab-radio-group>
+        <goa-radio-group id="currency-employed" name="employed">
+          <goa-radio-item value="Yes" label="Yes" />
+          <goa-radio-item value="No" label="No" />
+        </goa-radio-group>
 
       </goab-form-item>
       </goab-fieldset>
@@ -182,7 +179,7 @@
   </goab-public-form-page>
 
   <goab-public-form-page id="summary" heading="Summary">
-    <goa-public-form-summary />
+    <goab-public-form-summary/>
   </goab-public-form-page>
 
   <goab-public-form-page
