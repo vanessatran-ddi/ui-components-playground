@@ -37,8 +37,8 @@
       <goab-form-item name="Your city" label="Foo City" helpText="Where you live" [publicFormSummaryOrder]="3">
         <goab-input name="city"></goab-input>
       </goab-form-item>
-      <goab-form-item name="Address" label="Address" [publicFormSummaryOrder]="4">
-        <goa-textarea name="address"></goa-textarea>
+      <goab-form-item label="Address" [publicFormSummaryOrder]="4">
+        <goab-textarea name="address"></goab-textarea>
       </goab-form-item>
       <goab-form-item name="Postal Code" label="Postal Code" [publicFormSummaryOrder]="1">
         <goab-input name="postal-code"></goab-input>
@@ -47,7 +47,6 @@
   </goab-public-form-page>
 
   <goab-public-form-page id="residence" (onContinue)="onPageChange($event, 'residence')">
-<!--    TODO: There is a problem when using <goab-radio-group inside goa-fieldset-->
     <goab-fieldset>
       <goab-form-item
         id="alberta-item"
@@ -55,10 +54,10 @@
         labelSize="large"
         helpText="This service is for residents of Alberta"
       >
-        <goa-radio-group id="alberta" name="alberta">
-          <goa-radio-item value="Yes" label="Yes" />
-          <goa-radio-item value="No" label="No" />
-        </goa-radio-group>
+        <goab-radio-group id="alberta" name="alberta">
+          <goab-radio-item value="Yes" label="Yes" />
+          <goab-radio-item value="No" label="No" />
+        </goab-radio-group>
       </goab-form-item>
     </goab-fieldset>
   </goab-public-form-page>
@@ -106,10 +105,10 @@
         label="Are you currently employed?"
         labelSize="large"
       >
-        <goa-radio-group id="currency-employed" name="employed">
-          <goa-radio-item value="Yes" label="Yes" />
-          <goa-radio-item value="No" label="No" />
-        </goa-radio-group>
+        <goab-radio-group id="currency-employed" name="employed">
+          <goab-radio-item value="Yes" label="Yes" />
+          <goab-radio-item value="No" label="No" />
+        </goab-radio-group>
 
       </goab-form-item>
       </goab-fieldset>
@@ -178,7 +177,12 @@
     </goab-fieldset>
   </goab-public-form-page>
 
-  <goab-public-form-page id="summary" heading="Summary">
+  <goab-public-form-page
+    id="summary"
+    heading="Summary"
+    [last]="true"
+    (onComplete)="showConfirmation($event)"
+  >
     <goab-public-form-summary/>
   </goab-public-form-page>
 

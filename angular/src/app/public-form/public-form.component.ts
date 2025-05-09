@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { Component } from "@angular/core";
 import {
   GoabFieldsetItemState, GoabFieldsetItemValue,
-  GoabFormState,
+  GoabFormState, GoabPublicFormPageOnCompleteDetail,
   GoabPublicFormPageOnContinueDetail,
   PublicFormController,
 } from "@abgov/ui-components-common";
@@ -12,7 +12,7 @@ import {
   GoabButtonGroup,
   GoabCallout,
   GoabDatePicker, GoabDetails,
-  GoabFieldSet,
+  GoabFieldset,
   GoabFormItem,
   GoabInput, GoabModal,
   GoabPublicForm,
@@ -42,7 +42,7 @@ type Page =
   imports: [
     GoabPublicForm,
     GoabPublicFormPage,
-    GoabFieldSet,
+    GoabFieldset,
     GoabFormItem,
     GoabInput,
     GoabTextArea,
@@ -73,9 +73,9 @@ export class PublicFormComponent extends PublicFormController<Page> {
   // Functions
   // =========
 
-  showConfirmation(state: GoabFormState) {
-    console.log("onComplete event ", state);
-    this._formData = state.form;
+  showConfirmation(event: GoabPublicFormPageOnCompleteDetail) {
+    console.log("showConfirmation event ", event);
+    this._formData = event.state;
     this._showConfirmationModal = true;
   }
 
@@ -91,6 +91,7 @@ export class PublicFormComponent extends PublicFormController<Page> {
   toggleDrawer() {
     this.showDrawer = !this.showDrawer;
   }
+
 
   // ======
   // Events
@@ -133,8 +134,10 @@ export class PublicFormComponent extends PublicFormController<Page> {
       case "summary":
         break;
     }
+    if (dest) {
+      this.continueTo(dest);
+    }
 
-    this.continueTo(dest);
   }
 
   // ===========
