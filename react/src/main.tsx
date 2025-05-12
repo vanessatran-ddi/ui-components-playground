@@ -6,6 +6,7 @@ import "@abgov/web-components";
 import App from "./app/app";
 import { Pagination } from "./app/components/pagination/Pagination";
 import { Issue2446 } from "./app/issues/issue2446";
+import { Issue2441 } from "./app/issues/issue2441";
 import { TextPage } from "./app/components/text/Text";
 import { Drawer } from "./app/drawer/Drawer";
 
@@ -22,6 +23,7 @@ root.render(
           <Route path={"/drawer"} element={<Drawer/>}> </Route>
           <Route path={"/text"} element={<TextPage/>}></Route>
           <Route path={"/2446"} element={<Issue2446/>}></Route>
+          <Route path={"/2441"} element={<Issue2441/>}></Route>
           {/** Add more routes here */}
 
         </Route>
