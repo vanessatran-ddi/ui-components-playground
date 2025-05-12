@@ -58,6 +58,7 @@ import { Issue1219Component } from "./issues/1219/issue-1219.component";
 import { Issue2415Component} from "./issues/2415/issue-2415.component";
 import { Issue2409Component } from "./issues/2409/issue-2409.component";
 import { Issue2662Component } from "./issues/2662/issue-2662.component";
+import { Issue2408Component } from "playground/angular/src/app/issues/2408/issue-2408.component";
 import { Issue2693Component } from "./issues/2693/issue-2693.component";
 
 const routes: Routes = [
@@ -119,6 +120,7 @@ const routes: Routes = [
   { path: "2409", component: Issue2409Component},
   { path: "2662", component: Issue2662Component},
   { path: "2693", component: Issue2693Component},
+  { path: "2408", component: Issue2408Component},
   { path: "", redirectTo: "/", pathMatch: "full" },
 ];
 
