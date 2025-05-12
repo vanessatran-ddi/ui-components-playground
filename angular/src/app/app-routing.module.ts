@@ -51,15 +51,14 @@ import { TooltipComponent } from "./components/tooltip/tooltip.component";
 import { TwoColumnLayoutComponent } from "./components/two-column-layout/two-column-layout.component";
 import { Issue2433Component } from "./issues/2433/issue-2433.component";
 import { Issue2471Component } from "./issues/2471/issue-2471.component";
-import { Issue2455Component } from "playground/angular/src/app/issues/2455/issue-2455.component";
-import { Issue2441Component } from "playground/angular/src/app/issues/2441/issue-2441.component";
 import { TextComponent } from "./components/text/text.component";
 import { Issue1219Component } from "./issues/1219/issue-1219.component";
 import { Issue2415Component} from "./issues/2415/issue-2415.component";
 import { Issue2409Component } from "./issues/2409/issue-2409.component";
 import { Issue2662Component } from "./issues/2662/issue-2662.component";
-import { Issue2408Component } from "playground/angular/src/app/issues/2408/issue-2408.component";
+import { Issue2408Component } from "./issues/2408/issue-2408.component";
 import { Issue2693Component } from "./issues/2693/issue-2693.component";
+import { Issue2395Component } from "./issues/2395/issue-2395.component";
 
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
@@ -113,14 +112,13 @@ const routes: Routes = [
   { path: "2513", component: Issue2513Component },
   { path: "2433", component: Issue2433Component},
   { path: "2471", component: Issue2471Component},
-  { path: "2455", component: Issue2455Component},
-  { path: "2441", component: Issue2441Component},
   { path: "1219", component: Issue1219Component},
   { path: "2415", component: Issue2415Component},
   { path: "2409", component: Issue2409Component},
   { path: "2662", component: Issue2662Component},
   { path: "2693", component: Issue2693Component},
   { path: "2408", component: Issue2408Component},
+  { path: "2395", component: Issue2395Component},
   { path: "", redirectTo: "/", pathMatch: "full" },
 ];
 

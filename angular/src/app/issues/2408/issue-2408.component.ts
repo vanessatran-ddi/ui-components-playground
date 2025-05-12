@@ -10,7 +10,8 @@ import { GoabButton, GoabFormStep, GoabFormStepper, GoabPages } from "@abgov/ang
 export class Issue2408Component {
   step = -1;
   // controlled by the user based on form completion
-  status: GoabFormStepStatus[] = ["not-started", "incomplete", "not-started", "complete"];
+  status: GoabFormStepStatus[] = [];
+  // status: GoabFormStepStatus[] = ["incomplete", "incomplete", "not-started", "complete"];
   updateStep(event: GoabFormStepperOnChangeDetail) {
     this.step = event.step;
   }

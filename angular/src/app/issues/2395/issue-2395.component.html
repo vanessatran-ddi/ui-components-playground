@@ -1,0 +1,36 @@
+<h3>Issue 2395</h3>
+<p>The goa-pagination component fires the _change event once when I change the page number with the drop down.</p>
+
+<p>Number of trigger the page change: {{handlePageChangeTriggerCounter}}</p>
+
+<h3>Issue 2348</h3>
+<p>
+  If no records:
+
+  "Page 1 of 1"
+  Min value is 1
+  Create contextual example of "0" records
+</p>
+<goab-button (onClick)="emptyTable()">Empty Table</goab-button>
+<goab-table width="100%" mb="xl">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of pageUsers; index as i">
+      <td>{{ user.firstName }}</td>
+      <td>{{ user.lastName }}</td>
+      <td>{{ user.age }}</td>
+    </tr>
+  </tbody>
+</goab-table>
+<goab-pagination
+  [itemCount]="users.length"
+  [perPageCount]="10"
+  [pageNumber]="page"
+  (onChange)="handlePageChange($event)"
+></goab-pagination>
