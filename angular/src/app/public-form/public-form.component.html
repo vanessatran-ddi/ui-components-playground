@@ -180,8 +180,8 @@
   <goab-public-form-page
     id="summary"
     heading="Summary"
-    [last]="true"
-    (onComplete)="showConfirmation($event)"
+    type="summary"
+    (onContinue)="onPageChange($event, 'summary')"
   >
     <goab-public-form-summary/>
   </goab-public-form-page>

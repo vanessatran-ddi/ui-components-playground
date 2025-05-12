@@ -4,14 +4,14 @@ import {
   GoabFieldsetItemState, GoabFieldsetItemValue,
   GoabFormState, GoabPublicFormPageOnCompleteDetail,
   GoabPublicFormPageOnContinueDetail,
-  PublicFormController,
+  PublicFormController, relay,
 } from "@abgov/ui-components-common";
 import { requiredValidator } from "@abgov/ui-components-common";
 import {
   GoabButton,
   GoabButtonGroup,
   GoabCallout,
-  GoabDatePicker, GoabDetails,
+  GoabDetails,
   GoabFieldset,
   GoabFormItem,
   GoabInput, GoabModal,
@@ -46,7 +46,6 @@ type Page =
     GoabFormItem,
     GoabInput,
     GoabTextArea,
-    GoabDatePicker,
     GoabRadioGroup,
     GoabRadioItem,
     GoabDetails,
@@ -73,9 +72,10 @@ export class PublicFormComponent extends PublicFormController<Page> {
   // Functions
   // =========
 
-  showConfirmation(event: GoabPublicFormPageOnCompleteDetail) {
-    console.log("showConfirmation event ", event);
-    this._formData = event.state;
+
+  showConfirmation(state: GoabFormState) {
+    console.log("I am at showConfirmation and state is ", state);
+    // this._formData = state.form;
     this._showConfirmationModal = true;
   }
 
