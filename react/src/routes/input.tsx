@@ -18,6 +18,8 @@ export default function Input() {
   const [minDate, _setMinDate] = useState<Date>(new Date());
   const [maxDate, _setMaxDate] = useState<Date>(new Date());
 
+  const [date2526, setDate2526] = useState<Date | string>("");
+
   function noop() {
     // noop
   }
@@ -214,6 +216,16 @@ export default function Input() {
         trailingContent="items"
         onChange={noop}
         disabled={true}
+      />
+
+      <h3>Issue 2526</h3>
+      <GoAInputDateTime
+        name={'ADSP test'}
+        value={date}
+        onChange={(name, value: Date | string) => {
+          setDate2526(value);
+          console.log(value);
+        }}
       />
     </>
   );
