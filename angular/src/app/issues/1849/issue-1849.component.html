@@ -1,0 +1,22 @@
+<h3>Issue 1849: https://github.com/GovAlta/ui-components/issues/1849</h3>
+
+<p>
+  For the accept property, currently it's case-insensitive when filter, but case-sensitive when upload. we should make it case-insensitive for both, since both windows and Mac operating system is case-insensitive for file extension (means both .pdf and ,PDF can live in my file system)
+</p>
+
+<goab-form-item label="Upload a file">
+  <goab-file-upload-input variant="dragdrop"
+
+                          (onSelectFile)="uploadFile($event)" maxFileSize="100MB"></goab-file-upload-input>
+  <goab-file-upload-card
+    *ngFor="let upload of uploads; index as i"
+    [type]="upload.file.type"
+    [size]="upload.file.size"
+    [filename]="upload.file.name"
+    [progress]="progressList[upload.file.name]"
+    (onDelete)="deleteFile(upload)"
+    (onCancel)="deleteFile(upload)"
+
+  >
+  </goab-file-upload-card>
+</goab-form-item>

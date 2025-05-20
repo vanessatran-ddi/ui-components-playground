@@ -1,20 +1,14 @@
-import { GoabFileUploadCard, GoabFileUploadInput } from "@abgov/angular-components";
-import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
 import { MockUploader, Upload } from "../../utils/file-uploader";
-
-
+import { GoabFileUploadCard, GoabFileUploadInput, GoabFormItem } from "@abgov/angular-components";
+import { NgForOf } from "@angular/common";
 @Component({
+  selector: "abgov-issue-1849",
   standalone: true,
-  selector: "abgov-file-upload",
-  templateUrl: "./file-upload.html",
-  imports: [
-    GoabFileUploadInput,
-    GoabFileUploadCard,
-    CommonModule,
-  ],
+  imports: [GoabFormItem, GoabFileUploadInput, GoabFileUploadCard, NgForOf],
+  templateUrl: "./issue-1849.component.html",
 })
-export class FileUploadComponent {
+export class Issue1849Component {
   uploads: Upload[] = [];
   progressList: Record<string, number> = {};
 
@@ -32,8 +26,7 @@ export class FileUploadComponent {
       this.uploads = [...this.uploads, { file, uploader }];
 
       uploader.oncomplete = () => console.log("File upload complete");
-      uploader.onprogress = (percent: number) =>
-        (this.progressList[file.name] = percent);
+      uploader.onprogress = (percent: number) => (this.progressList[file.name] = percent);
       uploader.onabort = () => console.log("Aborting upload");
       uploader.onfail = (err: string) => console.log("Upload failed: ", err);
 
@@ -46,8 +39,6 @@ export class FileUploadComponent {
 
   deleteFile(upload: Upload) {
     upload.uploader.abort();
-    this.uploads = [...this.uploads].filter(
-      (u) => u.file.name !== upload.file.name
-    );
+    this.uploads = [...this.uploads].filter((u) => u.file.name !== upload.file.name);
   }
 }
