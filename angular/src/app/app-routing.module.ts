@@ -61,6 +61,7 @@ import { Issue2693Component } from "./issues/2693/issue-2693.component";
 import { Issue2395Component } from "./issues/2395/issue-2395.component";
 import { Issue2410Component } from "./issues/2410/issue-2410.component";
 import { Issue1849Component } from "./issues/1849/issue-1849.component";
+import { Issue1572Component} from "./issues/1572/issue-1572.component";
 
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
@@ -123,6 +124,7 @@ const routes: Routes = [
   { path: "2395", component: Issue2395Component},
   { path: "2410", component: Issue2410Component},
   { path: "1849", component: Issue1849Component},
+  { path: "1572", component: Issue1572Component},
   { path: "", redirectTo: "/", pathMatch: "full" },
 ];
 
