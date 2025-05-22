@@ -32,10 +32,11 @@ export function App() {
               <Link to="/drawer">Drawer</Link>
               <Link to="/Text">Text</Link>
 
-
               {/* Add links here */}
             </GoabSideMenuGroup>
-
+            <GoabSideMenuGroup heading={"Public Form"}>
+              <Link to="/public-form">Public Form</Link>
+            </GoabSideMenuGroup>
             {/* Add links here */}
           </GoabSideMenu>
         </section>

@@ -9,6 +9,7 @@ import { Issue2446 } from "./app/issues/issue2446";
 import { Issue2441 } from "./app/issues/issue2441";
 import { TextPage } from "./app/components/text/Text";
 import { Drawer } from "./app/drawer/Drawer";
+import { SimplePublicFormExample } from "./app/public-form/SimplePublicFormExample";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -24,6 +25,7 @@ root.render(
           <Route path={"/text"} element={<TextPage/>}></Route>
           <Route path={"/2446"} element={<Issue2446/>}></Route>
           <Route path={"/2441"} element={<Issue2441/>}></Route>
+          <Route path={"/public-form"} element={<SimplePublicFormExample/>}></Route>
           {/** Add more routes here */}
 
         </Route>
