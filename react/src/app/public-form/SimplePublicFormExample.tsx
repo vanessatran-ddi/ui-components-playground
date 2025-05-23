@@ -43,11 +43,9 @@ export function SimplePublicFormExample() {
     initState,
     continueTo,
     validate,
-    controller
   } = usePublicFormController<Page>("details");
 
   const showConfirmation = (state: GoabFormState) => {
-    console.log("I am at showConfirmation and state is ", state);
     setShowConfirmationModal(true);
   };
 
@@ -145,8 +143,6 @@ export function SimplePublicFormExample() {
         nextPage = "summary";
         break;
       case "summary":
-        // Handle summary page completion
-        showConfirmation(true);
         break;
     }
 
@@ -158,7 +154,7 @@ export function SimplePublicFormExample() {
   const handleInit = (event: GoabPublicFormOnInitDetail) => {
     console.log("Form initialized", event);
     init(event);
-    
+
     // Initialize state after form reference is set
     setTimeout(() => {
       initState({
