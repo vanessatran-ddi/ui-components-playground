@@ -1,0 +1,1316 @@
+<h3>Checkbox and Radio reveal slots</h3>
+<goab-accordion heading="Accordion">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="accordionCheckboxDescription"
+      [reveal]="accordionCheckboxReveal"
+    >
+      <ng-template #accordionCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #accordionCheckboxReveal>
+        <goab-accordion heading="Accordion" headingSize="medium">
+          This is the content in an accordion item. This content can be anything that you
+          want including rich text, components, and more.
+        </goab-accordion>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="accordionRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #accordionRadioReveal>
+          <goab-accordion heading="Accordion" headingSize="medium">
+            This is the content in an accordion item. This content can be anything that
+            you want including rich text, components, and more.
+          </goab-accordion>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Badge">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="badgeCheckboxDescription"
+      [reveal]="badgeCheckboxReveal"
+    >
+      <ng-template #badgeCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #badgeCheckboxReveal>
+        <goab-badge type="information" content="Information"></goab-badge>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="badgeRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #badgeRadioReveal>
+          <goab-badge type="information" content="Information"></goab-badge>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Block">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="blockCheckboxDescription"
+      [reveal]="blockCheckboxReveal"
+    >
+      <ng-template #blockCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #blockCheckboxReveal>
+        <goab-block>
+          <div>Item 1</div>
+          <div>
+            <div>Item 2</div>
+            <div>Item 2</div>
+          </div>
+          <div>Item 3</div>
+        </goab-block>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="blockRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #blockRadioReveal>
+          <goab-block>
+            <div>Item 1</div>
+            <div>
+              <div>Item 2</div>
+              <div>Item 2</div>
+            </div>
+            <div>Item 3</div>
+          </goab-block>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Button">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="buttonCheckboxDescription"
+      [reveal]="buttonCheckboxReveal"
+    >
+      <ng-template #buttonCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #buttonCheckboxReveal>
+        <goab-button (onClick)="buttonClick()"> Primary Button</goab-button>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="buttonRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #buttonRadioReveal>
+          <goab-button (onClick)="buttonClick()"> Primary Button</goab-button>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Button Group">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="buttonGroupCheckboxDescription"
+      [reveal]="buttonGroupCheckboxReveal"
+    >
+      <ng-template #buttonGroupCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #buttonGroupCheckboxReveal>
+        <goab-button-group alignment="center">
+          <goab-button type="primary" (onClick)="buttonClick()"> Button</goab-button>
+          <goab-button type="secondary" (onClick)="buttonClick()"> Button</goab-button>
+          <goab-button type="tertiary" (onClick)="buttonClick()"> Button</goab-button>
+        </goab-button-group>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="buttonGroupRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #buttonGroupRadioReveal>
+          <goab-button-group alignment="center">
+            <goab-button type="primary" (onClick)="buttonClick()"> Button</goab-button>
+            <goab-button type="secondary" (onClick)="buttonClick()"> Button</goab-button>
+            <goab-button type="tertiary" (onClick)="buttonClick()"> Button</goab-button>
+          </goab-button-group>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Callout">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="calloutCheckboxDescription"
+      [reveal]="calloutCheckboxReveal"
+    >
+      <ng-template #calloutCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #calloutCheckboxReveal>
+        <goab-callout type="information">
+          Callout important information for the user.
+        </goab-callout>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="calloutRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #calloutRadioReveal>
+          <goab-callout type="information">
+            Callout important information for the user.
+          </goab-callout>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Checkbox">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <p>Checkbox child value {{ form.get("itemChild")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="checkboxCheckboxDescription"
+      [reveal]="checkboxCheckboxReveal"
+    >
+      <ng-template #checkboxCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #checkboxCheckboxReveal>
+        <goab-checkbox formControlName="itemChild" text="Checkbox inside checkbox">
+          <span slot="description"
+            >Find the SIN on income tax returns, tax slips, or employment records.</span
+          >
+        </goab-checkbox>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <p>Checkbox child value {{ form.get("itemChild")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="checkboxRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #checkboxRadioReveal>
+          <goab-checkbox formControlName="itemChild" text="Checkbox inside Radio">
+            <span slot="description"
+              >Find the SIN on income tax returns, tax slips, or employment records.</span
+            >
+          </goab-checkbox>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Container">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="containerCheckboxDescription"
+      [reveal]="containerCheckboxReveal"
+    >
+      <ng-template #containerCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #containerCheckboxReveal>
+        <goab-container>
+          <h2>Detach to use</h2>
+          <p>Add things inside me</p>
+        </goab-container>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="containerRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #containerRadioReveal>
+          <goab-container>
+            <h2>Detach to use</h2>
+            <p>Add things inside me</p>
+          </goab-container>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Date picker">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <p>Date picker value: {{ form.get("datePicker")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="datepickerCheckboxDescription"
+      [reveal]="datepickerCheckboxReveal"
+    >
+      <ng-template #datepickerCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #datepickerCheckboxReveal>
+        <goab-form-item label="Date picker inside checkbox">
+          <goab-date-picker name="item" formControlName="datePicker"></goab-date-picker>
+        </goab-form-item>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <p>Date picker value: {{ form.get("datePicker")?.value }}</p>
+
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="datepickerRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #datepickerRadioReveal>
+          <goab-form-item label="Date picker inside Radio">
+            <goab-date-picker name="item" formControlName="datePicker"></goab-date-picker>
+          </goab-form-item>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Details">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="detailsCheckboxDescription"
+      [reveal]="detailsCheckboxReveal"
+    >
+      <ng-template #detailsCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #detailsCheckboxReveal>
+        <goab-details heading="Detail Heading">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel lacinia metus,
+          sed sodales lectus. Aliquam sed volutpat velit. Sed in lacus ut dui placerat
+          accumsan malesuada quis erat. Aenean mi diam, rhoncus vitae justo eu, venenatis
+          maximus nunc. In vel est commodo, porttitor sem vel, tincidunt ipsum.
+        </goab-details>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="detailsRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #detailsRadioReveal>
+          <goab-details heading="Detail Heading">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel lacinia
+            metus, sed sodales lectus. Aliquam sed volutpat velit. Sed in lacus ut dui
+            placerat accumsan malesuada quis erat. Aenean mi diam, rhoncus vitae justo eu,
+            venenatis maximus nunc. In vel est commodo, porttitor sem vel, tincidunt
+            ipsum. In hac habitasse platea dictumst. Mauris varius mollis dui. Aenean ut
+            dui eu arcu rutrum auctor. Curabitur cursus velit vel libero sollicitudin
+            tincidunt. Proin tincidunt, enim et ultrices rhoncus, nibh leo imperdiet
+            sapien, sed porttitor ipsum nulla non massa. Nulla facilisi.
+          </goab-details>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Divider">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="dividerCheckboxDescription"
+      [reveal]="dividerCheckboxReveal"
+    >
+      <ng-template #dividerCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #dividerCheckboxReveal>
+        <goab-divider></goab-divider>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="dividerRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #dividerRadioReveal>
+          <goab-divider></goab-divider>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Dropdown">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <p>Dropdown value: {{ form.get("color")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="dropdownCheckboxDescription"
+      [reveal]="dropdownCheckboxReveal"
+    >
+      <ng-template #dropdownCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #dropdownCheckboxReveal>
+        <goab-form-item label="Dropdown inside Checkbox">
+          <goab-dropdown name="item" formControlName="color">
+            <goab-dropdown-item value="red" label="Red"></goab-dropdown-item>
+            <goab-dropdown-item value="green" label="Green"></goab-dropdown-item>
+            <goab-dropdown-item value="blue" label="Blue"></goab-dropdown-item>
+          </goab-dropdown>
+        </goab-form-item>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <p>Dropdown value: {{ form.get("color")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="dropdownRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #dropdownRadioReveal>
+          <goab-form-item label="Dropdown inside Radio">
+            <goab-dropdown name="item" formControlName="color">
+              <goab-dropdown-item value="red" label="Red"></goab-dropdown-item>
+              <goab-dropdown-item value="green" label="Green"></goab-dropdown-item>
+              <goab-dropdown-item value="blue" label="Blue"></goab-dropdown-item>
+            </goab-dropdown>
+          </goab-form-item>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="File Uploader">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="fileUploaderCheckboxDescription"
+      [reveal]="fileUploaderCheckboxReveal"
+    >
+      <ng-template #fileUploaderCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #fileUploaderCheckboxReveal>
+        <goab-form-item label="Upload a file">
+          <goab-file-upload-input
+            variant="dragdrop"
+            (onSelectFile)="uploadFile($event)"
+            maxFileSize="100MB"
+          ></goab-file-upload-input>
+          <goab-file-upload-card
+            *ngFor="let upload of uploads; index as i"
+            [type]="upload.file.type"
+            [size]="upload.file.size"
+            [filename]="upload.file.name"
+            [progress]="progressList[upload.file.name]"
+            (onDelete)="deleteFile(upload)"
+            (onCancel)="deleteFile(upload)"
+          >
+          </goab-file-upload-card>
+        </goab-form-item>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="fileUploaderRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #fileUploaderRadioReveal>
+          <goab-form-item label="Upload a file">
+            <goab-file-upload-input
+              variant="dragdrop"
+              (onSelectFile)="uploadFile($event)"
+              maxFileSize="100MB"
+            ></goab-file-upload-input>
+            <goab-file-upload-card
+              *ngFor="let upload of uploads; index as i"
+              [type]="upload.file.type"
+              [size]="upload.file.size"
+              [filename]="upload.file.name"
+              [progress]="progressList[upload.file.name]"
+              (onDelete)="deleteFile(upload)"
+              (onCancel)="deleteFile(upload)"
+            >
+            </goab-file-upload-card>
+          </goab-form-item>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Filter Chip">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="filterChipCheckboxDescription"
+      [reveal]="filterChipCheckboxReveal"
+    >
+      <ng-template #filterChipCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #filterChipCheckboxReveal>
+        <goab-filter-chip content="Chip text"></goab-filter-chip>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="filterChipRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #filterChipRadioReveal>
+          <goab-filter-chip content="Chip text"></goab-filter-chip>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Form Item + input">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <p>Input value: {{ form.get("input")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="inputCheckboxDescription"
+      [reveal]="inputCheckboxReveal"
+    >
+      <ng-template #inputCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #inputCheckboxReveal>
+        <goab-form-item label="Input inside Checkbox">
+          <goab-input name="item" width="20ch" formControlName="input"></goab-input>
+        </goab-form-item>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <p>Input value: {{ form.get("input")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="inputRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #inputRadioReveal>
+          <goab-form-item label="Input inside Radio">
+            <goab-input name="item" width="20ch" formControlName="input"></goab-input>
+          </goab-form-item>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Grid">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="gridCheckboxDescription"
+      [reveal]="gridCheckboxReveal"
+    >
+      <ng-template #gridCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #gridCheckboxReveal>
+        <goab-grid minChildWidth="320px">
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+          <div>4</div>
+          <div>5</div>
+        </goab-grid>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="gridRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #gridRadioReveal>
+          <goab-grid minChildWidth="320px">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+          </goab-grid>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Icon">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="iconCheckboxDescription"
+      [reveal]="iconCheckboxReveal"
+    >
+      <ng-template #iconCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #iconCheckboxReveal>
+        <goab-icon type="warning"></goab-icon>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="iconRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #iconRadioReveal>
+          <goab-icon type="warning"></goab-icon>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Icon Button">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="iconButtonCheckboxDescription"
+      [reveal]="iconButtonCheckboxReveal"
+    >
+      <ng-template #iconButtonCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #iconButtonCheckboxReveal>
+        <goab-icon-button
+          icon="refresh"
+          ariaLabel="Refresh icon"
+          (onClick)="iconButtonClick()"
+        ></goab-icon-button>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="iconButtonRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #iconButtonRadioReveal>
+          <goab-icon-button
+            icon="refresh"
+            ariaLabel="Refresh icon"
+            (onClick)="iconButtonClick()"
+          ></goab-icon-button>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Input">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <p>Input value: {{ form.get("input")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="inputCheckboxDescription"
+      [reveal]="inputCheckboxReveal"
+    >
+      <ng-template #inputCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #inputCheckboxReveal>
+        <goab-input name="item" width="20ch" formControlName="input"></goab-input>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <p>Input value: {{ form.get("input")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="inputRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #inputRadioReveal>
+          <goab-input name="item" width="20ch" formControlName="input"></goab-input>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="List">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="listCheckboxDescription"
+      [reveal]="listCheckboxReveal"
+    >
+      <ng-template #listCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #listCheckboxReveal>
+        <ul class="goa-unordered-list">
+          <li>An unordered item</li>
+          <li>
+            A longer item that wraps to a second line
+            <ul>
+              <li>An item on a 3rd level</li>
+            </ul>
+          </li>
+        </ul>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="listRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #listRadioReveal>
+          <ul class="goa-unordered-list">
+            <li>An unordered item</li>
+            <li>
+              A longer item that wraps to a second line
+              <ul>
+                <li>An item on a 3rd level</li>
+              </ul>
+            </li>
+          </ul>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Radio">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <p>Radio Child value: {{ form.get("radioChild")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox
+      formControlName="item"
+      text="Social Insurance Number (SIN)"
+      [description]="radioCheckboxDescription"
+      [reveal]="radioCheckboxReveal"
+    >
+      <ng-template #radioCheckboxDescription>
+        Find the SIN on income tax returns, tax slips, or employment records.
+      </ng-template>
+      <ng-template #radioCheckboxReveal>
+        <goab-radio-group name="item" formControlName="radioChild">
+          <goab-radio-item value="1" label="Label 1" [description]="optionOneDescription">
+            <ng-template #optionOneDescription>
+              Example description <strong>Option 1</strong>
+            </ng-template>
+          </goab-radio-item>
+          <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+          <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+        </goab-radio-group>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <p>Radio Child value: {{ form.get("radioChild")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item
+        value="1"
+        label="Label 1"
+        [description]="optionOneDescription"
+        [reveal]="radioRadioReveal"
+      >
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #radioRadioReveal>
+          <goab-radio-group name="item" formControlName="radioChild">
+            <goab-radio-item
+              value="1.1"
+              label="Child 1"
+              [description]="optionOneDescription"
+            >
+              <ng-template #optionOneDescription>
+                Example description <strong>Option 1</strong>
+              </ng-template>
+            </goab-radio-item>
+            <goab-radio-item value="1.2" label="Child 2"></goab-radio-item>
+            <goab-radio-item value="1.3" label="Child 3"></goab-radio-item>
+          </goab-radio-group>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Skeleton Loading">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox formControlName="item" text="Social Insurance Number (SIN)" [reveal]="skeletonCheckboxReveal">
+      <span slot="description"
+        >Find the SIN on income tax returns, tax slips, or employment records.</span
+      >
+      <ng-template #skeletonCheckboxReveal>
+        <goab-skeleton type="text"></goab-skeleton>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item value="1" label="Label 1" [description]="optionOneDescription" [reveal]="skeletonRadioReveal">
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #skeletonRadioReveal>
+          <goab-skeleton type="text"></goab-skeleton>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Spacer">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox formControlName="item" text="Social Insurance Number (SIN)" [reveal]="spacerCheckboxReveal">
+      <span slot="description"
+        >Find the SIN on income tax returns, tax slips, or employment records.</span
+      >
+      <ng-template #spacerCheckboxReveal>
+        <goab-block gap="none">
+          <div>Item 1</div>
+          <goab-spacer hSpacing="l"></goab-spacer>
+          <div>Item 1</div>
+          <goab-spacer hSpacing="l"></goab-spacer>
+          <div>Item 1</div>
+        </goab-block>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item value="1" label="Label 1" [description]="optionOneDescription" [reveal]="spacerRadioReveal">
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #spacerRadioReveal>
+          <goab-block gap="none">
+            <div>Item 1</div>
+            <goab-spacer hSpacing="l"></goab-spacer>
+            <div>Item 1</div>
+            <goab-spacer hSpacing="l"></goab-spacer>
+            <div>Item 1</div>
+          </goab-block>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Table">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox formControlName="item" text="Social Insurance Number (SIN)" [reveal]="tableCheckboxReveal">
+      <span slot="description"
+        >Find the SIN on income tax returns, tax slips, or employment records.</span
+      >
+      <ng-template #tableCheckboxReveal>
+        <goab-table width="100%" mb="xl" (onSort)="handleSort($event)">
+          <thead>
+          <tr>
+            <th>
+              <goab-table-sort-header name="firstName"
+              >First name and really long header</goab-table-sort-header
+              >
+            </th>
+            <th>
+              <goab-table-sort-header name="lastName">Last name</goab-table-sort-header>
+            </th>
+            <th>
+              <goab-table-sort-header name="age" direction="asc"
+              >Age</goab-table-sort-header
+              >
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let user of users; index as i">
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.age }}</td>
+          </tr>
+          </tbody>
+        </goab-table>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item value="1" label="Label 1" [description]="optionOneDescription" [reveal]="tableRadioReveal">
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #tableRadioReveal>
+          <goab-table width="100%" mb="xl" (onSort)="handleSort($event)">
+            <thead>
+            <tr>
+              <th>
+                <goab-table-sort-header name="firstName"
+                >First name and really long header</goab-table-sort-header
+                >
+              </th>
+              <th>
+                <goab-table-sort-header name="lastName"
+                >Last name</goab-table-sort-header
+                >
+              </th>
+              <th>
+                <goab-table-sort-header name="age" direction="asc"
+                >Age</goab-table-sort-header
+                >
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of users; index as i">
+              <td>{{ user.firstName }}</td>
+              <td>{{ user.lastName }}</td>
+              <td>{{ user.age }}</td>
+            </tr>
+            </tbody>
+          </goab-table>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Tabs">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox formControlName="item" text="Social Insurance Number (SIN)" [reveal]="tabsCheckboxReveal">
+      <span slot="description"
+        >Find the SIN on income tax returns, tax slips, or employment records.</span
+      >
+      <ng-template #tabsCheckboxReveal>
+        <goab-tabs (onChange)="tabsOnChange($event)">
+          <goab-tab heading="Tab Item 1">
+            Tab Item 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </goab-tab>
+          <goab-tab heading="Tab Item 2">
+            Tab Item 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </goab-tab>
+          <goab-tab heading="Tab Item 3">
+            Tab Item 3: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </goab-tab>
+        </goab-tabs>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item value="1" label="Label 1" [description]="optionOneDescription" [reveal]="tabsRadioReveal">
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #tabsRadioReveal>
+          <goab-tabs (onChange)="tabsOnChange($event)">
+            <goab-tab heading="Tab Item 1">
+              Tab Item 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </goab-tab>
+            <goab-tab heading="Tab Item 2">
+              Tab Item 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </goab-tab>
+            <goab-tab heading="Tab Item 3">
+              Tab Item 3: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </goab-tab>
+          </goab-tabs>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Text">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox formControlName="item" text="Social Insurance Number (SIN)" [reveal]="textCheckboxReveal">
+      <span slot="description"
+        >Find the SIN on income tax returns, tax slips, or employment records.</span
+      >
+      <ng-template #textCheckboxReveal>
+        <goab-text size="heading-m" tag="h1" mt="none" mb="none">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua.
+        </goab-text>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item value="1" label="Label 1" [description]="optionOneDescription" [reveal]="textRadioReveal">
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #textRadioReveal>
+          <goab-text size="heading-m" tag="h1" mt="none" mb="none">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua.
+          </goab-text>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Textarea">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <p>Textarea value: {{ form.get("textarea")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox formControlName="item" text="Social Insurance Number (SIN)" [reveal]="textareaCheckboxReveal">
+      <span slot="description"
+        >Find the SIN on income tax returns, tax slips, or employment records.</span
+      >
+      <ng-template #textareaCheckboxReveal>
+        <goab-form-item label="Basic">
+          <goab-textarea
+            formControlName="textarea"
+            name="item"
+            width="60ch"
+          ></goab-textarea>
+        </goab-form-item>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <p>Input value: {{ form.get("textarea")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item value="1" label="Label 1" [description]="optionOneDescription">
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <div slot="reveal">
+          <goab-form-item label="Basic">
+            <goab-textarea
+              formControlName="textarea"
+              name="item"
+              width="60ch"
+            ></goab-textarea>
+          </goab-form-item>
+        </div>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
+<goab-accordion heading="Tooltip">
+  <p>Checkbox value: {{ form.get("item")?.value }}</p>
+  <form [formGroup]="form">
+    <goab-checkbox formControlName="item" text="Social Insurance Number (SIN)" [reveal]="tooltipCheckboxReveal">
+      <span slot="description"
+        >Find the SIN on income tax returns, tax slips, or employment records.</span
+      >
+      <ng-template #tooltipCheckboxReveal>
+        <goab-tooltip content="Tooltip">
+          <goab-icon type="information-circle"></goab-icon>
+        </goab-tooltip>
+      </ng-template>
+    </goab-checkbox>
+  </form>
+
+  <p>Radio value: {{ form.get("radio")?.value }}</p>
+  <p>Input value: {{ form.get("textarea")?.value }}</p>
+  <goab-form-item label="Basic" [formGroup]="form">
+    <goab-radio-group name="item" formControlName="radio">
+      <goab-radio-item value="1" label="Label 1" [description]="optionOneDescription" [reveal]="tooltipRadioReveal">
+        <ng-template #optionOneDescription>
+          Example description <strong>Option 1</strong>
+        </ng-template>
+        <ng-template #tooltipRadioReveal>
+          <goab-tooltip content="Tooltip">
+            <goab-icon type="information-circle"></goab-icon>
+          </goab-tooltip>
+        </ng-template>
+      </goab-radio-item>
+      <goab-radio-item value="2" label="Label 2"></goab-radio-item>
+      <goab-radio-item value="3" label="Label 3"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</goab-accordion>
