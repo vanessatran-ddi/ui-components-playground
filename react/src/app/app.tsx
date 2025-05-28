@@ -24,6 +24,7 @@ export function App() {
           <GoabSideMenu>
             <GoabSideMenuGroup heading="Bugs">
               <Link to="/2446">Popover inside a scrolling modal</Link>
+              <Link to="/2408">Form stepper status</Link>
               <Link to="/2441">Issue 2441</Link>
             </GoabSideMenuGroup>
             <GoabSideMenuGroup heading="Components">
