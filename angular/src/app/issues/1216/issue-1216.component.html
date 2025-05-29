@@ -6,6 +6,7 @@
       formControlName="item"
       text="Social Insurance Number (SIN)"
       [description]="accordionCheckboxDescription"
+      [revealArialLabel]="'Vanessa displays the content'"
       [reveal]="accordionCheckboxReveal"
     >
       <ng-template #accordionCheckboxDescription>
@@ -1205,14 +1206,13 @@
 <goab-accordion heading="Text">
   <p>Checkbox value: {{ form.get("item")?.value }}</p>
   <form [formGroup]="form">
-    <goab-checkbox formControlName="item" text="Social Insurance Number (SIN)" [reveal]="textCheckboxReveal">
+    <goab-checkbox formControlName="item" text="Social Insurance Number (SIN)" [reveal]="textCheckboxReveal" revealArialLabel="Hello world, I am a text content inside a reveal slot">
       <span slot="description"
         >Find the SIN on income tax returns, tax slips, or employment records.</span
       >
       <ng-template #textCheckboxReveal>
         <goab-text size="heading-m" tag="h1" mt="none" mb="none">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua.
+          Hello world, I am a text content inside a reveal slot.
         </goab-text>
       </ng-template>
     </goab-checkbox>
@@ -1221,7 +1221,7 @@
   <p>Radio value: {{ form.get("radio")?.value }}</p>
   <goab-form-item label="Basic" [formGroup]="form">
     <goab-radio-group name="item" formControlName="radio">
-      <goab-radio-item value="1" label="Label 1" [description]="optionOneDescription" [reveal]="textRadioReveal">
+      <goab-radio-item value="1" label="Label 1" [description]="optionOneDescription" [reveal]="textRadioReveal" revealAriaLabel="Hello world, I am a text content inside a reveal slot">
         <ng-template #optionOneDescription>
           Example description <strong>Option 1</strong>
         </ng-template>
