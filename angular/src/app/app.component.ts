@@ -6,6 +6,7 @@ import {Countries, CountrySubdivisions} from "playground/angular/src/app/countri
   selector: "abgov-root",
   templateUrl: "./app.component.html",
   styles: ``,
+  standalone: false
 })
 export class AppComponent implements OnInit {
   countries = Countries;
