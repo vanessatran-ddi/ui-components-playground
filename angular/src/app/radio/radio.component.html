@@ -131,3 +131,35 @@
 </goa-radio-group>
 
 
+<goa-form-item label="How would you like to be contacted?" helptext="Select one option">
+  <goa-radio-group
+    name="color"
+    goaValue
+    [formControl]="contactMethodFormCtrl"
+    [attr.disabled]="true"
+    [value]="contactMethodFormCtrl.value"
+  >
+    <goa-radio-item name="contactMethod" label="Email" value="email">
+      <div slot="reveal">
+        <goa-form-item label="Phone number">
+          <goa-input name="phone" goaValue [value]="phoneNumberFormCtrl.value" [formControl]="phoneNumberFormCtrl"></goa-input>
+        </goa-form-item>
+      </div>
+    </goa-radio-item>
+    <goa-radio-item name="contactMethod" value="phone" label="Phone">
+      <div slot="reveal">
+        <goa-form-item label="Email address">
+          <goa-input name="email" goaValue [value]="emailFormCtrl.value" [formControl]="emailFormCtrl"></goa-input>
+        </goa-form-item>
+      </div>
+    </goa-radio-item>
+
+    <goa-radio-item name="contactMethod" value="text" label="Text message">
+      <div slot="reveal">
+        <goa-form-item label="Mobile phone number">
+          <goa-input name="phone" goaValue [value]="phoneNumberFormCtrl.value" [formControl]="phoneNumberFormCtrl"></goa-input>
+        </goa-form-item>
+      </div>
+    </goa-radio-item>
+  </goa-radio-group>
+</goa-form-item>
