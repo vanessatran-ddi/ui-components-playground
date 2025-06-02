@@ -1,6 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { Component } from "@angular/core";
 import {
+  dateValidator,
   GoabFieldsetItemState, GoabFieldsetItemValue,
   GoabFormState, GoabPublicFormPageOnCompleteDetail,
   PublicFormController, relay,

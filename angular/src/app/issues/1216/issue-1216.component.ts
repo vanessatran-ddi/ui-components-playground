@@ -38,7 +38,8 @@ import { NgForOf } from "@angular/common";
 import { MockUploader, Upload } from "../../utils/file-uploader";
 import {
   DocCheckboxRevealExampleComponent
-} from "playground/angular/src/app/issues/1216/doc-checkbox-reveal-example.component";
+} from "./doc-checkbox-reveal-example.component";
+import { DocRadioRevealExampleComponent } from "./doc-radio-reveal-example.component";
 interface User {
   firstName: string;
   lastName: string;
@@ -84,6 +85,7 @@ interface User {
     GoabTextArea,
     GoabTooltip,
     DocCheckboxRevealExampleComponent,
+    DocRadioRevealExampleComponent
   ],
 })
 export class Issue1216Component {
