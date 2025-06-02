@@ -1,8 +1,12 @@
-import { Component } from "@angular/core";
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { NgForOf } from "@angular/common";
 
 @Component({
   selector: "abgov-chip",
   templateUrl: "./chip.component.html",
+  standalone: true,
+  imports: [NgForOf],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ChipComponent {
   chips = ["Doritos", "Fritos", "Lays"];

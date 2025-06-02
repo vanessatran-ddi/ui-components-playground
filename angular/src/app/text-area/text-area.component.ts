@@ -1,9 +1,13 @@
-import { Component } from "@angular/core";
-import {FormControl, FormGroup} from "@angular/forms";
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
+import { JsonPipe } from "@angular/common";
 
 @Component({
   selector: "abgov-text-area",
   templateUrl: "./text-area.component.html",
+  standalone: true,
+  imports: [JsonPipe, ReactiveFormsModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class TextAreaComponent {
   boundVal = "";
@@ -11,9 +15,9 @@ export class TextAreaComponent {
   form = new FormGroup({
     textarea: new FormControl(),
     input: new FormControl(),
-  })
+  });
 
-  constructor() { }
+  constructor() {}
 
   onChange(e: any) {
     console.log("changed", e.detail.name, e.detail.value);

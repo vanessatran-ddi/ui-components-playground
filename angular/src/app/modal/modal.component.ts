@@ -1,9 +1,11 @@
-import { Component } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from "@angular/core";
 import { Router } from "@angular/router";
 
 @Component({
   selector: "abgov-modal",
-  templateUrl: "./modal.component.html"
+  templateUrl: "./modal.component.html",
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ModalComponent {
   constructor(private router: Router) {}

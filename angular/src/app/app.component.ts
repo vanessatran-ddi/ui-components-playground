@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {Countries, CountrySubdivisions} from "playground/angular/src/app/countries.data";
+import {Countries, CountrySubdivisions} from "../app/countries.data";
 
 @Component({
   selector: "abgov-root",

@@ -1,8 +1,10 @@
-import { Component } from "@angular/core";
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
 @Component({
   selector: "abgov-icon",
-  templateUrl: "./icon.component.html"
+  templateUrl: "./icon.component.html",
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class IconComponent {
   iconTheme = "outline";

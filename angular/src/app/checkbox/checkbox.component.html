@@ -8,7 +8,6 @@
   [formControl]="testFormCtrl"
 ></goa-checkbox>
 
-
 <h2>Basic</h2>
 <goa-checkbox
   name="desserts"
@@ -29,12 +28,7 @@
 ></goa-checkbox>
 
 <h2>Disabled</h2>
-<goa-checkbox
-  name="desserts"
-  text="Ice Cream"
-  value="10"
-  disabled
-></goa-checkbox>
+<goa-checkbox name="desserts" text="Ice Cream" value="10" disabled></goa-checkbox>
 
 <h2>Error</h2>
 <goa-checkbox
@@ -108,9 +102,7 @@
 ></goa-checkbox>
 
 <div>Binding: {{ test1FormCtrl.value }}</div>
-<button (click)="test1FormCtrl.setValue('checked')">
-  Set Value to checked
-</button>
+<button (click)="test1FormCtrl.setValue('checked')">Set Value to checked</button>
 <goa-checkbox
   goaChecked
   name="desserts"
@@ -128,3 +120,27 @@
   inventore quia, voluptatem a amet id possimus rerum ullam, fugiat eveniet."
 >
 </goa-checkbox>
+
+<goa-form-item label="How would you like to be contacted?">
+  <goa-checkbox name="optionOne" text="Email" value="email" [checked]="optionOneChecked" (_change)="updateContactMethod($event)">
+    <div slot="reveal">
+      <goa-form-item label="Phone number">
+        <goa-input name="phone" [value]="phoneNumber" (_change)="updatePhoneNumber($event)"></goa-input>
+      </goa-form-item>
+    </div>
+  </goa-checkbox>
+  <goa-checkbox name="optionTwo" text="Phone" value="phone" [checked]="optionTwoChecked" (_change)="updateContactMethod($event)">
+    <div slot="reveal">
+      <goa-form-item label="Email address">
+        <goa-input name="email" [value]="emailAddress" (_change)="updateEmailAddress($event)"></goa-input>
+      </goa-form-item>
+    </div>
+  </goa-checkbox>
+  <goa-checkbox name="optionThree" text="Text message" value="text" [checked]="optionThreeChecked" (_change)="updateContactMethod($event)">
+    <div slot="reveal">
+      <goa-form-item label="Mobile phone number">
+        <goa-input name="phone" [value]="phoneNumber" (_change)="updatePhoneNumber($event)"></goa-input>
+      </goa-form-item>
+    </div>
+  </goa-checkbox>
+</goa-form-item>

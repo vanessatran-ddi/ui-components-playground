@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from "@angular/core";
 import { format, parseISO } from "date-fns";
 import { FormControl } from "@angular/forms";
 
@@ -11,6 +11,8 @@ interface User {
 @Component({
   selector: "abgov-input-component",
   templateUrl: "./input-component.component.html",
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class InputComponentComponent implements OnInit {
   disabled = false;

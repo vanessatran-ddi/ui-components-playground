@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from "@angular/core";
+import { NgForOf } from "@angular/common";
 
 const PaymentBatchStageSequence = {
   New: 1,
@@ -24,6 +25,9 @@ const PaymentStageStatus = {
 @Component({
   selector: "abgov-form-stepper-issue-2375",
   templateUrl: "./form-stepper-issue-2375.component.html",
+  standalone: true,
+  imports: [NgForOf],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class FormStepperIssue2375Component implements OnInit {
   paymentBatchStatusStep = 1;
@@ -67,14 +71,16 @@ export class FormStepperIssue2375Component implements OnInit {
         stage.status = PaymentStageStatus.Complete;
       }
     });
-    const hasAnyNotCompleted = this.paymentBatchStatusArray.some(x => x.status === "incomplete");
+    const hasAnyNotCompleted = this.paymentBatchStatusArray.some(
+      (x) => x.status === "incomplete",
+    );
     if (!hasAnyNotCompleted) {
       this.isFinal = true;
     }
 
     if (step > this.paymentBatchStatusArray.length) return;
     this.paymentBatchStatusStep = step;
-  }
+  };
   ngOnInit() {
     this.markCompletedStages(4);
     if (this.paymentBatchStatusStep === this.paymentBatchStatusArray.length) {
@@ -84,7 +90,6 @@ export class FormStepperIssue2375Component implements OnInit {
     }
   }
 
-
   setPage(page: number) {
     console.log("setPage is called ", page);
     this.markCompletedStages(page);
@@ -93,7 +98,7 @@ export class FormStepperIssue2375Component implements OnInit {
   updateCurrentStep(event: Event) {
     this.paymentBatchStatusStep = (event as CustomEvent).detail.step as number;
   }
-  confirm () {
+  confirm() {
     this.isFinal = true;
   }
 }

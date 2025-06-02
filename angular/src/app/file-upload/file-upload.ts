@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { NgForOf } from "@angular/common";
 interface Uploader {
   upload: (url: string | ArrayBuffer) => void;
   abort: () => void;
@@ -24,6 +25,9 @@ class MockUploader implements Uploader {
 @Component({
   selector: "abgov-file-upload",
   templateUrl: "./file-upload.html",
+  standalone: true,
+  imports: [NgForOf],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class FileUploadComponent {
   uploads: Upload[] = [];
@@ -42,8 +46,7 @@ export class FileUploadComponent {
       this.uploads = [...this.uploads, { file, uploader }];
 
       uploader.oncomplete = () => console.log("File upload complete");
-      uploader.onprogress = (percent: number) =>
-        (this.progressList[file.name] = percent);
+      uploader.onprogress = (percent: number) => (this.progressList[file.name] = percent);
       uploader.onabort = () => console.log("Aborting upload");
       uploader.onfail = (err: string) => console.log("Upload failed: ", err);
 
@@ -56,8 +59,6 @@ export class FileUploadComponent {
 
   deleteFile(upload: Upload) {
     upload.uploader.abort();
-    this.uploads = [...this.uploads].filter(
-      (u) => u.file.name !== upload.file.name
-    );
+    this.uploads = [...this.uploads].filter((u) => u.file.name !== upload.file.name);
   }
 }

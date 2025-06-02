@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { faker } from "@faker-js/faker";
+import { NgForOf } from "@angular/common";
 
 interface User {
   id: string;
@@ -11,6 +12,9 @@ interface User {
 @Component({
   selector: "abgov-table-component",
   templateUrl: "./table.html",
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [NgForOf],
 })
 export class TableComponent {
   users: User[] = [];
@@ -28,8 +32,6 @@ export class TableComponent {
 
   handleSort(event: any) {
     const { sortBy, sortDir } = event.detail;
-    this.users.sort(
-      (a: any, b: any) => (a[sortBy] > b[sortBy] ? -1 : 1) * sortDir
-    );
+    this.users.sort((a: any, b: any) => (a[sortBy] > b[sortBy] ? -1 : 1) * sortDir);
   }
 }

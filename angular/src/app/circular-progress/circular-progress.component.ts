@@ -1,8 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from "@angular/core";
 
 @Component({
   selector: "abgov-circular-progress",
   templateUrl: "./circular-progress.component.html",
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CircularProgressComponent implements OnInit {
   progress = 0;

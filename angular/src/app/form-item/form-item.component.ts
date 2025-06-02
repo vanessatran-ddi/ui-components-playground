@@ -1,20 +1,23 @@
-import { Component } from "@angular/core";
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { NgForOf } from "@angular/common";
 
 @Component({
   selector: "abgov-form-item",
   templateUrl: "./form-item.component.html",
+  standalone: true,
+  imports: [NgForOf],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class FormItemComponent {
   formGroup = new FormGroup({
     txtRequesterName: new FormControl(),
-  })
+  });
 
   form: FormGroup;
   colors: string[] = ["red", "green", "blue"];
   colorFormCtrl = new FormControl("");
   descriptionFormCtrl = new FormControl("");
-
 
   constructor() {
     this.form = new FormGroup({
@@ -22,7 +25,7 @@ export class FormItemComponent {
       descriptionFormCtrl: this.descriptionFormCtrl,
     });
   }
-  searchRequesterClickIcon () {
+  searchRequesterClickIcon() {
     console.log("Current value ", this.formGroup.get("txtRequesterName")?.value);
     this.formGroup.get("txtRequesterName")?.patchValue("");
     console.log("New value ", this.formGroup.get("txtRequesterName")?.value);
@@ -41,7 +44,5 @@ export class FormItemComponent {
     }
   }
 
-  onCancel() {
-
-  }
+  onCancel() {}
 }

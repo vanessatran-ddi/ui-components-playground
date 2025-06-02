@@ -1,10 +1,14 @@
-import { Component } from "@angular/core";
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import {Countries, CountrySubdivisions} from "./countries.data";
+import { NgForOf } from "@angular/common";
 
 @Component({
   selector: "abgov-dropdown",
   templateUrl: "./dropdown.component.html",
+  standalone: true,
+  imports: [ReactiveFormsModule, NgForOf],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class DropdownComponent {
   colors: string[] = ["red", "green", "blue"];
@@ -69,17 +73,15 @@ export class DropdownComponent {
     postalCode: FormControl<string | null>;
   }>;
 
-
-
-  constructor( private fb: FormBuilder) {
+  constructor(private fb: FormBuilder) {
     this.fg = this.fb.group({
-      businessName: [null as (string|null), []],
-      address1: [null as (string|null), []],
-      address2: [null as (string|null), []],
-      locality: [null as (string|null), []],
-      region: [null as (string|null), []],
-      country: [null as (string|null), []],
-      postalCode: [null as (string|null), []]
+      businessName: [null as string | null, []],
+      address1: [null as string | null, []],
+      address2: [null as string | null, []],
+      locality: [null as string | null, []],
+      region: [null as string | null, []],
+      country: [null as string | null, []],
+      postalCode: [null as string | null, []],
     });
   }
 

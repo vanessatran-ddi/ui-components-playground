@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { faker } from "@faker-js/faker";
+import { NgForOf } from "@angular/common";
 
 interface User {
   id: string;
@@ -11,6 +12,9 @@ interface User {
 @Component({
   selector: "abgov-paginate",
   templateUrl: "./paginate.html",
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [NgForOf],
 })
 export class PaginateComponent {
   users: User[] = [];
