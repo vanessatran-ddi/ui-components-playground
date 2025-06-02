@@ -10,6 +10,7 @@ import {
   GoabRadioGroupOnChangeDetail,
 } from "@abgov/ui-components-common";
 import { useState } from "react";
+import { DocCheckboxRevealExample } from "./doc-checkbox-reveal-example";
 
 export const Issue1216 = () => {
   const [checkbox, setCheckbox] = useState(false);
@@ -57,6 +58,8 @@ export const Issue1216 = () => {
           <GoabRadioItem value="3" label="Label 3"></GoabRadioItem>
         </GoabRadioGroup>
       </GoabFormItem>
+
+      <DocCheckboxRevealExample/>
     </>
   );
 };

@@ -36,6 +36,9 @@ import {
 import { FormBuilder, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { NgForOf } from "@angular/common";
 import { MockUploader, Upload } from "../../utils/file-uploader";
+import {
+  DocCheckboxRevealExampleComponent
+} from "playground/angular/src/app/issues/1216/doc-checkbox-reveal-example.component";
 interface User {
   firstName: string;
   lastName: string;
@@ -80,6 +83,7 @@ interface User {
     GoabText,
     GoabTextArea,
     GoabTooltip,
+    DocCheckboxRevealExampleComponent,
   ],
 })
 export class Issue1216Component {
