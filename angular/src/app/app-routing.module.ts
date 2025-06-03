@@ -84,6 +84,7 @@ import { PublicFormDatepickerComponent } from "./public-form/public-form-datepic
 import { PublicFormDropdownComponent } from "./public-form/public-form-dropdown.component";
 import { Issue3001Component } from "./issues/3001/issue3001.component";
 import { Issue2991Component } from "./issues/2991/issue-2991.component";
+import { MultiActionButtonComponent } from "./components/multi-action-button/multi-action-button.component";
 
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
@@ -115,6 +116,7 @@ const routes: Routes = [
   { path: "input", component: InputComponentComponent },
   { path: "microsite-header", component: MicrositeHeaderComponent },
   { path: "modal", component: ModalComponent },
+  { path: "multi-action-button", component: MultiActionButtonComponent },
   { path: "navigation-link", component: NavigationLinkComponent },
   { path: "notification-banner", component: NotificationBannerComponent },
   { path: "paginate", component: PaginateComponent },
