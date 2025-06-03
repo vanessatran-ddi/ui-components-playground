@@ -3,7 +3,6 @@ import { Component } from "@angular/core";
 import {
   GoabFieldsetItemState, GoabFieldsetItemValue,
   GoabFormState, GoabPublicFormPageOnCompleteDetail,
-  GoabPublicFormPageOnContinueDetail,
   PublicFormController, relay,
 } from "@abgov/ui-components-common";
 import { requiredValidator } from "@abgov/ui-components-common";
@@ -97,7 +96,7 @@ export class PublicFormComponent extends PublicFormController<Page> {
   // Events
   // ======
 
-  onPageChange(e: GoabPublicFormPageOnContinueDetail, from: string) {
+  onPageChange(e: Event, from: string) {
     console.log("onPageChange with e ", e, from);
     let dest: Page | undefined = undefined;
     switch (from) {
@@ -144,7 +143,7 @@ export class PublicFormComponent extends PublicFormController<Page> {
   // Validations
   // ===========
 
-  validateName(e: GoabPublicFormPageOnContinueDetail): Page | undefined {
+  validateName(e: Event): Page | undefined {
     const [firstNameOk] = this.validate(e, "firstName", [
       requiredValidator("First name is required"),
     ]);
@@ -158,7 +157,7 @@ export class PublicFormComponent extends PublicFormController<Page> {
     return "sin";
   }
 
-  validateSIN(e: GoabPublicFormPageOnContinueDetail): Page | undefined {
+  validateSIN(e: Event): Page | undefined {
     // const [ok] = this.validate("sin", e, [requiredValidator("SIN is required")]);
     // if (!ok) {
     //   return;
@@ -167,7 +166,7 @@ export class PublicFormComponent extends PublicFormController<Page> {
     return "postalcode";
   }
 
-  validatePostalCode(e: GoabPublicFormPageOnContinueDetail): Page | undefined {
+  validatePostalCode(e: Event): Page | undefined {
     // const [ok] = this.validate("postal-code", e, [
     //   requiredValidator("Postal code is required"),
     // ]);
@@ -178,7 +177,7 @@ export class PublicFormComponent extends PublicFormController<Page> {
     return "residence";
   }
 
-  validateResidence(e: GoabPublicFormPageOnContinueDetail): Page | undefined {
+  validateResidence(e: Event): Page | undefined {
     // const [ok, value] = this.validate("alberta", e, [
     //   requiredValidator("Residence status is required"),
     // ]);
@@ -193,7 +192,7 @@ export class PublicFormComponent extends PublicFormController<Page> {
     return "residence-duration";
   }
 
-  validateResidenceDuration(e: GoabPublicFormPageOnContinueDetail): Page | undefined {
+  validateResidenceDuration(e: Event): Page | undefined {
     // const [ok, value] = this.validate("duration", e, [
     //   requiredValidator("Duration is required"),
     // ]);
@@ -207,7 +206,7 @@ export class PublicFormComponent extends PublicFormController<Page> {
     return "birthdate";
   }
 
-  validateBirthdate(e: GoabPublicFormPageOnContinueDetail): Page | undefined {
+  validateBirthdate(e: Event): Page | undefined {
     // const [dayValid, date] = this.validate("birth-date", e, [
     //   dateValidator({ invalidMsg: "Invalid date" }),
     // ]);
@@ -224,7 +223,7 @@ export class PublicFormComponent extends PublicFormController<Page> {
     return "currently-employed";
   }
 
-  validateEmployment(e: GoabPublicFormPageOnContinueDetail): Page | undefined {
+  validateEmployment(e: Event): Page | undefined {
     // const [ok, value] = this.validate("employed", e, [
     //   requiredValidator("Employment status is required"),
     // ]);
@@ -238,7 +237,7 @@ export class PublicFormComponent extends PublicFormController<Page> {
     return "highest-education";
   }
 
-  validateEducation(e: GoabPublicFormPageOnContinueDetail): Page | undefined {
+  validateEducation(e: Event): Page | undefined {
     // const [ok, value] = this.validate("education", e, [
     //   requiredValidator("Education response is required"),
     // ]);
@@ -252,7 +251,7 @@ export class PublicFormComponent extends PublicFormController<Page> {
     return "previously-applied";
   }
 
-  validateOtherEducation(e: GoabPublicFormPageOnContinueDetail): Page | undefined {
+  validateOtherEducation(e: Event): Page | undefined {
     // const [ok, _value] = this.validate("other-education-description", e, [
     //   requiredValidator("Education description is required"),
     // ]);
@@ -263,7 +262,7 @@ export class PublicFormComponent extends PublicFormController<Page> {
     return "previously-applied";
   }
 
-  validatePreviousApplication(e: GoabPublicFormPageOnContinueDetail): Page | undefined {
+  validatePreviousApplication(e: Event): Page | undefined {
     // const [ok, _value] = this.validate("previously-applied", e, [
     //   requiredValidator("Previously application status is required"),
     // ]);
