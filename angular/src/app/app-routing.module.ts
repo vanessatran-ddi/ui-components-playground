@@ -82,6 +82,7 @@ import { Issue2837Component } from "./issues/2837/issue-2837.component";
 import { PublicFormCheckboxComponent } from "./public-form/public-form-checkbox.component";
 import { PublicFormDatepickerComponent } from "./public-form/public-form-datepicker.component";
 import { PublicFormDropdownComponent } from "./public-form/public-form-dropdown.component";
+import { MultiActionButtonComponent } from "./components/multi-action-button/multi-action-button.component";
 
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
@@ -113,6 +114,7 @@ const routes: Routes = [
   { path: "input", component: InputComponentComponent },
   { path: "microsite-header", component: MicrositeHeaderComponent },
   { path: "modal", component: ModalComponent },
+  { path: "multi-action-button", component: MultiActionButtonComponent },
   { path: "navigation-link", component: NavigationLinkComponent },
   { path: "notification-banner", component: NotificationBannerComponent },
   { path: "paginate", component: PaginateComponent },

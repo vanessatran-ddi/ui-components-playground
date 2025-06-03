@@ -17,6 +17,7 @@ import {
   GoabPublicFormPage, GoabPublicFormSummary, GoabRadioGroup, GoabRadioItem, GoabText,
   GoabTextArea,
 } from "@abgov/angular-components";
+import { differenceInYears } from "date-fns";
 
 type Page =
   | "name"
@@ -198,9 +199,9 @@ export class PublicFormComponent extends PublicFormController<Page> {
     //   return;
     // }
 
-    // if (value === "Less than a year") {
-    //   return "ineligible";
-    // }
+    if (value === "Less than a year") {
+      return "ineligible";
+    }
     return "birthdate";
   }
 
@@ -213,11 +214,11 @@ export class PublicFormComponent extends PublicFormController<Page> {
     // }
     const date = "2020-01-01";
     const birthdate = new Date(date);
-    // const isAdult = differenceInYears(new Date(), birthdate) > 18;
+    const isAdult = differenceInYears(new Date(), birthdate) > 18;
 
-    // if (!isAdult) {
-    //   return "ineligible";
-    // }
+    if (!isAdult) {
+      return "ineligible";
+    }
     return "currently-employed";
   }
 
