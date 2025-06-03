@@ -1,8 +1,6 @@
 import { useState,} from 'react';
 import {
   GoabFormState,
-  GoabPublicFormOnInitDetail,
-  GoabPublicFormPageOnContinueDetail,
   requiredValidator,
 } from "@abgov/ui-components-common";
 import { usePublicFormController } from "@abgov/ui-components-common";
@@ -58,7 +56,7 @@ export function SimplePublicFormExample() {
   };
 
   // Validation functions
-  const validateName = (e: GoabPublicFormPageOnContinueDetail): Page | undefined => {
+  const validateName = (e: Event): Page | undefined => {
     console.log("state is ", state);
     const [firstNameOk] = validate(e, "firstName", [
       requiredValidator("First name is required"),
@@ -72,31 +70,31 @@ export function SimplePublicFormExample() {
     return "sin";
   };
 
-  const validateResidence = (e: GoabPublicFormPageOnContinueDetail): Page | undefined => {
-    const { state } = e;
+  const validateResidence = (e: Event): Page | undefined => {
+    const { state } = (e as CustomEvent).detail;
     if (state.alberta?.value === "No") {
       return "ineligible";
     }
     return "residence-duration";
   };
 
-  const validateResidenceDuration = (e: GoabPublicFormPageOnContinueDetail): Page | undefined => {
-    const { state } = e;
+  const validateResidenceDuration = (e: Event): Page | undefined => {
+    const { state } = (e as CustomEvent).detail;
     if (state.duration?.value === "Less than a year") {
       return "ineligible";
     }
     return "birthdate";
   };
 
-  const validateEducation = (e: GoabPublicFormPageOnContinueDetail): Page | undefined => {
-    const { state } = e;
+  const validateEducation = (e: Event): Page | undefined => {
+    const { state } = (e as CustomEvent).detail;
     if (state.education?.value === "Other") {
       return "other-education";
     }
     return "previously-applied";
   };
 
-  const onPageChange = (e: GoabPublicFormPageOnContinueDetail | null, from: string) => {
+  const onPageChange = (e: Event | null, from: string) => {
     console.log("onPageChange with e ", e, from);
 
     // Add null check for e
@@ -105,7 +103,7 @@ export function SimplePublicFormExample() {
       return;
     }
 
-    const { cancelled } = e;
+    const { cancelled } = (e as CustomEvent).detail;
     if (cancelled) return;
 
     let nextPage: Page | undefined;
@@ -151,7 +149,7 @@ export function SimplePublicFormExample() {
     }
   };
 
-  const handleInit = (event: GoabPublicFormOnInitDetail) => {
+  const handleInit = (event: Event) => {
     console.log("Form initialized", event);
     init(event);
 
