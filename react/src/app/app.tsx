@@ -26,6 +26,7 @@ export function App() {
               <Link to="/2446">Popover inside a scrolling modal</Link>
               <Link to="/2408">Form stepper status</Link>
               <Link to="/2441">Issue 2441</Link>
+              <Link to="/2772">2772 align on input</Link>
             </GoabSideMenuGroup>
             <GoabSideMenuGroup heading="Components">
               <Link to="/">Home</Link>

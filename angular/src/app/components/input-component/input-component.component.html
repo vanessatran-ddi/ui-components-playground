@@ -6,7 +6,7 @@
 <h2>Reactive form</h2>
 <form [formGroup]="example2Form">
   <goab-form-item label="Example 2">
-    <goab-input name="inputControl" formControlName="inputControl" placeholder="Enter text"></goab-input>
+    <goab-input name="inputControl" formControlName="inputControl" placeholder="Enter text" textAlign="right"></goab-input>
     <goab-form-item-slot slot="helptext">Entered value: {{example2Form.get('inputControl')?.value }}</goab-form-item-slot>
   </goab-form-item>
 </form>
@@ -24,8 +24,8 @@
 
 
 <h2>Icons</h2>
-<goab-input name="foo" leadingIcon="finger-print"></goab-input>
-<goab-input name="foo" trailingIcon="finger-print"></goab-input>
+<goab-input name="foo" leadingIcon="finger-print" textAlign="right"></goab-input>
+<goab-input name="foo" trailingIcon="finger-print" textAlign="right"></goab-input>
 
 <h2>Number</h2>
 <goab-input name="foo" type="number" [min]="0" [max]="10" [step]="2"></goab-input>
@@ -78,7 +78,8 @@
 <h2>Binding</h2>
 
 <p>{{ wcVal }}</p>
-<goab-input [value]="wcVal" (onChange)="updateInput($event)" name="foo"></goab-input>
+<goab-input [value]="wcVal" (onChange)="updateInput($event)" name="foo" textAlign="right"></goab-input>
+<goab-input [value]="wcVal" (onChange)="updateInput($event)" name="foo" textAlign="left"></goab-input>
 
 <h2>Angular Reactive Forms Component using Web Component</h2>
 <p>{{ reactiveFormCtrl.value }}</p>
@@ -97,7 +98,7 @@
 <goab-input type="time" name="time" [formControl]="reactiveTimeFormCtrl" [step]="1"></goab-input>
 
 <h2>Leading Content</h2>
-<goab-input name="input">
+<goab-input name="input" textAlign="right">
   <div slot="leadingContent">
     <goab-badge type="success" [icon]="true"></goab-badge>
   </div>
@@ -114,6 +115,7 @@
 
 
 <h2>Leading and Trailing Content</h2>
+<goab-input name="input">
 <goab-input name="input">
   <div slot="leadingContent">
     <div style="width: 50px; text-align: center">$</div>

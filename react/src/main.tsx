@@ -8,6 +8,7 @@ import { Pagination } from "./app/components/pagination/Pagination";
 import { Issue2446 } from "./app/issues/issue2446";
 import { Issue2408 } from "./app/issues/issue2408";
 import { Issue2441 } from "./app/issues/issue2441";
+import { Issue2772 } from "./app/issues/issue2772";
 import { TextPage } from "./app/components/text/Text";
 import { Drawer } from "./app/drawer/Drawer";
 import { SimplePublicFormExample } from "./app/public-form/SimplePublicFormExample";
@@ -27,6 +28,7 @@ root.render(
           <Route path={"/2446"} element={<Issue2446/>}></Route>
           <Route path={"/2408"} element={<Issue2408/>}></Route>
           <Route path={"/2441"} element={<Issue2441/>}></Route>
+          <Route path="/2772" element={<Issue2772/>}></Route>
           <Route path={"/public-form"} element={<SimplePublicFormExample/>}></Route>
           {/** Add more routes here */}
 
