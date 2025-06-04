@@ -19,6 +19,7 @@ import {
   GoabButtonGroup,
   GoabButton,
   GoabPublicFormSummary,
+  GoabDatePicker,
 } from "@abgov/react-components";
 
 type Page =
@@ -269,7 +270,7 @@ export function SimplePublicFormExample() {
               labelSize="large"
             >
               <GoabFormItem id="birth-date-item" label="Birth Date">
-                <GoabInput id="birth-date" name="birth-date" type="date" />
+                <GoabDatePicker id="birth-date" name="birth-date" type="input"/>
               </GoabFormItem>
             </GoabFormItem>
           </GoabFieldset>
