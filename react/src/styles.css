@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+
+.app {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.content {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: stretch;
+}
+
+/*==================
+  Side Menu
+==================*/
+.side-menu {
+  min-width: 180px;
+  width: 180px;
+  border-right: 1px solid var(--goa-color-greyscale-200);
+  padding-bottom: var(--goa-space-l);
+}
+
+/*==================
+ Individual Page content
+==================*/
+.main {
+  flex: 1 1 auto;
+  margin: 0 var(--goa-space-2xl) var(--goa-space-4xl) var(--goa-space-3xl);
+  line-height: var(--goa-line-height-3);
+  font-size: var(--goa-font-size-4);
+}

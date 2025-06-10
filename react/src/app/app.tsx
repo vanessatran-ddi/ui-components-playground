@@ -1,6 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
 import "@abgov/style";
-import { useEffect, useState } from "react";
 import {
   GoabAppFooter,
   GoabAppHeader,
@@ -19,8 +18,8 @@ export function App() {
           <a href="/login">Sign in</a>
         </GoabAppHeader>
       </section>
-      <div style={{ display: "flex" }}>
-        <section style={{ flex: "0 0 250px" }}>
+      <section className="content">
+        <section className="side-menu">
           <GoabSideMenu>
             <GoabSideMenuGroup heading="Bugs">
               <Link to="/2446">Popover inside a scrolling modal</Link>
@@ -43,10 +42,10 @@ export function App() {
             {/* Add links here */}
           </GoabSideMenu>
         </section>
-        <section>
+        <main className="main">
           <Outlet />
-        </section>
-      </div>
+        </main>
+      </section>
       <section slot="footer">
         <GoabAppFooter />
       </section>

@@ -9,19 +9,18 @@ import { useState } from "react";
 
 export const Issue2408 = () => {
   const [step, setStep] = useState<number>(-1);
-  // controlled by the user based on form completion
+// controlled by the user based on form completion
   const [status, setStatus] = useState<GoabFormStepStatus[]>([
     "complete",
     "complete",
     "incomplete",
-    "not-started",
-  ]);
-
+    "not-started"
+  ])
   function setPage(page: number) {
     if (page < 1 || page > 4) return;
     setStep(page);
     setStatus((prevStatus) =>
-      prevStatus.map((_, index) => (index < page ? "complete" : "incomplete")),
+      prevStatus.map((_, index) => (index < page ? "complete" : "incomplete"))
     );
   }
 
@@ -39,13 +38,9 @@ export const Issue2408 = () => {
         <div>{/*Page 3 content*/}</div>
         <div>{/*Page 4 content*/}</div>
       </GoabPages>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <GoabButton type="secondary" onClick={() => setPage(step - 1)}>
-          Previous
-        </GoabButton>
-        <GoabButton type="primary" onClick={() => setPage(step + 1)}>
-          Next
-        </GoabButton>
+      <div style={{display: 'flex', justifyContent: 'space-between'}}>
+        <GoabButton type="secondary" onClick={() => setPage(step - 1)}>Previous</GoabButton>
+        <GoabButton type="primary" onClick={() => setPage(step + 1)}>Next</GoabButton>
       </div>
     </>
   );
