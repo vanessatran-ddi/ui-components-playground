@@ -56,8 +56,23 @@ export default function Input() {
         max={maxDate}
         onChange={onDateChange}
       />
+      <GoAInputDate
+        textAlign={"right"}
+        name="Date with min max"
+        value={date}
+        min={minDate}
+        max={maxDate}
+        onChange={onDateChange}
+      />
       <GoAFormItem label="Max Length" helpText={"Max length is 10"}>
         <GoAInput
+          maxLength={10}
+          name="Max Length Value"
+          onChange={noop}
+          value=""
+        />
+        <GoAInput
+          textAlign={"right"}
           maxLength={10}
           name="Max Length Value"
           onChange={noop}
@@ -67,6 +82,12 @@ export default function Input() {
 
       <h4>Time from Date value</h4>
       <GoAInputTime
+        name="Time from date value"
+        value={time}
+        onChange={onTimeChange}
+      />
+      <GoAInputTime
+        textAlign={"right"}
         name="Time from date value"
         value={time}
         onChange={onTimeChange}
@@ -81,6 +102,14 @@ export default function Input() {
 
       <h2>Icons</h2>
       <GoAInput
+        name=""
+        value=""
+        onChange={noop}
+        type="text"
+        leadingIcon="finger-print"
+      />
+      <GoAInput
+        textAlign={"right"}
         name=""
         value=""
         onChange={noop}
@@ -105,10 +134,28 @@ export default function Input() {
         type="text"
         onTrailingIconClick={noop}
       />
+      <GoAInput
+        textAlign={"right"}
+        trailingIcon="finger-print"
+        name=""
+        value=""
+        onChange={noop}
+        type="text"
+        onTrailingIconClick={noop}
+      />
 
       <h2>Disabled</h2>
       <GoAInput
         name=""
+        value=""
+        onChange={noop}
+        type="text"
+        disabled={true}
+        placeholder="Find by name"
+      />
+      <GoAInput
+        name=""
+        textAlign={"right"}
         value=""
         onChange={noop}
         type="text"
@@ -186,7 +233,10 @@ export default function Input() {
 
       ></GoAInput>
 
+      <GoAInput onChange={noop} name={"input"} textAlign={"right"}
+                leadingContent={<strong>Test</strong>}
 
+      ></GoAInput>
 
 
       <GoAInput name="input" value="" leadingContent="$" onChange={noop} />
@@ -226,6 +276,14 @@ export default function Input() {
           setDate2526(value);
           console.log(value);
         }}
+      />
+
+      <h3>Issue 2722 - text align right</h3>
+      <GoAInput
+        name="input"
+        value=""
+        onChange={noop}
+        textAlign="right"
       />
     </>
   );
