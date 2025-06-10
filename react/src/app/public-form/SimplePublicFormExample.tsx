@@ -160,7 +160,7 @@ export function SimplePublicFormExample() {
         uuid: crypto.randomUUID(),
         form: {},
         history: [],
-        editting: "name",
+        editting: "",
         status: "not-started"
       });
     }, 0);
@@ -178,6 +178,7 @@ export function SimplePublicFormExample() {
           heading="What is your full name?"
           summaryHeading="Introduction"
           first={true}
+          type={"step"}
           onContinue={(e) => onPageChange(e, 'name')}
         >
           <GoabFieldset>

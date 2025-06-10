@@ -1,1 +1,5 @@
 /* Your styles goes here. */
+.customLink {
+  color: red!important;
+  --goa-color-interactive-default: var(--goa-color-text-light)!important;
+}
