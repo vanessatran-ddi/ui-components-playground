@@ -10,7 +10,7 @@ import { requiredValidator } from "@abgov/ui-components-common";
 import {
   GoabButton,
   GoabButtonGroup,
-  GoabCallout,
+  GoabCallout, GoabCheckbox,
   GoabDetails,
   GoabFieldset,
   GoabFormItem,
@@ -55,6 +55,7 @@ type Page =
     GoabButtonGroup,
     GoabButton,
     GoabPublicFormSummary,
+    GoabCheckbox,
   ],
 })
 export class PublicFormComponent extends PublicFormController<Page> {
@@ -71,7 +72,6 @@ export class PublicFormComponent extends PublicFormController<Page> {
   // =========
   // Functions
   // =========
-
 
   showConfirmation(state: GoabFormState) {
     console.log("I am at showConfirmation and state is ", state);
@@ -91,7 +91,6 @@ export class PublicFormComponent extends PublicFormController<Page> {
   toggleDrawer() {
     this.showDrawer = !this.showDrawer;
   }
-
 
   // ======
   // Events
@@ -137,7 +136,6 @@ export class PublicFormComponent extends PublicFormController<Page> {
     if (dest) {
       this.continueTo(dest);
     }
-
   }
 
   // ===========

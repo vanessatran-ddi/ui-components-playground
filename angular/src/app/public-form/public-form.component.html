@@ -43,6 +43,13 @@
       <goab-form-item name="Postal Code" label="Postal Code" [publicFormSummaryOrder]="1">
         <goab-input name="postal-code"></goab-input>
       </goab-form-item>
+      <goab-form-item label="Contact">
+        <goab-checkbox name="contact" [reveal]="contactMethod">
+          <ng-template #contactMethod>
+            <goab-input name="contact-email"></goab-input>
+          </ng-template>
+        </goab-checkbox>
+      </goab-form-item>
     </goab-fieldset>
   </goab-public-form-page>
 
@@ -138,7 +145,11 @@
         <goab-radio-item value="Post secondary" label="Post secondary" />
         <goab-radio-item value="Graduate studies" label="Graduate studies" />
         <goab-radio-item value="None" label="None" />
-        <goab-radio-item value="Other" label="Other" />
+        <goab-radio-item value="Other" label="Other" [reveal]="otherEducation">
+          <ng-template #otherEducation>
+            <goab-input name="other-education"></goab-input>
+          </ng-template>
+        </goab-radio-item>
       </goab-radio-group>
     </goab-form-item>
     </goab-fieldset>
