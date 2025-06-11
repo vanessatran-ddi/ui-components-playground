@@ -21,6 +21,7 @@ import { Issue2768 } from "./app/issues/issue2768";
 import { Issue2829 } from "./app/issues/issue2829";
 import FormTest from "./app/public-form/ThomasPublicForm";
 import { SimplePublicFormExample } from "./app/public-form/SimplePublicFormExample";
+import { MenuButton } from "./app/components/menu-button/MenuButton";
 import { PublicFormNavigationTest } from "./app/public-form/PublicFormNavigationTest";
 import { PublicFormAccessibilityTest } from "./app/public-form/PublicFormAccessibilityTest";
 import { Issue2827 } from "./app/public-form/Issue2827";
@@ -40,6 +41,7 @@ root.render(
           <Route path={"/drawer"} element={<Drawer/>}> </Route>
           <Route path={"/temporary-notification"} element={<TemporaryNotificationPage/>}></Route>
           <Route path={"/text"} element={<TextPage/>}></Route>
+          <Route path={"/menu-button"} element={<MenuButton/>}></Route>
           <Route path={"/2446"} element={<Issue2446/>}></Route>
           <Route path={"/2408"} element={<Issue2408/>}></Route>
           <Route path={"/2441"} element={<Issue2441/>}></Route>
