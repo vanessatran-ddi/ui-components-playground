@@ -42,6 +42,7 @@ export function App() {
               <Link to="/drawer">Drawer</Link>
               <Link to="/temporary-notification">Temporary Notification</Link>
               <Link to="/Text">Text</Link>
+              <Link to="/menu-button">Menu Button</Link>
 
               {/* Add links here */}
             </GoabSideMenuGroup>
