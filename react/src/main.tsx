@@ -12,8 +12,8 @@ import { Issue2772 } from "./app/issues/issue2772";
 import { TextPage } from "./app/components/text/Text";
 import { Drawer } from "./app/drawer/Drawer";
 import { Issue1216 } from "./app/issues/issue1216";
-import { SimplePublicFormExample } from "./app/public-form/SimplePublicFormExample";
 import FormTest from "./app/public-form/ThomasPublicForm";
+import { SimplePublicFormExample } from "./app/public-form/SimplePublicFormExample";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
