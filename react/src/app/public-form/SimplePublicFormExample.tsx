@@ -28,7 +28,7 @@ import {requiredValidator, GoabFormState} from "@abgov/ui-components-common";
 import {dateOfBirthValidator} from "./validator";
 import { Section1A } from "./Section1A";
 
-type CurrentView = 
+type CurrentView =
   | { type: "task"; taskId: string }
   | { type: "tasklist" };
 
@@ -171,13 +171,13 @@ export const SimplePublicFormExample = () => {
 
   const onSection1AComplete = (state: GoabFormState) => {
     console.log("Section1A completed with state:", state);
-    
+
     // Update the task status and state for section1a
-    setTaskSections(prevSections => 
+    setTaskSections(prevSections =>
       prevSections.map(section => ({
         ...section,
-        tasks: section.tasks.map(task => 
-          task.id === "section1a" 
+        tasks: section.tasks.map(task =>
+          task.id === "section1a"
             ? { ...task, status: "completed" as TaskStatus, state }
             : task.id === "section1b"
             ? { ...task, status: "not-started" as TaskStatus } // Enable next task
@@ -185,7 +185,7 @@ export const SimplePublicFormExample = () => {
         )
       }))
     );
-    
+
     // Switch to task list view
     setCurrentView({ type: "tasklist" });
   }
@@ -194,10 +194,10 @@ export const SimplePublicFormExample = () => {
   const getProgressInfo = () => {
     const totalSections = taskSections.length;
     // A section is only completed when ALL tasks in that section are completed
-    const completedSections = taskSections.filter(section => 
+    const completedSections = taskSections.filter(section =>
       section.tasks.every(task => task.status === "completed")
     ).length;
-    
+
     if (completedSections === totalSections) {
       // All sections completed
       return {
@@ -227,26 +227,26 @@ export const SimplePublicFormExample = () => {
       {currentView.type === "task" && currentView.taskId === "section1a" && (
         <Section1A onComplete={onSection1AComplete} />
       )}
-      
+
       {currentView.type === "tasklist" && (
         <div>
           <GoabText tag="h1" size="heading-xl">Apply for a service (demo)</GoabText>
-          
+
           {(() => {
             const progressInfo = getProgressInfo();
             return (
-              <GoabCallout 
-                type={progressInfo.type} 
-                size="medium" 
+              <GoabCallout
+                type={progressInfo.type}
+                size="medium"
                 heading={progressInfo.heading}
-                mb="2xl" 
+                mb="2xl"
                 mt="xl"
               >
                 {progressInfo.content}
               </GoabCallout>
             );
           })()}
-          
+
           {taskSections.map(section => (
             <div key={section.id}>
               <GoabPublicFormTaskList heading={section.heading}>
@@ -272,210 +272,6 @@ export const SimplePublicFormExample = () => {
           ))}
         </div>
       )}
-      {/*{currentSection === "form" && (*/}
-      {/*  <GoabPublicForm name="section1-form" onComplete={onComplete} onInit={onInit}>*/}
-      {/*    /!* Section 1A Pages *!/*/}
-      {/*    <GoabPublicFormPage*/}
-      {/*      id="live-in-alberta"*/}
-      {/*      heading="Do you currently live in Alberta?"*/}
-      {/*      first={true}*/}
-      {/*      buttonText={"Save and continue"}*/}
-      {/*      onContinue={(e) => onContinue(e, "live-in-alberta")}*/}
-      {/*      backUrl={window.location.origin}>*/}
-      {/*      <GoabFieldset>*/}
-      {/*        <GoabFormItem name="Live in Alberta" helpText="This service is for residents of Alberta">*/}
-      {/*          <GoabRadioGroup name={"live-in-alberta"} id="live-in-alberta">*/}
-      {/*            <GoabRadioItem value="Yes" label="Yes"></GoabRadioItem>*/}
-      {/*            <GoabRadioItem value="No" label="No"></GoabRadioItem>*/}
-      {/*          </GoabRadioGroup>*/}
-      {/*        </GoabFormItem>*/}
-      {/*      </GoabFieldset>*/}
-      {/*    </GoabPublicFormPage>*/}
-
-      {/*    <GoabPublicFormPage id="how-long-in-alberta" heading="How long have you been living in Alberta?" buttonText={"Save and continue"} onContinue={(e) => onContinue(e, "how-long-in-alberta")}>*/}
-      {/*      <GoabFieldset>*/}
-      {/*        <GoabFormItem name="Years in Alberta">*/}
-      {/*          <GoabRadioGroup name={"how-long-in-alberta"} id="how-long-in-alberta">*/}
-      {/*            <GoabRadioItem value="less" label="Less than 1 year"></GoabRadioItem>*/}
-      {/*            <GoabRadioItem value="greater" label="Greater than 1 year"></GoabRadioItem>*/}
-      {/*          </GoabRadioGroup>*/}
-      {/*        </GoabFormItem>*/}
-      {/*      </GoabFieldset>*/}
-      {/*    </GoabPublicFormPage>*/}
-
-      {/*    <GoabPublicFormPage id="date-of-birth" heading="What is your date of birth?" buttonText={"Save and continue"} onContinue={(e) => onContinue(e, "date-of-birth")}>*/}
-      {/*      <GoabFieldset>*/}
-      {/*        <GoabFormItem name="Date of birth" helpText="Your date of birth is required to ensure you meet the age criteria">*/}
-      {/*          <GoabDatePicker name="date-of-birth" type="input"/>*/}
-      {/*        </GoabFormItem>*/}
-      {/*      </GoabFieldset>*/}
-      {/*    </GoabPublicFormPage>*/}
-
-      {/*    <GoabPublicFormPage id="current-employment" heading="Are you currently employed?" buttonText={"Save and continue"} onContinue={(e) => onContinue(e, "current-employment")}>*/}
-      {/*      <GoabFieldset>*/}
-      {/*        <GoabFormItem name="Current employment">*/}
-      {/*          <GoabRadioGroup name={"current-employment"} id="current-employment">*/}
-      {/*            <GoabRadioItem value="Yes" label="Yes"></GoabRadioItem>*/}
-      {/*            <GoabRadioItem value="No" label="No"></GoabRadioItem>*/}
-      {/*          </GoabRadioGroup>*/}
-      {/*        </GoabFormItem>*/}
-      {/*        <GoabDetails heading="What do I do if I am self employed?">*/}
-      {/*          <p>Here is some additional information on what to do in this case.</p>*/}
-      {/*        </GoabDetails>*/}
-      {/*      </GoabFieldset>*/}
-      {/*    </GoabPublicFormPage>*/}
-
-      {/*    <GoabPublicFormPage id="education-level" heading="What is the highest level of education you have completed?" buttonText={"Save and continue"} onContinue={(e) => onContinue(e, "education-level")}>*/}
-      {/*      <GoabFieldset>*/}
-      {/*        <GoabFormItem name="Education level">*/}
-      {/*          <GoabRadioGroup name={"education-level"} id="education-level">*/}
-      {/*            <GoabRadioItem value="High school" label="High school"></GoabRadioItem>*/}
-      {/*            <GoabRadioItem value="Post secondary" label="Post secondary"></GoabRadioItem>*/}
-      {/*            <GoabRadioItem value="Graduate studies" label="Graduate studies"></GoabRadioItem>*/}
-      {/*            <GoabRadioItem value="Other" label="Other">*/}
-      {/*              <div slot="reveal">*/}
-      {/*                /!*TODO: How to make use of public form*!/*/}
-      {/*                <GoabFormItem name="Education level (other)">*/}
-      {/*                  <GoabInput name="education-level-others"/>*/}
-      {/*                </GoabFormItem>*/}
-      {/*              </div>*/}
-      {/*            </GoabRadioItem>*/}
-      {/*            <GoabRadioItem value="None" label="None"></GoabRadioItem>*/}
-      {/*          </GoabRadioGroup>*/}
-      {/*        </GoabFormItem>*/}
-      {/*      </GoabFieldset>*/}
-      {/*    </GoabPublicFormPage>*/}
-
-      {/*    <GoabPublicFormPage id="previously-applied" heading="Have you previously applied for or received this service?" buttonText={"Save and continue"} onContinue={(e) => onContinue(e, "previously-applied")}>*/}
-      {/*      <GoabFieldset>*/}
-      {/*        <GoabFormItem name="Previously applied">*/}
-      {/*          <GoabRadioGroup name={"previously-applied"} id="previously-applied">*/}
-      {/*            <GoabRadioItem value="Yes" label="Yes"></GoabRadioItem>*/}
-      {/*            <GoabRadioItem value="No" label="No"></GoabRadioItem>*/}
-      {/*          </GoabRadioGroup>*/}
-      {/*        </GoabFormItem>*/}
-      {/*      </GoabFieldset>*/}
-      {/*    </GoabPublicFormPage>*/}
-
-      {/*    <GoabPublicFormPage id="result-not-eligible" heading="You are not eligible for this service">*/}
-      {/*      <GoabCallout type="important" heading={"This service is only for Alberta residents"}>*/}
-      {/*        {notEligibleMessage}*/}
-      {/*      </GoabCallout>*/}
-
-      {/*      <GoabText tag={"p"}>You can now close this window.</GoabText>*/}
-
-      {/*      <GoabText tag={"h3"} size={"heading-m"}>If you have questions about your application</GoabText>*/}
-      {/*      <GoabText tag={"p"}>Contact the [ministry area].</GoabText>*/}
-      {/*      <GoabText tag={"p"}>Email: <GoabLink><a href={"mailto:information@gov.ab.ca"}>information@gov.ab.ca</a></GoabLink></GoabText>*/}
-
-      {/*      <GoabText tag={"p"}>Phone: <GoabLink><a href={"780-123-4567"}>780-123-4567</a>{" "}</GoabLink></GoabText>*/}
-
-      {/*      <GoabButton type={"tertiary"}>Back to Alberta.ca</GoabButton>*/}
-      {/*    </GoabPublicFormPage>*/}
-
-      {/*    <GoabPublicFormPage id="task-list-summary" type="multistep" heading="Apply for a service (Demo)">*/}
-      {/*      <div className="warning">*/}
-      {/*        <GoabCallout type="information" size="medium" heading="You have 3 sections to complete" mb="2xl" mt="xl">*/}
-      {/*          <GoabLink><a href="#" onClick={handleReadTermsClick}>Start terms of use</a></GoabLink>*/}
-      {/*        </GoabCallout>*/}
-      {/*      </div>*/}
-      {/*      <GoabText tag="h2">*/}
-      {/*        1. Before you start*/}
-      {/*      </GoabText>*/}
-      {/*      <GoabTable width="100%" mb="2xl" mt="l">*/}
-      {/*        <tbody>*/}
-      {/*        <tr>*/}
-      {/*          <td>*/}
-      {/*            <GoabText tag="span" size={"body-m"}>Eligibility questions</GoabText>*/}
-      {/*          </td>*/}
-      {/*          <td className="goa-table-number-column">*/}
-      {/*            <GoabBadge type="success" content="Completed" ariaLabel="completed"></GoabBadge>*/}
-      {/*          </td>*/}
-      {/*        </tr>*/}
-      {/*        <tr>*/}
-      {/*          <td>*/}
-      {/*            <GoabLink><a href="#" onClick={handleReadTermsClick}>Read terms of use</a></GoabLink>*/}
-      {/*          </td>*/}
-      {/*          <td className="goa-table-number-column">*/}
-      {/*            <GoabBadge type="information" content="Not started" ariaLabel="not started" />*/}
-      {/*          </td>*/}
-      {/*        </tr>*/}
-      {/*        </tbody>*/}
-      {/*      </GoabTable>*/}
-      {/*      <GoabText tag="h2">*/}
-      {/*        2. Prepare application*/}
-      {/*      </GoabText>*/}
-      {/*      <GoabText tag="p" size="body-s" color="secondary">*/}
-      {/*        You need to complete the previous section before you can start this task.*/}
-      {/*      </GoabText>*/}
-      {/*      <GoabTable width="100%" mb="2xl" mt="l">*/}
-      {/*        <tbody>*/}
-      {/*        <tr>*/}
-      {/*          <td>*/}
-      {/*            <GoabText tag="span" size={"body-m"}>Your contact details</GoabText>*/}
-      {/*          </td>*/}
-      {/*          <td className="goa-table-number-column">*/}
-      {/*            <GoabText tag="span" size="body-m" color="secondary"> Cannot start yet</GoabText>*/}
-      {/*          </td>*/}
-      {/*        </tr>*/}
-      {/*        <tr>*/}
-      {/*          <td>*/}
-      {/*            <GoabText tag={"span"} size={"body-m"}>*/}
-      {/*              Your family*/}
-      {/*            </GoabText>*/}
-      {/*          </td>*/}
-      {/*          <td className="goa-table-number-column">*/}
-      {/*            <GoabText tag="span" size="body-m" color="secondary"> Cannot start yet</GoabText>*/}
-      {/*          </td>*/}
-      {/*        </tr>*/}
-      {/*        <tr>*/}
-      {/*          <td>*/}
-      {/*            <GoabText tag={"span"} size={"body-m"}>*/}
-      {/*              Verify your identity*/}
-      {/*            </GoabText>*/}
-      {/*          </td>*/}
-      {/*          <td className="goa-table-number-column">*/}
-      {/*            <GoabText tag="span" size="body-m" color="secondary"> Cannot start yet</GoabText>*/}
-      {/*          </td>*/}
-      {/*        </tr>*/}
-      {/*        </tbody>*/}
-      {/*      </GoabTable>*/}
-
-      {/*      <GoabText tag="h2">*/}
-      {/*        3. Schedule service*/}
-      {/*      </GoabText>*/}
-      {/*      <GoabText tag="p" size="body-s" color="secondary">*/}
-      {/*        You need to complete the previous section before you can start this task.*/}
-      {/*      </GoabText>*/}
-      {/*      <GoabTable width="100%" mt="l" mb="3xl">*/}
-      {/*        <tbody>*/}
-      {/*        <tr>*/}
-      {/*          <td> <GoabText tag={"span"} size={"body-m"}>*/}
-      {/*            Receive email confirmation</GoabText>*/}
-      {/*          </td>*/}
-      {/*          <td className="goa-table-number-column">*/}
-      {/*            <GoabText tag="span" size="body-m" color="secondary"> Cannot start yet</GoabText>*/}
-      {/*          </td>*/}
-      {/*        </tr>*/}
-      {/*        <tr>*/}
-      {/*          <td> <GoabText tag={"span"} size={"body-m"}>*/}
-      {/*            Choose date</GoabText>*/}
-      {/*          </td>*/}
-      {/*          <td className="goa-table-number-column">*/}
-      {/*            <GoabText tag="span" size="body-m" color="secondary"> Cannot start yet</GoabText>*/}
-      {/*          </td>*/}
-      {/*        </tr>*/}
-      {/*        <tr>*/}
-      {/*          <td><GoabText tag={"span"} size={"body-m"}>*/}
-      {/*            Pay service fee</GoabText>*/}
-      {/*          </td>*/}
-      {/*          <td className="goa-table-number-column">*/}
-      {/*            <GoabText tag="span" size="body-m" color="secondary"> Cannot start yet</GoabText>*/}
-      {/*          </td>*/}
-      {/*        </tr>*/}
-      {/*        </tbody>*/}
-      {/*      </GoabTable>*/}
-      {/*    </GoabPublicFormPage>*/}
 
       {/*    /!* Section 1B Pages *!/*/}
       {/*    <GoabPublicFormPage*/}
