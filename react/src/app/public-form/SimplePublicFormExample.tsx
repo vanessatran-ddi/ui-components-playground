@@ -27,6 +27,7 @@ import {
 import {requiredValidator, GoabFormState} from "@abgov/ui-components-common";
 import {dateOfBirthValidator} from "./validator";
 import { Section1A } from "./Section1A";
+import { Section1B } from "./Section1B";
 
 type CurrentView =
   | { type: "task"; taskId: string }
@@ -169,6 +170,31 @@ export const SimplePublicFormExample = () => {
     setCurrentView({ type: "task", taskId: "section1b" });
   }
 
+  const onSection1BComplete = () => {
+    console.log("Section1B completed");
+
+    // Update the task status for section1b
+    setTaskSections(prevSections =>
+      prevSections.map(section => ({
+        ...section,
+        tasks: section.tasks.map(task =>
+          task.id === "section1b"
+            ? { ...task, status: "completed" as TaskStatus }
+            : task.id === "section2a"
+            ? { ...task, status: "not-started" as TaskStatus } // Enable next task
+            : task
+        )
+      }))
+    );
+
+    // Switch to task list view
+    setCurrentView({ type: "tasklist" });
+  }
+
+  const onSection1BBack = () => {
+    setCurrentView({ type: "tasklist" });
+  }
+
   const onSection1AComplete = (state: GoabFormState) => {
     console.log("Section1A completed with state:", state);
 
@@ -226,6 +252,10 @@ export const SimplePublicFormExample = () => {
     <>
       {currentView.type === "task" && currentView.taskId === "section1a" && (
         <Section1A onComplete={onSection1AComplete} />
+      )}
+
+      {currentView.type === "task" && currentView.taskId === "section1b" && (
+        <Section1B onComplete={onSection1BComplete} onBack={onSection1BBack} />
       )}
 
       {currentView.type === "tasklist" && (
