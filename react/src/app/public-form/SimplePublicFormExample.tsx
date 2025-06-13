@@ -78,6 +78,7 @@ export const SimplePublicFormExample = () => {
   }
 
   const onContinue = (e: Event, from: Page) => {
+    console.log("onContinue", e, from);
     if ((e as CustomEvent).detail?.cancelled) return;
 
     let nextPage: Page | undefined;
@@ -534,7 +535,7 @@ export const SimplePublicFormExample = () => {
             </GoabText>
             <GoabFieldset>
               <GoabFormItem name="Terms of use">
-                <GoabCheckbox name="terms-of-use" text="I accept the terms of use." />
+                <GoabCheckbox name="terms-of-use" value={"Yes"} text="I accept the terms of use." />
               </GoabFormItem>
             </GoabFieldset>
           </GoabPublicFormPage>
@@ -704,7 +705,7 @@ export const SimplePublicFormExample = () => {
             <GoabFieldset>
               <GoabFormItem name="Contact for feedback">
                 <GoabRadioGroup name="contact-feedback" id="contact-feedback">
-                  <GoabRadioItem value="Yes" label="Yes" />
+                  <GoabRadioItem value="Yes" label="Yes"/>
                   <GoabRadioItem value="No" label="No" />
                 </GoabRadioGroup>
               </GoabFormItem>
@@ -724,7 +725,7 @@ export const SimplePublicFormExample = () => {
                   value={"phone"}
                   text="Phone"
                   reveal={
-                    <GoabFormItem name="Phone number">
+                    <GoabFormItem name="Phone number" label={"What is your phone number? "}>
                       <GoabInput name="phone-number"/>
                     </GoabFormItem>
                   }

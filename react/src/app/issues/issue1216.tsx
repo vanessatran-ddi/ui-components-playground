@@ -14,11 +14,16 @@ import { DocCheckboxRevealExample } from "./doc-checkbox-reveal-example";
 
 export const Issue1216 = () => {
   const [checkbox, setCheckbox] = useState(false);
+  const [itemCheckbox, setItemCheckbox] = useState(false);
   const [radio, setRadio] = useState("");
 
   function checkboxOnChange(event: GoabCheckboxOnChangeDetail) {
     console.log(event.value);
     setCheckbox(event.checked);
+  }
+
+  function childCheckboxOnChange(event: GoabCheckboxOnChangeDetail) {
+    setItemCheckbox(event.checked);
   }
 
   function radioGroupOnChange(event: GoabRadioGroupOnChangeDetail) {
@@ -28,17 +33,23 @@ export const Issue1216 = () => {
 
   return (
     <>
-      Checkbox value: {checkbox}
+      Checkbox value: {checkbox ? "true": "false"}
+      Child checkbox value: {itemCheckbox ? "true": "false"}
       <GoabCheckbox
         name="item"
         checked={checkbox}
+        value={"Parent"}
         text="Social Insurance Number (SIN)"
         onChange={checkboxOnChange}
         revealAriaLabel="Hello world, I am a text content inside a reveal slot"
         reveal={
+        <>
           <GoabText size="heading-m" tag="h1" mt="none" mb="none">
             Hello world, I am a text content inside a reveal slot.
           </GoabText>
+          <GoabCheckbox name="childItem" checked={itemCheckbox} text="Child item" value="Child"onChange={childCheckboxOnChange}/>
+        </>
+
         }
       ></GoabCheckbox>
       Radio value: {radio}
