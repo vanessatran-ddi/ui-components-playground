@@ -14,18 +14,24 @@ import {
   GoabInput,
   GoabLink,
   GoabPublicForm,
-  GoabPublicFormPage, GoabPublicFormSummary,
+  GoabPublicFormPage,
+  GoabPublicFormSummary,
+  GoabPublicFormTask,
+  GoabPublicFormTaskList,
   GoabRadioGroup,
   GoabRadioItem,
   GoabTable,
   GoabText,
   usePublicFormController
 } from "@abgov/react-components";
-import {requiredValidator} from "@abgov/ui-components-common";
+import {requiredValidator, GoabFormState} from "@abgov/ui-components-common";
 import {dateOfBirthValidator} from "./validator";
 import { Section1A } from "./Section1A";
 
-type Section = "form" | "tasklist" | "section2a" | "section2b" | "section2c";
+type CurrentView = 
+  | { type: "task"; taskId: string }
+  | { type: "tasklist" };
+
 type Page =
   "live-in-alberta"
   | "how-long-in-alberta"
@@ -43,9 +49,93 @@ type Page =
   | "2A.3.a"
   | "2A.Review";
 
+type TaskStatus = "completed" | "not-started" | "cannot-start";
+
+interface Task {
+  id: string;
+  title: string;
+  status: TaskStatus;
+  state?: GoabFormState | null;
+}
+
+interface TaskSection {
+  id: string;
+  heading: string;
+  tasks: Task[];
+}
+
 export const SimplePublicFormExample = () => {
-  const [currentSection, setCurrentSection] = useState<Section>("form");
+  const [currentView, setCurrentView] = useState<CurrentView>({ type: "task", taskId: "section1a" });
   const [notEligibleMessage, setNotEligibleMessage] = useState("");
+
+  const [taskSections, setTaskSections] = useState<TaskSection[]>([
+    {
+      id: "before-you-start",
+      heading: "1. Before you start",
+      tasks: [
+        {
+          id: "section1a",
+          title: "Eligibility questions",
+          status: "not-started",
+          state: null
+        },
+        {
+          id: "section1b",
+          title: "Read terms of use",
+          status: "cannot-start",
+          state: null
+        }
+      ]
+    },
+    {
+      id: "prepare-application",
+      heading: "2. Prepare application",
+      tasks: [
+        {
+          id: "section2a",
+          title: "Your contact details",
+          status: "cannot-start",
+          state: null
+        },
+        {
+          id: "section2b",
+          title: "Your family",
+          status: "cannot-start",
+          state: null
+        },
+        {
+          id: "section2c",
+          title: "Verify your identity",
+          status: "cannot-start",
+          state: null
+        }
+      ]
+    },
+    {
+      id: "schedule-service",
+      heading: "3. Schedule service",
+      tasks: [
+        {
+          id: "email-confirmation",
+          title: "Receive email confirmation",
+          status: "cannot-start",
+          state: null
+        },
+        {
+          id: "choose-date",
+          title: "Choose date",
+          status: "cannot-start",
+          state: null
+        },
+        {
+          id: "pay-fee",
+          title: "Pay service fee",
+          status: "cannot-start",
+          state: null
+        }
+      ]
+    }
+  ]);
 
   const {
     init,
@@ -70,251 +160,118 @@ export const SimplePublicFormExample = () => {
   }
 
   const onComplete = () => {
-    setCurrentSection("tasklist");
+    setCurrentView({ type: "tasklist" });
   }
 
-  const onContinue = (e: Event, from: Page) => {
-    console.log("onContinue", e, from);
-    if ((e as CustomEvent).detail?.cancelled) return;
-
-    let nextPage: Page | undefined;
-
-    switch (from) {
-      case "live-in-alberta":
-        nextPage = validateLiveInAlberta(e);
-        break;
-      case "how-long-in-alberta":
-        nextPage = validateHowLongInAlberta(e);
-        break;
-      case "date-of-birth":
-        nextPage = validateDateOfBirth(e);
-        break;
-      case "current-employment":
-        nextPage = validateCurrentEmployment(e);
-        break;
-      case "education-level":
-        nextPage = validateEducationLevel(e);
-        break;
-      case "previously-applied":
-        nextPage = validatePreviouslyApplied(e);
-        break;
-      case "terms-of-use":
-        nextPage = validateTermsOfUse(e);
-        break;
-      case "section1b-summary":
-        nextPage = validateSection1BSummary(e);
-        break;
-      case "2A.1":
-        nextPage = validate2A1(e);
-        break;
-      case "2A.2":
-        nextPage = validate2A2(e);
-        break;
-      case "2A.3":
-        nextPage = validate2A3(e);
-        break;
-      case "2A.3.a":
-        nextPage = validate2A3A(e);
-        break;
-      case "2A.Review":
-        nextPage = validate2AReview(e);
-        break;
-    }
-    if (nextPage) {
-      continueTo(nextPage);
-    }
-  }
-
-  const validateLiveInAlberta = (e: Event): Page|undefined => {
-    const [isRequiredOk] = validate(e, "live-in-alberta", [requiredValidator("Please tell us if you currently live in Alberta.")]);
-    if (!isRequiredOk) return undefined;
-
-    const liveInAlberta = (e as CustomEvent).detail?.state?.["live-in-alberta"];
-    if (liveInAlberta?.value === "No") {
-      setNotEligibleMessage("If you do not live in Alberta, you are not able to access this service.");
-      return "result-not-eligible";
-    }
-    if (liveInAlberta?.value === "Yes") return "how-long-in-alberta";
-
-    return undefined;
-  }
-
-  const validateHowLongInAlberta = (e: Event): Page|undefined => {
-    const [isRequiredOk] = validate(e, "how-long-in-alberta", [requiredValidator("Please tell us how long you have lived in Alberta.")]);
-    if (!isRequiredOk) return undefined;
-
-    const howLongInAlberta = (e as CustomEvent).detail?.state?.["how-long-in-alberta"];
-    if (howLongInAlberta?.value === "less") {
-      setNotEligibleMessage("You need to have lived in Alberta for greater than 1 year to use this service.");
-      return "result-not-eligible";
-    }
-    return "date-of-birth";
-  }
-
-  const validateDateOfBirth = (e: Event): Page|undefined => {
-    const [isValid] = validate(e, "date-of-birth", [
-      requiredValidator("Enter a date of birth."),
-      dateOfBirthValidator()
-    ]);
-    if (!isValid) return undefined;
-
-    const dateOfBirth = (e as CustomEvent).detail.state["date-of-birth"];
-
-    // Check if born before 2006
-    const birthYear = parseInt(dateOfBirth.value.substring(0, 4), 10);
-    if (birthYear > 2006) {
-      setNotEligibleMessage("You need to be born before 2006 to use this service.");
-      return "result-not-eligible";
-    }
-
-    return "current-employment";
-  }
-
-  const validateCurrentEmployment = (e: Event): Page|undefined => {
-    const [isValid] = validate(e, "current-employment", [
-      requiredValidator("Please tell us if you are currently employed.")
-    ]);
-    if (!isValid) return undefined;
-
-    const currentEmployment = (e as CustomEvent).detail?.state?.["current-employment"];
-    if (currentEmployment?.value === "No") {
-      setNotEligibleMessage("You need to be employed to use this service.");
-      return "result-not-eligible";
-    }
-    if (currentEmployment?.value === "Yes") return "education-level";
-
-    return undefined;
-  }
-
-  const validateEducationLevel = (e: Event): Page|undefined => {
-    const [isValid] = validate(e, "education-level", [
-      requiredValidator("Please tell us what is the highest level of education you have completed.")
-    ]);
-    if (!isValid) return undefined;
-
-    const educationLevel = (e as CustomEvent).detail?.state?.["education-level"];
-    if (educationLevel?.value === "None") {
-      setNotEligibleMessage("You need to have completed at least a high school level of education to use this service.");
-      return "result-not-eligible";
-    }
-
-    return "previously-applied";
-  }
-
-  const validatePreviouslyApplied = (e: Event): Page|undefined => {
-    const [isValid] = validate(e, "previously-applied", [
-      requiredValidator("Please tell us if you have previously applied for or received this service.")
-    ]);
-    if (!isValid) return undefined;
-
-    const previouslyApplied = (e as CustomEvent).detail?.state?.["previously-applied"];
-    if (previouslyApplied?.value === "No") {
-      return "task-list-summary";
-    }
-    if (previouslyApplied?.value === "Yes") {
-      setNotEligibleMessage("You cannot use this service if you already received this service.");
-      return "result-not-eligible";
-    }
-
-    return undefined;
-  }
-
-  const validateTermsOfUse = (e: Event): Page|undefined => {
-    console.log("I am validating terms of use", e);
-    const [isValid] = validate(e, "terms-of-use", [
-      requiredValidator("You must accept the terms of use to continue.")
-    ]);
-    if (!isValid) return undefined;
-
-    return "section1b-summary";
-  }
-
-  const validateSection1BSummary = (e: Event): Page|undefined => {
-    // Complete the entire Section 1 flow and show task list
-    onComplete();
-    return undefined; // Don't navigate to another page, onComplete handles it
-  }
-
-  const validate2A1 = (e: Event): Page|undefined => {
-    const [isValid] = validate(e, "name", [requiredValidator("Please enter your name.")]);
-    if (!isValid) return undefined;
-    return "2A.2";
-  }
-
-  const validate2A2 = (e: Event): Page|undefined => {
-    const [isStreetValid] = validate(e, "street-address", [requiredValidator("Please enter your street address.")]);
-    const [isCityValid] = validate(e, "city", [requiredValidator("Please enter your city or town.")]);
-    const [isProvinceValid] = validate(e, "province", [requiredValidator("Please select your province or territory.")]);
-    const [isPostalValid] = validate(e, "postal-code", [requiredValidator("Please enter your postal code.")]);
-
-    if (!isStreetValid || !isCityValid || !isProvinceValid || !isPostalValid) return undefined;
-    return "2A.3";
-  }
-
-  const validate2A3 = (e: Event): Page|undefined => {
-    const [isValid] = validate(e, "contact-feedback", [requiredValidator("Please select an option.")]);
-    if (!isValid) return undefined;
-
-    const contactFeedback = (e as CustomEvent).detail?.state?.["contact-feedback"];
-    if (contactFeedback?.value === "Yes") {
-      return "2A.3.a";
-    }
-    // TODO: Handle "No" case later
-    return undefined;
-  }
-
-  const validate2A3A = (e: Event): Page|undefined => {
-    const state = (e as CustomEvent).detail?.state;
-
-    // Check if contact-email is checked and validate email-address
-    if (state?.["contact-email"]?.value === "checked") {
-      const [isEmailValid] = validate(e, "email-address", [requiredValidator("Email address is required")]);
-      if (!isEmailValid) return undefined;
-    }
-
-    // Check if contact-phone is checked and validate phone-number
-    if (state?.["contact-phone"]?.value === "checked") {
-      const [isPhoneValid] = validate(e, "phone-number", [requiredValidator("Phone number is required")]);
-      if (!isPhoneValid) return undefined;
-    }
-
-    // Check if contact-text is checked and validate mobile-phone-number
-    if (state?.["contact-text"]?.value === "checked") {
-      const [isTextValid] = validate(e, "mobile-phone-number", [requiredValidator("Mobile phone number is required")]);
-      if (!isTextValid) return undefined;
-    }
-
-    return "2A.Review";
-  }
-
-  const validate2AReview = (e: Event): Page|undefined => {
-    // For now, just continue - can add validation logic later if needed
-    return undefined; // TODO: Add next page navigation
-  }
-
-  const handleReadTermsClick = (e: React.MouseEvent) => {
+  const navigateTo1B = (e: React.MouseEvent) => {
     e.preventDefault();
-    continueTo("terms-of-use");
+    e.stopPropagation();
+    setCurrentView({ type: "task", taskId: "section1b" });
   }
 
-  const handleContactDetailsClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    continueTo("2A.1");
+  const onSection1AComplete = (state: GoabFormState) => {
+    console.log("Section1A completed with state:", state);
+    
+    // Update the task status and state for section1a
+    setTaskSections(prevSections => 
+      prevSections.map(section => ({
+        ...section,
+        tasks: section.tasks.map(task => 
+          task.id === "section1a" 
+            ? { ...task, status: "completed" as TaskStatus, state }
+            : task.id === "section1b"
+            ? { ...task, status: "not-started" as TaskStatus } // Enable next task
+            : task
+        )
+      }))
+    );
+    
+    // Switch to task list view
+    setCurrentView({ type: "tasklist" });
   }
 
-  const handleFamilyClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    // Navigate to family section when implemented
-  }
-
-  const handleIdentityClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    // Navigate to identity verification section when implemented
+  // Calculate progress for the callout message
+  const getProgressInfo = () => {
+    const totalSections = taskSections.length;
+    // A section is only completed when ALL tasks in that section are completed
+    const completedSections = taskSections.filter(section => 
+      section.tasks.every(task => task.status === "completed")
+    ).length;
+    
+    if (completedSections === totalSections) {
+      // All sections completed
+      return {
+        type: "information" as const,
+        heading: "Waiting for your application to be confirmed",
+        content: "You will receive an email notification when your application has been approved and is ready to continue."
+      };
+    } else if (completedSections === 0) {
+      // No sections completed yet
+      return {
+        type: "information" as const,
+        heading: `You have ${totalSections} sections to complete`,
+        content: <GoabLink><a href="#" onClick={navigateTo1B}>Start terms of use</a></GoabLink>
+      };
+    } else {
+      // Some sections completed
+      return {
+        type: "important" as const,
+        heading: "Application incomplete",
+        content: `You have completed ${completedSections} of ${totalSections} sections.`
+      };
+    }
   }
 
   return (
     <>
-      <Section1A/>
+      {currentView.type === "task" && currentView.taskId === "section1a" && (
+        <Section1A onComplete={onSection1AComplete} />
+      )}
+      
+      {currentView.type === "tasklist" && (
+        <div>
+          <GoabText tag="h1" size="heading-xl">Apply for a service (demo)</GoabText>
+          
+          {(() => {
+            const progressInfo = getProgressInfo();
+            return (
+              <GoabCallout 
+                type={progressInfo.type} 
+                size="medium" 
+                heading={progressInfo.heading}
+                mb="2xl" 
+                mt="xl"
+              >
+                {progressInfo.content}
+              </GoabCallout>
+            );
+          })()}
+          
+          {taskSections.map(section => (
+            <div key={section.id}>
+              <GoabPublicFormTaskList heading={section.heading}>
+                <GoabTable width="100%" mb="2xl" mt="l">
+                  <tbody>
+                    {section.tasks.map(task => (
+                      <tr key={task.id}>
+                        <td>
+                          <GoabPublicFormTask status={task.status}>
+                            {task.status === "not-started" && task.id === "section1b" ? (
+                              <GoabLink><a href="#" onClick={navigateTo1B}>{task.title}</a></GoabLink>
+                            ) : (
+                              task.title
+                            )}
+                          </GoabPublicFormTask>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </GoabTable>
+              </GoabPublicFormTaskList>
+            </div>
+          ))}
+        </div>
+      )}
       {/*{currentSection === "form" && (*/}
       {/*  <GoabPublicForm name="section1-form" onComplete={onComplete} onInit={onInit}>*/}
       {/*    /!* Section 1A Pages *!/*/}
