@@ -1,33 +1,18 @@
 import React, {useState} from "react";
 import {
-  GoabBadge,
-  GoabBlock,
   GoabButton,
   GoabCallout,
-  GoabCheckbox,
-  GoabDatePicker,
-  GoabDetails,
-  GoabDropdown,
-  GoabDropdownItem,
-  GoabFieldset,
-  GoabFormItem,
-  GoabInput,
   GoabLink,
-  GoabPublicForm,
-  GoabPublicFormPage,
-  GoabPublicFormSummary,
   GoabPublicFormTask,
   GoabPublicFormTaskList,
-  GoabRadioGroup,
-  GoabRadioItem,
   GoabTable,
   GoabText,
-  usePublicFormController
 } from "@abgov/react-components";
-import {requiredValidator, GoabFormState} from "@abgov/ui-components-common";
-import {dateOfBirthValidator} from "./validator";
+import { GoabFormState} from "@abgov/ui-components-common";
 import { Section1A } from "./Section1A";
 import { Section1B } from "./Section1B";
+import { Section2A } from "./Section2A";
+import { Section2B } from "./Section2B";
 
 type CurrentView =
   | { type: "task"; taskId: string }
@@ -67,7 +52,6 @@ interface TaskSection {
 
 export const SimplePublicFormExample = () => {
   const [currentView, setCurrentView] = useState<CurrentView>({ type: "task", taskId: "section1a" });
-  const [notEligibleMessage, setNotEligibleMessage] = useState("");
 
   const [taskSections, setTaskSections] = useState<TaskSection[]>([
     {
@@ -138,50 +122,62 @@ export const SimplePublicFormExample = () => {
     }
   ]);
 
-  const {
-    init,
-    initState,
-    continueTo,
-    validate,
-    state,
-  } = usePublicFormController<Page>("details");
-
-
-  const onInit = (event: Event) => {
-    init(event);
-    setTimeout(() => {
-      initState({
-        uuid: crypto.randomUUID(),
-        form: {},
-        history: [],
-        editting: "",
-        status: "not-started"
-      });
-    }, 0)
-  }
-
-  const onComplete = () => {
-    setCurrentView({ type: "tasklist" });
-  }
-
-  const navigateTo1B = (e: React.MouseEvent) => {
+  const navigateTo = (taskId: string) => (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setCurrentView({ type: "task", taskId: "section1b" });
+    setCurrentView({ type: "task", taskId });
   }
 
   const onSection1BComplete = () => {
     console.log("Section1B completed");
 
-    // Update the task status for section1b
+    // Update the task status for section1b and enable all section 2 tasks
     setTaskSections(prevSections =>
       prevSections.map(section => ({
         ...section,
         tasks: section.tasks.map(task =>
           task.id === "section1b"
             ? { ...task, status: "completed" as TaskStatus }
-            : task.id === "section2a"
-            ? { ...task, status: "not-started" as TaskStatus } // Enable next task
+            : task.id === "section2a" || task.id === "section2b" || task.id === "section2c"
+            ? { ...task, status: "not-started" as TaskStatus } // Enable all section 2 tasks
+            : task
+        )
+      }))
+    );
+
+    // Switch to task list view
+    setCurrentView({ type: "tasklist" });
+  }
+
+  const onSection2AComplete = (state: GoabFormState) => {
+    console.log("Section2A completed with state:", state);
+
+    // Update the task status and state for section2a
+    setTaskSections(prevSections =>
+      prevSections.map(section => ({
+        ...section,
+        tasks: section.tasks.map(task =>
+          task.id === "section2a"
+            ? { ...task, status: "completed" as TaskStatus, state }
+            : task
+        )
+      }))
+    );
+
+    // Switch to task list view
+    setCurrentView({ type: "tasklist" });
+  }
+
+  const onSection2BComplete = (state: GoabFormState) => {
+    console.log("Section2B completed with state:", state);
+
+    // Update the task status and state for section2b
+    setTaskSections(prevSections =>
+      prevSections.map(section => ({
+        ...section,
+        tasks: section.tasks.map(task =>
+          task.id === "section2b"
+            ? { ...task, status: "completed" as TaskStatus, state }
             : task
         )
       }))
@@ -236,7 +232,7 @@ export const SimplePublicFormExample = () => {
       return {
         type: "information" as const,
         heading: `You have ${totalSections} sections to complete`,
-        content: <GoabLink><a href="#" onClick={navigateTo1B}>Start terms of use</a></GoabLink>
+        content: <GoabLink><a href="#" onClick={navigateTo("section1b")}>Start terms of use</a></GoabLink>
       };
     } else {
       // Some sections completed
@@ -256,6 +252,14 @@ export const SimplePublicFormExample = () => {
 
       {currentView.type === "task" && currentView.taskId === "section1b" && (
         <Section1B onComplete={onSection1BComplete} onBack={onSection1BBack} />
+      )}
+
+      {currentView.type === "task" && currentView.taskId === "section2a" && (
+        <Section2A onComplete={onSection2AComplete} />
+      )}
+
+      {currentView.type === "task" && currentView.taskId === "section2b" && (
+        <Section2B onComplete={onSection2BComplete} />
       )}
 
       {currentView.type === "tasklist" && (
@@ -286,8 +290,8 @@ export const SimplePublicFormExample = () => {
                       <tr key={task.id}>
                         <td>
                           <GoabPublicFormTask status={task.status}>
-                            {task.status === "not-started" && task.id === "section1b" ? (
-                              <GoabLink><a href="#" onClick={navigateTo1B}>{task.title}</a></GoabLink>
+                            {task.status === "not-started" ? (
+                              <GoabLink><a href="#" onClick={navigateTo(task.id)}>{task.title}</a></GoabLink>
                             ) : (
                               task.title
                             )}
