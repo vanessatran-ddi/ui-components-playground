@@ -13,6 +13,7 @@ import { Section1A } from "./Section1A";
 import { Section1B } from "./Section1B";
 import { Section2A } from "./Section2A";
 import { Section2B } from "./Section2B";
+import { Section2C } from "./Section2C";
 
 type CurrentView =
   | { type: "task"; taskId: string }
@@ -187,6 +188,25 @@ export const SimplePublicFormExample = () => {
     setCurrentView({ type: "tasklist" });
   }
 
+  const onSection2CComplete = (state: GoabFormState) => {
+    console.log("Section2C completed with state:", state);
+
+    // Update the task status and state for section2c
+    setTaskSections(prevSections =>
+      prevSections.map(section => ({
+        ...section,
+        tasks: section.tasks.map(task =>
+          task.id === "section2c"
+            ? { ...task, status: "completed" as TaskStatus, state }
+            : task
+        )
+      }))
+    );
+
+    // Switch to task list view
+    setCurrentView({ type: "tasklist" });
+  }
+
   const onSection1BBack = () => {
     setCurrentView({ type: "tasklist" });
   }
@@ -220,10 +240,10 @@ export const SimplePublicFormExample = () => {
       section.tasks.every(task => task.status === "completed")
     ).length;
 
-    if (completedSections === totalSections) {
+    if (completedSections === totalSections - 1) { // The last one only when confirmed
       // All sections completed
       return {
-        type: "information" as const,
+        type: "important" as const,
         heading: "Waiting for your application to be confirmed",
         content: "You will receive an email notification when your application has been approved and is ready to continue."
       };
@@ -260,6 +280,10 @@ export const SimplePublicFormExample = () => {
 
       {currentView.type === "task" && currentView.taskId === "section2b" && (
         <Section2B onComplete={onSection2BComplete} />
+      )}
+
+      {currentView.type === "task" && currentView.taskId === "section2c" && (
+        <Section2C onComplete={onSection2CComplete} />
       )}
 
       {currentView.type === "tasklist" && (

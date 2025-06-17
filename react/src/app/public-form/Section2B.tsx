@@ -60,7 +60,7 @@ export const Section2B = ({onComplete}: Section2BProps) => {
     }
   }
   const onCompleteSection2B = (e: GoabFormState) => {
-    console.log("Complete section2A", e);
+    console.log("Complete section2B", e);
     onComplete?.(e);
   }
   const onContinue = (e: Event, from: Page) => {
