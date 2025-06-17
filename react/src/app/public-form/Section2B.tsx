@@ -7,16 +7,18 @@ import {
   GoabInput,
   GoabPublicForm,
   GoabPublicFormPage,
+  GoabPublicFormSummary,
   GoabPublicSubform,
   GoabPublicSubformIndex,
   GoabRadioGroup,
   GoabRadioItem,
   GoabTable,
   GoabText,
+  GoabTextarea,
   usePublicFormController,
 } from "@abgov/react-components";
 
-type Page = "2B.1" | "2B.2" | "2B.3";
+type Page = "2B.1" | "2B.2" | "2B.3" | "2B.4" | "2B.5" | "2B.Review";
 type DependentPage = "dependent-name";
 
 
@@ -30,27 +32,32 @@ export const Section2B = ({onComplete}: Section2BProps) => {
     init,
     continueTo,
     validate,
+    controller: mainFormController,
   } = usePublicFormController<Page>("details");
 
   // Dependents list controller (separate controller for subform)
   const {
     initList: initDependentsList,
-    getStateList,
+    getStateList: getChildStateList,
     controller: childFormController,
+    state: dependentsState,
   } = usePublicFormController<DependentPage>("list");
 
-  // Get the list of dependents - use controller state directly to avoid stale closures
-  const dependents = () => {
-    // Direct access to controller state, similar to Angular implementation
-    if (!childFormController.state || !Array.isArray(childFormController.state)) {
-      return [];
-    }
-    return childFormController.getStateList();
-  };
+  // State to track the dependents list
+  const [dependentsList, setDependentsList] = useState<Record<string, string>[]>([]);
   const onInit = (event: Event) => {
     init(event);
     // Let the web component handle its own initialization
     // Manual initState interferes with the Svelte form's automatic state creation
+  }
+
+  // Main form state change handler (to ensure proper state updates including headings)
+  const onMainFormStateChange = (state: GoabFormState) => {
+    console.log("Main form state change:", state);
+    // Force React state update to ensure the controller state is synchronized
+    if (mainFormController.state) {
+      console.log("Main controller state after change:", mainFormController.state);
+    }
   }
   const onCompleteSection2B = (e: GoabFormState) => {
     console.log("Complete section2A", e);
@@ -68,6 +75,15 @@ export const Section2B = ({onComplete}: Section2BProps) => {
         break;
       case "2B.2":
         nextPage = validate2B2(e);
+        break;
+      case "2B.3":
+        nextPage = validate2B3(e);
+        break;
+      case "2B.4":
+        nextPage = validate2B4(e);
+        break;
+      case "2B.5":
+        nextPage = validate2B5(e);
         break;
       default:
         break;
@@ -97,6 +113,43 @@ export const Section2B = ({onComplete}: Section2BProps) => {
     }
   }
 
+  const validate2B3 = (e: Event): Page | undefined => {
+    // For multistep pages with subforms, the event detail structure is different
+    // The validation is handled by the subform itself (via buttonVisibility)
+    console.log("validate2B3", e);
+
+    // Check if we have at least one dependent
+    const currentDependents = childFormController.getStateList();
+    if (currentDependents.length === 0) {
+      // This shouldn't happen since the continue button is hidden when no dependents
+      console.warn("No dependents added");
+      return undefined;
+    }
+
+    // Continue to the next page
+    return "2B.4";
+  }
+
+  const validate2B4 = (e: Event): Page | undefined => {
+    const [isRequiredOk, healthValue] = validate(e, "dependents-health", [requiredValidator("Please select an option.")]);
+    if (!isRequiredOk) return undefined;
+
+    if (healthValue === "yes") {
+      return "2B.5";
+    } else {
+      // If "No", go to review page
+      return "2B.Review";
+    }
+  }
+
+  const validate2B5 = (e: Event): Page | undefined => {
+    const [isRequiredOk] = validate(e, "health-details", [requiredValidator("Please provide details about health conditions or accommodations.")]);
+    if (!isRequiredOk) return undefined;
+
+    // After entering health details, go to review page
+    return "2B.Review";
+  }
+
   // Subform event handlers (following Angular pattern)
   const onSubformInit = (e: Event) => {
     console.log("Subform init:", e);
@@ -106,6 +159,7 @@ export const Section2B = ({onComplete}: Section2BProps) => {
   const onSubformStateChange = (e: Event) => {
     console.log("Subform state change:", e);
     childFormController.updateListState(e);
+    setDependentsList([...getChildStateList()]);
   }
 
   // Dependent list management
@@ -122,7 +176,7 @@ export const Section2B = ({onComplete}: Section2BProps) => {
   // through the web component's built-in functionality
 
   return (
-    <GoabPublicForm name={"section2b-form"} onComplete={onCompleteSection2B} onInit={onInit}>
+    <GoabPublicForm name={"section2b-form"} onComplete={onCompleteSection2B} onInit={onInit} onStateChange={onMainFormStateChange}>
       <GoabPublicFormPage
         id="2B.1"
         heading="How many people currently live in your household?"
@@ -155,27 +209,25 @@ export const Section2B = ({onComplete}: Section2BProps) => {
       <GoabPublicFormPage
         id="2B.3"
         type={"multistep"}
-        heading="Add dependants under the age of 18"
-        buttonText="Save and continue"
         onContinue={(e) => onContinue(e, "2B.3")}
       >
         <GoabPublicSubform
-          id="dependents-subform"
-          name="dependents-subform"
+          id="2B.3"
+          name="2B.3"
+          summaryHeading="Dependants under 18"
           onInit={onSubformInit}
           onStateChange={onSubformStateChange}
         >
           <GoabPublicSubformIndex
             heading="Add dependants under the age of 18"
-            sectionTitle="Dependent Information"
             actionButtonText="Add another dependant"
-            buttonVisibility="visible"
+            buttonVisibility={dependentsList.length > 0 ? "visible" : "hidden"}
           >
             <GoabText mb="l">
               Please provide information about any dependents under the age of 18 for whom you are responsible. Dependents include your biological or adopted children, stepchildren, and any other minors in your care. This information is necessary to determine eligibility for various benefits and services provided by the government. Ensure that you enter accurate details for each dependent, as this will help us process your application more efficiently and provide you with the appropriate support.
             </GoabText>
 
-            {dependents().length > 0 && (
+            {dependentsList.length > 0 && (
               <GoabTable width="100%" mb="xl">
                 <thead>
                   <tr>
@@ -185,7 +237,7 @@ export const Section2B = ({onComplete}: Section2BProps) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {dependents().map((item, index) => (
+                  {dependentsList.map((item, index) => (
                     <tr key={index}>
                       <td>{item["fullName"]}</td>
                       <td className="goa-table-number-header">
@@ -219,6 +271,48 @@ export const Section2B = ({onComplete}: Section2BProps) => {
             </GoabFieldset>
           </GoabPublicFormPage>
         </GoabPublicSubform>
+      </GoabPublicFormPage>
+
+      <GoabPublicFormPage
+        id="2B.4"
+        heading="Do any dependants have long-term health conditions or disabilities?"
+        buttonText="Save and continue"
+        onContinue={(e) => onContinue(e, "2B.4")}
+      >
+        <GoabFieldset>
+          <GoabFormItem name="Do any dependants have long-term health conditions or disabilities?">
+            <GoabRadioGroup name="dependents-health">
+              <GoabRadioItem value="yes" label="Yes" />
+              <GoabRadioItem value="no" label="No" />
+            </GoabRadioGroup>
+          </GoabFormItem>
+        </GoabFieldset>
+      </GoabPublicFormPage>
+
+      <GoabPublicFormPage
+        id="2B.5"
+        heading="Please provide details to help us understand any specific needs or accommodations."
+        buttonText="Save and continue"
+        onContinue={(e) => onContinue(e, "2B.5")}
+      >
+        <GoabFieldset>
+          <GoabFormItem name="Please provide details to help us understand any specific needs or accommodations.">
+            <GoabTextarea
+              name="health-details"
+              maxCount={100}
+              placeholder="Enter details about health conditions or accommodations needed..."
+            />
+          </GoabFormItem>
+        </GoabFieldset>
+      </GoabPublicFormPage>
+
+      <GoabPublicFormPage
+        id="2B.Review"
+        type="summary"
+        heading="Review your information"
+        buttonText="Review and Submit"
+      >
+        <GoabPublicFormSummary />
       </GoabPublicFormPage>
     </GoabPublicForm>);
 }
