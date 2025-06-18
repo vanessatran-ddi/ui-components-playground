@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {
-  GoabButton,
   GoabCallout,
   GoabLink,
   GoabPublicFormTask,
@@ -18,23 +17,6 @@ import { Section2C } from "./Section2C";
 type CurrentView =
   | { type: "task"; taskId: string }
   | { type: "tasklist" };
-
-type Page =
-  "live-in-alberta"
-  | "how-long-in-alberta"
-  | "result-not-eligible"
-  | "date-of-birth"
-  | "current-employment"
-  | "education-level"
-  | "previously-applied"
-  | "task-list-summary"
-  | "terms-of-use"
-  | "section1b-summary"
-  | "2A.1"
-  | "2A.2"
-  | "2A.3"
-  | "2A.3.a"
-  | "2A.Review";
 
 type TaskStatus = "completed" | "not-started" | "cannot-start";
 
@@ -130,9 +112,6 @@ export const SimplePublicFormExample = () => {
   }
 
   const onSection1BComplete = () => {
-    console.log("Section1B completed");
-
-    // Update the task status for section1b and enable all section 2 tasks
     setTaskSections(prevSections =>
       prevSections.map(section => ({
         ...section,
@@ -146,14 +125,10 @@ export const SimplePublicFormExample = () => {
       }))
     );
 
-    // Switch to task list view
     setCurrentView({ type: "tasklist" });
   }
 
   const onSection2AComplete = (state: GoabFormState) => {
-    console.log("Section2A completed with state:", state);
-
-    // Update the task status and state for section2a
     setTaskSections(prevSections =>
       prevSections.map(section => ({
         ...section,
@@ -164,15 +139,10 @@ export const SimplePublicFormExample = () => {
         )
       }))
     );
-
-    // Switch to task list view
     setCurrentView({ type: "tasklist" });
   }
 
   const onSection2BComplete = (state: GoabFormState) => {
-    console.log("Section2B completed with state:", state);
-
-    // Update the task status and state for section2b
     setTaskSections(prevSections =>
       prevSections.map(section => ({
         ...section,
@@ -184,14 +154,10 @@ export const SimplePublicFormExample = () => {
       }))
     );
 
-    // Switch to task list view
     setCurrentView({ type: "tasklist" });
   }
 
   const onSection2CComplete = (state: GoabFormState) => {
-    console.log("Section2C completed with state:", state);
-
-    // Update the task status and state for section2c
     setTaskSections(prevSections =>
       prevSections.map(section => ({
         ...section,
@@ -203,7 +169,6 @@ export const SimplePublicFormExample = () => {
       }))
     );
 
-    // Switch to task list view
     setCurrentView({ type: "tasklist" });
   }
 

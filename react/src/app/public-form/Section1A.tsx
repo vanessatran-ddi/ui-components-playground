@@ -268,7 +268,7 @@ export const Section1A = ({ onComplete }: Section1AProps) => {
           </GoabFieldset>
         </GoabPublicFormPage>
 
-        <GoabPublicFormPage id="result-not-eligible" heading="You are not eligible for this service">
+        <GoabPublicFormPage id="result-not-eligible">
           <GoabCallout type="important" heading={"This service is only for Alberta residents"}>
             {notEligibleMessage}
           </GoabCallout>
