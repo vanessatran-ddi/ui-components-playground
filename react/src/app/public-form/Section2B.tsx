@@ -8,8 +8,8 @@ import {
   GoabPublicForm,
   GoabPublicFormPage,
   GoabPublicFormSummary,
-  GoabPublicSubform,
-  GoabPublicSubformIndex,
+  // GoabPublicSubform,
+  // GoabPublicSubformIndex,
   GoabRadioGroup,
   GoabRadioItem,
   GoabTable,
@@ -227,7 +227,7 @@ export const Section2B = ({onComplete}: Section2BProps) => {
         type={"multistep"}
         onContinue={(e) => onContinue(e, "2B.3")}
       >
-        <GoabPublicSubform
+        {/* <GoabPublicSubform
           id="2B.3"
           name="2B.3"
           summaryHeading="Dependants under 18"
@@ -238,7 +238,7 @@ export const Section2B = ({onComplete}: Section2BProps) => {
             heading="Add dependants under the age of 18"
             actionButtonText="Add another dependant"
             buttonVisibility={dependentsList.length > 0 ? "visible" : "hidden"}
-          >
+          > */}
             <GoabText mb="l">
               Please provide information about any dependents under the age of 18 for whom you are responsible. Dependents include your biological or adopted children, stepchildren, and any other minors in your care. This information is necessary to determine eligibility for various benefits and services provided by the government. Ensure that you enter accurate details for each dependent, as this will help us process your application more efficiently and provide you with the appropriate support.
             </GoabText>
@@ -272,7 +272,7 @@ export const Section2B = ({onComplete}: Section2BProps) => {
               </GoabTable>
             )}
 
-          </GoabPublicSubformIndex>
+          {/* </GoabPublicSubformIndex> */}
 
           <GoabPublicFormPage
             id="dependent-name"
@@ -296,7 +296,7 @@ export const Section2B = ({onComplete}: Section2BProps) => {
           >
             <GoabPublicFormSummary />
           </GoabPublicFormPage>
-        </GoabPublicSubform>
+        {/* </GoabPublicSubform> */}
       </GoabPublicFormPage>
 
       <GoabPublicFormPage
