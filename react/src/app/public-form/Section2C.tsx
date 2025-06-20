@@ -8,6 +8,7 @@ import {
   GoabPublicFormPage,
   GoabText,
   GoabCallout,
+  GoabPublicFormSummary,
   usePublicFormController,
 } from "@abgov/react-components";
 import { UploadIdentityFile } from "./UploadIdentityFile";
@@ -72,7 +73,16 @@ export const Section2C = ({onComplete}: Section2CProps) => {
       return undefined;
     }
 
-    const [isConfirmOk] = validate(e, "confirmation", [requiredValidator("Please confirm the accuracy of your information.")]);
+    const [isConfirmOk] = validate(e, "confirmation", [
+      requiredValidator("Please confirm the accuracy of your information."),
+      (value: unknown) => {
+      console.log("value is ", value);
+        if (value !== "yes") {
+          return "You must check the box to confirm the accuracy of your information.";
+        }
+        return "";
+      }
+    ]);
 
     if (!isConfirmOk) return undefined;
 
@@ -95,10 +105,12 @@ export const Section2C = ({onComplete}: Section2CProps) => {
         </GoabText>
 
         <UploadIdentityFile onUpload={handleFileUpload}/>
+
         <GoabFieldset>
-          <GoabFormItem name="Confirmation">
+          <GoabFormItem name="Confirmation" mt="xl">
             <GoabCheckbox
               name="confirmation"
+              value={"yes"}
               text="By submitting these documents, I confirm that all information provided is true and accurate to the best of my knowledge"
             />
           </GoabFormItem>
@@ -108,32 +120,9 @@ export const Section2C = ({onComplete}: Section2CProps) => {
       <GoabPublicFormPage
         id="2C.Review"
         type="summary"
-        heading="You have completed the first part of the application"
-        buttonText="Back to application overview"
+        heading="Review your answers"
       >
-        <GoabCallout type="success" heading="Application submitted for review" mb="xl">
-          <GoabText mb="s">
-            You will receive a copy of the initial application to your email name@email.com.
-          </GoabText>
-          <GoabText mb="0">
-            Your reference number is: <strong>1234ABC</strong>
-          </GoabText>
-        </GoabCallout>
-
-        <GoabText tag="h2" mb="s">What happens next</GoabText>
-        <GoabText mb="s">
-          Your application is being reviewed. You will be contacted by email to schedule your service within 24 hours.
-        </GoabText>
-        <GoabText mb="l">
-          You can now close this window. You will receive a link back to the application overview by email.
-        </GoabText>
-
-        <GoabText mb="s">What did you think of this service? <a href="#" style={{ color: '#0073e6' }}>Give feedback</a></GoabText>
-
-        <GoabText tag="h2" mb="s">If you have questions about your application</GoabText>
-        <GoabText mb="s">Contact the [ministry area].</GoabText>
-        <GoabText mb="s">Email: <a href="mailto:information@gov.ab.ca" style={{ color: '#0073e6' }}>information@gov.ab.ca</a></GoabText>
-        <GoabText mb="l">Phone: <a href="tel:7801234567" style={{ color: '#0073e6' }}>780 123 4567</a></GoabText>
+        <GoabPublicFormSummary />
       </GoabPublicFormPage>
     </GoabPublicForm>
   );

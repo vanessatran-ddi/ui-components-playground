@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {
+  GoabButton,
   GoabCallout,
   GoabLink,
   GoabPublicFormTask,
@@ -16,7 +17,8 @@ import { Section2C } from "./Section2C";
 
 type CurrentView =
   | { type: "task"; taskId: string }
-  | { type: "tasklist" };
+  | { type: "tasklist" }
+  | { type: "completion" };
 
 type TaskStatus = "completed" | "not-started" | "cannot-start";
 
@@ -128,52 +130,41 @@ export const SimplePublicFormExample = () => {
     setCurrentView({ type: "tasklist" });
   }
 
-  const onSection2AComplete = (state: GoabFormState) => {
-    setTaskSections(prevSections =>
-      prevSections.map(section => ({
+  // Helper function to handle section 2 completions
+  const handleSection2Complete = (taskId: string, state: GoabFormState) => {
+    setTaskSections(prevSections => {
+      const updatedSections = prevSections.map(section => ({
         ...section,
         tasks: section.tasks.map(task =>
-          task.id === "section2a"
+          task.id === taskId
             ? { ...task, status: "completed" as TaskStatus, state }
             : task
         )
-      }))
-    );
-    setCurrentView({ type: "tasklist" });
+      }));
+
+      // Check if 2 out of 3 tasks in prepare-application are completed after this update
+      if (checkIfShowCompletion(updatedSections)) {
+        setCurrentView({ type: "completion" });
+      } else {
+        setCurrentView({ type: "tasklist" });
+      }
+
+      return updatedSections;
+    });
   }
 
-  const onSection2BComplete = (state: GoabFormState) => {
-    setTaskSections(prevSections =>
-      prevSections.map(section => ({
-        ...section,
-        tasks: section.tasks.map(task =>
-          task.id === "section2b"
-            ? { ...task, status: "completed" as TaskStatus, state }
-            : task
-        )
-      }))
-    );
-
-    setCurrentView({ type: "tasklist" });
-  }
-
-  const onSection2CComplete = (state: GoabFormState) => {
-    setTaskSections(prevSections =>
-      prevSections.map(section => ({
-        ...section,
-        tasks: section.tasks.map(task =>
-          task.id === "section2c"
-            ? { ...task, status: "completed" as TaskStatus, state }
-            : task
-        )
-      }))
-    );
-
-    setCurrentView({ type: "tasklist" });
-  }
 
   const onSection1BBack = () => {
     setCurrentView({ type: "tasklist" });
+  }
+
+  // Check if 2 out of 3 tasks in "Prepare application" section are completed
+  const checkIfShowCompletion = (sections: TaskSection[]) => {
+    const prepareApplicationSection = sections.find(s => s.id === "prepare-application");
+    if (!prepareApplicationSection) return false;
+
+    const completedTasks = prepareApplicationSection.tasks.filter(task => task.status === "completed");
+    return completedTasks.length === 3;
   }
 
   const onSection1AComplete = (state: GoabFormState) => {
@@ -240,15 +231,15 @@ export const SimplePublicFormExample = () => {
       )}
 
       {currentView.type === "task" && currentView.taskId === "section2a" && (
-        <Section2A onComplete={onSection2AComplete} />
+        <Section2A onComplete={(state) => handleSection2Complete("section2a", state)} />
       )}
 
       {currentView.type === "task" && currentView.taskId === "section2b" && (
-        <Section2B onComplete={onSection2BComplete} />
+        <Section2B onComplete={(state) => handleSection2Complete("section2b", state)} />
       )}
 
       {currentView.type === "task" && currentView.taskId === "section2c" && (
-        <Section2C onComplete={onSection2CComplete} />
+        <Section2C onComplete={(state) => handleSection2Complete("section2c", state)} />
       )}
 
       {currentView.type === "tasklist" && (
@@ -293,6 +284,40 @@ export const SimplePublicFormExample = () => {
               </GoabPublicFormTaskList>
             </div>
           ))}
+        </div>
+      )}
+
+      {currentView.type === "completion" && (
+        <div>
+          <GoabText tag="h1" size="heading-xl">You have completed the first part of the application</GoabText>
+
+          <GoabCallout type="success" heading="Application submitted for review" mb="xl" mt="xl">
+            <GoabText mb="s">
+              You will receive a copy of the initial application to your email name@email.com.
+            </GoabText>
+            <GoabText mb="0">
+              Your reference number is: <strong>1234ABC</strong>
+            </GoabText>
+          </GoabCallout>
+
+          <GoabText tag="h2" mb="s">What happens next</GoabText>
+          <GoabText mb="s">
+            Your application is being reviewed. You will be contacted by email to schedule your service within 24 hours.
+          </GoabText>
+          <GoabText mb="l">
+            You can now close this window. You will receive a link back to the application overview by email.
+          </GoabText>
+
+          <GoabText mb="s">What did you think of this service? <GoabLink><a href="#">Give feedback</a></GoabLink></GoabText>
+
+          <GoabText tag="h2" mb="s" mt="xl">If you have questions about your application</GoabText>
+          <GoabText mb="s">Contact the [ministry area].</GoabText>
+          <GoabText mb="s">Email: <GoabLink><a href="mailto:information@gov.ab.ca">information@gov.ab.ca</a></GoabLink></GoabText>
+          <GoabText mb="xl">Phone: <GoabLink><a href="tel:7801234567">780 123 4567</a></GoabLink></GoabText>
+
+          <GoabButton type="tertiary" onClick={() => setCurrentView({ type: "tasklist" })}>
+            Back to application overview
+          </GoabButton>
         </div>
       )}
 

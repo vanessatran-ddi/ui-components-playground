@@ -1,77 +1,113 @@
-import React, { useState } from "react";
 import {
-  GoabButton,
   GoabCheckbox,
   GoabFieldset,
   GoabFormItem,
-  GoabLink,
+  GoabPublicForm,
+  GoabPublicFormPage,
+  GoabPublicFormSummary,
   GoabText,
+  usePublicFormController,
 } from "@abgov/react-components";
-import { GoabCheckboxOnChangeDetail } from "@abgov/ui-components-common";
+import { GoabFormState, requiredValidator } from "@abgov/ui-components-common";
+import React from "react";
+
+type Page = "terms-of-use" | "1B.Review";
 
 interface Section1BProps {
-  onComplete?: () => void;
+  onComplete?: (state: GoabFormState) => void;
   onBack?: () => void;
 }
 
 export const Section1B = ({ onComplete, onBack }: Section1BProps) => {
-  const [termsAccepted, setTermsAccepted] = useState(false);
+  const {
+    init,
+    initState,
+    continueTo,
+    validate,
+  } = usePublicFormController<Page>("details");
 
-  const handleBackClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    onBack?.();
-  };
+  const onInit = (event: Event) => {
+    init(event);
+    setTimeout(() => {
+      initState({
+        uuid: crypto.randomUUID(),
+        form: {},
+        history: [],
+        editting: "",
+        status: "not-started"
+      });
+    }, 0)
+  }
 
-  const validateTermsOfUse = () => {
-    if (termsAccepted) {
-      onComplete?.();
+  const onContinue = (e: Event, from: Page) => {
+    if ((e as CustomEvent).detail?.cancelled) return;
+
+    let nextPage: Page | undefined;
+
+    switch (from) {
+      case "terms-of-use":
+        nextPage = validateTermsOfUse(e);
+        break;
+      default:
+        break;
     }
-  };
+    if (nextPage) {
+      continueTo(nextPage);
+    }
+  }
 
-  const handleCheckboxChange = (e:  GoabCheckboxOnChangeDetail) => {
-    const isChecked = e.checked || false;
-    setTermsAccepted(isChecked);
-  };
+  const validateTermsOfUse = (e: Event): Page|undefined => {
+    const [isValid] = validate(e, "terms-of-use", [
+      requiredValidator("You must accept the terms of use."),
+      (value: unknown) => {
+        if (value !== "Yes") {
+          return "You must accept the terms of use.";
+        }
+        return "";
+      }
+    ]);
+    if (!isValid) return undefined;
 
-  const handleContinueClick = () => {
-    validateTermsOfUse();
-  };
+    return "1B.Review";
+  }
+
+  const onCompleteSection1B = (e: GoabFormState) => {
+    console.log("Complete section1B", e);
+    onComplete?.(e);
+  }
 
   return (
-    <div>
-      <GoabLink>
-        <a href="#" onClick={handleBackClick}>Back</a>
-      </GoabLink>
+    <GoabPublicForm name="section1b-form" onComplete={onCompleteSection1B} onInit={onInit}>
+      <GoabPublicFormPage
+        id="terms-of-use"
+        heading="Terms of use"
+        first={true}
+        buttonText={"Continue to next section"}
+        onContinue={(e) => onContinue(e, "terms-of-use")}
+        onBack={onBack}>
 
-      <GoabText tag="h1" size="heading-xl" mt="xl">
-        Terms of use
-      </GoabText>
+        <GoabText tag="p" size="body-m" color="secondary" mt="l">
+          Donec malesuada sagittis fringilla pulvinar in molestie. Sagittis felis congue
+          pellentesque tristique urna in habitasse. At faucibus commodo pellentesque enim
+          nisl at. Fermentum quisque viverra diam amet consequat tellus. Amet interdum sit
+          elementum nibh at justo.
+        </GoabText>
 
-      <GoabText tag="p" size="body-m" color="secondary" mt="l">
-        Donec malesuada sagittis fringilla pulvinar in molestie. Sagittis felis congue
-        pellentesque tristique urna in habitasse. At faucibus commodo pellentesque enim
-        nisl at. Fermentum quisque viverra diam amet consequat tellus. Amet interdum sit
-        elementum nibh at justo.
-      </GoabText>
+        <GoabFieldset mt="xl">
+          <GoabFormItem name="Terms of use">
+            <GoabCheckbox
+              id="terms-of-use"
+              name="terms-of-use"
+              text="I accept the terms of use."
+              value="Yes"
+            />
+          </GoabFormItem>
+        </GoabFieldset>
+      </GoabPublicFormPage>
 
-      <GoabFieldset mt="xl">
-        <GoabFormItem name="Terms of use">
-          <GoabCheckbox
-            name="terms-of-use"
-            text="I accept the terms of use."
-            onChange={handleCheckboxChange}
-          />
-        </GoabFormItem>
-      </GoabFieldset>
-
-      <GoabButton
-        type="primary"
-        mt="xl"
-        onClick={handleContinueClick}
-        disabled={!termsAccepted}
-      >
-        Continue to next section
-      </GoabButton>
-    </div>
+      <GoabPublicFormPage id={"1B.Review"} type={"summary"} heading={"Review your answers"}>
+        <GoabPublicFormSummary />
+      </GoabPublicFormPage>
+    </GoabPublicForm>
   );
 };

@@ -27,6 +27,7 @@ export function App() {
               <Link to="/2441">Issue 2441</Link>
               <Link to="/1216">Issue 1216</Link>
               <Link to="/2772">2772 align on input</Link>
+              <Link to="/2789">2789 width rem percentage</Link>
             </GoabSideMenuGroup>
             <GoabSideMenuGroup heading="Components">
               <Link to="/">Home</Link>

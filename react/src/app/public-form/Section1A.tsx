@@ -33,7 +33,9 @@ interface Section1AProps {
 }
 
 export const Section1A = ({ onComplete }: Section1AProps) => {
-  const [notEligibleMessage, setNotEligibleMessage] = useState("");
+  const [notEligibleCalloutMessage, setNotEligibleCalloutMessage] = useState("");
+  const [notEligibleCalloutHeading, setNotEligibleCalloutHeading] = useState("");
+  const [notEligibleReason, setNotEligibleReason] = useState<"not-resident" | "less-than-year" | "too-young" | "not-employed" | "no-education" | "already-applied" | "">("");
   const {
     init,
     initState,
@@ -54,7 +56,6 @@ export const Section1A = ({ onComplete }: Section1AProps) => {
     }, 0)
   }
   const onContinue = (e: Event, from: Page) => {
-    console.log("onContinue", e, from);
     if ((e as CustomEvent).detail?.cancelled) return;
 
     let nextPage: Page | undefined;
@@ -91,7 +92,9 @@ export const Section1A = ({ onComplete }: Section1AProps) => {
 
     const liveInAlberta = (e as CustomEvent).detail?.state?.["live-in-alberta"];
     if (liveInAlberta?.value === "No") {
-      setNotEligibleMessage("If you do not live in Alberta, you are not able to access this service.");
+      setNotEligibleCalloutHeading("This service is only for Alberta residents")
+      setNotEligibleCalloutMessage("If you do not live in Alberta, you are not able to access this service.");
+      setNotEligibleReason("not-resident");
       return "result-not-eligible";
     }
     if (liveInAlberta?.value === "Yes") return "how-long-in-alberta";
@@ -105,7 +108,9 @@ export const Section1A = ({ onComplete }: Section1AProps) => {
 
     const howLongInAlberta = (e as CustomEvent).detail?.state?.["how-long-in-alberta"];
     if (howLongInAlberta?.value === "less") {
-      setNotEligibleMessage("You need to have lived in Alberta for greater than 1 year to use this service.");
+      setNotEligibleCalloutHeading("");
+      setNotEligibleCalloutMessage("You need to have lived in Alberta for greater than 1 year to use this service.");
+      setNotEligibleReason("less-than-year");
       return "result-not-eligible";
     }
     return "date-of-birth";
@@ -123,7 +128,9 @@ export const Section1A = ({ onComplete }: Section1AProps) => {
     // Check if born before 2006
     const birthYear = parseInt(dateOfBirth.value.substring(0, 4), 10);
     if (birthYear > 2006) {
-      setNotEligibleMessage("You need to be born before 2006 to use this service.");
+      setNotEligibleCalloutHeading("");
+      setNotEligibleCalloutMessage("You need to be born before 2006 to use this service.");
+      setNotEligibleReason("too-young");
       return "result-not-eligible";
     }
 
@@ -138,7 +145,9 @@ export const Section1A = ({ onComplete }: Section1AProps) => {
 
     const currentEmployment = (e as CustomEvent).detail?.state?.["current-employment"];
     if (currentEmployment?.value === "No") {
-      setNotEligibleMessage("You need to be employed to use this service.");
+      setNotEligibleCalloutHeading("");
+      setNotEligibleCalloutMessage("You need to be employed to use this service.");
+      setNotEligibleReason("not-employed");
       return "result-not-eligible";
     }
     if (currentEmployment?.value === "Yes") return "education-level";
@@ -154,7 +163,9 @@ export const Section1A = ({ onComplete }: Section1AProps) => {
 
     const educationLevel = (e as CustomEvent).detail?.state?.["education-level"];
     if (educationLevel?.value === "None") {
-      setNotEligibleMessage("You need to have completed at least a high school level of education to use this service.");
+      setNotEligibleCalloutHeading("");
+      setNotEligibleCalloutMessage("You need to have completed at least a high school level of education to use this service.");
+      setNotEligibleReason("no-education");
       return "result-not-eligible";
     }
 
@@ -172,7 +183,9 @@ export const Section1A = ({ onComplete }: Section1AProps) => {
       return "1A.Review";
     }
     if (previouslyApplied?.value === "Yes") {
-      setNotEligibleMessage("You cannot use this service if you already received this service.");
+      setNotEligibleCalloutHeading("");
+      setNotEligibleCalloutMessage("You cannot use this service if you already received this service.");
+      setNotEligibleReason("already-applied");
       return "result-not-eligible";
     }
 
@@ -268,10 +281,37 @@ export const Section1A = ({ onComplete }: Section1AProps) => {
           </GoabFieldset>
         </GoabPublicFormPage>
 
-        <GoabPublicFormPage id="result-not-eligible">
-          <GoabCallout type="important" heading={"This service is only for Alberta residents"}>
-            {notEligibleMessage}
-          </GoabCallout>
+        <GoabPublicFormPage id="result-not-eligible" heading="You are not eligible for this service" type={"multistep"}>
+          {notEligibleReason === "not-resident" && (
+            <GoabCallout type="important" heading="This service is only for Alberta residents">
+              If you do not live in Alberta, you are not able to access this service.
+            </GoabCallout>
+          )}
+          {notEligibleReason === "less-than-year" && (
+            <GoabCallout type="important">
+              You need to have lived in Alberta for greater than 1 year to use this service.
+            </GoabCallout>
+          )}
+          {notEligibleReason === "too-young" && (
+            <GoabCallout type="important">
+              You need to be born before 2006 to use this service.
+            </GoabCallout>
+          )}
+          {notEligibleReason === "not-employed" && (
+            <GoabCallout type="important">
+              You need to be employed to use this service.
+            </GoabCallout>
+          )}
+          {notEligibleReason === "no-education" && (
+            <GoabCallout type="important">
+              You need to have completed at least a high school level of education to use this service.
+            </GoabCallout>
+          )}
+          {notEligibleReason === "already-applied" && (
+            <GoabCallout type="important">
+              You cannot use this service if you already received this service.
+            </GoabCallout>
+          )}
 
           <GoabText tag={"p"}>You can now close this window.</GoabText>
 

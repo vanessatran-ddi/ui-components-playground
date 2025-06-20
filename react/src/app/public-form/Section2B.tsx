@@ -19,7 +19,7 @@ import {
 } from "@abgov/react-components";
 
 type Page = "2B.1" | "2B.2" | "2B.3" | "2B.4" | "2B.5" | "2B.Review";
-type DependentPage = "dependent-name";
+type DependentPage = "dependent-name" | "2B.3.Review";
 
 
 interface Section2BProps {
@@ -108,8 +108,8 @@ export const Section2B = ({onComplete}: Section2BProps) => {
     if (dependentsValue === "yes") {
       return "2B.3";
     } else {
-      // If "No", complete the section
-      return undefined;
+      // If "No", go to review page
+      return "2B.Review";
     }
   }
 
@@ -169,6 +169,22 @@ export const Section2B = ({onComplete}: Section2BProps) => {
 
   const handleDeleteDependent = (index: number) => {
     childFormController.remove(index);
+  }
+
+  // Subform validation
+  const onDependentContinue = (e: Event, from: DependentPage) => {
+    if ((e as CustomEvent).detail?.cancelled) return;
+
+    switch (from) {
+      case "dependent-name":
+        const [isValid] = childFormController.validate(e, "fullName", [
+          requiredValidator("Please enter the dependent's full name.")
+        ]);
+        if (isValid) {
+          childFormController.continueTo("2B.3.Review");
+        }
+        break;
+    }
   }
 
   // Subform management (standard pattern)
@@ -261,14 +277,24 @@ export const Section2B = ({onComplete}: Section2BProps) => {
           <GoabPublicFormPage
             id="dependent-name"
             sectionTitle="Dependent's profile"
-            type="summary"
+            heading="Dependent information"
             buttonText="Continue"
+            onContinue={(e) => onDependentContinue(e, "dependent-name")}
           >
             <GoabFieldset>
               <GoabFormItem label="Full name">
                 <GoabInput name="fullName" />
               </GoabFormItem>
             </GoabFieldset>
+          </GoabPublicFormPage>
+
+          <GoabPublicFormPage
+            id="2B.3.Review"
+            heading="Review dependent information"
+            type="summary"
+            buttonText="Back to list"
+          >
+            <GoabPublicFormSummary />
           </GoabPublicFormPage>
         </GoabPublicSubform>
       </GoabPublicFormPage>
