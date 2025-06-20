@@ -12,6 +12,9 @@ export const Issue2789 = () => {
   const [inputValue2, setInputValue2] = useState("");
   const [inputValue3, setInputValue3] = useState("");
   const [inputValue4, setInputValue4] = useState("");
+  
+  const [dropdownContainerValue, setDropdownContainerValue] = useState("");
+  const [inputContainerValue, setInputContainerValue] = useState("");
 
   return (
     <>
@@ -27,12 +30,12 @@ export const Issue2789 = () => {
         <GoabDropdown 
           name="dropdown1" 
           value={dropdownValue1} 
-          onChange={(e: Event) => setDropdownValue1((e as CustomEvent<GoabDropdownOnChangeDetail>).detail.value)}
+          onChange={(detail: GoabDropdownOnChangeDetail) => setDropdownValue1(detail.value || "")}
           width="20rem"
         >
-          <GoabDropdownItem value="option1">Option 1</GoabDropdownItem>
-          <GoabDropdownItem value="option2">Option 2</GoabDropdownItem>
-          <GoabDropdownItem value="option3">Option 3</GoabDropdownItem>
+          <GoabDropdownItem value="option1" label="Option 1"></GoabDropdownItem>
+          <GoabDropdownItem value="option2" label="Option 2"></GoabDropdownItem>
+          <GoabDropdownItem value="option3" label="Option 3"></GoabDropdownItem>
         </GoabDropdown>
       </GoabFormItem>
 
@@ -40,12 +43,12 @@ export const Issue2789 = () => {
         <GoabDropdown 
           name="dropdown2" 
           value={dropdownValue2} 
-          onChange={(e: Event) => setDropdownValue2((e as CustomEvent<GoabDropdownOnChangeDetail>).detail.value)}
+          onChange={(detail: GoabDropdownOnChangeDetail) => setDropdownValue2(detail.value || "")}
           width="30rem"
         >
-          <GoabDropdownItem value="option1">Option 1</GoabDropdownItem>
-          <GoabDropdownItem value="option2">Option 2</GoabDropdownItem>
-          <GoabDropdownItem value="option3">Option 3</GoabDropdownItem>
+          <GoabDropdownItem value="option1" label="Option 1"></GoabDropdownItem>
+          <GoabDropdownItem value="option2" label="Option 2"></GoabDropdownItem>
+          <GoabDropdownItem value="option3" label="Option 3"></GoabDropdownItem>
         </GoabDropdown>
       </GoabFormItem>
 
@@ -53,12 +56,12 @@ export const Issue2789 = () => {
         <GoabDropdown 
           name="dropdown3" 
           value={dropdownValue3} 
-          onChange={(e: Event) => setDropdownValue3((e as CustomEvent<GoabDropdownOnChangeDetail>).detail.value)}
+          onChange={(detail: GoabDropdownOnChangeDetail) => setDropdownValue3(detail.value || "")}
           width="50%"
         >
-          <GoabDropdownItem value="option1">Option 1</GoabDropdownItem>
-          <GoabDropdownItem value="option2">Option 2</GoabDropdownItem>
-          <GoabDropdownItem value="option3">Option 3</GoabDropdownItem>
+          <GoabDropdownItem value="option1" label="Option 1"></GoabDropdownItem>
+          <GoabDropdownItem value="option2" label="Option 2"></GoabDropdownItem>
+          <GoabDropdownItem value="option3" label="Option 3"></GoabDropdownItem>
         </GoabDropdown>
       </GoabFormItem>
 
@@ -66,12 +69,12 @@ export const Issue2789 = () => {
         <GoabDropdown 
           name="dropdown4" 
           value={dropdownValue4} 
-          onChange={(e: Event) => setDropdownValue4((e as CustomEvent<GoabDropdownOnChangeDetail>).detail.value)}
+          onChange={(detail: GoabDropdownOnChangeDetail) => setDropdownValue4(detail.value || "")}
           width="100%"
         >
-          <GoabDropdownItem value="option1">Option 1</GoabDropdownItem>
-          <GoabDropdownItem value="option2">Option 2</GoabDropdownItem>
-          <GoabDropdownItem value="option3">Option 3</GoabDropdownItem>
+          <GoabDropdownItem value="option1" label="Option 1"></GoabDropdownItem>
+          <GoabDropdownItem value="option2" label="Option 2"></GoabDropdownItem>
+          <GoabDropdownItem value="option3" label="Option 3"></GoabDropdownItem>
         </GoabDropdown>
       </GoabFormItem>
 
@@ -82,7 +85,7 @@ export const Issue2789 = () => {
           name="input1" 
           type="text" 
           value={inputValue1} 
-          onChange={(e: Event) => setInputValue1((e as CustomEvent<GoabInputOnChangeDetail>).detail.value)}
+          onChange={(detail: GoabInputOnChangeDetail) => setInputValue1(detail.value || "")}
           width="15rem"
         />
       </GoabFormItem>
@@ -92,7 +95,7 @@ export const Issue2789 = () => {
           name="input2" 
           type="text" 
           value={inputValue2} 
-          onChange={(e: Event) => setInputValue2((e as CustomEvent<GoabInputOnChangeDetail>).detail.value)}
+          onChange={(detail: GoabInputOnChangeDetail) => setInputValue2(detail.value || "")}
           width="25rem"
         />
       </GoabFormItem>
@@ -102,7 +105,7 @@ export const Issue2789 = () => {
           name="input3" 
           type="text" 
           value={inputValue3} 
-          onChange={(e: Event) => setInputValue3((e as CustomEvent<GoabInputOnChangeDetail>).detail.value)}
+          onChange={(detail: GoabInputOnChangeDetail) => setInputValue3(detail.value || "")}
           width="50%"
         />
       </GoabFormItem>
@@ -112,7 +115,7 @@ export const Issue2789 = () => {
           name="input4" 
           type="text" 
           value={inputValue4} 
-          onChange={(e: Event) => setInputValue4((e as CustomEvent<GoabInputOnChangeDetail>).detail.value)}
+          onChange={(detail: GoabInputOnChangeDetail) => setInputValue4(detail.value || "")}
           width="75%"
         />
       </GoabFormItem>
@@ -123,14 +126,25 @@ export const Issue2789 = () => {
         <p>Container with border to show percentage widths relative to parent</p>
         
         <GoabFormItem label="25% width dropdown" mb="m">
-          <GoabDropdown name="dropdownContainer" width="25%">
-            <GoabDropdownItem value="a">Option A</GoabDropdownItem>
-            <GoabDropdownItem value="b">Option B</GoabDropdownItem>
+          <GoabDropdown 
+            name="dropdownContainer" 
+            width="25%"
+            value={dropdownContainerValue}
+            onChange={(detail: GoabDropdownOnChangeDetail) => setDropdownContainerValue(detail.value || "")}
+          >
+            <GoabDropdownItem value="a" label="Option A"></GoabDropdownItem>
+            <GoabDropdownItem value="b" label="Option B"></GoabDropdownItem>
           </GoabDropdown>
         </GoabFormItem>
         
         <GoabFormItem label="25% width input" mb="m">
-          <GoabInput name="inputContainer" type="text" width="25%" />
+          <GoabInput 
+            name="inputContainer" 
+            type="text" 
+            width="25%" 
+            value={inputContainerValue}
+            onChange={(detail: GoabInputOnChangeDetail) => setInputContainerValue(detail.value || "")}
+          />
         </GoabFormItem>
       </div>
     </>

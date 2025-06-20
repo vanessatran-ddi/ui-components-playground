@@ -7,7 +7,7 @@
 <h2>Dropdown Examples</h2>
 
 <goab-form-item label="Dropdown with 20rem width" mb="m">
-  <goab-dropdown name="dropdown1" [(value)]="dropdownValue1" width="20rem">
+  <goab-dropdown name="dropdown1" [value]="dropdownValue1" width="20rem">
     <goab-dropdown-item value="option1">Option 1</goab-dropdown-item>
     <goab-dropdown-item value="option2">Option 2</goab-dropdown-item>
     <goab-dropdown-item value="option3">Option 3</goab-dropdown-item>
@@ -15,7 +15,7 @@
 </goab-form-item>
 
 <goab-form-item label="Dropdown with 30rem width" mb="m">
-  <goab-dropdown name="dropdown2" [(value)]="dropdownValue2" width="30rem">
+  <goab-dropdown name="dropdown2" [value]="dropdownValue2" width="30rem">
     <goab-dropdown-item value="option1">Option 1</goab-dropdown-item>
     <goab-dropdown-item value="option2">Option 2</goab-dropdown-item>
     <goab-dropdown-item value="option3">Option 3</goab-dropdown-item>
@@ -23,7 +23,7 @@
 </goab-form-item>
 
 <goab-form-item label="Dropdown with 50% width" mb="m">
-  <goab-dropdown name="dropdown3" [(value)]="dropdownValue3" width="50%">
+  <goab-dropdown name="dropdown3" [value]="dropdownValue3" width="50%">
     <goab-dropdown-item value="option1">Option 1</goab-dropdown-item>
     <goab-dropdown-item value="option2">Option 2</goab-dropdown-item>
     <goab-dropdown-item value="option3">Option 3</goab-dropdown-item>
@@ -31,7 +31,7 @@
 </goab-form-item>
 
 <goab-form-item label="Dropdown with 100% width" mb="m">
-  <goab-dropdown name="dropdown4" [(value)]="dropdownValue4" width="100%">
+  <goab-dropdown name="dropdown4" [value]="dropdownValue4" width="100%">
     <goab-dropdown-item value="option1">Option 1</goab-dropdown-item>
     <goab-dropdown-item value="option2">Option 2</goab-dropdown-item>
     <goab-dropdown-item value="option3">Option 3</goab-dropdown-item>
@@ -41,33 +41,33 @@
 <h2>Input Examples</h2>
 
 <goab-form-item label="Input with 15rem width" mb="m">
-  <goab-input name="input1" type="text" [(value)]="inputValue1" width="15rem"></goab-input>
+  <goab-input name="input1" type="text" [value]="inputValue1" width="15rem"></goab-input>
 </goab-form-item>
 
 <goab-form-item label="Input with 25rem width" mb="m">
-  <goab-input name="input2" type="text" [(value)]="inputValue2" width="25rem"></goab-input>
+  <goab-input name="input2" type="text" [value]="inputValue2" width="25rem"></goab-input>
 </goab-form-item>
 
 <goab-form-item label="Input with 50% width" mb="m">
-  <goab-input name="input3" type="text" [(value)]="inputValue3" width="50%"></goab-input>
+  <goab-input name="input3" type="text" [value]="inputValue3" width="50%"></goab-input>
 </goab-form-item>
 
 <goab-form-item label="Input with 75% width" mb="m">
-  <goab-input name="input4" type="text" [(value)]="inputValue4" width="75%"></goab-input>
+  <goab-input name="input4" type="text" [value]="inputValue4" width="75%"></goab-input>
 </goab-form-item>
 
 <h2>Mixed Examples in a Container</h2>
 
 <div style="border: 1px solid #ccc; padding: 20px; margin-top: 20px;">
   <p>Container with border to show percentage widths relative to parent</p>
-  
+
   <goab-form-item label="25% width dropdown" mb="m">
     <goab-dropdown name="dropdownContainer" width="25%">
       <goab-dropdown-item value="a">Option A</goab-dropdown-item>
       <goab-dropdown-item value="b">Option B</goab-dropdown-item>
     </goab-dropdown>
   </goab-form-item>
-  
+
   <goab-form-item label="25% width input" mb="m">
     <goab-input name="inputContainer" type="text" width="25%"></goab-input>
   </goab-form-item>
