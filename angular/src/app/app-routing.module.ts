@@ -69,6 +69,7 @@ import { Issue2772Component } from "./issues/2772/issue-2772.component";
 import { Issue2789Component } from "./issues/2789/issue-2789.component";
 import { PublicFormNavigationTestComponent } from "./public-form/public-form-navigation-test.component";
 import { PublicFormAccessibilityTestComponent } from "./public-form/public-form-accessibility-test.component";
+import { Issue1769Component } from "./issues/1769/issue-1769.component";
 
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
@@ -136,6 +137,7 @@ const routes: Routes = [
   { path: "2404", component: Issue2404Component},
   { path: "2772", component: Issue2772Component},
   { path: "2789", component: Issue2789Component},
+  { path: "1769", component: Issue1769Component},
   { path: "public-form", component: PublicFormComponent},
   { path: "public-form-navigation", component: PublicFormNavigationTestComponent},
   { path: "public-form-accessibility", component: PublicFormAccessibilityTestComponent},

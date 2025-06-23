@@ -14,6 +14,7 @@ import { Drawer } from "./app/drawer/Drawer";
 import { Issue1216 } from "./app/issues/issue1216";
 import Issue2404 from "./app/issues/issue2404";
 import { Issue2789 } from "./app/issues/issue2789";
+import { Issue1769 } from "./app/issues/issue1769";
 import FormTest from "./app/public-form/ThomasPublicForm";
 import { SimplePublicFormExample } from "./app/public-form/SimplePublicFormExample";
 import { PublicFormNavigationTest } from "./app/public-form/PublicFormNavigationTest";
@@ -37,6 +38,7 @@ root.render(
           <Route path="/2404" element={<Issue2404/>}></Route>
           <Route path="/2772" element={<Issue2772/>}></Route>
           <Route path="/2789" element={<Issue2789/>}></Route>
+          <Route path="/1769" element={<Issue1769/>}></Route>
           <Route path={"/public-form"} element={<SimplePublicFormExample/>}></Route>
           <Route path={"/public-form-navigation"} element={<PublicFormNavigationTest/>}></Route>
           <Route path={"/public-form-accessibility"} element={<PublicFormAccessibilityTest/>}></Route>
