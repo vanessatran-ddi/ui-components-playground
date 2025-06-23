@@ -1,0 +1,132 @@
+<div class="example-container">
+  <h2>Issue #1769: Autocomplete Property for Input and TextArea Components</h2>
+  
+  <div class="section">
+    <h3>Input Component with Autocomplete</h3>
+    
+    <div class="example-group">
+      <h4>Default (autocomplete enabled)</h4>
+      <goab-form-item label="User Email">
+        <goab-input 
+          name="email-default" 
+          value="" 
+          placeholder="Enter your email"
+          type="email">
+        </goab-input>
+      </goab-form-item>
+      <p class="description">This input allows browser autocomplete suggestions.</p>
+    </div>
+
+    <div class="example-group">
+      <h4>Autocomplete disabled</h4>
+      <goab-form-item label="Batch ID">
+        <goab-input 
+          name="batch-id" 
+          value="" 
+          placeholder="Enter unique batch ID"
+          autoComplete="off">
+        </goab-input>
+      </goab-form-item>
+      <p class="description">This input disables browser autocomplete - useful for fields requiring unique values.</p>
+    </div>
+
+    <div class="example-group">
+      <h4>Specific autocomplete value</h4>
+      <goab-form-item label="Organization Name">
+        <goab-input 
+          name="org-name" 
+          value="" 
+          placeholder="Enter organization name"
+          autoComplete="organization">
+        </goab-input>
+      </goab-form-item>
+      <p class="description">This input uses the 'organization' autocomplete value for better suggestions.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>TextArea Component with Autocomplete</h3>
+    
+    <div class="example-group">
+      <h4>Default (autocomplete enabled)</h4>
+      <goab-form-item label="Description">
+        <goab-textarea 
+          name="description-default" 
+          value="" 
+          placeholder="Enter description"
+          [rows]="3">
+        </goab-textarea>
+      </goab-form-item>
+      <p class="description">This textarea allows browser autocomplete suggestions.</p>
+    </div>
+
+    <div class="example-group">
+      <h4>Autocomplete disabled</h4>
+      <goab-form-item label="Unique Notes">
+        <goab-textarea 
+          name="unique-notes" 
+          value="" 
+          placeholder="Enter unique notes for this record"
+          autoComplete="off"
+          [rows]="3">
+        </goab-textarea>
+      </goab-form-item>
+      <p class="description">This textarea disables browser autocomplete - useful for fields requiring unique content.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Dropdown Component with Autocomplete</h3>
+    
+    <div class="example-group">
+      <h4>Default dropdown</h4>
+      <goab-form-item label="Country">
+        <goab-dropdown name="country-default" value="" placeholder="Select a country" [filterable]="true">
+          <goab-dropdown-item value="ca" label="Canada"></goab-dropdown-item>
+          <goab-dropdown-item value="us" label="United States"></goab-dropdown-item>
+          <goab-dropdown-item value="uk" label="United Kingdom"></goab-dropdown-item>
+        </goab-dropdown>
+      </goab-form-item>
+      <p class="description">This dropdown allows browser autocomplete suggestions.</p>
+    </div>
+
+    <div class="example-group">
+      <h4>Autocomplete disabled</h4>
+      <goab-form-item label="Processing Location">
+        <goab-dropdown name="processing-location" value="" placeholder="Select processing location" [filterable]="true" autoComplete="off">
+          <goab-dropdown-item value="loc1" label="Location A"></goab-dropdown-item>
+          <goab-dropdown-item value="loc2" label="Location B"></goab-dropdown-item>
+          <goab-dropdown-item value="loc3" label="Location C"></goab-dropdown-item>
+        </goab-dropdown>
+      </goab-form-item>
+      <p class="description">This dropdown disables browser autocomplete.</p>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h3>Manual Testing Instructions</h3>
+    <div class="test-instructions">
+      <h4>How to test the autocomplete functionality:</h4>
+      <ol>
+        <li><strong>Fill out the form fields above</strong> - Enter values in the email, batch ID, and description fields</li>
+        <li><strong>Submit or navigate away</strong> - This allows the browser to save the values</li>
+        <li><strong>Refresh the page</strong> - Return to this form</li>
+        <li><strong>Test autocomplete behavior:</strong>
+          <ul>
+            <li>Click on the "User Email" field - should show autocomplete suggestions</li>
+            <li>Click on the "Batch ID" field - should NOT show autocomplete suggestions (autocomplete="off")</li>
+            <li>Click on the "Description" textarea - should show autocomplete suggestions</li>
+            <li>Click on the "Unique Notes" textarea - should NOT show autocomplete suggestions (autocomplete="off")</li>
+          </ul>
+        </li>
+        <li><strong>Verify dropdown behavior:</strong>
+          <ul>
+            <li>Country dropdown should allow browser autocomplete</li>
+            <li>Processing Location dropdown should not show browser autocomplete</li>
+          </ul>
+        </li>
+      </ol>
+      <p><strong>Expected Result:</strong> Fields with autocomplete="off" should not show browser autocomplete suggestions, while fields without this attribute should show suggestions when available.</p>
+    </div>
+  </div>
+</div>

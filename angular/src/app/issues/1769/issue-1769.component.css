@@ -1,0 +1,66 @@
+.example-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.section {
+  margin-bottom: 40px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.example-group {
+  margin-bottom: 30px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.example-group h4 {
+  margin-top: 0;
+  color: #333;
+}
+
+.description {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #666;
+  font-style: italic;
+}
+
+.test-section {
+  background-color: #e8f4f8;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 30px;
+}
+
+.test-instructions {
+  line-height: 1.6;
+}
+
+.test-instructions h4 {
+  margin-top: 0;
+  color: #2c5282;
+}
+
+.test-instructions ol {
+  padding-left: 20px;
+}
+
+.test-instructions ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.test-instructions li {
+  margin-bottom: 8px;
+}
+
+.test-instructions p {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #2c5282;
+}
