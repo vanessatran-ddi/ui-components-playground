@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {
   GoabButton,
   GoabCallout,
-  GoabLink,
+  GoabLink, GoabPublicFormTask, GoabPublicFormTaskList,
   GoabTable,
   GoabText,
 } from "@abgov/react-components";
@@ -261,25 +261,25 @@ export const SimplePublicFormExample = () => {
 
           {taskSections.map(section => (
             <div key={section.id}>
-              {/*<GoabPublicFormTaskList heading={section.heading}>*/}
-              {/*  <GoabTable width="100%" mb="2xl" mt="l">*/}
-              {/*    <tbody>*/}
-              {/*      {section.tasks.map(task => (*/}
-              {/*        <tr key={task.id}>*/}
-              {/*          <td>*/}
-              {/*            <GoabPublicFormTask status={task.status}>*/}
-              {/*              {task.status === "not-started" ? (*/}
-              {/*                <GoabLink><a href="#" onClick={navigateTo(task.id)}>{task.title}</a></GoabLink>*/}
-              {/*              ) : (*/}
-              {/*                task.title*/}
-              {/*              )}*/}
-              {/*            </GoabPublicFormTask>*/}
-              {/*          </td>*/}
-              {/*        </tr>*/}
-              {/*      ))}*/}
-              {/*    </tbody>*/}
-              {/*  </GoabTable>*/}
-              {/*</GoabPublicFormTaskList>*/}
+              <GoabPublicFormTaskList heading={section.heading}>
+                <GoabTable width="100%" mb="2xl" mt="l">
+                  <tbody>
+                    {section.tasks.map(task => (
+                      <tr key={task.id}>
+                        <td>
+                          <GoabPublicFormTask status={task.status}>
+                            {task.status === "not-started" ? (
+                              <GoabLink><a href="#" onClick={navigateTo(task.id)}>{task.title}</a></GoabLink>
+                            ) : (
+                              task.title
+                            )}
+                          </GoabPublicFormTask>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </GoabTable>
+              </GoabPublicFormTaskList>
             </div>
           ))}
         </div>

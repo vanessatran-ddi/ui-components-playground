@@ -37,7 +37,8 @@ export class SupportOrderDetailsComponent implements OnInit {
   }
 
   onChange(e: Event) {
-
+    // Handle change event
+    console.log('onChange:', e);
   }
 
   someText = ""
@@ -172,7 +173,7 @@ export class SupportOrderDetailsComponent implements OnInit {
   // ===========
 
   handleRole(e: Event): Page | undefined {
-    const [ok, value] = this._mainFormController.validate("role", e, [
+    const [ok, value] = this._mainFormController.validate(e, "role", [
       requiredValidator("Role is required"),
       lengthValidator({ min: 2 }),
     ]);
@@ -196,11 +197,11 @@ export class SupportOrderDetailsComponent implements OnInit {
   }
 
   handleAddress(e: Event): Page | undefined {
-    const [cityOk] = this._mainFormController.validate("city", e, [requiredValidator()]);
-    const [addressOk] = this._mainFormController.validate("address", e, [
+    const [cityOk] = this._mainFormController.validate(e, "city", [requiredValidator()]);
+    const [addressOk] = this._mainFormController.validate(e,"address", [
       requiredValidator(),
     ]);
-    const [postalCodeOk] = this._mainFormController.validate("postal-code", e, [
+    const [postalCodeOk] = this._mainFormController.validate(e,"postal-code", [
       requiredValidator(),
     ]);
 
@@ -214,13 +215,13 @@ export class SupportOrderDetailsComponent implements OnInit {
   // Children
 
   handleChildrenNames(e: Event): ChildPage | undefined {
-    const [firstNameOk] = this._childFormController.validate("firstName", e, [
+    const [firstNameOk] = this._childFormController.validate(e, "firstName", [
       requiredValidator(),
     ]);
-    const [lastNameOk] = this._childFormController.validate("lastName", e, [
+    const [lastNameOk] = this._childFormController.validate(e, "lastName", [
       requiredValidator(),
     ]);
-    const [middleNameOk] = this._childFormController.validate("middleName", e, [
+    const [middleNameOk] = this._childFormController.validate(e, "middleName", [
       lengthValidator({min: 2})
     ]);
     if (!firstNameOk || !lastNameOk || !middleNameOk) return;
@@ -228,7 +229,7 @@ export class SupportOrderDetailsComponent implements OnInit {
     return "alternate-name";
   }
   handleChildrenAlternateName(e: Event): ChildPage | undefined {
-    const [ok] = this._childFormController.validate("alternate-name", e, [
+    const [ok] = this._childFormController.validate(e, "alternate-name", [
       lengthValidator({ min: 2 }),
     ]);
     if (!ok) return;
@@ -239,7 +240,7 @@ export class SupportOrderDetailsComponent implements OnInit {
   handleChildDateOfBirth(e: Event): ChildPage | undefined {
     const adult = new Date();
     adult.setFullYear(adult.getFullYear() - 18);
-    const [ok] = this._childFormController.validate("dob", e, [
+    const [ok] = this._childFormController.validate(e, "dob", [
       dateValidator({ min: adult, minMsg: "Child must be less that 18 years old" }),
     ]);
 

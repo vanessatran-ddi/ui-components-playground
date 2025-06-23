@@ -13,6 +13,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { NgForOf, NgIf } from "@angular/common";
+import { SupportOrderDetailsComponent } from "./public-form/SupportOrderDetails";
+import { PublicFormSubFormExampleComponent } from "./public-form/PublicFormSubFormExample";
 
 import "@abgov/web-components";
 
@@ -21,7 +23,7 @@ import "@abgov/web-components";
 // ******
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SupportOrderDetailsComponent],
   imports: [
     AngularComponentsModule,
     AppRoutingModule,
@@ -35,6 +37,7 @@ import "@abgov/web-components";
     GoabSideMenuGroup,
     GoabAppFooter,
     GoabAppHeader,
+    PublicFormSubFormExampleComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
