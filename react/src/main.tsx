@@ -16,6 +16,8 @@ import Issue2404 from "./app/issues/issue2404";
 import { Issue2789 } from "./app/issues/issue2789";
 import FormTest from "./app/public-form/ThomasPublicForm";
 import { SimplePublicFormExample } from "./app/public-form/SimplePublicFormExample";
+import { PublicFormNavigationTest } from "./app/public-form/PublicFormNavigationTest";
+import { PublicFormAccessibilityTest } from "./app/public-form/PublicFormAccessibilityTest";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -36,6 +38,8 @@ root.render(
           <Route path="/2772" element={<Issue2772/>}></Route>
           <Route path="/2789" element={<Issue2789/>}></Route>
           <Route path={"/public-form"} element={<SimplePublicFormExample/>}></Route>
+          <Route path={"/public-form-navigation"} element={<PublicFormNavigationTest/>}></Route>
+          <Route path={"/public-form-accessibility"} element={<PublicFormAccessibilityTest/>}></Route>
           <Route path={"/1216"} element={<Issue1216/>}></Route>
           <Route path={"/public-form-thomas"} element={<FormTest/>}></Route>
           {/** Add more routes here */}
