@@ -9,7 +9,7 @@ import { GoabFormItem, GoabInput } from "@abgov/angular-components";
 })
 export class Issue2772Component {
   value = "";
-  inputOnChange(event: GoabInputOnChangeDetail) {
+  inputOnChange(event: GoabInputOnChangeDetail<string>) {
     // handle change
     console.log(event.value);
     this.value = event.value;

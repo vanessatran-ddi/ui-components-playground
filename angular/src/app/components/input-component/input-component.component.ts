@@ -6,7 +6,7 @@ import {
   GoabDatePicker,
   GoabFormItem,
   GoabFormItemSlot,
-  GoabInput,
+  GoabInput, GoabInputNumber,
 } from "@abgov/angular-components";
 import { JsonPipe, NgTemplateOutlet } from "@angular/common";
 import { GoabInputOnChangeDetail } from "@abgov/ui-components-common";
@@ -32,23 +32,30 @@ interface User {
     FormsModule,
     GoabFormItemSlot,
     NgTemplateOutlet,
-    Issue2409Component
+    Issue2409Component,
+    GoabInputNumber,
   ],
 })
 export class InputComponentComponent implements OnInit {
   example1 = "";
   example3 = "Test";
   example2Form: FormGroup;
-  handleExample1(event: GoabInputOnChangeDetail) {
+  percentageValue: number|null = null;
+
+  onPercentageChange(details: GoabInputOnChangeDetail<number>) {
+    console.log("Percentage changed:", details);
+    this.percentageValue = details.value;
+  }
+
+  handleExample1(event: GoabInputOnChangeDetail<string>) {
     this.example1 = event.value;
   }
 
   constructor() {
     this.example2Form = new FormGroup({
-      inputControl: new FormControl("")
-    })
+      inputControl: new FormControl(""),
+    });
   }
-
 
   date = new Date();
   boundDate = format(this.date, "yyyy-MM-dd");
@@ -72,8 +79,8 @@ export class InputComponentComponent implements OnInit {
   users: User[] = [];
 
   form = new FormGroup({
-    first: new FormControl("reactive form")
-  })
+    first: new FormControl("reactive form"),
+  });
 
   onSubmit(e: any) {
     console.log("onSubmit", this.form);
