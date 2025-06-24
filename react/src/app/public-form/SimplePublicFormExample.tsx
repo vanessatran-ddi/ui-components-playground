@@ -2,7 +2,8 @@ import React, {useState} from "react";
 import {
   GoabButton,
   GoabCallout,
-  GoabLink,
+  GoabLink, GoabPublicFormTask,
+  GoabPublicFormTaskList,
   GoabTable,
   GoabText,
 } from "@abgov/react-components";
@@ -261,25 +262,25 @@ export const SimplePublicFormExample = () => {
 
           {taskSections.map(section => (
             <div key={section.id}>
-              {/*<GoabPublicFormTaskList heading={section.heading}>*/}
-              {/*  <GoabTable width="100%" mb="2xl" mt="l">*/}
-              {/*    <tbody>*/}
-              {/*      {section.tasks.map(task => (*/}
-              {/*        <tr key={task.id}>*/}
-              {/*          <td>*/}
-              {/*            <GoabPublicFormTask status={task.status}>*/}
-              {/*              {task.status === "not-started" ? (*/}
-              {/*                <GoabLink><a href="#" onClick={navigateTo(task.id)}>{task.title}</a></GoabLink>*/}
-              {/*              ) : (*/}
-              {/*                task.title*/}
-              {/*              )}*/}
-              {/*            </GoabPublicFormTask>*/}
-              {/*          </td>*/}
-              {/*        </tr>*/}
-              {/*      ))}*/}
-              {/*    </tbody>*/}
-              {/*  </GoabTable>*/}
-              {/*</GoabPublicFormTaskList>*/}
+              <GoabPublicFormTaskList heading={section.heading}>
+                <GoabTable width="100%" mb="2xl" mt="l">
+                  <tbody>
+                    {section.tasks.map(task => (
+                      <tr key={task.id}>
+                        <td>
+                          <GoabPublicFormTask status={task.status}>
+                            {task.status === "not-started" ? (
+                              <GoabLink><a href="#" onClick={navigateTo(task.id)}>{task.title}</a></GoabLink>
+                            ) : (
+                              task.title
+                            )}
+                          </GoabPublicFormTask>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </GoabTable>
+              </GoabPublicFormTaskList>
             </div>
           ))}
         </div>
@@ -318,249 +319,6 @@ export const SimplePublicFormExample = () => {
           </GoabButton>
         </div>
       )}
-
-      {/*    /!* Section 1B Pages *!/*/}
-      {/*    <GoabPublicFormPage*/}
-      {/*      id="terms-of-use"*/}
-      {/*      heading="Terms of use"*/}
-      {/*      buttonText="Continue to next section"*/}
-      {/*      onContinue={(e) => onContinue(e, "terms-of-use")}*/}
-      {/*    >*/}
-      {/*      <GoabText tag="p" size="body-m" color="secondary">*/}
-      {/*        Donec malesuada sagittis fringilla pulvinar in molestie. Sagittis felis congue pellentesque tristique urna in habitasse. At faucibus commodo pellentesque enim nisl at. Fermentum quisque viverra diam amet consequat tellus. Amet interdum sit elementum nibh at justo.*/}
-      {/*      </GoabText>*/}
-      {/*      <GoabFieldset>*/}
-      {/*        <GoabFormItem name="Terms of use">*/}
-      {/*          <GoabCheckbox name="terms-of-use" value={"Yes"} text="I accept the terms of use." />*/}
-      {/*        </GoabFormItem>*/}
-      {/*      </GoabFieldset>*/}
-      {/*    </GoabPublicFormPage>*/}
-
-      {/*    <GoabPublicFormPage*/}
-      {/*      id="section1b-summary"*/}
-      {/*      type="multistep"*/}
-      {/*      heading="Apply for a service (Demo)"*/}
-      {/*    >*/}
-      {/*      <div className="warning">*/}
-      {/*        <GoabCallout type="information" size="medium" heading="Application incomplete" mb="2xl" mt="xl">*/}
-      {/*          You have completed 1 of 3 sections.*/}
-      {/*        </GoabCallout>*/}
-      {/*      </div>*/}
-      {/*      <GoabText tag="h2">*/}
-      {/*        1. Before you start*/}
-      {/*      </GoabText>*/}
-      {/*      <GoabTable width="100%" mb="2xl" mt="l">*/}
-      {/*        <tbody>*/}
-      {/*        <tr>*/}
-      {/*          <td>*/}
-      {/*            <GoabText tag="span" size={"body-m"}>Eligibility questions</GoabText>*/}
-      {/*          </td>*/}
-      {/*          <td className="goa-table-number-column">*/}
-      {/*            <GoabBadge type="success" content="Completed" ariaLabel="completed"></GoabBadge>*/}
-      {/*          </td>*/}
-      {/*        </tr>*/}
-      {/*        <tr>*/}
-      {/*          <td>*/}
-      {/*            <GoabText tag="span" size={"body-m"}>Read terms of use</GoabText>*/}
-      {/*          </td>*/}
-      {/*          <td className="goa-table-number-column">*/}
-      {/*            <GoabBadge type="success" content="Completed" ariaLabel="completed"></GoabBadge>*/}
-      {/*          </td>*/}
-      {/*        </tr>*/}
-      {/*        </tbody>*/}
-      {/*      </GoabTable>*/}
-      {/*      <GoabText tag="h2">*/}
-      {/*        2. Prepare application*/}
-      {/*      </GoabText>*/}
-      {/*      <GoabTable width="100%" mb="2xl" mt="l">*/}
-      {/*        <tbody>*/}
-      {/*        <tr>*/}
-      {/*          <td>*/}
-      {/*            <GoabLink><a href="#" onClick={handleContactDetailsClick}>Your contact details</a></GoabLink>*/}
-      {/*          </td>*/}
-      {/*          <td className="goa-table-number-column">*/}
-      {/*            <GoabText tag="span" size="body-m" color="secondary"> Not started</GoabText>*/}
-      {/*          </td>*/}
-      {/*        </tr>*/}
-      {/*        <tr>*/}
-      {/*          <td>*/}
-      {/*            <GoabLink><a href="#" onClick={handleFamilyClick}>Your family</a></GoabLink>*/}
-      {/*          </td>*/}
-      {/*          <td className="goa-table-number-column">*/}
-      {/*            <GoabText tag="span" size="body-m" color="secondary"> Not started</GoabText>*/}
-      {/*          </td>*/}
-      {/*        </tr>*/}
-      {/*        <tr>*/}
-      {/*          <td>*/}
-      {/*            <GoabLink><a href="#" onClick={handleIdentityClick}>Verify your identity</a></GoabLink>*/}
-      {/*          </td>*/}
-      {/*          <td className="goa-table-number-column">*/}
-      {/*            <GoabText tag="span" size="body-m" color="secondary"> Not started</GoabText>*/}
-      {/*          </td>*/}
-      {/*        </tr>*/}
-      {/*        </tbody>*/}
-      {/*      </GoabTable>*/}
-
-      {/*      <GoabText tag="h2">*/}
-      {/*        3. Schedule service*/}
-      {/*      </GoabText>*/}
-      {/*      <GoabText tag="p" size="body-s" color="secondary">*/}
-      {/*        You need to complete the previous section before you can start this task.*/}
-      {/*      </GoabText>*/}
-      {/*      <GoabTable width="100%" mt="l" mb="3xl">*/}
-      {/*        <tbody>*/}
-      {/*        <tr>*/}
-      {/*          <td> <GoabText tag={"span"} size={"body-m"}>*/}
-      {/*            Receive email confirmation</GoabText>*/}
-      {/*          </td>*/}
-      {/*          <td className="goa-table-number-column">*/}
-      {/*            <GoabText tag="span" size="body-m" color="secondary"> Cannot start yet</GoabText>*/}
-      {/*          </td>*/}
-      {/*        </tr>*/}
-      {/*        <tr>*/}
-      {/*          <td> <GoabText tag={"span"} size={"body-m"}>*/}
-      {/*            Choose date</GoabText>*/}
-      {/*          </td>*/}
-      {/*          <td className="goa-table-number-column">*/}
-      {/*            <GoabText tag="span" size="body-m" color="secondary"> Cannot start yet</GoabText>*/}
-      {/*          </td>*/}
-      {/*        </tr>*/}
-      {/*        <tr>*/}
-      {/*          <td><GoabText tag={"span"} size={"body-m"}>*/}
-      {/*            Pay service fee</GoabText>*/}
-      {/*          </td>*/}
-      {/*          <td className="goa-table-number-column">*/}
-      {/*            <GoabText tag="span" size="body-m" color="secondary"> Cannot start yet</GoabText>*/}
-      {/*          </td>*/}
-      {/*        </tr>*/}
-      {/*        </tbody>*/}
-      {/*      </GoabTable>*/}
-      {/*    </GoabPublicFormPage>*/}
-
-      {/*    /!* Section 2A Pages *!/*/}
-      {/*    <GoabPublicFormPage*/}
-      {/*      id="2A.1"*/}
-      {/*      heading="What is your name?"*/}
-      {/*      buttonText="Save and continue"*/}
-      {/*      onContinue={(e) => onContinue(e, "2A.1")}*/}
-      {/*    >*/}
-      {/*      <GoabFieldset>*/}
-      {/*        <GoabFormItem name="Name">*/}
-      {/*          <GoabInput name="name"/>*/}
-      {/*        </GoabFormItem>*/}
-      {/*      </GoabFieldset>*/}
-      {/*    </GoabPublicFormPage>*/}
-
-      {/*    <GoabPublicFormPage*/}
-      {/*      id="2A.2"*/}
-      {/*      heading="What is your current home address?"*/}
-      {/*      buttonText="Save and continue"*/}
-      {/*      onContinue={(e) => onContinue(e, "2A.2")}*/}
-      {/*    >*/}
-      {/*      <GoabFieldset>*/}
-      {/*        <GoabFormItem name="Street address" label="Street address">*/}
-      {/*          <GoabInput name="street-address" />*/}
-      {/*        </GoabFormItem>*/}
-      {/*        <GoabFormItem name="Suite or unit #" label="Suite or unit #" requirement={"optional"}>*/}
-      {/*          <GoabInput name="suite" />*/}
-      {/*        </GoabFormItem>*/}
-      {/*        <GoabFormItem name="City or town" label="City or town">*/}
-      {/*          <GoabInput name="city" />*/}
-      {/*        </GoabFormItem>*/}
-      {/*        <GoabBlock direction="row" gap="xl">*/}
-      {/*          <GoabFormItem name="Province or territory" label="Province or territory">*/}
-      {/*            <GoabDropdown name="province" placeholder="Select">*/}
-      {/*              <GoabDropdownItem value="AB" label="Alberta" />*/}
-      {/*              <GoabDropdownItem value="BC" label="British Columbia" />*/}
-      {/*              <GoabDropdownItem value="MB" label="Manitoba" />*/}
-      {/*              <GoabDropdownItem value="NB" label="New Brunswick" />*/}
-      {/*              <GoabDropdownItem value="NL" label="Newfoundland and Labrador" />*/}
-      {/*              <GoabDropdownItem value="NT" label="Northwest Territories" />*/}
-      {/*              <GoabDropdownItem value="NS" label="Nova Scotia" />*/}
-      {/*              <GoabDropdownItem value="NU" label="Nunavut" />*/}
-      {/*              <GoabDropdownItem value="ON" label="Ontario" />*/}
-      {/*              <GoabDropdownItem value="PE" label="Prince Edward Island" />*/}
-      {/*              <GoabDropdownItem value="QC" label="Quebec" />*/}
-      {/*              <GoabDropdownItem value="SK" label="Saskatchewan" />*/}
-      {/*              <GoabDropdownItem value="YT" label="Yukon" />*/}
-      {/*            </GoabDropdown>*/}
-      {/*          </GoabFormItem>*/}
-      {/*          <GoabFormItem name="Postal code" label="Postal code">*/}
-      {/*            <GoabInput name="postal-code" />*/}
-      {/*          </GoabFormItem>*/}
-      {/*        </GoabBlock>*/}
-      {/*      </GoabFieldset>*/}
-      {/*    </GoabPublicFormPage>*/}
-
-      {/*    <GoabPublicFormPage*/}
-      {/*      id="2A.3"*/}
-      {/*      heading="Can we contact you in the future for feedback on our services?"*/}
-      {/*      buttonText="Save and continue"*/}
-      {/*      onContinue={(e) => onContinue(e, "2A.3")}*/}
-      {/*    >*/}
-      {/*      <GoabFieldset>*/}
-      {/*        <GoabFormItem name="Contact for feedback">*/}
-      {/*          <GoabRadioGroup name="contact-feedback" id="contact-feedback">*/}
-      {/*            <GoabRadioItem value="Yes" label="Yes"/>*/}
-      {/*            <GoabRadioItem value="No" label="No" />*/}
-      {/*          </GoabRadioGroup>*/}
-      {/*        </GoabFormItem>*/}
-      {/*      </GoabFieldset>*/}
-      {/*    </GoabPublicFormPage>*/}
-
-      {/*    <GoabPublicFormPage*/}
-      {/*      id="2A.3.a"*/}
-      {/*      heading="How would you like to be contacted?"*/}
-      {/*      buttonText="Save and continue"*/}
-      {/*      onContinue={(e) => onContinue(e, "2A.3.a")}*/}
-      {/*    >*/}
-      {/*      <GoabFieldset>*/}
-      {/*        <GoabFormItem name={"Contact method"}>*/}
-      {/*          <GoabCheckbox*/}
-      {/*            name="contact-phone"*/}
-      {/*            value={"phone"}*/}
-      {/*            text="Phone"*/}
-      {/*            reveal={*/}
-      {/*              <GoabFormItem name="Phone number" label={"What is your phone number? "}>*/}
-      {/*                <GoabInput name="phone-number"/>*/}
-      {/*              </GoabFormItem>*/}
-      {/*            }*/}
-      {/*          />*/}
-      {/*          <GoabCheckbox*/}
-      {/*            name="contact-email"*/}
-      {/*            value={"email"}*/}
-      {/*            text="Email"*/}
-      {/*            reveal={*/}
-      {/*              <GoabFormItem name="Email address">*/}
-      {/*                <GoabInput name="email-address" type="email" />*/}
-      {/*              </GoabFormItem>*/}
-      {/*            }*/}
-      {/*          />*/}
-      {/*          <GoabCheckbox*/}
-      {/*            value={"text"}*/}
-      {/*            name="contact-text"*/}
-      {/*            text="Text message"*/}
-      {/*            reveal={*/}
-      {/*              <GoabFormItem name="Mobile phone number">*/}
-      {/*                <GoabInput name="mobile-phone-number" />*/}
-      {/*              </GoabFormItem>*/}
-      {/*            }*/}
-      {/*          />*/}
-      {/*        </GoabFormItem>*/}
-      {/*      </GoabFieldset>*/}
-      {/*    </GoabPublicFormPage>*/}
-
-      {/*    <GoabPublicFormPage*/}
-      {/*      id="2A.Review"*/}
-      {/*      type="multistep"*/}
-      {/*      heading="Review your  answers"*/}
-      {/*      buttonText="Confirm"*/}
-      {/*      onContinue={(e) => onContinue(e, "2A.Review")}*/}
-      {/*    >*/}
-      {/*      <GoabPublicFormSummary/>*/}
-      {/*    </GoabPublicFormPage>*/}
-      {/*  </GoabPublicForm>*/}
-      {/*)}*/}
     </>
   );
 };
