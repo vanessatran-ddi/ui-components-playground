@@ -8,8 +8,10 @@ import {
   GoabPublicForm,
   GoabPublicFormPage,
   GoabPublicFormSummary,
-  GoabPublicSubform,
+  GoabPublicFormSummary, GoabPublicSubform,
   GoabPublicSubformIndex,
+  // GoabPublicSubform,
+  // GoabPublicSubformIndex,
   GoabRadioGroup,
   GoabRadioItem,
   GoabTable,
@@ -175,15 +177,18 @@ export const Section2B = ({onComplete}: Section2BProps) => {
     if ((e as CustomEvent).detail?.cancelled) return;
 
     switch (from) {
-      case "dependent-name": {
-        const [isValid] = childFormController.validate(e, "fullName", [
-          requiredValidator("Please enter the dependent's full name.")
-        ]);
-        if (isValid) {
-          childFormController.continueTo("2B.3.Review");
-        }
+      case "dependent-name":
+        validateDependant(e);
         break;
-      }
+    }
+  }
+
+  const validateDependant = (e: Event) => {
+    const [isValid] = childFormController.validate(e, "fullName", [
+      requiredValidator("Please enter the dependent's full name.")
+    ]);
+    if (isValid) {
+      childFormController.continueTo("2B.3.Review");
     }
   }
 
@@ -227,10 +232,10 @@ export const Section2B = ({onComplete}: Section2BProps) => {
         type={"multistep"}
         onContinue={(e) => onContinue(e, "2B.3")}
       >
-        <GoabPublicSubform
+         <GoabPublicSubform
           id="2B.3"
           name="2B.3"
-          // summaryHeading="Dependants under 18"
+          summaryHeading="Dependants under 18"
           onInit={onSubformInit}
           onStateChange={onSubformStateChange}
         >
