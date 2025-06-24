@@ -77,6 +77,7 @@ import { Issue2827Component } from "./public-form/issue-2827/issue-2827.componen
 import { Issue2827SubformComponent } from "./public-form/issue-2827/issue-2827-subform.component";
 import { SupportOrderDetailsComponent } from "./public-form/SupportOrderDetails";
 import { Issue2720Component } from "./issues/2720/issue-2720.component";
+import { Issue2829Component } from "./issues/2829/issue-2829.component";
 
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
@@ -148,6 +149,7 @@ const routes: Routes = [
   { path: "2768", component: Issue2768Component},
   { path: "2772", component: Issue2772Component},
   { path: "2720", component: Issue2720Component},
+  { path: "2829",  component: Issue2829Component},
   { path: "public-form", component: PublicFormComponent},
   { path: "public-form-navigation", component: PublicFormNavigationTestComponent},
   { path: "public-form-accessibility", component: PublicFormAccessibilityTestComponent},

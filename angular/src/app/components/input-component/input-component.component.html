@@ -7,7 +7,16 @@
   placeholder="Enter text"
 ></goab-input>
 <p>Enter value: {{ example1 }}</p>
-
+<goab-input-number
+  name="percentage"
+  [value]="percentageValue"
+  textAlign="right"
+  testId="percentage-input"
+  (onChange)="onPercentageChange($event)"
+  placeholder="0.0"
+  suffix="%"
+  trailingContent="%"
+/>
 <h2>Reactive form</h2>
 <form [formGroup]="example2Form">
   <goab-form-item label="Example 2">
@@ -205,3 +214,4 @@
 
 
 <!--<goab-input-number name="percentage" [value]="percentageValue" textAlign="right" (onChange)="onPercentageChange($event)"></goab-input-number>-->
+

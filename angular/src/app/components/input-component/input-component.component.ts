@@ -48,6 +48,13 @@ export class InputComponentComponent implements OnInit {
   }
 
   handleExample1(event: GoabInputOnChangeDetail<string>) {
+  percentageValue: number|null = null;
+
+  onPercentageChange(details: GoabInputOnChangeDetail) {
+    console.log("Percentage changed:", details);
+    this.percentageValue = +details.value;
+  }
+  handleExample1(event: GoabInputOnChangeDetail) {
     this.example1 = event.value;
   }
 
