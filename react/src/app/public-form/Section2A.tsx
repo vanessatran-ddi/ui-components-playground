@@ -238,35 +238,30 @@ export const Section2A = ({onComplete}: Section2AProps) => {
             onContinue={(e) => onContinue(e, "2A.3.a")}
           >
             <GoabFieldset>
-              <GoabFormItem name="Contact method">
+              <GoabFormItem name="Phone number">
                 <GoabCheckbox
                   name="contact-phone"
-                  value={"phone"}
                   text="Phone"
                   reveal={
-                    <GoabFormItem name="Phone number" label={"What is your phone number? "}>
-                      <GoabInput name="phone-number"/>
-                    </GoabFormItem>
+                    <GoabInput name="phone-number"/>
                   }
                 />
+              </GoabFormItem>
+              <GoabFormItem name={"Email address"}>
                 <GoabCheckbox
                   name="contact-email"
-                  value={"email"}
                   text="Email"
                   reveal={
-                    <GoabFormItem name="Email address">
-                      <GoabInput name="email-address" type="email" />
-                    </GoabFormItem>
+                    <GoabInput name="email-address" type="email" />
                   }
                 />
+              </GoabFormItem>
+              <GoabFormItem name={"Text message"}>
                 <GoabCheckbox
-                  value={"text"}
                   name="contact-text"
                   text="Text message"
                   reveal={
-                    <GoabFormItem name="Mobile phone number">
-                      <GoabInput name="mobile-phone-number" />
-                    </GoabFormItem>
+                    <GoabInput name="mobile-phone-number" />
                   }
                 />
               </GoabFormItem>
