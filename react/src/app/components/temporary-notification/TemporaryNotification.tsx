@@ -61,21 +61,77 @@ export const TemporaryNotificationPage = () => {
   };
 
   const showProgressNotification = () => {
-    const uuid = TemporaryNotification.show("Processing...", {
+    console.log("Demo: Showing indeterminate first, then progress type");
+
+    // Step 1: Show indeterminate type (no specific progress value)
+    const uuid = TemporaryNotification.show("Initializing...", {
       type: "indeterminate",
       duration: 0 // Don't auto-dismiss
     });
 
-    // Simulate progress
+    // Step 2: After 2 seconds, switch to progress type with actual progress
+    setTimeout(() => {
+      // Now use progress type with a specific progress value
+      const progressUuid = TemporaryNotification.show("Uploading file...", {
+        type: "progress",
+        duration: 0,
+        cancelUUID: uuid // Replace the indeterminate notification
+      });
+
+      // Start at 0% progress
+      TemporaryNotification.setProgress(progressUuid, 0);
+
+      // Simulate progress updates
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += 10;
+        TemporaryNotification.setProgress(progressUuid, progress);
+
+        if (progress >= 100) {
+          clearInterval(interval);
+          // Show completion after reaching 100%
+          setTimeout(() => {
+            TemporaryNotification.show("Upload complete!", {
+              type: "success",
+              duration: 3000,
+              cancelUUID: progressUuid
+            });
+          }, 500);
+        }
+      }, 400);
+    }, 2000);
+  };
+
+  const showDirectProgressNotification = () => {
+    console.log("Demo: Using progress type directly");
+
+    // Directly show progress type with initial value
+    const uuid = TemporaryNotification.show("Downloading...", {
+      type: "progress", // This is the progress type!
+      duration: 0 // Don't auto-dismiss
+    });
+
+    // Set initial progress
+    TemporaryNotification.setProgress(uuid, 0);
+
+    // Simulate download progress
     let progress = 0;
     const interval = setInterval(() => {
-      progress += 10;
+      progress += 5;
+      // Just update the progress bar, don't create new notifications
       TemporaryNotification.setProgress(uuid, progress);
 
       if (progress >= 100) {
         clearInterval(interval);
+        setTimeout(() => {
+          TemporaryNotification.show("Download complete!", {
+            type: "success",
+            duration: 2000,
+            cancelUUID: uuid
+          });
+        }, 300);
       }
-    }, 300);
+    }, 200);
   };
 
   const showTopNotification = () => {
@@ -134,7 +190,13 @@ export const TemporaryNotificationPage = () => {
 
       <div style={{ marginBottom: '16px' }}>
         <button type="button" onClick={showProgressNotification} style={{ marginRight: '8px' }}>
-          Show Progress Notification
+          Show Progress Notification (Indeterminate → Progress)
+        </button>
+      </div>
+
+      <div style={{ marginBottom: '16px' }}>
+        <button type="button" onClick={showDirectProgressNotification} style={{ marginRight: '8px' }}>
+          Show Direct Progress Notification
         </button>
       </div>
 
