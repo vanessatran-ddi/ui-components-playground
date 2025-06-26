@@ -35,6 +35,7 @@ export function App() {
               <Link to="/">Home</Link>
               <Link to="/pagination">Pagination</Link>
               <Link to="/drawer">Drawer</Link>
+              <Link to="/temporary-notification">Temporary Notification</Link>
               <Link to="/Text">Text</Link>
 
               {/* Add links here */}

@@ -9,6 +9,7 @@ import { Issue2446 } from "./app/issues/issue2446";
 import { Issue2408 } from "./app/issues/issue2408";
 import { Issue2441 } from "./app/issues/issue2441";
 import { Issue2772 } from "./app/issues/issue2772";
+import { TemporaryNotificationPage } from "./app/components/temporary-notification/TemporaryNotification";
 import { TextPage } from "./app/components/text/Text";
 import { Drawer } from "./app/drawer/Drawer";
 import { Issue1216 } from "./app/issues/issue1216";
@@ -31,6 +32,7 @@ root.render(
         <Route path="/" element={<App />}>
           <Route path={"/pagination"} element={<Pagination/>}></Route>
           <Route path={"/drawer"} element={<Drawer/>}> </Route>
+          <Route path={"/temporary-notification"} element={<TemporaryNotificationPage/>}></Route>
           <Route path={"/text"} element={<TextPage/>}></Route>
           <Route path={"/2446"} element={<Issue2446/>}></Route>
           <Route path={"/2408"} element={<Issue2408/>}></Route>
