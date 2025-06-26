@@ -1,0 +1,102 @@
+<div class="component-content">
+  <h1>Issue #2404: Angular Input TrailingIcon Fix</h1>
+
+  <div class="goab-section">
+    <h2>Problem</h2>
+    <p>The Angular goab-input component was incorrectly rendering an icon button (goa-icon-button) instead of a simple icon (goa-icon) when the trailingIcon property was used without a click handler.</p>
+  </div>
+
+  <div class="goab-section">
+    <h2>Fixed Examples</h2>
+
+    <h3>1. TrailingIcon WITHOUT click handler (should render simple icon)</h3>
+    <p>This should show a simple magnifying glass icon that is not clickable:</p>
+    <goab-input
+      name="search-input"
+      placeholder="Search without click handler"
+      trailingIcon="search"
+      width="300px">
+    </goab-input>
+
+    <h3>2. TrailingIcon WITH click handler (should render icon button)</h3>
+    <p>This should show a clickable magnifying glass icon button:</p>
+    <goab-input
+      name="search-input-clickable"
+      placeholder="Search with click handler"
+      trailingIcon="search"
+      (onTrailingIconClick)="onSearchClick()"
+      width="300px">
+    </goab-input>
+
+    <h3>3. Different trailing icons without click handlers</h3>
+    <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+      <goab-input
+        name="calendar-input"
+        placeholder="Date input"
+        trailingIcon="calendar"
+        width="250px">
+      </goab-input>
+
+      <goab-input
+        name="eye-input"
+        placeholder="Password visibility"
+        trailingIcon="eye"
+        width="250px">
+      </goab-input>
+
+      <goab-input
+        name="close-input"
+        placeholder="Clear input"
+        trailingIcon="close"
+        width="250px">
+      </goab-input>
+    </div>
+
+    <h3>4. Same icons WITH click handlers (should be clickable buttons)</h3>
+    <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+      <goab-input
+        name="calendar-input-clickable"
+        placeholder="Date input (clickable)"
+        trailingIcon="calendar"
+        (onTrailingIconClick)="onCalendarClick()"
+        width="250px">
+      </goab-input>
+
+      <goab-input
+        name="eye-input-clickable"
+        placeholder="Password visibility (clickable)"
+        trailingIcon="eye"
+        (onTrailingIconClick)="onEyeClick()"
+        width="250px">
+      </goab-input>
+
+      <goab-input
+        name="close-input-clickable"
+        placeholder="Clear input (clickable)"
+        trailingIcon="close"
+        (onTrailingIconClick)="onCloseClick()"
+        width="250px">
+      </goab-input>
+    </div>
+  </div>
+
+  <div class="goab-section">
+    <h2>Click Events Log</h2>
+    <p>When you click on the icons with handlers, they should appear here:</p>
+    <div class="event-log">
+      <div *ngFor="let event of clickEvents" class="event-item">
+        {{ event }}
+      </div>
+      <div *ngIf="clickEvents.length === 0" class="no-events">
+        No click events yet. Try clicking the icons with handlers above.
+      </div>
+    </div>
+  </div>
+
+  <div class="goab-section">
+    <h2>Technical Details</h2>
+    <p><strong>Root Cause:</strong> The Angular wrapper was using <code>!!_onTrailingIconClick</code> which always evaluated to true because it's a method reference.</p>
+    <p><strong>Fix:</strong> Changed to use <code>this.onTrailingIconClick.observed</code> which correctly detects if there are actual subscribers to the event.</p>
+    <p><strong>Result:</strong> Now properly renders goa-icon for decoration and goa-icon-button for interactive icons.</p>
+  </div>
+</div>
