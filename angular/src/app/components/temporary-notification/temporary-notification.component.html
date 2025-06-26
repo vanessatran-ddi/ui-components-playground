@@ -1,0 +1,83 @@
+<h1>Temporary Notification</h1>
+
+<p>The Temporary Notification component provides a centralized way to display temporary messages across your application.</p>
+
+<!-- Controller positioned at bottom-center -->
+<!--<goab-temporary-notification-ctrl [testId]="'temp-notification-ctrl'"></goab-temporary-notification-ctrl>-->
+
+<h2>Basic Examples</h2>
+
+<div style="margin-bottom: 16px;">
+  <button type="button" (click)="showBasicNotification()" style="margin-right: 8px;">
+    Show Basic Notification
+  </button>
+</div>
+Wher
+<div style="margin-bottom: 16px;">
+  <button type="button" (click)="showSuccessNotification()" style="margin-right: 8px;">
+    Show Success Notification
+  </button>
+</div>
+
+<div style="margin-bottom: 16px;">
+  <button type="button" (click)="showFailureNotification()" style="margin-right: 8px;">
+    Show Failure Notification
+  </button>
+</div>
+
+<h2>Advanced Examples</h2>
+
+<div style="margin-bottom: 16px;">
+  <button type="button" (click)="showNotificationWithAction()" style="margin-right: 8px;">
+    Show Notification with Action
+  </button>
+</div>
+
+<div style="margin-bottom: 16px;">
+  <button type="button" (click)="showMultipleNotifications()" style="margin-right: 8px;">
+    Show Multiple Notifications (Queue)
+  </button>
+</div>
+
+<div style="margin-bottom: 16px;">
+  <button type="button" (click)="showProgressNotification()" style="margin-right: 8px;">
+    Show Progress Notification
+  </button>
+</div>
+
+<h2>Positioning Examples</h2>
+
+<p>The notification controller can be positioned at different locations. The examples above use bottom-center positioning.</p>
+
+<!-- Additional controllers for positioning examples -->
+<h3>Alternative Positioning</h3>
+<p><strong>Note:</strong> To prevent duplicate notifications, only one controller is active. To test different positions, uncomment the controller below and comment out the main controller above.</p>
+
+<div style="margin-bottom: 16px;">
+  <button type="button" (click)="showTopPositionedNotification()">
+    Show Notification (Currently goes to bottom - see note above)
+  </button>
+</div>
+
+<!-- Uncomment this controller and comment out the main one above to test top positioning -->
+ <goab-temporary-notification-ctrl [verticalPosition]="'top'" [horizontalPosition]="'center'" [testId]="'top-ctrl'"></goab-temporary-notification-ctrl>
+
+
+<h2>API Usage</h2>
+
+<pre><code>
+// Basic usage
+TemporaryNotification.show("Your message here");
+
+// With options
+TemporaryNotification.show("Message", &#123;
+  type: "success",                    // basic, success, failure, indeterminate, progress
+  duration: TemporaryNotificationMediumDuration,  // LONG, MEDIUM, SHORT or custom ms
+  actionText: "Undo",
+  action: () => console.log("Action clicked")
+&#125;);
+
+// Progress notifications
+const uuid = TemporaryNotification.show("Processing...", &#123; type: "indeterminate" &#125;);
+TemporaryNotification.setProgress(uuid, 50); // Set progress to 50%
+</code></pre>
