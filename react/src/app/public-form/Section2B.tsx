@@ -7,10 +7,9 @@ import {
   GoabInput,
   GoabPublicForm,
   GoabPublicFormPage,
-  GoabPublicFormSummary, GoabPublicSubform,
+  GoabPublicFormSummary,
+  GoabPublicSubform,
   GoabPublicSubformIndex,
-  // GoabPublicSubform,
-  // GoabPublicSubformIndex,
   GoabRadioGroup,
   GoabRadioItem,
   GoabTable,
@@ -42,6 +41,7 @@ export const Section2B = ({onComplete}: Section2BProps) => {
     getStateList: getChildStateList,
     controller: childFormController,
     state: dependentsState,
+    complete: completeDependentsList,
   } = usePublicFormController<DependentPage>("list");
 
   // State to track the dependents list
@@ -188,7 +188,7 @@ export const Section2B = ({onComplete}: Section2BProps) => {
       requiredValidator("Please enter the dependent's full name.")
     ]);
     if (isValid) {
-      childFormController.continueTo("2B.3.Review");
+      childFormController.completeSubformItem();
     }
   }
 
@@ -293,14 +293,14 @@ export const Section2B = ({onComplete}: Section2BProps) => {
             </GoabFieldset>
           </GoabPublicFormPage>
 
-          <GoabPublicFormPage
+          {/* <GoabPublicFormPage
             id="2B.3.Review"
             heading="Review dependent information"
             type="summary"
             buttonText="Back to list"
           >
             <GoabPublicFormSummary />
-          </GoabPublicFormPage>
+          </GoabPublicFormPage> */}
          </GoabPublicSubform>
       </GoabPublicFormPage>
 
@@ -345,5 +345,6 @@ export const Section2B = ({onComplete}: Section2BProps) => {
       >
         <GoabPublicFormSummary />
       </GoabPublicFormPage>
-    </GoabPublicForm>);
+    </GoabPublicForm>
+  );
 }
