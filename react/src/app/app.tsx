@@ -45,6 +45,7 @@ export function App() {
               <Link to="/public-form">Public Form</Link>
               <Link to="/public-form-navigation">Navigation Test (Issue 1)</Link>
               <Link to="/public-form-accessibility">Accessibility Test (Issue 2)</Link>
+              <Link to="/2827">Issue 2827</Link>
             </GoabSideMenuGroup>
             {/* Add links here */}
           </GoabSideMenu>

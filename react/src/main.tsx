@@ -19,6 +19,7 @@ import { Issue1769 } from "./app/issues/issue1769";
 import { Issue2768 } from "./app/issues/issue2768";
 import FormTest from "./app/public-form/ThomasPublicForm";
 import { SimplePublicFormExample } from "./app/public-form/SimplePublicFormExample";
+import { Issue2827 } from "./app/public-form/issue2827";
 import { PublicFormNavigationTest } from "./app/public-form/PublicFormNavigationTest";
 import { PublicFormAccessibilityTest } from "./app/public-form/PublicFormAccessibilityTest";
 
@@ -48,6 +49,7 @@ root.render(
           <Route path={"/public-form-accessibility"} element={<PublicFormAccessibilityTest/>}></Route>
           <Route path={"/1216"} element={<Issue1216/>}></Route>
           <Route path={"/public-form-thomas"} element={<FormTest/>}></Route>
+          <Route path={"/2827"} element={<Issue2827/>}></Route>
           {/** Add more routes here */}
 
         </Route>

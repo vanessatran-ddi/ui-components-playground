@@ -4,12 +4,26 @@ import {
   dateValidator,
   GoabBlock,
   GoabButton,
+  GoabButtonGroup,
+  GoabCircularProgress,
+  GoabPublicForm,
+  GoabPublicFormPage,
+  GoabPublicFormSummary,
+  GoabFieldset,
+  GoabFormItem,
+  GoabRadioGroup,
+  GoabRadioItem,
+  GoabModal,
+  GoabTable,
+  GoabInput,
+  GoabDetails,
+  GoabText,
+  GoabDatePicker,
   lengthValidator,
   requiredValidator,
 } from "@abgov/angular-components";
 import { CommonModule } from "@angular/common";
 import { PublicFormController } from "@abgov/ui-components-common";
-import { GoabDatePicker } from "@abgov/angular-components";
 
 type Page =
   | "what-is-your-role"
@@ -23,7 +37,29 @@ type ChildPage = "name" | "alternate-name" | "dob" | "complete";
 
 @Component({
   selector: "abgov-fsos",
-  templateUrl: "./SupportOrderDetails.html"
+  standalone: true,
+  templateUrl: "./SupportOrderDetails.html",
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [
+    CommonModule,
+    GoabBlock,
+    GoabButton,
+    GoabButtonGroup,
+    GoabCircularProgress,
+    GoabPublicForm,
+    GoabPublicFormPage,
+    GoabPublicFormSummary,
+    GoabFieldset,
+    GoabFormItem,
+    GoabRadioGroup,
+    GoabRadioItem,
+    GoabModal,
+    GoabTable,
+    GoabInput,
+    GoabDetails,
+    GoabText,
+    GoabDatePicker
+  ]
 })
 export class SupportOrderDetailsComponent implements OnInit {
   someDate = "2024-06-12";

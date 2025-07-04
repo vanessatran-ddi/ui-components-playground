@@ -72,8 +72,10 @@ import { PublicFormAccessibilityTestComponent } from "./public-form/public-form-
 import { Issue1769Component } from "./issues/1769/issue-1769.component";
 import { Issue2772Component } from "./issues/2772/issue-2772.component";
 import { Issue2768Component } from "./issues/2768/issue-2768.component";
-import { SupportOrderDetailsComponent } from "./public-form/SupportOrderDetails";
 import { PublicFormSubFormExampleComponent } from "./public-form/PublicFormSubFormExample";
+import { Issue2827Component } from "./public-form/issue-2827/issue-2827.component";
+import { Issue2827SubformComponent } from "./public-form/issue-2827/issue-2827-subform.component";
+import { SupportOrderDetailsComponent } from "./public-form/SupportOrderDetails";
 
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
@@ -149,6 +151,9 @@ const routes: Routes = [
   { path: "public-form-accessibility", component: PublicFormAccessibilityTestComponent},
   { path: "support-order-details", component: SupportOrderDetailsComponent},
   { path: "public-form-subform-example", component: PublicFormSubFormExampleComponent},
+  { path: "public-form/2827", component: Issue2827Component},
+  { path: "public-form/2827-subform", component: Issue2827SubformComponent},
+  { path: "support-order-details", component: SupportOrderDetailsComponent},
   { path: "", redirectTo: "/", pathMatch: "full" },
 ];
 
