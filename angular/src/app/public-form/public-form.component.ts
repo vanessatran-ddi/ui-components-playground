@@ -192,12 +192,12 @@ export class PublicFormComponent extends PublicFormController<Page> {
   }
 
   validateResidenceDuration(e: Event): Page | undefined {
-    // const [ok, value] = this.validate("duration", e, [
-    //   requiredValidator("Duration is required"),
-    // ]);
-    // if (!ok) {
-    //   return;
-    // }
+    const [ok, value] = this.validate(e, "duration", [
+      requiredValidator("Duration is required"),
+    ]);
+    if (!ok) {
+      return;
+    }
 
     if (value === "Less than a year") {
       return "ineligible";
