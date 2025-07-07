@@ -17,7 +17,7 @@ export class TemporaryNotificationComponent {
   showBasicNotification() {
     TemporaryNotification.show("This is a basic notification message", {
       type: "basic",
-      duration: 1000
+      duration: 10000
     });
   }
 
