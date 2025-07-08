@@ -2,8 +2,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { Component } from "@angular/core";
 import {
   dateValidator,
-  GoabFieldsetItemState, GoabFieldsetItemValue,
-  GoabFormState, GoabPublicFormPageOnCompleteDetail,
+  GoabFieldsetItemState, GoabFieldsetItemValue, GoabFieldsetOnChangeDetail, GoabFieldsetOnContinueDetail,
+  GoabFormState, GoabPublicFormPageOnCompleteDetail, GoabPublicFormPageOnFieldsetChangeDetail,
   PublicFormController, relay,
 } from "@abgov/ui-components-common";
 import { requiredValidator } from "@abgov/ui-components-common";
@@ -96,8 +96,13 @@ export class PublicFormComponent extends PublicFormController<Page> {
   // Events
   // ======
 
+  onBack(e: Event) {
+    console.log("onBack with e ", e);
+  }
+  onFieldsetChange(e: GoabPublicFormPageOnFieldsetChangeDetail) {
+    console.log("onFieldsetChange with e ", e);
+  }
   onPageChange(e: Event, from: string) {
-    console.log("onPageChange with e ", e, from);
     let dest: Page | undefined = undefined;
     switch (from) {
       case "name":
@@ -137,6 +142,9 @@ export class PublicFormComponent extends PublicFormController<Page> {
       this.continueTo(dest);
     }
   }
+  trackPublicFormPageCompletion = (e: GoabPublicFormPageOnCompleteDetail) => {
+    console.log("trackPublicFormPageCompletion with e ", e);
+  };
 
   // ===========
   // Validations
@@ -152,7 +160,6 @@ export class PublicFormComponent extends PublicFormController<Page> {
     if (!firstNameOk || !lastNameOk) {
       return;
     }
-    console.log("validateName is called ", e);
     return "sin";
   }
 
