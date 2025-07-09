@@ -1,9 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { Component } from "@angular/core";
 import {
-  dateValidator,
-  GoabFieldsetItemState, GoabFieldsetItemValue, GoabFieldsetOnChangeDetail, GoabFieldsetOnContinueDetail,
-  GoabFormState, GoabPublicFormPageOnCompleteDetail, GoabPublicFormPageOnFieldsetChangeDetail,
+  GoabFormState,
   PublicFormController, relay,
 } from "@abgov/ui-components-common";
 import { requiredValidator } from "@abgov/ui-components-common";
@@ -99,9 +97,6 @@ export class PublicFormComponent extends PublicFormController<Page> {
   onBack(e: Event) {
     console.log("onBack with e ", e);
   }
-  onFieldsetChange(e: GoabPublicFormPageOnFieldsetChangeDetail) {
-    console.log("onFieldsetChange with e ", e);
-  }
   onPageChange(e: Event, from: string) {
     let dest: Page | undefined = undefined;
     switch (from) {
@@ -142,9 +137,6 @@ export class PublicFormComponent extends PublicFormController<Page> {
       this.continueTo(dest);
     }
   }
-  trackPublicFormPageCompletion = (e: GoabPublicFormPageOnCompleteDetail) => {
-    console.log("trackPublicFormPageCompletion with e ", e);
-  };
 
   // ===========
   // Validations

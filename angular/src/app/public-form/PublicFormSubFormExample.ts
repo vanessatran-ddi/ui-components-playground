@@ -96,13 +96,14 @@ export class PublicFormSubFormExampleComponent implements OnInit {
   }
 
   updateState(state: any) {
-    console.log("updating state", state);
+    console.log("sub form state changed triggered", state);
     // For Angular components, the state change event passes the state directly
     // No need to call updateObjectState as the state is already updated
     this.continueButtonVisibility = this.dependents().length > 0 ? "visible" : "hidden";
   }
 
   updateDependentsState(e: Event) {
+    console.log("SubForm _stateChanged triggered", e);
     this._dependentsFormController.updateListState(e);
     this.continueButtonVisibility = this.dependents().length > 0 ? "visible" : "hidden";
   }
