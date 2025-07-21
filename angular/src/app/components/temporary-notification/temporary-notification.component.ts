@@ -1,4 +1,4 @@
-import { GoabTemporaryNotification, GoabTemporaryNotificationCtrl, TemporaryNotification, TemporaryNotificationShortDuration, TemporaryNotificationMediumDuration, TemporaryNotificationLongDuration } from "@abgov/angular-components";
+import { GoabTemporaryNotificationCtrl, TemporaryNotification } from "@abgov/angular-components";
 import { Component } from "@angular/core";
 
 @Component({
@@ -6,7 +6,6 @@ import { Component } from "@angular/core";
   selector: "abgov-temporary-notification",
   templateUrl: "./temporary-notification.component.html",
   imports: [
-    GoabTemporaryNotification,
     GoabTemporaryNotificationCtrl,
   ]
 })
@@ -17,21 +16,21 @@ export class TemporaryNotificationComponent {
   showBasicNotification() {
     TemporaryNotification.show("This is a basic notification message", {
       type: "basic",
-      duration: 10000
+      duration: "short"
     });
   }
 
   showSuccessNotification() {
     TemporaryNotification.show("Item saved successfully!", {
       type: "success",
-      duration: TemporaryNotificationMediumDuration
+      duration: "medium"
     });
   }
 
   showFailureNotification() {
     TemporaryNotification.show("Failed to save item. Please try again.", {
       type: "failure",
-      duration: TemporaryNotificationLongDuration
+      duration: "long"
     });
   }
 
@@ -39,7 +38,7 @@ export class TemporaryNotificationComponent {
     console.log("Showing notification with action button");
     TemporaryNotification.show("Item deleted", {
       type: "basic",
-      duration: TemporaryNotificationLongDuration,
+      duration: "long",
       actionText: "Undo",
       action: () => {
         console.log("🔥 Action button clicked! Undo action triggered");
@@ -117,7 +116,7 @@ export class TemporaryNotificationComponent {
   showTopPositionedNotification() {
     TemporaryNotification.show("This would appear at the top with a separate controller", {
       type: "basic",
-      duration: TemporaryNotificationMediumDuration
+      duration: "medium"
     });
   }
 
