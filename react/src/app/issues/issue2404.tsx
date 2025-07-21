@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GoabInput } from "@abgov/ui-components-react";
+import { GoabInput } from "@abgov/react-components";
 
 export default function Issue2404() {
   const [clickEvents, setClickEvents] = useState<string[]>([]);
@@ -7,7 +7,7 @@ export default function Issue2404() {
   const addClickEvent = (message: string) => {
     const timestamp = new Date().toLocaleTimeString();
     const newEvent = `[${timestamp}] ${message}`;
-    
+
     setClickEvents(prev => {
       const updated = [newEvent, ...prev];
       // Keep only the last 10 events

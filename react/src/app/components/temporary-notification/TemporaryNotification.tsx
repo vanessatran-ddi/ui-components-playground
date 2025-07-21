@@ -1,5 +1,5 @@
 import { GoabTemporaryNotificationCtrl } from "@abgov/react-components";
-import { TemporaryNotification, TemporaryNotificationLongDuration, TemporaryNotificationMediumDuration } from "@abgov/ui-components-common";
+import { TemporaryNotification } from "@abgov/ui-components-common";
 
 export const TemporaryNotificationPage = () => {
   const showBasicNotification = () => {
@@ -12,14 +12,14 @@ export const TemporaryNotificationPage = () => {
   const showSuccessNotification = () => {
     TemporaryNotification.show("Item saved successfully!", {
       type: "success",
-      duration: TemporaryNotificationMediumDuration
+      duration: "medium"
     });
   };
 
   const showFailureNotification = () => {
     TemporaryNotification.show("Failed to save item. Please try again.", {
       type: "failure",
-      duration: TemporaryNotificationLongDuration
+      duration: "long"
     });
   };
 
@@ -27,7 +27,7 @@ export const TemporaryNotificationPage = () => {
     console.log("Showing notification with action button");
     TemporaryNotification.show("Item deleted", {
       type: "basic",
-      duration: TemporaryNotificationLongDuration,
+      duration: "long",
       actionText: "Undo",
       action: () => {
         console.log("🔥 Action button clicked! Undo action triggered");
@@ -137,12 +137,8 @@ export const TemporaryNotificationPage = () => {
   const showTopNotification = () => {
     TemporaryNotification.show("This would appear at the top with a separate controller", {
       type: "basic",
-      duration: TemporaryNotificationMediumDuration
+      duration: "medium"
     });
-  };
-
-  const onStaticActionClick = () => {
-    console.log("🎯 Static notification action button clicked!");
   };
 
   return (
