@@ -1,0 +1,48 @@
+<h1>Issue-2768: Dynamic Disabled State for Radio Group</h1>
+
+<p>This example demonstrates the ability to dynamically enable/disable a radio group after page load.</p>
+
+<goab-button type="primary" (onClick)="toggleDisabled()">
+  {{ radioDisabled ? 'Enable' : 'Disable' }} Radio Group
+</goab-button>
+
+<br><br>
+
+<goab-form-item label="Select your preference" labelsize="large">
+  <goab-radio-group
+    name="preference"
+    [disabled]="radioDisabled"
+    [value]="selectedValue"
+    (onChange)="handleRadioChange($event)">
+    <goab-radio-item value="option1" label="Option 1"></goab-radio-item>
+    <goab-radio-item value="option2" label="Option 2"></goab-radio-item>
+    <goab-radio-item value="option3" label="Option 3"></goab-radio-item>
+  </goab-radio-group>
+</goab-form-item>
+
+<p>Disabled State: {{ radioDisabled ? 'Disabled' : 'Enabled' }}</p>
+<p>Selected Value: {{ selectedValue || 'None selected' }}</p>
+
+<hr>
+
+<h2>Method 2: FormControl Approach</h2>
+<p>Using FormControl.enable() and FormControl.disable() methods with reactive forms.</p>
+
+<goab-button type="secondary" (onClick)="toggleFormControlDisabled()">
+  {{ radioFormControl.disabled ? 'Enable' : 'Disable' }} FormControl Radio Group
+</goab-button>
+
+<br><br>
+
+<goab-form-item label="Select your preference (FormControl)">
+  <goab-radio-group
+    name="preferenceFormControl"
+    [formControl]="radioFormControl">
+    <goab-radio-item value="optionA" label="Option A"></goab-radio-item>
+    <goab-radio-item value="optionB" label="Option B"></goab-radio-item>
+    <goab-radio-item value="optionC" label="Option C"></goab-radio-item>
+  </goab-radio-group>
+</goab-form-item>
+
+<p>FormControl Disabled State: {{ radioFormControl.disabled ? 'Disabled' : 'Enabled' }}</p>
+<p>FormControl Selected Value: {{ radioFormControl.value || 'None selected' }}</p>
