@@ -28,6 +28,7 @@ export function App() {
               <Link to="/1216">Issue 1216</Link>
               <Link to="/2404">2404 Angular Input TrailingIcon Fix</Link>
               <Link to="/1769">1769 autocomplete property</Link>
+              <Link to="/2768">2768 Radio dynamic disabled state</Link>
               <Link to="/2772">2772 align on input</Link>
               <Link to="/2789">2789 width rem percentage</Link>
               <Link to="/2574">2574 Banner hides pop over safari</Link>
@@ -45,6 +46,7 @@ export function App() {
               <Link to="/public-form">Public Form</Link>
               <Link to="/public-form-navigation">Navigation Test (Issue 1)</Link>
               <Link to="/public-form-accessibility">Accessibility Test (Issue 2)</Link>
+              <Link to="/2827">Issue 2827</Link>
             </GoabSideMenuGroup>
             {/* Add links here */}
           </GoabSideMenu>

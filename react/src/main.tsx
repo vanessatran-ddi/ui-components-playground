@@ -16,9 +16,11 @@ import { Issue1216 } from "./app/issues/issue1216";
 import Issue2404 from "./app/issues/issue2404";
 import { Issue2789 } from "./app/issues/issue2789";
 import { Issue1769 } from "./app/issues/issue1769";
+import { Issue2768 } from "./app/issues/issue2768";
 import { Issue2574 } from "./app/issues/issue2574";
 import FormTest from "./app/public-form/ThomasPublicForm";
 import { SimplePublicFormExample } from "./app/public-form/SimplePublicFormExample";
+import { Issue2827 } from "./app/public-form/issue2827";
 import { PublicFormNavigationTest } from "./app/public-form/PublicFormNavigationTest";
 import { PublicFormAccessibilityTest } from "./app/public-form/PublicFormAccessibilityTest";
 
@@ -42,11 +44,13 @@ root.render(
           <Route path="/2772" element={<Issue2772/>}></Route>
           <Route path="/2789" element={<Issue2789/>}></Route>
           <Route path="/1769" element={<Issue1769/>}></Route>
+          <Route path="/2768" element={<Issue2768/>}></Route>
           <Route path={"/public-form"} element={<SimplePublicFormExample/>}></Route>
           <Route path={"/public-form-navigation"} element={<PublicFormNavigationTest/>}></Route>
           <Route path={"/public-form-accessibility"} element={<PublicFormAccessibilityTest/>}></Route>
           <Route path={"/1216"} element={<Issue1216/>}></Route>
           <Route path={"/public-form-thomas"} element={<FormTest/>}></Route>
+          <Route path={"/2827"} element={<Issue2827/>}></Route>
           <Route path={"/2574"} element={<Issue2574/>}></Route>
           {/** Add more routes here */}
 

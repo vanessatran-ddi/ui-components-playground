@@ -71,8 +71,11 @@ import { PublicFormNavigationTestComponent } from "./public-form/public-form-nav
 import { PublicFormAccessibilityTestComponent } from "./public-form/public-form-accessibility-test.component";
 import { Issue1769Component } from "./issues/1769/issue-1769.component";
 import { Issue2772Component } from "./issues/2772/issue-2772.component";
-import { SupportOrderDetailsComponent } from "./public-form/SupportOrderDetails";
+import { Issue2768Component } from "./issues/2768/issue-2768.component";
 import { PublicFormSubFormExampleComponent } from "./public-form/PublicFormSubFormExample";
+import { Issue2827Component } from "./public-form/issue-2827/issue-2827.component";
+import { Issue2827SubformComponent } from "./public-form/issue-2827/issue-2827-subform.component";
+import { SupportOrderDetailsComponent } from "./public-form/SupportOrderDetails";
 
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
@@ -141,12 +144,16 @@ const routes: Routes = [
   { path: "2404", component: Issue2404Component},
   { path: "2789", component: Issue2789Component},
   { path: "1769", component: Issue1769Component},
+  { path: "2768", component: Issue2768Component},
   { path: "2772", component: Issue2772Component},
   { path: "public-form", component: PublicFormComponent},
   { path: "public-form-navigation", component: PublicFormNavigationTestComponent},
   { path: "public-form-accessibility", component: PublicFormAccessibilityTestComponent},
   { path: "support-order-details", component: SupportOrderDetailsComponent},
   { path: "public-form-subform-example", component: PublicFormSubFormExampleComponent},
+  { path: "public-form/2827", component: Issue2827Component},
+  { path: "public-form/2827-subform", component: Issue2827SubformComponent},
+  { path: "support-order-details", component: SupportOrderDetailsComponent},
   { path: "", redirectTo: "/", pathMatch: "full" },
 ];
 
