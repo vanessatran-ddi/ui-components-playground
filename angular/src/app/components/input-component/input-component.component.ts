@@ -27,7 +27,6 @@ interface User {
     GoabDatePicker,
     GoabBadge,
     GoabFormItem,
-    JsonPipe,
     ReactiveFormsModule,
     FormsModule,
     GoabFormItemSlot,
@@ -42,19 +41,12 @@ export class InputComponentComponent implements OnInit {
   example2Form: FormGroup;
   percentageValue: number|null = null;
 
-  onPercentageChange(details: GoabInputOnChangeDetail<number>) {
+  onPercentageChange(details: GoabInputOnChangeDetail<string>) {
     console.log("Percentage changed:", details);
-    this.percentageValue = details.value;
+    this.percentageValue = details.value ? parseFloat(details.value) : null;
   }
 
   handleExample1(event: GoabInputOnChangeDetail<string>) {
-  percentageValue: number|null = null;
-
-  onPercentageChange(details: GoabInputOnChangeDetail) {
-    console.log("Percentage changed:", details);
-    this.percentageValue = +details.value;
-  }
-  handleExample1(event: GoabInputOnChangeDetail) {
     this.example1 = event.value;
   }
 
@@ -96,9 +88,9 @@ export class InputComponentComponent implements OnInit {
   getUser() {
     console.log("getting user");
     return {
-      firstName: getFirstName(),
-      lastName: getLastName(),
-      age: getAge(),
+      firstName: this.getFirstName(),
+      lastName: this.getLastName(),
+      age: this.getAge(),
     };
   }
 
@@ -146,21 +138,22 @@ export class InputComponentComponent implements OnInit {
   handleTrailingIconClick() {
     console.log("handleTrailingIconClick");
   }
+
+  private getFirstName(): string {
+    const index = Math.floor(Math.random() * (firstNames.length - 1));
+    return firstNames[index];
+  }
+
+  private getLastName(): string {
+    const index = Math.floor(Math.random() * (lastNames.length - 1));
+    return lastNames[index];
+  }
+
+  private getAge(): number {
+    return 18 + Math.floor(Math.random() * 60);
+  }
 }
 
-function getFirstName(): string {
-  const index = Math.floor(Math.random() * (firstNames.length - 1));
-  return firstNames[index];
-}
-
-function getLastName(): string {
-  const index = Math.floor(Math.random() * (lastNames.length - 1));
-  return lastNames[index];
-}
-
-function getAge(): number {
-  return 18 + Math.floor(Math.random() * 60);
-}
 
 const firstNames = [
   "James",
