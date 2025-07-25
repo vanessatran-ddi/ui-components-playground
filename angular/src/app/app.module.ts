@@ -23,7 +23,7 @@ import "@abgov/web-components";
 // ******
 
 @NgModule({
-  declarations: [AppComponent, SupportOrderDetailsComponent],
+  declarations: [AppComponent],
   imports: [
     AngularComponentsModule,
     AppRoutingModule,
@@ -38,6 +38,7 @@ import "@abgov/web-components";
     GoabAppFooter,
     GoabAppHeader,
     PublicFormSubFormExampleComponent,
+    SupportOrderDetailsComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
