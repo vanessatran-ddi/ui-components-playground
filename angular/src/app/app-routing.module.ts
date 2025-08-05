@@ -87,6 +87,7 @@ import { Issue2991Component } from "./issues/2991/issue-2991.component";
 import { MenuButtonComponent } from "./components/menu-button/menu-button.component";
 import { Issue2948Component } from "./issues/2948/2948.component";
 import { Issue2934Component } from "./issues/2934/issue-2934.component";
+import { Issue2939Component } from "./issues/2939/issue-2939.component";
 
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
@@ -164,6 +165,7 @@ const routes: Routes = [
   { path: "2991", component: Issue2991Component},
   { path: "3001", component: Issue3001Component},
   { path: "2934", component: Issue2934Component},
+  { path: "2939", component: Issue2939Component},
   { path: "public-form", component: PublicFormComponent},
   { path: "public-form-navigation", component: PublicFormNavigationTestComponent},
   { path: "public-form-accessibility", component: PublicFormAccessibilityTestComponent},

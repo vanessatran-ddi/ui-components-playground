@@ -1,0 +1,81 @@
+<form>
+  <h1>Issue #2852: Can't use space in a filterable Dropdown</h1>
+  
+  <!-- Test Case 1: Basic filterable dropdown -->
+  <div style="margin-bottom: 2rem;">
+    <h2>Test Case 1: Basic Filterable Dropdown</h2>
+    <p>Try typing a value with spaces in this filterable dropdown. The space key should work for typing.</p>
+    
+    <goab-form-item label="Choose a city with spaces">
+      <goab-dropdown
+        name="city-basic"
+        placeholder="Type a city name..."
+        filterable
+        (onChange)="onChange($event)">
+        <goab-dropdown-item value="New York">New York</goab-dropdown-item>
+        <goab-dropdown-item value="Los Angeles">Los Angeles</goab-dropdown-item>
+        <goab-dropdown-item value="San Francisco">San Francisco</goab-dropdown-item>
+        <goab-dropdown-item value="Las Vegas">Las Vegas</goab-dropdown-item>
+        <goab-dropdown-item value="Salt Lake City">Salt Lake City</goab-dropdown-item>
+      </goab-dropdown>
+    </goab-form-item>
+    
+    <div>Selected value: {{ selectedValue }}</div>
+  </div>
+
+  <goab-divider></goab-divider>
+
+  <!-- Test Case 2: Filterable dropdown with longer options -->
+  <div style="margin-bottom: 2rem;">
+    <h2>Test Case 2: Filterable Dropdown with Multi-word Options</h2>
+    <p>Test typing multi-word province/territory names with spaces.</p>
+    
+    <goab-form-item label="Choose a Canadian Province/Territory">
+      <goab-dropdown
+        name="province"
+        placeholder="Type a province or territory..."
+        filterable
+        (onChange)="onChange($event)">
+        <goab-dropdown-item value="British Columbia">British Columbia</goab-dropdown-item>
+        <goab-dropdown-item value="New Brunswick">New Brunswick</goab-dropdown-item>
+        <goab-dropdown-item value="Newfoundland and Labrador">Newfoundland and Labrador</goab-dropdown-item>
+        <goab-dropdown-item value="Northwest Territories">Northwest Territories</goab-dropdown-item>
+        <goab-dropdown-item value="Nova Scotia">Nova Scotia</goab-dropdown-item>
+        <goab-dropdown-item value="Prince Edward Island">Prince Edward Island</goab-dropdown-item>
+      </goab-dropdown>
+    </goab-form-item>
+  </div>
+
+  <goab-divider></goab-divider>
+
+  <!-- Test Case 3: Regular dropdown (non-filterable) for comparison -->
+  <div style="margin-bottom: 2rem;">
+    <h2>Test Case 3: Regular Dropdown (Non-filterable)</h2>
+    <p>This dropdown is NOT filterable. Space key should open/close the dropdown.</p>
+    
+    <goab-form-item label="Choose an option (non-filterable)">
+      <goab-dropdown
+        name="regular"
+        placeholder="Select an option..."
+        (onChange)="onChange($event)">
+        <goab-dropdown-item value="Option One">Option One</goab-dropdown-item>
+        <goab-dropdown-item value="Option Two">Option Two</goab-dropdown-item>
+        <goab-dropdown-item value="Option Three">Option Three</goab-dropdown-item>
+      </goab-dropdown>
+    </goab-form-item>
+  </div>
+
+  <goab-divider></goab-divider>
+
+  <!-- Test Case 4: Testing instructions -->
+  <div>
+    <h2>Testing Instructions</h2>
+    <goab-callout type="information" heading="How to test this fix">
+      <ul>
+        <li><strong>Filterable dropdowns (Test Cases 1 & 2):</strong> Click to focus, then type text with spaces. The space key should add spaces to your input, not open/close the dropdown menu.</li>
+        <li><strong>Regular dropdown (Test Case 3):</strong> Focus the dropdown and press the space key. It should open the dropdown menu.</li>
+        <li><strong>Expected behavior:</strong> Space key should behave differently based on whether the dropdown is filterable or not.</li>
+      </ul>
+    </goab-callout>
+  </div>
+</form>

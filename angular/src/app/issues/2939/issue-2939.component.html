@@ -1,0 +1,31 @@
+<h1>Issue 2939 - Feedback Link Test</h1>
+
+<p>Testing whether feedback links appear correctly based on provided handlers/URLs.</p>
+
+<h2>Test 1: No feedback handler or URL (should NOT show feedback link)</h2>
+<goab-microsite-header type="alpha" version="v1.0.0"></goab-microsite-header>
+
+<h2>Test 2: With feedbackUrl (SHOULD show feedback link)</h2>
+<goab-microsite-header type="alpha" version="v1.0.0" feedbackUrl="https://example.com/feedback"></goab-microsite-header>
+
+<h2>Test 3: With onFeedbackClick handler (SHOULD show feedback link)</h2>
+<goab-microsite-header type="alpha" version="v1.0.0" (onFeedbackClick)="onFeedbackClick()"></goab-microsite-header>
+
+<h2>Test 4: With both feedbackUrl and onFeedbackClick (SHOULD show feedback link)</h2>
+<goab-microsite-header type="alpha" version="v1.0.0" feedbackUrl="https://example.com/feedback" (onFeedbackClick)="onFeedbackClick()"></goab-microsite-header>
+
+<h2>Test 5: Empty feedbackUrl (should NOT show feedback link)</h2>
+<goab-microsite-header type="alpha" version="v1.0.0" feedbackUrl=""></goab-microsite-header>
+
+<div style="margin-top: 2rem; padding: 1rem; background-color: #f5f5f5; border-radius: 4px;">
+  <h3>Expected Behavior:</h3>
+  <ul>
+    <li><strong>Test 1:</strong> No feedback link should appear</li>
+    <li><strong>Test 2:</strong> Feedback link should appear and navigate to the URL</li>
+    <li><strong>Test 3:</strong> Feedback link should appear and trigger the click handler</li>
+    <li><strong>Test 4:</strong> Feedback link should appear (behavior may depend on implementation)</li>
+    <li><strong>Test 5:</strong> No feedback link should appear (empty URL)</li>
+  </ul>
+  <p><strong>Bug:</strong> If Test 1 or Test 5 show feedback links, the issue is not fixed.</p>
+  <p><strong>Key Issue:</strong> The Angular wrapper uses <code>onFeedbackClick.observed</code> to detect if someone is listening to the event, which might be true even if no actual handler is provided.</p>
+</div>
