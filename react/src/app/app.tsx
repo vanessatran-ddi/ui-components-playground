@@ -58,6 +58,7 @@ export function App() {
             <Link to="/temporary-notification">Temporary Notification</Link>
             <Link to="/Text">Text</Link>
             <Link to="/menu-button">Menu Button</Link>
+            <Link to="/checkbox-list">Checkbox List</Link>
             <GoabSideMenuGroup heading={"Public Form"}>
               <Link to="/public-form">Public Form</Link>
               <Link to="/public-form-navigation">Navigation Test (Issue 1)</Link>

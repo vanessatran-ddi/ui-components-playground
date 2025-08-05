@@ -62,7 +62,7 @@ export class Issue2827Component extends PublicFormController<Page> {
       ]);
       if (!isValid) return;
 
-      this.complete();
+      // this.complete();
     }
   }
 

@@ -10,6 +10,7 @@ import { ButtonGroupComponent } from "./components/button-group/button-group.com
 import { Bug1734 } from "./components/bugs/bug-1734";
 import { CalloutComponent } from "./components/callout/callout.component";
 import { CheckboxComponent } from "./components/checkbox/checkbox.component";
+import { CheckboxListComponent } from "./components/checkbox-list/checkbox-list.component";
 import { ChipComponent } from "./components/chip/chip.component";
 import { CircularProgressComponent } from "./components/circular-progress/circular-progress.component";
 import { ColumnLayoutComponent } from "./components/column-layout/column-layout.component";
@@ -100,6 +101,7 @@ const routes: Routes = [
   { path: "button-group", component: ButtonGroupComponent },
   { path: "callout", component: CalloutComponent },
   { path: "checkbox", component: CheckboxComponent },
+  { path: "checkbox-list", component: CheckboxListComponent },
   { path: "chip", component: ChipComponent },
   { path: "circular-progress", component: CircularProgressComponent },
   { path: "column-layout", component: ColumnLayoutComponent },
