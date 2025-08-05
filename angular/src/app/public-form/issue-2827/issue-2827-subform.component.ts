@@ -241,7 +241,7 @@ export class Issue2827SubformComponent implements OnInit {
       requiredValidator("Please enter the dependent's full name."),
     ]);
     if (isValid) {
-      this._childFormController.completeSubform();
+      // this._childFormController.completeSubform();
       // this._childFormController.continueTo("2B.3.Review");
     }
   }

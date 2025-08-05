@@ -1,0 +1,234 @@
+<h1>Checkbox List</h1>
+
+<h2>Basic Usage</h2>
+<goab-form-item label="Contact Preferences" helpText="Select how you'd like to be contacted">
+  <goab-checkbox-list
+    name="contactPrefs"
+    [value]="selectedValues"
+    (onChange)="onChange($event)">
+    <goab-checkbox-list-item value="email" text="Email"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="phone" text="Phone"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="sms" text="SMS"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="mail" text="Mail"></goab-checkbox-list-item>
+  </goab-checkbox-list>
+</goab-form-item>
+<p><strong>Selected values:</strong> {{ selectedValues | json }}</p>
+
+<hr>
+
+<h2>With Initial Values</h2>
+<goab-form-item label="Communication Methods" helpText="Choose your preferred communication methods">
+  <goab-checkbox-list
+    name="commMethods"
+    [value]="selectedValues2"
+    (onChange)="onChange2($event)">
+    <goab-checkbox-list-item value="email" text="Email"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="phone" text="Phone Call"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="sms" text="Text Message"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="mail" text="Physical Mail"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="fax" text="Fax"></goab-checkbox-list-item>
+  </goab-checkbox-list>
+</goab-form-item>
+<p><strong>Selected values:</strong> {{ selectedValues2 | json }}</p>
+
+<hr>
+
+<h2>Horizontal Orientation</h2>
+<goab-form-item label="Yes/No Questions" helpText="Select all that apply">
+  <goab-checkbox-list
+    name="yesNoQuestions"
+    orientation="horizontal"
+    [value]="selectedValues3"
+    (onChange)="onChange3($event)">
+    <goab-checkbox-list-item value="option1" text="Option 1"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="option2" text="Option 2"></goab-checkbox-list-item>
+  </goab-checkbox-list>
+</goab-form-item>
+<p><strong>Selected values:</strong> {{ selectedValues3 | json }}</p>
+
+<hr>
+
+<h2>With Disabled State</h2>
+<goab-form-item label="Disabled Options" helpText="This checkbox list is disabled">
+  <goab-checkbox-list
+    name="disabledOptions"
+    [disabled]="true"
+    [value]="selectedValues4"
+    (onChange)="onChange4($event)">
+    <goab-checkbox-list-item value="option1" text="Option 1"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="option2" text="Option 2"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="option3" text="Option 3"></goab-checkbox-list-item>
+  </goab-checkbox-list>
+</goab-form-item>
+<p><strong>Selected values:</strong> {{ selectedValues4 | json }}</p>
+
+<hr>
+
+<h2>With Error State</h2>
+<goab-form-item label="Required Selection" helpText="You must select at least one option" error="Please select at least one option">
+  <goab-checkbox-list
+    name="requiredSelection"
+    [error]="true"
+    [value]="selectedValues3"
+    (onChange)="onChange3($event)">
+    <goab-checkbox-list-item value="option1" text="Option 1"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="option2" text="Option 2"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="option3" text="Option 3"></goab-checkbox-list-item>
+  </goab-checkbox-list>
+</goab-form-item>
+
+<hr>
+
+<h2>Individual Disabled Items</h2>
+<goab-form-item label="Mixed Availability" helpText="Some options may not be available">
+  <goab-checkbox-list
+    name="mixedAvailability"
+    [value]="selectedValues3"
+    (onChange)="onChange3($event)">
+    <goab-checkbox-list-item value="available1" text="Available Option 1"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="available2" text="Available Option 2"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="unavailable1" text="Unavailable Option 1" [disabled]="true"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="unavailable2" text="Unavailable Option 2" [disabled]="true"></goab-checkbox-list-item>
+  </goab-checkbox-list>
+</goab-form-item>
+
+<hr>
+
+<h2>Reactive Form Integration</h2>
+<form [formGroup]="form" (ngSubmit)="onFormSubmit()">
+  <goab-form-item label="Contact Preferences" helpText="Select how you'd like to be contacted">
+    <goab-checkbox-list formControlName="contactPreferences" name="contactPreferences">
+      <goab-checkbox-list-item value="email" text="Email"></goab-checkbox-list-item>
+      <goab-checkbox-list-item value="phone" text="Phone"></goab-checkbox-list-item>
+      <goab-checkbox-list-item value="sms" text="SMS"></goab-checkbox-list-item>
+      <goab-checkbox-list-item value="mail" text="Mail"></goab-checkbox-list-item>
+    </goab-checkbox-list>
+  </goab-form-item>
+
+  <goab-form-item label="Interests" helpText="Select your interests">
+    <goab-checkbox-list formControlName="interests" name="interests">
+      <goab-checkbox-list-item value="sports" text="Sports"></goab-checkbox-list-item>
+      <goab-checkbox-list-item value="music" text="Music"></goab-checkbox-list-item>
+      <goab-checkbox-list-item value="movies" text="Movies"></goab-checkbox-list-item>
+      <goab-checkbox-list-item value="books" text="Books"></goab-checkbox-list-item>
+      <goab-checkbox-list-item value="travel" text="Travel"></goab-checkbox-list-item>
+    </goab-checkbox-list>
+  </goab-form-item>
+
+  <div style="margin-top: 1rem; gap: 1rem; display: flex;">
+    <button type="submit" style="padding: 0.5rem 1rem;">Submit Form</button>
+    <button type="button" (click)="resetForm()" style="padding: 0.5rem 1rem;">Reset Form</button>
+    <button type="button" (click)="setFormValues()" style="padding: 0.5rem 1rem;">Set Sample Values</button>
+  </div>
+
+  <div style="margin-top: 1rem;">
+    <p><strong>Form Values:</strong> {{ form.value | json }}</p>
+    <p><strong>Form Valid:</strong> {{ form.valid }}</p>
+  </div>
+</form>
+
+<hr>
+
+<h2>Standalone Form Control</h2>
+<goab-form-item label="Standalone Control" helpText="Using a standalone FormControl">
+  <goab-checkbox-list [formControl]="checkboxListControl" name="standaloneControl">
+    <goab-checkbox-list-item value="email" text="Email"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="phone" text="Phone"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="sms" text="SMS"></goab-checkbox-list-item>
+  </goab-checkbox-list>
+</goab-form-item>
+<p><strong>Control Value:</strong> {{ checkboxListControl.value | json }}</p>
+
+<hr>
+
+<h2>With Max Width</h2>
+<goab-form-item label="Constrained Width" helpText="This checkbox list has a maximum width">
+  <goab-checkbox-list
+    name="constrainedWidth"
+    maxWidth="400px"
+    [value]="selectedValues3"
+    (onChange)="onChange3($event)">
+    <goab-checkbox-list-item value="option1" text="This is a very long option text that might wrap"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="option2" text="Another long option to demonstrate wrapping behavior"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="option3" text="Short option"></goab-checkbox-list-item>
+  </goab-checkbox-list>
+</goab-form-item>
+
+<hr>
+
+<h2>ngModel - Two-Way Data Binding</h2>
+<goab-form-item label="Two-Way Binding with ngModel" helpText="This demonstrates Angular's two-way data binding">
+  <goab-checkbox-list
+    name="ngModelExample"
+    [(ngModel)]="ngModelValues">
+    <goab-checkbox-list-item value="email" text="Email"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="phone" text="Phone"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="sms" text="SMS"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="mail" text="Physical Mail"></goab-checkbox-list-item>
+  </goab-checkbox-list>
+</goab-form-item>
+<p><strong>ngModel Values:</strong> {{ ngModelValues | json }}</p>
+<div style="margin-top: 1rem; gap: 1rem; display: flex;">
+  <button type="button" (click)="ngModelValues = ['email', 'sms']" style="padding: 0.5rem 1rem;">Set to Email + SMS</button>
+  <button type="button" (click)="ngModelValues = []" style="padding: 0.5rem 1rem;">Clear All</button>
+  <button type="button" (click)="ngModelValues = ['email', 'phone', 'sms', 'mail']" style="padding: 0.5rem 1rem;">Select All</button>
+</div>
+
+<hr>
+
+<h2>Template-Driven Form with ngModel</h2>
+<form #templateForm="ngForm" (ngSubmit)="onTemplateFormSubmit(templateForm.value)">
+  <goab-form-item label="Notification Preferences" helpText="Select your notification preferences">
+    <goab-checkbox-list
+      name="notifications"
+      [(ngModel)]="templateDrivenFormData.notifications"
+      #notificationsField="ngModel">
+      <goab-checkbox-list-item value="email" text="Email Notifications"></goab-checkbox-list-item>
+      <goab-checkbox-list-item value="push" text="Push Notifications"></goab-checkbox-list-item>
+      <goab-checkbox-list-item value="sms" text="SMS Notifications"></goab-checkbox-list-item>
+      <goab-checkbox-list-item value="newsletter" text="Newsletter"></goab-checkbox-list-item>
+    </goab-checkbox-list>
+  </goab-form-item>
+
+  <goab-form-item label="Permission Settings" helpText="Select permissions to grant">
+    <goab-checkbox-list
+      name="permissions"
+      [(ngModel)]="templateDrivenFormData.permissions"
+      #permissionsField="ngModel">
+      <goab-checkbox-list-item value="read" text="Read Access"></goab-checkbox-list-item>
+      <goab-checkbox-list-item value="write" text="Write Access"></goab-checkbox-list-item>
+      <goab-checkbox-list-item value="delete" text="Delete Access"></goab-checkbox-list-item>
+      <goab-checkbox-list-item value="admin" text="Admin Access"></goab-checkbox-list-item>
+    </goab-checkbox-list>
+  </goab-form-item>
+
+  <div style="margin-top: 1rem; gap: 1rem; display: flex;">
+    <button type="submit" style="padding: 0.5rem 1rem;">Submit Template Form</button>
+    <button type="button" (click)="templateForm.resetForm()" style="padding: 0.5rem 1rem;">Reset Template Form</button>
+  </div>
+
+  <div style="margin-top: 1rem;">
+    <p><strong>Template Form Data:</strong> {{ templateDrivenFormData | json }}</p>
+    <p><strong>Form Valid:</strong> {{ templateForm.valid }}</p>
+    <p><strong>Form Touched:</strong> {{ templateForm.touched }}</p>
+    <p><strong>Notifications Field Valid:</strong> {{ notificationsField.valid }}</p>
+    <p><strong>Permissions Field Valid:</strong> {{ permissionsField.valid }}</p>
+  </div>
+</form>
+
+<hr>
+
+<h2>With Margins</h2>
+<goab-form-item label="Margin Spacing" helpText="Testing margin properties">
+  <goab-checkbox-list
+    name="marginTest"
+    mt="l"
+    mb="xl"
+    ml="m"
+    mr="s"
+    [value]="selectedValues3"
+    (onChange)="onChange3($event)">
+    <goab-checkbox-list-item value="option1" text="Option 1"></goab-checkbox-list-item>
+    <goab-checkbox-list-item value="option2" text="Option 2"></goab-checkbox-list-item>
+  </goab-checkbox-list>
+</goab-form-item>

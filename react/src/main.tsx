@@ -11,6 +11,7 @@ import { Issue2441 } from "./app/issues/issue2441";
 import { Issue2772 } from "./app/issues/issue2772";
 import { TemporaryNotificationPage } from "./app/components/temporary-notification/TemporaryNotification";
 import { TextPage } from "./app/components/text/Text";
+import { CheckboxListPage } from "./app/components/checkbox-list/CheckboxList";
 import { Drawer } from "./app/drawer/Drawer";
 import { Issue1216 } from "./app/issues/issue1216";
 import Issue2404 from "./app/issues/issue2404";
@@ -39,6 +40,7 @@ root.render(
           <Route path={"/drawer"} element={<Drawer/>}> </Route>
           <Route path={"/temporary-notification"} element={<TemporaryNotificationPage/>}></Route>
           <Route path={"/text"} element={<TextPage/>}></Route>
+          <Route path={"/checkbox-list"} element={<CheckboxListPage/>}></Route>
           <Route path={"/2446"} element={<Issue2446/>}></Route>
           <Route path={"/2408"} element={<Issue2408/>}></Route>
           <Route path={"/2441"} element={<Issue2441/>}></Route>
