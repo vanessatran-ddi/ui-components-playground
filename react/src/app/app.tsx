@@ -32,7 +32,7 @@ export function App() {
               <Link to="/2772">2772 align on input</Link>
               <Link to="/2789">2789 width rem percentage</Link>
               <Link to="/2829">2829 modal focus fix</Link>
-              <Link to="/2574">2574 Banner hides pop over safari</Link>
+              <Link to="/2547">2574 Banner hides pop over safari</Link>
               <Link to="/2720">2720 Change tab via link</Link>
             </GoabSideMenuGroup>
             <GoabSideMenuGroup heading="Components">

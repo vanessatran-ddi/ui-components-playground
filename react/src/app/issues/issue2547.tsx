@@ -6,7 +6,7 @@ import {
   GoabIcon, GoabMicrositeHeader,
 } from "@abgov/react-components";
 
-export const Issue2574 = () => {
+export const Issue2547 = () => {
   return (
     <>
       <GoabMicrositeHeader
