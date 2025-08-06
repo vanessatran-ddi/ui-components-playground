@@ -71,11 +71,10 @@ export const Issue2827 = () => {
         <GoabPublicFormPage
         id="first-step"
         heading="Issue 2827 Checkbox Step"
-        first={true}
         buttonText={"Continue to review"}
         onContinue={(e) => onContinue(e, "first-step")}>
 
-        <GoabFieldset mt="xl">
+        <GoabFieldset>
           <GoabFormItem label="First name">
             <GoabInput name="firstName"></GoabInput>
           </GoabFormItem>

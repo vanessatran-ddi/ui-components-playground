@@ -22,9 +22,9 @@ import { Issue2574 } from "./app/issues/issue2574";
 import { Issue2829 } from "./app/issues/issue2829";
 import FormTest from "./app/public-form/ThomasPublicForm";
 import { SimplePublicFormExample } from "./app/public-form/SimplePublicFormExample";
-import { Issue2827 } from "./app/public-form/issue2827";
 import { PublicFormNavigationTest } from "./app/public-form/PublicFormNavigationTest";
 import { PublicFormAccessibilityTest } from "./app/public-form/PublicFormAccessibilityTest";
+import { Issue2827 } from "./app/public-form/Issue2827";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
