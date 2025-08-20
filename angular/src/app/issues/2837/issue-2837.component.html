@@ -1,0 +1,103 @@
+<h2>Issue #2837: Leading and Trailing Content Support in Input/InputNumber</h2>
+
+<p><strong>Problem:</strong> trailingContent and leadingContent properties do not work as expected in Angular GoabInputNumber component.</p>
+<p><strong>Expected:</strong> Both string and template content should be supported for leading and trailing slots.</p>
+
+<div style="margin: 2rem 0;">
+  <h3>GoabInput Examples (Should Work)</h3>
+
+  <h4>String Content</h4>
+  <goab-input
+    placeholder="Input with string content"
+    leadingContent="$"
+    trailingContent=".00"
+    [(ngModel)]="inputValue">
+  </goab-input>
+
+  <h4>Template Content</h4>
+  <goab-input
+    placeholder="Input with template content"
+    [leadingContent]="leadingTemplate"
+    [trailingContent]="trailingTemplate"
+    [(ngModel)]="inputValue">
+  </goab-input>
+
+  <h4>No Content (Normal Input)</h4>
+  <goab-input
+    placeholder="Normal input without any content"
+    [(ngModel)]="inputValue">
+  </goab-input>
+
+  <ng-template #leadingTemplate>
+    <strong style="color: #0070f3;">$</strong>
+  </ng-template>
+
+  <ng-template #trailingTemplate>
+    <span style="color: #666; font-size: 0.9em;">CAD</span>
+  </ng-template>
+</div>
+
+<!--<div style="margin: 2rem 0;">-->
+<!--  <h3>GoabInputNumber Examples (Testing Bug)</h3>-->
+
+<!--  <h4>String Content</h4>-->
+<!--  <goab-input-number-->
+<!--    placeholder="Number input with string content"-->
+<!--    leadingContent="$"-->
+<!--    trailingContent=".00"-->
+<!--    [(ngModel)]="inputNumberValue">-->
+<!--  </goab-input-number>-->
+
+<!--  <h4>Template Content</h4>-->
+<!--  <goab-input-number-->
+<!--    placeholder="Number input with template content"-->
+<!--    [leadingContent]="numberLeadingTemplate"-->
+<!--    [trailingContent]="numberTrailingTemplate"-->
+<!--    [(ngModel)]="inputNumberValue">-->
+<!--  </goab-input-number>-->
+
+<!--  <ng-template #numberLeadingTemplate>-->
+<!--    <strong style="color: #e53e3e;">$</strong>-->
+<!--  </ng-template>-->
+
+<!--  <ng-template #numberTrailingTemplate>-->
+<!--    <span style="color: #38a169; font-weight: bold;">USD</span>-->
+<!--  </ng-template>-->
+
+<!--  <h4>No Content (Normal Input Number)</h4>-->
+<!--  <goab-input-number-->
+<!--    placeholder="Normal number input without any content"-->
+<!--    [(ngModel)]="inputNumberValue">-->
+<!--  </goab-input-number>-->
+
+<!--  <h4>Mixed Icons and Content</h4>-->
+<!--  <goab-input-number-->
+<!--    placeholder="Number with icon and content"-->
+<!--    leadingContent="$"-->
+<!--    leadingIcon="trash"-->
+<!--    trailingContent="per hour"-->
+<!--    [(ngModel)]="inputNumberValue">-->
+<!--  </goab-input-number>-->
+
+<!--  <goab-input-number-->
+<!--    placeholder="Number with content and icon"-->
+<!--    leadingContent="Rate: $"-->
+<!--    trailingIcon="desktop"-->
+<!--    [(ngModel)]="inputNumberValue">-->
+<!--  </goab-input-number>-->
+<!--</div>-->
+
+<div style="margin: 2rem 0; padding: 1rem; background: #f7fafc; border-left: 4px solid #4299e1;">
+  <h3>Testing Instructions</h3>
+  <ul>
+    <li>All inputs should display leading/trailing content properly</li>
+    <li>Template content should render with styling</li>
+    <li>String content should display as plain text</li>
+    <li>Mixed icons and content should work together</li>
+    <li>If any content is missing, the bug is reproduced</li>
+  </ul>
+
+  <p><strong>Current Values:</strong></p>
+  <p>Input Value: {{ inputValue }}</p>
+  <p>Input Number Value: {{ inputNumberValue }}</p>
+</div>

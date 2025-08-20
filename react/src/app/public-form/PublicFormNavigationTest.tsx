@@ -17,10 +17,10 @@ type Page = "question" | "page-a" | "page-b" | "summary";
 
 /**
  * Test for Issue 1: Missing Back Button After Form Path Change
- * 
+ *
  * Reproduction Steps:
  * 1. Choose "Yes" -> fill Page A -> complete form
- * 2. From summary, change to "No" 
+ * 2. From summary, change to "No"
  * 3. Verify Back button appears on Page B
  */
 export const PublicFormNavigationTest = () => {
@@ -83,7 +83,7 @@ export const PublicFormNavigationTest = () => {
   const validateQuestion = (e: Event): Page | undefined => {
     console.log("validateQuestion called with event:", e);
     const [isValid] = validate(e, "needs-services", []);
-    
+
     if (!isValid) {
       console.log("Validation failed, staying on current page");
       return undefined;
@@ -92,7 +92,7 @@ export const PublicFormNavigationTest = () => {
     const needsServices = (e as CustomEvent).detail?.state?.["needs-services"];
     const value = needsServices?.value;
     console.log("Question validation - value:", value);
-    
+
     if (value === "yes") {
       console.log("Navigating to page-a");
       return "page-a";
@@ -100,7 +100,7 @@ export const PublicFormNavigationTest = () => {
       console.log("Navigating to page-b");
       return "page-b";
     }
-    
+
     console.log("No value selected, staying on current page");
     return undefined;
   };
@@ -108,7 +108,7 @@ export const PublicFormNavigationTest = () => {
   return (
     <div>
       <h1>Public Form Navigation Test</h1>
-      
+
       <GoabCallout type="information" mb="l">
         <strong>Test Instructions:</strong>
         <ol>
@@ -132,7 +132,6 @@ export const PublicFormNavigationTest = () => {
           id="question"
           heading="Do you need additional services?"
           buttonText="Continue"
-          first={true}
           onContinue={(e) => onContinue(e, "question")}
         >
           <GoabFieldset>

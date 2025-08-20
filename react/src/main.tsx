@@ -25,6 +25,7 @@ import { PublicFormNavigationTest } from "./app/public-form/PublicFormNavigation
 import { PublicFormAccessibilityTest } from "./app/public-form/PublicFormAccessibilityTest";
 import { Issue2827 } from "./app/public-form/Issue2827";
 import { Issue2547 } from "./app/issues/issue2547";
+import { PR2969TestForm } from "./app/public-form/PR2969TestForm";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -56,6 +57,7 @@ root.render(
           <Route path={"/public-form-thomas"} element={<FormTest/>}></Route>
           <Route path={"/2827"} element={<Issue2827/>}></Route>
           <Route path={"/2547"} element={<Issue2547/>}></Route>
+          <Route path={"/pr2969-test"} element={<PR2969TestForm/>}></Route>
           {/** Add more routes here */}
 
         </Route>
