@@ -84,12 +84,16 @@
     <h2>Click Events Log</h2>
     <p>When you click on the icons with handlers, they should appear here:</p>
     <div class="event-log">
-      <div *ngFor="let event of clickEvents" class="event-item">
-        {{ event }}
-      </div>
-      <div *ngIf="clickEvents.length === 0" class="no-events">
-        No click events yet. Try clicking the icons with handlers above.
-      </div>
+      @for (event of clickEvents; track event) {
+        <div class="event-item">
+          {{ event }}
+        </div>
+      }
+      @if (clickEvents.length === 0) {
+        <div class="no-events">
+          No click events yet. Try clicking the icons with handlers above.
+        </div>
+      }
     </div>
   </div>
 

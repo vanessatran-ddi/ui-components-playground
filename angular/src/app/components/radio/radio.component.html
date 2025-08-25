@@ -91,13 +91,17 @@
 </goab-radio-group>
 
 <h2>Dynamic</h2>
-<div *ngFor="let item of dynamicItems">
-  <h4>{{ item.name }}</h4>
-  <goab-radio-group [name]="item.name" [value]="item.value" (onChange)="onChange($event)">
-    <goab-radio-item *ngFor="let option of item.options" [value]="option.value" [label]="option.value">
-    </goab-radio-item>
-  </goab-radio-group>
-</div>
+@for (item of dynamicItems; track item) {
+  <div>
+    <h4>{{ item.name }}</h4>
+    <goab-radio-group [name]="item.name" [value]="item.value" (onChange)="onChange($event)">
+      @for (option of item.options; track option) {
+        <goab-radio-item [value]="option.value" [label]="option.value">
+        </goab-radio-item>
+      }
+    </goab-radio-group>
+  </div>
+}
 
 <h2>Binding</h2>
 

@@ -1,0 +1,24 @@
+<div [formGroup]="changeForm">
+  <goab-form-item label="Size" requirement="optional" helpText="Choose the type to change the list below">
+    <goab-dropdown formControlName="parentDropdown"
+                   placeholder="Select a value" name="parent">
+      @for (parent of parents; track generateUniqueKey($index, parent)) {
+        <goab-dropdown-item [value]="parent" [label]="parent" />
+      }
+    </goab-dropdown>
+  </goab-form-item>
+  <goab-form-item label="Items" requirement="optional">
+    <goab-dropdown formControlName="childDropdown"
+                   placeholder="Select a value" name="children">
+      @if (children.length > 0) {
+        @for (child of children; track generateUniqueKey($index, child)) {
+          <goab-dropdown-item
+            [value]="child"
+            [label]="child"
+            [mountType]="'reset'"
+          />
+        }
+      }
+    </goab-dropdown>
+  </goab-form-item>
+</div>

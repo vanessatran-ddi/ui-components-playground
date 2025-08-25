@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { Component } from "@angular/core";
-import { CommonModule } from "@angular/common";
+
 import {
   GoabFormState,
   PublicFormController,
@@ -23,14 +23,13 @@ type Page = "first-step" | "summary";
   templateUrl: "./issue-2827.component.html",
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
-    CommonModule,
     GoabPublicForm,
     GoabPublicFormPage,
     GoabFieldset,
     GoabFormItem,
     GoabPublicFormSummary,
-    GoabInput,
-  ],
+    GoabInput
+],
 })
 export class Issue2827Component extends PublicFormController<Page> {
   formStateDisplay: string | null = null;

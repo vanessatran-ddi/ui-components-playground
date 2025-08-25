@@ -16,14 +16,14 @@
   name="navigation-test-form"
   (onComplete)="onFormComplete($event)"
   (onInit)="onFormInit($event)"
->
+  >
   <!-- Question Page - Yes/No radio -->
   <goab-public-form-page
     id="question"
     heading="Do you need additional services?"
     buttonText="Continue"
     (onContinue)="onPageContinue($event, 'question')"
-  >
+    >
     <goab-fieldset>
       <goab-form-item name="Do you need additional services?">
         <goab-radio-group id="needs-services" name="needs-services">
@@ -40,7 +40,7 @@
     heading="Page A - Additional Services Details"
     buttonText="Continue"
     (onContinue)="onPageContinue($event, 'page-a')"
-  >
+    >
     <goab-fieldset>
       <goab-form-item label="What services do you need?">
         <goab-input name="service-details"></goab-input>
@@ -57,7 +57,7 @@
     heading="Page B - Confirmation"
     buttonText="Continue"
     (onContinue)="onPageContinue($event, 'page-b')"
-  >
+    >
     <goab-fieldset>
       <goab-form-item label="Please confirm your contact information">
         <goab-input name="contact-confirmation"></goab-input>
@@ -74,12 +74,14 @@
     type="summary"
     heading="Review Your Information"
     buttonText="Confirm"
-  >
+    >
     <goab-public-form-summary></goab-public-form-summary>
   </goab-public-form-page>
 </goab-public-form>
 
-<div *ngIf="formState" style="margin-top: 2rem; padding: 1rem; border: 1px solid #ccc;">
-  <h3>Current Form State</h3>
-  <pre style="font-size: 12px; overflow: auto;">{{ formState | json }}</pre>
-</div>
+@if (formState) {
+  <div style="margin-top: 2rem; padding: 1rem; border: 1px solid #ccc;">
+    <h3>Current Form State</h3>
+    <pre style="font-size: 12px; overflow: auto;">{{ formState | json }}</pre>
+  </div>
+}

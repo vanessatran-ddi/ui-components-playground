@@ -11,13 +11,13 @@
   (onComplete)="onComplete()"
   (onInit)="init($event)"
   (onStateChange)="updateState($event)"
->
+  >
   <goab-public-form-page
     id="household-size"
     heading="How many people currently live in your household?"
     buttonText="Save and continue"
     (onContinue)="onPageChange($event, 'household-size')"
-  >
+    >
     <goab-fieldset>
       <goab-form-item name="How many people currently live in your household?">
         <goab-input name="household-people"></goab-input>
@@ -30,7 +30,7 @@
     heading="Do you have any dependents under the age of 18?"
     buttonText="Save and continue"
     (onContinue)="onPageChange($event, 'has-dependents')"
-  >
+    >
     <goab-fieldset>
       <goab-form-item name="Do you have any dependents under the age of 18?">
         <goab-radio-group name="dependents">
@@ -46,18 +46,18 @@
     id="dependents-subform"
     type="multistep"
     (onContinue)="onPageChange($event, 'dependents-subform')"
-  >
+    >
     <goab-public-subform
       id="dependents-subform"
       name="dependents-subform"
       (onInit)="_dependentsFormController.initList($event)"
       (onStateChange)="updateDependentsState($event)"
-    >
+      >
       <goab-public-subform-index
         heading="Add dependants under the age of 18"
         actionButtonText="Add another dependant"
         [buttonVisibility]="continueButtonVisibility"
-      >
+        >
         <goab-text mb="l">
           Please provide information about any dependents under the age of 18 for whom you are responsible.
           Dependents include your biological or adopted children, stepchildren, and any other minors in your care.
@@ -65,26 +65,30 @@
           Ensure that you enter accurate details for each dependent, as this will help us process your application more efficiently and provide you with the appropriate support.
         </goab-text>
 
-        <goab-table width="100%" mb="xl" *ngIf="dependents().length > 0">
-          <thead>
-          <tr>
-            <th>Full name</th>
-            <th></th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let item of dependents(); index as i">
-            <td>{{ item["fullName"] }}</td>
-            <td class="goa-table-number-header">
-              <goab-button (onClick)="editDependent(i)">Edit</goab-button>
-            </td>
-            <td class="goa-table-number-header" style="width: 0px">
-              <goab-button (onClick)="showModal(i)">Remove</goab-button>
-            </td>
-          </tr>
-          </tbody>
-        </goab-table>
+        @if (dependents().length > 0) {
+          <goab-table width="100%" mb="xl">
+            <thead>
+              <tr>
+                <th>Full name</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (item of dependents(); track item; let i = $index) {
+                <tr>
+                  <td>{{ item["fullName"] }}</td>
+                  <td class="goa-table-number-header">
+                    <goab-button (onClick)="editDependent(i)">Edit</goab-button>
+                  </td>
+                  <td class="goa-table-number-header" style="width: 0px">
+                    <goab-button (onClick)="showModal(i)">Remove</goab-button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </goab-table>
+        }
       </goab-public-subform-index>
 
       <goab-public-form-page
@@ -93,7 +97,7 @@
         heading="Dependent information"
         buttonText="Continue"
         (onContinue)="onDependentPageChange($event, 'dependent-info')"
-      >
+        >
         <goab-fieldset>
           <goab-form-item label="Full name">
             <goab-input name="fullName"></goab-input>
@@ -107,7 +111,7 @@
         sectionTitle="Dependent's profile"
         type="summary"
         buttonText="Back to list"
-      >
+        >
         <goab-public-form-summary></goab-public-form-summary>
       </goab-public-form-page>
 
@@ -119,7 +123,7 @@
     heading="Do any dependants have long-term health conditions or disabilities?"
     buttonText="Save and continue"
     (onContinue)="onPageChange($event, 'health-conditions')"
-  >
+    >
     <goab-fieldset>
       <goab-form-item name="Do any dependants have long-term health conditions or disabilities?">
         <goab-radio-group name="dependents-health">
@@ -135,7 +139,7 @@
     heading="Please provide details to help us understand any specific needs or accommodations."
     buttonText="Save and continue"
     (onContinue)="onPageChange($event, 'health-details')"
-  >
+    >
     <goab-fieldset>
       <goab-form-item name="Please provide details to help us understand any specific needs or accommodations.">
         <goab-textarea
@@ -152,7 +156,7 @@
     type="summary"
     heading="Review your information"
     buttonText="Review and Submit"
-  >
+    >
     <goab-public-form-summary></goab-public-form-summary>
   </goab-public-form-page>
 

@@ -1,5 +1,5 @@
 import { GoabFileUploadCard, GoabFileUploadInput } from "@abgov/angular-components";
-import { CommonModule } from "@angular/common";
+
 import { Component } from "@angular/core";
 import { MockUploader, Upload } from "../../utils/file-uploader";
 
@@ -10,9 +10,8 @@ import { MockUploader, Upload } from "../../utils/file-uploader";
   templateUrl: "./file-upload.html",
   imports: [
     GoabFileUploadInput,
-    GoabFileUploadCard,
-    CommonModule,
-  ],
+    GoabFileUploadCard
+],
 })
 export class FileUploadComponent {
   uploads: Upload[] = [];

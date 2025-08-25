@@ -1,13 +1,13 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { Countries, CountrySubdivisions } from "../../components/dropdown/countries.data";
-import { NgForOf } from "@angular/common";
+
 
 @Component({
   selector: "abgov-bug1734",
   templateUrl: "./bug-1734.html",
   standalone: true,
-  imports: [ReactiveFormsModule, NgForOf],
+  imports: [ReactiveFormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix

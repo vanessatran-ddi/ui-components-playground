@@ -19,7 +19,7 @@ import {
   GoabModal,
   GoabCircularProgress,
 } from "@abgov/angular-components";
-import { CommonModule } from "@angular/common";
+
 import { PublicFormController } from "@abgov/ui-components-common";
 
 type Page = "household-size" | "has-dependents" | "dependents-subform" | "health-conditions" | "health-details" | "summary";
@@ -30,7 +30,6 @@ type DependentPage = "dependent-info" | "dependent-summary";
   templateUrl: "./PublicFormSubFormExample.html",
   standalone: true,
   imports: [
-    CommonModule,
     GoabPublicForm,
     GoabPublicFormPage,
     GoabPublicFormSummary,
@@ -47,8 +46,8 @@ type DependentPage = "dependent-info" | "dependent-summary";
     GoabText,
     GoabTextArea,
     GoabModal,
-    GoabCircularProgress,
-  ]
+    GoabCircularProgress
+]
 })
 export class PublicFormSubFormExampleComponent implements OnInit {
   _mainFormController: PublicFormController<Page>;
@@ -59,9 +58,20 @@ export class PublicFormSubFormExampleComponent implements OnInit {
   formStatus: "initializing" | "complete" = "initializing";
   deleteIndex = -1;
   showSpinner = "true";
+  
+  // Cache the dependents list to prevent change detection issues
+  dependentsList: Record<string, string>[] = [];
 
   dependents(): Record<string, string>[] {
-    return this._dependentsFormController.getStateList();
+    return this.dependentsList;
+  }
+
+  private updateDependentsList() {
+    this.dependentsList = this._dependentsFormController.getStateList();
+  }
+
+  private updateButtonVisibility() {
+    this.continueButtonVisibility = this.dependents().length > 0 ? "visible" : "hidden";
   }
 
   constructor(private router: Router) {
@@ -80,7 +90,8 @@ export class PublicFormSubFormExampleComponent implements OnInit {
       });
     }, 1000);
 
-    this.continueButtonVisibility = this.dependents().length > 0 ? "visible" : "hidden";
+    this.updateDependentsList();
+    this.updateButtonVisibility();
   }
 
   init(e: Event) {
@@ -99,13 +110,23 @@ export class PublicFormSubFormExampleComponent implements OnInit {
     console.log("sub form state changed triggered", state);
     // For Angular components, the state change event passes the state directly
     // No need to call updateObjectState as the state is already updated
-    this.continueButtonVisibility = this.dependents().length > 0 ? "visible" : "hidden";
+    
+    // Use setTimeout to ensure state updates happen in next change detection cycle
+    setTimeout(() => {
+      this.updateDependentsList();
+      this.updateButtonVisibility();
+    });
   }
 
   updateDependentsState(e: Event) {
     console.log("SubForm _stateChanged triggered", e);
     this._dependentsFormController.updateListState(e);
-    this.continueButtonVisibility = this.dependents().length > 0 ? "visible" : "hidden";
+    
+    // Use setTimeout to ensure state updates happen in next change detection cycle
+    setTimeout(() => {
+      this.updateDependentsList();
+      this.updateButtonVisibility();
+    });
   }
 
   onComplete() {
@@ -125,7 +146,12 @@ export class PublicFormSubFormExampleComponent implements OnInit {
   onDeleteConfirm() {
     this.showDeleteModal = false;
     this._dependentsFormController.remove(this.deleteIndex);
-    this.continueButtonVisibility = this.dependents().length > 0 ? "visible" : "hidden";
+    
+    // Use setTimeout to ensure state updates happen in next change detection cycle
+    setTimeout(() => {
+      this.updateDependentsList();
+      this.updateButtonVisibility();
+    });
   }
 
   onPageChange(e: Event, from: Page) {

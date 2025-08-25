@@ -85,11 +85,6 @@ export class PublicFormComponent extends PublicFormController<Page> {
     this._showConfirmationModal = false;
   }
 
-  showDrawer = false;
-  toggleDrawer() {
-    this.showDrawer = !this.showDrawer;
-  }
-
   // ======
   // Events
   // ======

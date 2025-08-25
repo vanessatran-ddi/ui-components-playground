@@ -1,0 +1,850 @@
+<goab-container>
+  <h1>Input Component Examples</h1>
+  <p>Allow users to enter and edit text with various input types and validation.</p>
+
+  <goab-spacer vSpacing="xl"></goab-spacer>
+
+  <h2>Basic Input Examples</h2>
+  <p>Simple input examples with different states and types:</p>
+
+  <goab-spacer vSpacing="l"></goab-spacer>
+
+  <h3>Basic States</h3>
+  <goab-block direction="column" gap="l" mb="l">
+    <goab-form-item label="Default Input">
+      <goab-input
+        name="basic-default"
+        placeholder="Enter text here"
+        width="20rem"
+        (onChange)="onBasicChange('default', $event)">
+      </goab-input>
+    </goab-form-item>
+
+    <goab-form-item label="Input with Initial Value">
+      <goab-input
+        name="basic-with-value"
+        [value]="'Sample text'"
+        width="20rem"
+        (onChange)="onBasicChange('withValue', $event)">
+      </goab-input>
+    </goab-form-item>
+
+    <goab-form-item label="Disabled Input">
+      <goab-input
+        name="basic-disabled"
+        [value]="'Cannot edit this'"
+        [disabled]="true"
+        width="20rem">
+      </goab-input>
+    </goab-form-item>
+
+    <goab-form-item label="Readonly Input">
+      <goab-input
+        name="basic-readonly"
+        [value]="'Read-only text'"
+        [readonly]="true"
+        width="20rem">
+      </goab-input>
+    </goab-form-item>
+
+    <goab-form-item label="Input with Error" error="Please enter a valid value">
+      <goab-input
+        name="basic-error"
+        [error]="true"
+        width="20rem"
+        (onChange)="onBasicChange('error', $event)">
+      </goab-input>
+    </goab-form-item>
+  </goab-block>
+
+  <goab-card>
+    <h4>Basic Examples State:</h4>
+    <pre>{{ basicState | json }}</pre>
+  </goab-card>
+
+  <goab-spacer vSpacing="xl"></goab-spacer>
+
+  <h2>Input Types Examples</h2>
+  <p>Different input types for various data formats:</p>
+
+  <goab-spacer vSpacing="l"></goab-spacer>
+
+  <h3>Common Input Types</h3>
+  <goab-block direction="column" gap="l" mb="l">
+    <goab-form-item label="Text Input">
+      <goab-input
+        name="type-text"
+        type="text"
+        placeholder="Enter text"
+        width="20rem"
+        (onChange)="onTypeChange('text', $event)">
+      </goab-input>
+    </goab-form-item>
+
+    <goab-form-item label="Email Input">
+      <goab-input
+        name="type-email"
+        type="email"
+        placeholder="Enter email address"
+        width="20rem"
+        (onChange)="onTypeChange('email', $event)">
+      </goab-input>
+    </goab-form-item>
+
+    <goab-form-item label="Password Input">
+      <goab-input
+        name="type-password"
+        type="password"
+        placeholder="Enter password"
+        width="20rem"
+        (onChange)="onTypeChange('password', $event)">
+      </goab-input>
+    </goab-form-item>
+
+    <goab-form-item label="Phone Input">
+      <goab-input
+        name="type-tel"
+        type="tel"
+        placeholder="(555) 123-4567"
+        width="20rem"
+        (onChange)="onTypeChange('tel', $event)">
+      </goab-input>
+    </goab-form-item>
+
+    <goab-form-item label="URL Input">
+      <goab-input
+        name="type-url"
+        type="url"
+        placeholder="https://example.com"
+        width="20rem"
+        (onChange)="onTypeChange('url', $event)">
+      </goab-input>
+    </goab-form-item>
+
+    <goab-form-item label="Number Input">
+      <goab-input
+        name="type-number"
+        type="number"
+        placeholder="Enter number"
+        [min]="0"
+        [max]="100"
+        [step]="1"
+        width="20rem"
+        (onChange)="onTypeChange('number', $event)">
+      </goab-input>
+    </goab-form-item>
+  </goab-block>
+
+  <goab-card>
+    <h4>Input Types State:</h4>
+    <pre>{{ typeState | json }}</pre>
+  </goab-card>
+
+  <goab-spacer vSpacing="xl"></goab-spacer>
+
+  <h2>Input Features Examples</h2>
+  <p>Advanced input features and styling options:</p>
+
+  <goab-spacer vSpacing="l"></goab-spacer>
+
+  <h3>Icons and Styling</h3>
+  <goab-block direction="column" gap="l" mb="l">
+    <goab-form-item label="Input with Leading Icon">
+      <goab-input
+        name="leading-icon"
+        placeholder="Search..."
+        leadingIcon="search"
+        width="20rem"
+        (onChange)="onFeatureChange('leadingIcon', $event)">
+      </goab-input>
+    </goab-form-item>
+
+    <goab-form-item label="Input with Trailing Icon">
+      <goab-input
+        name="trailing-icon"
+        placeholder="Enter password"
+        type="password"
+        trailingIcon="eye"
+        width="20rem"
+        (onChange)="onFeatureChange('trailingIcon', $event)"
+        (onTrailingIconClick)="togglePasswordVisibility()">
+      </goab-input>
+    </goab-form-item>
+
+    <goab-form-item label="Input with Prefix">
+      <goab-input
+        name="with-prefix"
+        placeholder="0.00"
+        prefix="$"
+        type="number"
+        textAlign="right"
+        width="20rem"
+        (onChange)="onFeatureChange('prefix', $event)">
+      </goab-input>
+    </goab-form-item>
+
+    <goab-form-item label="Input with Suffix">
+      <goab-input
+        name="with-suffix"
+        placeholder="Enter weight"
+        suffix="kg"
+        type="number"
+        width="20rem"
+        (onChange)="onFeatureChange('suffix', $event)">
+      </goab-input>
+    </goab-form-item>
+
+    <goab-form-item label="Input with Max Length">
+      <goab-input
+        name="max-length"
+        placeholder="Max 10 characters"
+        [maxLength]="10"
+        width="20rem"
+        (onChange)="onFeatureChange('maxLength', $event)">
+      </goab-input>
+    </goab-form-item>
+  </goab-block>
+
+  <goab-card>
+    <h4>Feature Examples State:</h4>
+    <pre>{{ featureState | json }}</pre>
+    <p><strong>Password Visible:</strong> {{ passwordVisible }}</p>
+  </goab-card>
+
+  <goab-spacer vSpacing="xl"></goab-spacer>
+
+  <h2>Reactive Forms Examples</h2>
+  <p>Using inputs with Angular reactive forms and validation:</p>
+
+  <goab-spacer vSpacing="l"></goab-spacer>
+
+  <h3>User Registration Form</h3>
+  <form [formGroup]="registrationForm">
+    <goab-block direction="column" gap="l">
+      <goab-form-item
+        label="First Name"
+        [error]="getFieldError('firstName')"
+        helpText="Enter your first name">
+        <goab-input
+          name="firstName"
+          formControlName="firstName"
+          placeholder="First name"
+          [error]="isFieldInvalid('firstName')"
+          width="20rem">
+        </goab-input>
+      </goab-form-item>
+
+      <goab-form-item
+        label="Last Name"
+        [error]="getFieldError('lastName')"
+        helpText="Enter your last name">
+        <goab-input
+          name="lastName"
+          formControlName="lastName"
+          placeholder="Last name"
+          [error]="isFieldInvalid('lastName')"
+          width="20rem">
+        </goab-input>
+      </goab-form-item>
+
+      <goab-form-item
+        label="Email Address"
+        [error]="getFieldError('email')"
+        helpText="Enter a valid email address">
+        <goab-input
+          name="email"
+          formControlName="email"
+          type="email"
+          placeholder="email@example.com"
+          leadingIcon="mail"
+          [error]="isFieldInvalid('email')"
+          width="20rem">
+        </goab-input>
+      </goab-form-item>
+
+      <goab-form-item
+        label="Phone Number"
+        [error]="getFieldError('phone')"
+        helpText="Enter your phone number">
+        <goab-input
+          name="phone"
+          formControlName="phone"
+          type="tel"
+          placeholder="(555) 123-4567"
+          leadingIcon="call"
+          [error]="isFieldInvalid('phone')"
+          width="20rem">
+        </goab-input>
+      </goab-form-item>
+
+      <goab-form-item
+        label="Age"
+        [error]="getFieldError('age')"
+        helpText="Enter your age (18-120)">
+        <goab-input
+          name="age"
+          formControlName="age"
+          type="number"
+          placeholder="Age"
+          [min]="18"
+          [max]="120"
+          suffix="years"
+          [error]="isFieldInvalid('age')"
+          width="20rem">
+        </goab-input>
+      </goab-form-item>
+    </goab-block>
+
+    <goab-spacer vSpacing="m"></goab-spacer>
+
+    <goab-button-group alignment="start" gap="compact">
+      <goab-button
+        type="primary"
+        (onClick)="onRegistrationSubmit()"
+        [disabled]="registrationForm.invalid">
+        Register
+      </goab-button>
+      <goab-button type="secondary" (onClick)="resetRegistrationForm()">
+        Reset Form
+      </goab-button>
+    </goab-button-group>
+
+    <goab-spacer vSpacing="m"></goab-spacer>
+
+    <goab-card>
+      <h4>Registration Form Values:</h4>
+      <pre>{{ registrationForm.value | json }}</pre>
+      <p><strong>Form Valid:</strong> {{ registrationForm.valid }}</p>
+    </goab-card>
+  </form>
+
+  <goab-spacer vSpacing="xl"></goab-spacer>
+
+  <h2>Template-Driven Forms Examples</h2>
+  <p>Using inputs with Angular template-driven forms:</p>
+
+  <goab-spacer vSpacing="l"></goab-spacer>
+
+  <h3>Contact Information Form</h3>
+  <form #contactForm="ngForm">
+    <goab-block direction="column" gap="l">
+      <goab-form-item label="Company Name">
+        <goab-input
+          name="companyName"
+          [(ngModel)]="templateData.companyName"
+          placeholder="Enter company name"
+          width="20rem"
+          (onChange)="onTemplateChange('companyName', $event)">
+        </goab-input>
+      </goab-form-item>
+
+      <goab-form-item label="Contact Person">
+        <goab-input
+          name="contactPerson"
+          [(ngModel)]="templateData.contactPerson"
+          placeholder="Enter contact person name"
+          width="20rem"
+          (onChange)="onTemplateChange('contactPerson', $event)">
+        </goab-input>
+      </goab-form-item>
+
+      <goab-form-item label="Business Email">
+        <goab-input
+          name="businessEmail"
+          [(ngModel)]="templateData.businessEmail"
+          type="email"
+          placeholder="business@company.com"
+          leadingIcon="mail"
+          width="20rem"
+          (onChange)="onTemplateChange('businessEmail', $event)">
+        </goab-input>
+      </goab-form-item>
+
+      <goab-form-item label="Website URL">
+        <goab-input
+          name="website"
+          [(ngModel)]="templateData.website"
+          type="url"
+          placeholder="https://company.com"
+          prefix="https://"
+          width="20rem"
+          (onChange)="onTemplateChange('website', $event)">
+        </goab-input>
+      </goab-form-item>
+    </goab-block>
+
+    <goab-spacer vSpacing="m"></goab-spacer>
+
+    <goab-button-group alignment="start" gap="compact">
+      <goab-button type="primary" (onClick)="onContactFormSubmit()">
+        Save Contact Info
+      </goab-button>
+      <goab-button type="secondary" (onClick)="resetContactForm()">
+        Reset
+      </goab-button>
+    </goab-button-group>
+
+    <goab-spacer vSpacing="m"></goab-spacer>
+
+    <goab-card>
+      <h4>Contact Form Data:</h4>
+      <pre>{{ templateData | json }}</pre>
+      <p><strong>Form Valid:</strong> {{ contactForm.valid }}</p>
+    </goab-card>
+  </form>
+
+  <goab-spacer vSpacing="l"></goab-spacer>
+
+  <h3>Template Form with Validation</h3>
+  <form #validationTemplateForm="ngForm">
+    <goab-block direction="column" gap="l">
+      <goab-form-item
+        label="Username"
+        [error]="usernameField.invalid && usernameField.touched ? 'Username is required (min 3 characters)' : undefined">
+        <goab-input
+          name="username"
+          [(ngModel)]="templateValidationData.username"
+          placeholder="Enter username"
+          width="20rem"
+          required
+          minlength="3"
+          #usernameField="ngModel"
+          [error]="usernameField.invalid && usernameField.touched"
+          (onChange)="onTemplateValidationChange('username', $event)">
+        </goab-input>
+      </goab-form-item>
+
+      <goab-form-item
+        label="Email Address"
+        [error]="emailField.invalid && emailField.touched ? 'Please enter a valid email address' : undefined">
+        <goab-input
+          name="email"
+          [(ngModel)]="templateValidationData.email"
+          type="email"
+          placeholder="user@example.com"
+          leadingIcon="mail"
+          width="20rem"
+          required
+          email
+          #emailField="ngModel"
+          [error]="emailField.invalid && emailField.touched"
+          (onChange)="onTemplateValidationChange('email', $event)">
+        </goab-input>
+      </goab-form-item>
+    </goab-block>
+
+    <goab-spacer vSpacing="m"></goab-spacer>
+
+    <goab-button-group alignment="start" gap="compact">
+      <goab-button
+        type="primary"
+        (onClick)="onTemplateValidationSubmit()"
+        [disabled]="!validationTemplateForm.valid">
+        Create Account
+      </goab-button>
+      <goab-button type="secondary" (onClick)="resetTemplateValidationForm()">
+        Reset
+      </goab-button>
+    </goab-button-group>
+
+    <goab-spacer vSpacing="m"></goab-spacer>
+
+    <goab-card>
+      <h4>Template Validation State:</h4>
+      <p><strong>Username Valid:</strong> {{ usernameField.valid }}</p>
+      <p><strong>Email Valid:</strong> {{ emailField.valid }}</p>
+      <p><strong>Form Valid:</strong> {{ validationTemplateForm.valid }}</p>
+      <pre>{{ templateValidationData | json }}</pre>
+    </goab-card>
+  </form>
+
+  <goab-spacer vSpacing="xl"></goab-spacer>
+
+  <h2>Advanced Input Examples</h2>
+  <p>Complex input scenarios with custom validation and formatting:</p>
+
+  <goab-spacer vSpacing="l"></goab-spacer>
+
+  <h3>Financial Information Form</h3>
+  <form [formGroup]="financialForm">
+    <goab-block direction="column" gap="l">
+      <goab-form-item
+        label="Annual Salary"
+        [error]="getFieldError('salary')"
+        helpText="Enter your annual salary">
+        <goab-input
+          name="salary"
+          formControlName="salary"
+          type="number"
+          placeholder="0"
+          prefix="$"
+          suffix="CAD"
+          textAlign="right"
+          [min]="0"
+          [max]="1000000"
+          [error]="isFieldInvalid('salary')"
+          width="20rem">
+        </goab-input>
+      </goab-form-item>
+
+      <goab-form-item
+        label="Social Insurance Number"
+        [error]="getFieldError('sin')"
+        helpText="Enter your 9-digit SIN (xxx-xxx-xxx)">
+        <goab-input
+          name="sin"
+          formControlName="sin"
+          placeholder="123-456-789"
+          [maxLength]="11"
+          [error]="isFieldInvalid('sin')"
+          width="20rem"
+          (onChange)="formatSIN($event)">
+        </goab-input>
+      </goab-form-item>
+
+      <goab-form-item
+        label="Bank Account Number"
+        [error]="getFieldError('accountNumber')"
+        helpText="Enter your bank account number">
+        <goab-input
+          name="accountNumber"
+          formControlName="accountNumber"
+          type="number"
+          placeholder="Account number"
+          leadingIcon="card"
+          [error]="isFieldInvalid('accountNumber')"
+          width="20rem">
+        </goab-input>
+      </goab-form-item>
+    </goab-block>
+
+    <goab-spacer vSpacing="m"></goab-spacer>
+
+    <goab-button-group alignment="start" gap="compact">
+      <goab-button
+        type="primary"
+        (onClick)="onFinancialFormSubmit()"
+        [disabled]="financialForm.invalid">
+        Save Financial Info
+      </goab-button>
+      <goab-button type="secondary" (onClick)="resetFinancialForm()">
+        Clear Form
+      </goab-button>
+    </goab-button-group>
+
+    <goab-spacer vSpacing="m"></goab-spacer>
+
+    <goab-card>
+      <h4>Financial Form Status:</h4>
+      <p><strong>Salary Valid:</strong> {{ financialForm.get('salary')?.valid }}</p>
+      <p><strong>SIN Valid:</strong> {{ financialForm.get('sin')?.valid }}</p>
+      <p><strong>Account Valid:</strong> {{ financialForm.get('accountNumber')?.valid }}</p>
+      <p><strong>Form Valid:</strong> {{ financialForm.valid }}</p>
+      <pre>{{ financialForm.value | json }}</pre>
+    </goab-card>
+  </form>
+
+  <goab-spacer vSpacing="l"></goab-spacer>
+
+  <h3>Address Information Form</h3>
+  <form [formGroup]="addressForm">
+    <goab-block direction="column" gap="l">
+      <goab-form-item
+        label="Street Address"
+        [error]="getAddressFieldError('streetAddress')"
+        helpText="Enter your street address">
+        <goab-input
+          name="streetAddress"
+          formControlName="streetAddress"
+          placeholder="123 Main Street"
+          leadingIcon="pin"
+          [error]="isAddressFieldInvalid('streetAddress')"
+          width="20rem">
+        </goab-input>
+      </goab-form-item>
+
+      <goab-form-item
+        label="City"
+        [error]="getAddressFieldError('city')"
+        helpText="Enter your city">
+        <goab-input
+          name="city"
+          formControlName="city"
+          placeholder="Calgary"
+          [error]="isAddressFieldInvalid('city')"
+          width="20rem">
+        </goab-input>
+      </goab-form-item>
+
+      <goab-form-item
+        label="Postal Code"
+        [error]="getAddressFieldError('postalCode')"
+        helpText="Enter Canadian postal code (A1A 1A1)">
+        <goab-input
+          name="postalCode"
+          formControlName="postalCode"
+          placeholder="T2P 1A1"
+          [maxLength]="7"
+          [error]="isAddressFieldInvalid('postalCode')"
+          width="20rem"
+          (onChange)="formatPostalCode($event)">
+        </goab-input>
+      </goab-form-item>
+    </goab-block>
+
+    <goab-spacer vSpacing="m"></goab-spacer>
+
+    <goab-button-group alignment="start" gap="compact">
+      <goab-button
+        type="primary"
+        (onClick)="onAddressFormSubmit()"
+        [disabled]="addressForm.invalid">
+        Save Address
+      </goab-button>
+      <goab-button type="secondary" (onClick)="resetAddressForm()">
+        Clear Address
+      </goab-button>
+    </goab-button-group>
+
+    <goab-spacer vSpacing="m"></goab-spacer>
+
+    <goab-card>
+      <h4>Address Form Values:</h4>
+      <pre>{{ addressForm.value | json }}</pre>
+      <p><strong>Form Valid:</strong> {{ addressForm.valid }}</p>
+    </goab-card>
+  </form>
+
+  <goab-spacer vSpacing="xl"></goab-spacer>
+
+  <h2>Interactive Examples</h2>
+  <p>Test input behavior and event handling:</p>
+
+  <goab-spacer vSpacing="l"></goab-spacer>
+
+  <h3>Event Tracking Example</h3>
+  <goab-block direction="column" gap="l" mb="l">
+    <goab-form-item label="Event Test Input">
+      <goab-input
+        name="event-test"
+        [(ngModel)]="eventTestValue"
+        placeholder="Type here to see events"
+        width="20rem"
+        (onChange)="onEventTestChange($event)"
+        (onFocus)="onEventTestFocus($event)"
+        (onBlur)="onEventTestBlur($event)"
+        (onKeyPress)="onEventTestKeyPress($event)">
+      </goab-input>
+    </goab-form-item>
+  </goab-block>
+
+  <goab-button-group alignment="start" gap="compact" mb="l">
+    <goab-button type="primary" (onClick)="fillSampleData()">
+      Fill Sample Data
+    </goab-button>
+    <goab-button type="secondary" (onClick)="clearEventTest()">
+      Clear Input
+    </goab-button>
+    <goab-button type="tertiary" (onClick)="focusEventTest()">
+      Focus Input
+    </goab-button>
+    <goab-button type="tertiary" (onClick)="clearEventLog()">
+      Clear Event Log
+    </goab-button>
+  </goab-button-group>
+
+  <goab-card>
+    <h4>Event Log:</h4>
+    <p><strong>Current Value:</strong> "{{ eventTestValue }}"</p>
+    <p><strong>Character Count:</strong> {{ eventTestValue?.length || 0 }}</p>
+    <p><strong>Last Event:</strong> {{ lastEvent }}</p>
+    <div style="max-height: 200px; overflow-y: auto;">
+      <pre>{{ eventLog.slice(-10).join('\n') }}</pre>
+    </div>
+  </goab-card>
+
+  <goab-spacer vSpacing="l"></goab-spacer>
+
+  <h3>Dynamic Input Controls</h3>
+  <p>Programmatically control input properties:</p>
+
+  <goab-button-group alignment="start" gap="compact" mb="l">
+    <goab-button type="primary" (onClick)="toggleInputProperties()">
+      Toggle Properties
+    </goab-button>
+    <goab-button type="secondary" (onClick)="randomizeInputValues()">
+      Random Values
+    </goab-button>
+    <goab-button type="tertiary" (onClick)="clearAllInputs()">
+      Clear All
+    </goab-button>
+    <goab-button type="tertiary" (onClick)="resetToDefaults()">
+      Reset Defaults
+    </goab-button>
+  </goab-button-group>
+
+  <goab-block direction="column" gap="l" mb="l">
+    <goab-form-item label="Dynamic Input 1">
+      <goab-input
+        name="dynamic-1"
+        [(ngModel)]="dynamicData.input1"
+        [placeholder]="dynamicProperties.placeholder1"
+        [disabled]="dynamicProperties.disabled1"
+        [readonly]="dynamicProperties.readonly1"
+        [maxLength]="dynamicProperties.maxLength1"
+        width="20rem"
+        (onChange)="onDynamicChange('input1', $event)">
+      </goab-input>
+    </goab-form-item>
+
+    <goab-form-item label="Dynamic Input 2">
+      <goab-input
+        name="dynamic-2"
+        [(ngModel)]="dynamicData.input2"
+        [placeholder]="dynamicProperties.placeholder2"
+        leadingIcon="search"
+        width="20rem"
+        (onChange)="onDynamicChange('input2', $event)">
+      </goab-input>
+    </goab-form-item>
+
+    <goab-form-item label="Dynamic Input 3">
+      <goab-input
+        name="dynamic-3"
+        [(ngModel)]="dynamicData.input3"
+        type="text"
+        [prefix]="dynamicProperties.prefix3"
+        [suffix]="dynamicProperties.suffix3"
+        width="20rem"
+        (onChange)="onDynamicChange('input3', $event)">
+      </goab-input>
+    </goab-form-item>
+  </goab-block>
+
+  <goab-card>
+    <h4>Dynamic Controls State:</h4>
+    <p><strong>Properties Changed:</strong> {{ propertiesChanged }} times</p>
+    <pre>{{ dynamicData | json }}</pre>
+    <h5>Current Properties:</h5>
+    <pre>{{ dynamicProperties | json }}</pre>
+  </goab-card>
+
+  <goab-spacer vSpacing="xl"></goab-spacer>
+
+  <h2>Real-world Use Cases</h2>
+  <p>Common patterns for input usage in government forms:</p>
+
+  <goab-spacer vSpacing="l"></goab-spacer>
+
+  <h3>Government Service Application</h3>
+  <form [formGroup]="serviceForm">
+    <goab-block direction="column" gap="l">
+      <goab-form-item
+        label="Application ID"
+        [error]="getServiceFieldError('applicationId')"
+        helpText="Enter your application reference number">
+        <goab-input
+          name="applicationId"
+          formControlName="applicationId"
+          placeholder="APP-2025-001234"
+          [maxLength]="15"
+          [error]="isServiceFieldInvalid('applicationId')"
+          width="20rem">
+        </goab-input>
+      </goab-form-item>
+
+      <goab-form-item
+        label="Applicant Name"
+        [error]="getServiceFieldError('applicantName')"
+        helpText="Enter full legal name">
+        <goab-input
+          name="applicantName"
+          formControlName="applicantName"
+          placeholder="Full legal name"
+          [error]="isServiceFieldInvalid('applicantName')"
+          width="20rem">
+        </goab-input>
+      </goab-form-item>
+
+      <goab-form-item
+        label="Service Fee"
+        [error]="getServiceFieldError('serviceFee')"
+        helpText="Service processing fee">
+        <goab-input
+          name="serviceFee"
+          formControlName="serviceFee"
+          type="number"
+          prefix="$"
+          suffix="CAD"
+          textAlign="right"
+          [min]="0"
+          [readonly]="true"
+          [value]="calculateServiceFee()"
+          width="20rem">
+        </goab-input>
+      </goab-form-item>
+
+      <goab-form-item
+        label="Contact Phone"
+        [error]="getServiceFieldError('contactPhone')"
+        helpText="Primary contact number">
+        <goab-input
+          name="contactPhone"
+          formControlName="contactPhone"
+          type="tel"
+          placeholder="(403) 555-0123"
+          leadingIcon="call"
+          [error]="isServiceFieldInvalid('contactPhone')"
+          width="20rem"
+          (onChange)="formatPhoneNumber($event)">
+        </goab-input>
+      </goab-form-item>
+    </goab-block>
+
+    <goab-spacer vSpacing="m"></goab-spacer>
+
+    <goab-button-group alignment="start" gap="compact">
+      <goab-button
+        type="primary"
+        (onClick)="onServiceFormSubmit()"
+        [disabled]="serviceForm.invalid">
+        Submit Application
+      </goab-button>
+      <goab-button type="secondary" (onClick)="resetServiceForm()">
+        Reset Application
+      </goab-button>
+    </goab-button-group>
+
+    <goab-spacer vSpacing="m"></goab-spacer>
+
+    <goab-card>
+      <h4>Service Application Status:</h4>
+      <p><strong>Application ID Valid:</strong> {{ serviceForm.get('applicationId')?.valid }}</p>
+      <p><strong>Applicant Name Valid:</strong> {{ serviceForm.get('applicantName')?.valid }}</p>
+      <p><strong>Contact Phone Valid:</strong> {{ serviceForm.get('contactPhone')?.valid }}</p>
+      <p><strong>Form Valid:</strong> {{ serviceForm.valid }}</p>
+      <p><strong>Calculated Fee:</strong> {{ '$' + (calculateServiceFee() | number:'1.2-2') + ' CAD' }}</p>
+      <pre>{{ serviceForm.value | json }}</pre>
+    </goab-card>
+  </form>
+
+  <goab-spacer vSpacing="xl"></goab-spacer>
+
+  <h2>Usage Notes</h2>
+  <ul>
+    <li><strong>Types:</strong> Use appropriate input types: <code>text</code>, <code>email</code>, <code>password</code>, <code>tel</code>, <code>url</code>, <code>number</code></li>
+    <li><strong>Reactive Forms:</strong> Use formControlName for reactive forms and FormControl</li>
+    <li><strong>Template Forms:</strong> Use [(ngModel)] and (onChange) for template-driven forms</li>
+    <li><strong>Validation:</strong> Apply validators to FormControl or use validation attributes in templates</li>
+    <li><strong>Icons:</strong> Use leadingIcon and trailingIcon to add visual context</li>
+    <li><strong>Formatting:</strong> Use prefix and suffix for currency, units, or context</li>
+    <li><strong>Alignment:</strong> Use textAlign="right" for numerical inputs</li>
+    <li><strong>Constraints:</strong> Set min, max, maxLength, and step for validation</li>
+    <li><strong>States:</strong> Use disabled, readonly, and error for different states</li>
+    <li><strong>Events:</strong> Listen to (onChange), (onFocus), (onBlur), (onKeyPress)</li>
+    <li><strong>Width:</strong> Set appropriate width using the width property</li>
+    <li><strong>Accessibility:</strong> Use ariaLabel and ariaLabelledBy for screen readers</li>
+    <li><strong>Auto-completion:</strong> Use autoComplete to help users fill forms faster</li>
+    <li><strong>Security:</strong> Never store sensitive data in component state or logs</li>
+  </ul>
+</goab-container>
