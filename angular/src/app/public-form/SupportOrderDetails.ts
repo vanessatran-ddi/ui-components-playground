@@ -2,23 +2,6 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import {
   dateValidator,
-  GoabBlock,
-  GoabButton,
-  GoabButtonGroup,
-  GoabCircularProgress,
-  GoabPublicForm,
-  GoabPublicFormPage,
-  GoabPublicFormSummary,
-  GoabFieldset,
-  GoabFormItem,
-  GoabRadioGroup,
-  GoabRadioItem,
-  GoabModal,
-  GoabTable,
-  GoabInput,
-  GoabDetails,
-  GoabText,
-  GoabDatePicker,
   lengthValidator,
   requiredValidator,
 } from "@abgov/angular-components";
@@ -42,23 +25,6 @@ type ChildPage = "name" | "alternate-name" | "dob" | "complete";
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     CommonModule,
-    GoabBlock,
-    GoabButton,
-    GoabButtonGroup,
-    GoabCircularProgress,
-    GoabPublicForm,
-    GoabPublicFormPage,
-    GoabPublicFormSummary,
-    GoabFieldset,
-    GoabFormItem,
-    GoabRadioGroup,
-    GoabRadioItem,
-    GoabModal,
-    GoabTable,
-    GoabInput,
-    GoabDetails,
-    GoabText,
-    GoabDatePicker
   ]
 })
 export class SupportOrderDetailsComponent implements OnInit {
@@ -112,7 +78,7 @@ export class SupportOrderDetailsComponent implements OnInit {
         if (savedState && savedState.childForm) {
           this._childFormController.state = savedState.childForm;
         }
-        
+
         this.formStatus = "complete";
         this.showSpinner = "false";
       });
@@ -144,7 +110,7 @@ export class SupportOrderDetailsComponent implements OnInit {
   onComplete() {
     // Clear localStorage when form is completed
     this.clearLocalStorage();
-    
+
     (async () => {
       await this.router.navigate(["/fsos"]);
     })();

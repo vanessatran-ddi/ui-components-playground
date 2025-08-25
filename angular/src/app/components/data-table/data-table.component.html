@@ -1,0 +1,29 @@
+@if (_selectedUsers.length > 0) {
+  <goa-block direction="row">
+    <div>{{ _selectedUsers.length }} selected</div>
+    <goa-button (click)="deleteSelected()">Delete selected</goa-button>
+  </goa-block>
+}
+<goa-data-table #dataTableEl [selectable]="true">
+  @for (user of users; track user.idNumber) {
+    <goa-data-table-row [uid]="user.idNumber">
+      <goa-data-table-item label="ID number" name="id-number">
+        {{ user.idNumber }}
+      </goa-data-table-item>
+      <goa-data-table-item label="Name of child" name="name-of-child">
+        {{ user.nameOfChild }}
+      </goa-data-table-item>
+      <goa-data-table-item label="Data started" name="data-started">
+        {{ user.dataStarted }}
+      </goa-data-table-item>
+      <goa-data-table-item label="Date submitted" name="date-submitted">
+        {{ user.dateSubmitted }}
+      </goa-data-table-item>
+      <goa-data-table-item label="Status" name="status">
+        <goab-badge [type]="getStatusBadgeType(user.status)" [content]="user.status"></goab-badge>
+      </goa-data-table-item>
+      <goa-data-table-action label="Delete" action="deleteRow" [action-arg]="user.idNumber"></goa-data-table-action>
+      <goa-data-table-action label="Open" action="openRow" [action-arg]="user.idNumber"></goa-data-table-action>
+    </goa-data-table-row>
+  }
+</goa-data-table>

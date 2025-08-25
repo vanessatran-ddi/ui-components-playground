@@ -79,6 +79,7 @@ import { SupportOrderDetailsComponent } from "./public-form/SupportOrderDetails"
 import { Issue2720Component } from "./issues/2720/issue-2720.component";
 import { Issue2829Component } from "./issues/2829/issue-2829.component";
 import { Issue2837Component } from "./issues/2837/issue-2837.component";
+import { DataTableComponent } from "./components/data-table/data-table.component";
 
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
@@ -160,6 +161,7 @@ const routes: Routes = [
   { path: "public-form/2827", component: Issue2827Component},
   { path: "public-form/2827-subform", component: Issue2827SubformComponent},
   { path: "support-order-details", component: SupportOrderDetailsComponent},
+  { path: "data-table", component: DataTableComponent},
   { path: "", redirectTo: "/", pathMatch: "full" },
 ];
 
