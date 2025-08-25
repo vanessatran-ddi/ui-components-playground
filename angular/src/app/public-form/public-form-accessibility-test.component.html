@@ -17,14 +17,14 @@
   (onComplete)="onFormComplete($event)"
   (onInit)="onFormInit($event)"
   (onStateChange)="onFormStateChange($event)"
->
+  >
   <!-- Personal Information Page -->
   <goab-public-form-page
     id="personal-info"
     heading="Personal Information"
     buttonText="Continue"
     (onContinue)="onPageContinue($event, 'personal-info')"
-  >
+    >
     <goab-fieldset>
       <goab-form-item label="First Name" required>
         <goab-input name="first-name"></goab-input>
@@ -44,7 +44,7 @@
     heading="Contact Information"
     buttonText="Continue"
     (onContinue)="onPageContinue($event, 'contact-info')"
-  >
+    >
     <goab-fieldset>
       <goab-form-item label="Phone Number">
         <goab-input name="phone" type="tel"></goab-input>
@@ -67,7 +67,7 @@
     heading="Additional Details"
     buttonText="Continue"
     (onContinue)="onPageContinue($event, 'additional-details')"
-  >
+    >
     <goab-fieldset>
       <goab-form-item label="Occupation">
         <goab-input name="occupation"></goab-input>
@@ -87,20 +87,22 @@
     type="summary"
     heading="Review Your Information"
     buttonText="Submit Application"
-  >
+    >
     <goab-callout type="information" mb="l">
-      <strong>Tab Navigation Test:</strong> Use the Tab key to navigate through this summary. 
+      <strong>Tab Navigation Test:</strong> Use the Tab key to navigate through this summary.
       All "Change" links should be accessible and show focus styling.
     </goab-callout>
     <goab-public-form-summary></goab-public-form-summary>
   </goab-public-form-page>
 </goab-public-form>
 
-<div *ngIf="formState" style="margin-top: 2rem; padding: 1rem; border: 1px solid #ccc;">
-  <h3>Current Form State</h3>
-  <p><strong>Status:</strong> {{ formState.status }}</p>
-  <details>
-    <summary>Full State (click to expand)</summary>
-    <pre style="font-size: 12px; overflow: auto;">{{ formState | json }}</pre>
-  </details>
-</div>
+@if (formState) {
+  <div style="margin-top: 2rem; padding: 1rem; border: 1px solid #ccc;">
+    <h3>Current Form State</h3>
+    <p><strong>Status:</strong> {{ formState.status }}</p>
+    <details>
+      <summary>Full State (click to expand)</summary>
+      <pre style="font-size: 12px; overflow: auto;">{{ formState | json }}</pre>
+    </details>
+  </div>
+}

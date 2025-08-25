@@ -52,6 +52,9 @@ export function App() {
               <GoabSideMenuGroup heading={"Tabs"}>
                 <Link to="/2720">2720 Change tab via link</Link>
               </GoabSideMenuGroup>
+              <GoabSideMenuGroup heading={"Radio"}>
+                <Link to="/2768">2768 Radio dynamic disabled state</Link>
+              </GoabSideMenuGroup>
             <GoabSideMenuHeading>Components</GoabSideMenuHeading>
             <Link to="/pagination">Pagination</Link>
             <Link to="/drawer">Drawer</Link>
@@ -59,6 +62,7 @@ export function App() {
             <Link to="/Text">Text</Link>
             <Link to="/menu-button">Menu Button</Link>
             <Link to="/checkbox-list">Checkbox List</Link>
+            <Link to="/progress-indicator">Progress Indicator</Link>
             <GoabSideMenuGroup heading={"Public Form"}>
               <Link to="/public-form">Public Form</Link>
               <Link to="/public-form-navigation">Navigation Test (Issue 1)</Link>

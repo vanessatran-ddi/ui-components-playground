@@ -27,6 +27,9 @@ import { PublicFormNavigationTest } from "./app/public-form/PublicFormNavigation
 import { PublicFormAccessibilityTest } from "./app/public-form/PublicFormAccessibilityTest";
 import { Issue2827 } from "./app/public-form/Issue2827";
 import { Issue2547 } from "./app/issues/issue2547";
+import {
+  ProgressIndicatorExamples
+} from "./app/components/progress-indicator/ProgressIndicatorExamples";
 import { PR2969TestForm } from "./app/public-form/PR2969TestForm";
 import { Issue3001 } from "./app/issues/issue3001";
 import { Issue2948Component } from "./app/issues/2948/2948";
@@ -69,6 +72,7 @@ root.render(
           <Route path={"/3001"} element={<Issue3001/>}></Route>
           <Route path={"/2948"} element={<Issue2948Component/>}></Route>
           <Route path={"/2934"} element={<Issue2934/>}></Route>
+          <Route path={"/progress-indicator"} element={<ProgressIndicatorExamples/>}></Route>
           {/** Add more routes here */}
 
           <Route path={"/2574"} element={<Issue2547/>}></Route>

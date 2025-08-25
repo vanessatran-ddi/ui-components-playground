@@ -1,7 +1,7 @@
 import { GoabPaginationOnChangeDetail } from "@abgov/ui-components-common";
 import { faker } from "@faker-js/faker";
 import { Component } from "@angular/core";
-import { NgForOf } from "@angular/common";
+
 import { GoabButton, GoabPagination, GoabTable } from "@abgov/angular-components";
 
 interface User {
@@ -15,7 +15,7 @@ interface User {
   selector: "abgov-issue-2395",
   standalone: true,
   templateUrl: "./issue-2395.component.html",
-  imports: [NgForOf, GoabPagination, GoabTable, GoabButton],
+  imports: [GoabPagination, GoabTable, GoabButton],
 })
 export class Issue2395Component {
   users: User[] = [];

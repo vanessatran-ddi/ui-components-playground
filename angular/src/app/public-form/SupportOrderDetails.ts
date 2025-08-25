@@ -22,7 +22,7 @@ import {
   lengthValidator,
   requiredValidator,
 } from "@abgov/angular-components";
-import { CommonModule } from "@angular/common";
+
 import { PublicFormController } from "@abgov/ui-components-common";
 
 type Page =
@@ -41,8 +41,6 @@ type ChildPage = "name" | "alternate-name" | "dob" | "complete";
   templateUrl: "./SupportOrderDetails.html",
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
-    CommonModule,
-    GoabBlock,
     GoabButton,
     GoabButtonGroup,
     GoabCircularProgress,
@@ -59,7 +57,7 @@ type ChildPage = "name" | "alternate-name" | "dob" | "complete";
     GoabDetails,
     GoabText,
     GoabDatePicker
-  ]
+]
 })
 export class SupportOrderDetailsComponent implements OnInit {
   someDate = "2024-06-12";

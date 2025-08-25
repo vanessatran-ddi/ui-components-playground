@@ -9,7 +9,7 @@ import {
 } from "@abgov/angular-components";
 import { Component } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import { CommonModule } from "@angular/common";
+
 
 @Component({
   standalone: true,
@@ -23,9 +23,8 @@ import { CommonModule } from "@angular/common";
     GoabDropdown,
     GoabDropdownItem,
     GoabFormItemSlot,
-    ReactiveFormsModule,
-    CommonModule,
-  ]
+    ReactiveFormsModule
+]
 })
 export class FormItemComponent {
   formGroup = new FormGroup({

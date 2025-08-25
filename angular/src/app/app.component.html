@@ -1,10 +1,10 @@
 <goa-two-column-layout maxcontentwidth="1400px" navcolumnwidth="30ch">
   <section slot="header">
     <goa-microsite-header type="alpha" level="alpha" version="UAT"></goa-microsite-header>
-    <goab-app-header
+    <goa-app-header
       heading="Design Systems"
       maxcontentwidth="1500px"
-      [fullMenuBreakpoint]="1700"
+      [fullmenubreakpoint]="1700"
     >
       <a href="/get-started">Get started </a>
       <a href="/patterns">Patterns and templates</a>
@@ -25,46 +25,49 @@
         <a href="#">Outstanding</a>
       </goa-app-header-menu>
       <a href="#" className="interactive">Sign in</a>
-    </goab-app-header>
+    </goa-app-header>
   </section>
 
   <section slot="nav">
-    <goab-side-menu>
-      <goab-side-menu-group heading="Bugs">
-        <goab-side-menu-group heading="Dropdown">
+    <goa-side-menu>
+      <goa-side-menu-group heading="Bugs">
+        <goa-side-menu-group heading="Progress indicator">
+          <a routerLink="/2802-fullscreen-progress-indicator">Full screen</a>
+        </goa-side-menu-group>
+        <goa-side-menu-group heading="Dropdown">
           <a routerLink="/bug-1734">Bug 1734</a>
           <a routerLink="/2003">Remove relative property</a>
           <a routerLink="/2789">Width rem and percentage</a>
+          <a routerLink="/2802-dropdown-dynamic-add-item">Dynamically change items in a dropdown</a>
           <a routerLink="/2934">2934 Value types (string|number|boolean)</a>
-        </goab-side-menu-group>
+        </goa-side-menu-group>
 
-        <goab-side-menu-group heading="Checkbox">
+        <goa-side-menu-group heading="Checkbox">
           <a routerLink="/2365">Screen reader slotted content</a>
           <a routerLink="/1216">Checkbox with reveal slotted content</a>
+        </goa-side-menu-group>
+        <goa-side-menu-group heading="Radio">
           <a routerLink="/3001">Checkbox dispatch string from value</a>
-        </goab-side-menu-group>
-        <goab-side-menu-group heading="Radio">
           <a routerLink="/1216">Radio with reveal slotted content</a>
           <a routerLink="/2768">Dynamic disabled state</a>
-        </goab-side-menu-group>
-        <goab-side-menu-group heading="Modal">
+        </goa-side-menu-group>
+        <goa-side-menu-group heading="Modal">
           <a routerLink="/2466">Popover inside a scrolling modal</a>
           <a routerLink="/2415">Without heading modal</a>
           <a routerLink="/2410">Modal-2410</a>
           <a routerLink="/2829">Modal 2829 alert dialog</a>
           <a routerLink="/2948">Issue 2948 - Modal Spacing</a>
-        </goab-side-menu-group>
-
-        <goab-side-menu-group heading="Badge">
+        </goa-side-menu-group>
+        <goa-side-menu-group heading="Badge">
           <a routerLink="/2513">Badge is out of alignment</a>
-        </goab-side-menu-group>
+        </goa-side-menu-group>
 
-        <goab-side-menu-group heading="Tabs">
+        <goa-side-menu-group heading="Tabs">
           <a routerLink="/2433">Tabs issues</a>
           <a routerLink="/2471">Tab with initialTab is not working</a>
           <a routerLink="/2720">Change tab via link</a>
-        </goab-side-menu-group>
-        <goab-side-menu-group heading="Input">
+        </goa-side-menu-group>
+        <goa-side-menu-group heading="Input">
           <a routerLink="/1219">Input date type iOS</a>
           <a routerLink="/2404">TrailingIcon rendering fix</a>
           <a routerLink="/1769">Autocomplete property</a>
@@ -73,34 +76,35 @@
           <a routerLink="/2789">Width rem and percentage</a>
           <a routerLink="/2837">Leading/Trailing Content</a>
           <a routerLink="/2991">Voice Over</a>
-        </goab-side-menu-group>
+          <a routerLink="/2802-input-reset">Input reset value</a>
+        </goa-side-menu-group>
 
-        <goab-side-menu-group heading="AppHeaderMenu">
+        <goa-side-menu-group heading="AppHeaderMenu">
           <a routerLink="/2662">AppHeaderMenu mobile not expand</a>
-        </goab-side-menu-group>
-        <goab-side-menu-group heading="Popover">
+        </goa-side-menu-group>
+        <goa-side-menu-group heading="Popover">
           <a routerLink="/2693">Button handles action vs args</a>
-        </goab-side-menu-group>
-        <goab-side-menu-group heading="Spacer">
+        </goa-side-menu-group>
+        <goa-side-menu-group heading="Spacer">
           <a routerLink="/2455">spacer hspacing=fill</a>
-        </goab-side-menu-group>
-        <goab-side-menu-group heading="Form Stepper">
+        </goa-side-menu-group>
+        <goa-side-menu-group heading="Form Stepper">
           <a routerLink="/2408">Form Stepper Not-started</a>
-        </goab-side-menu-group>
-        <goab-side-menu-group heading="Pagination">
+        </goa-side-menu-group>
+        <goa-side-menu-group heading="Pagination">
           <a routerLink="/2395">Pagination trigger 2 times</a>
-        </goab-side-menu-group>
-        <goab-side-menu-group heading="File Upload">
+        </goa-side-menu-group>
+        <goa-side-menu-group heading="File Upload">
           <a routerLink="/1849">File input case-sensitive accept</a>
-        </goab-side-menu-group>
-        <goab-side-menu-group heading="App Footer">
+        </goa-side-menu-group>
+        <goa-side-menu-group heading="App Footer">
           <a routerLink="/1572">App Footer Tab index</a>
-        </goab-side-menu-group>
-        <goab-side-menu-group heading="Microsite Header">
+        </goa-side-menu-group>
+        <goa-side-menu-group heading="Microsite Header">
           <a routerLink="/2939">Issue 2939 - Feedback Link Test</a>
-        </goab-side-menu-group>
-      </goab-side-menu-group>
-      <goab-side-menu-group heading="Public Form">
+        </goa-side-menu-group>
+      </goa-side-menu-group>
+      <goa-side-menu-group heading="Public Form">
         <a routerLink="/public-form">Public Form</a>
         <a routerLink="/support-order-details">Support Order Details</a>
         <a routerLink="/public-form-subform-example">Public Form SubForm Example</a>
@@ -109,12 +113,17 @@
         <a routerLink="/public-form/2827">Issue 2827</a>
         <a routerLink="/public-form/2827-subform">Issue 2827 Subform</a>
         <a routerLink="/support-order-details">Support Order Details</a>
+        <a routerLink="/public-form-with-checkbox">Public Form with Checkbox</a>
+        <a routerLink="/public-form-with-datepicker">Public Form with Date Picker</a>
+        <a routerLink="/public-form-with-dropdown">Public Form with Dropdown</a>
+        <a routerLink="/public-form-with-radio">Public Form with Radio</a>
+        <a routerLink="/public-form-with-textarea">Public Form with TextArea</a>
         <a routerLink="/public-form-checkbox-list">Public form vs checkbox list</a>
         <a routerLink="/public-form-checkbox">Public Form vs checkbox</a>
         <a routerLink="/public-form-datepicker">Public form vs datepicker</a>
         <a routerLink="/public-form-dropdown">Public form vs dropdown</a>
-      </goab-side-menu-group>
-      <goab-side-menu-group heading="Components">
+      </goa-side-menu-group>
+      <goa-side-menu-group heading="Components">
         <a routerLink="/badge-wrapper">Badge Wrapper</a>
         <a routerLink="/accordion"> Accordion </a>
         <a routerLink="/app-footer"> AppFooter </a>
@@ -155,7 +164,7 @@
         <a routerLink="/textarea"> TextArea </a>
         <a routerLink="/tooltip"> Tooltip </a>
         <a routerLink="/tabs"> Tabs </a>
-      </goab-side-menu-group>
+      </goa-side-menu-group>
       <goa-side-menu-group heading="Utils">
         <a routerLink="/spacing"> Spacing </a>
         <a routerLink="/grid"> Grid </a>
@@ -166,7 +175,7 @@
         <a routerLink="/two-column-layout"> Two Column Layout </a>
         <a routerLink="/three-column-layout"> Three Column Layout </a>
       </goa-side-menu-group>
-    </goab-side-menu>
+    </goa-side-menu>
   </section>
   <div class="container">
     <router-outlet></router-outlet>

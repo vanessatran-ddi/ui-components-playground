@@ -14,7 +14,7 @@ import {
 } from "@abgov/angular-components";
 import { FormBuilder, FormGroup, ReactiveFormsModule } from "@angular/forms";
 
-import { NgIf } from "@angular/common";
+
 
 @Component({
   selector: "abgov-drawer",
@@ -30,12 +30,11 @@ import { NgIf } from "@angular/common";
     GoabRadioGroup,
     GoabRadioItem,
     ReactiveFormsModule,
-    NgIf,
     GoabBadge,
     GoabIcon,
     GoabBlock,
-    GoabDrawer,
-  ],
+    GoabDrawer
+],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class DrawerComponent {

@@ -1,11 +1,18 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from "@angular/core";
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {Countries, CountrySubdivisions} from "../app/countries.data";
+import { RouterOutlet, RouterLink } from "@angular/router";
+import { NgForOf, NgIf } from "@angular/common";
+
+import "@abgov/web-components";
 
 @Component({
   selector: "abgov-root",
   templateUrl: "./app.component.html",
   styles: ``,
+  standalone: true,
+  imports: [RouterOutlet, RouterLink, ReactiveFormsModule, NgForOf, NgIf],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppComponent implements OnInit {
   countries = Countries;

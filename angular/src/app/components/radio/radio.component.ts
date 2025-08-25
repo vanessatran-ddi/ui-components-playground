@@ -1,6 +1,6 @@
 import { GoabFormItem, GoabRadioGroup, GoabRadioItem } from "@abgov/angular-components";
 import { GoabRadioGroupOnChangeDetail } from "@abgov/ui-components-common";
-import { NgForOf } from "@angular/common";
+
 import { Component } from "@angular/core";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 
@@ -14,9 +14,8 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angul
     GoabRadioItem,
     GoabFormItem,
     ReactiveFormsModule,
-    NgForOf,
     FormsModule
-  ]
+]
 })
 export class RadioComponent {
   selectedValue = '';

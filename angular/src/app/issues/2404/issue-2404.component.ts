@@ -1,13 +1,13 @@
 import { Component } from "@angular/core";
 import { GoabInput } from "@abgov/angular-components";
-import { NgForOf, NgIf } from "@angular/common";
+
 
 @Component({
   standalone: true,
   selector: "abgov-issue-2404",
   templateUrl: "./issue-2404.component.html",
   styleUrl: "./issue-2404.component.css",
-  imports: [GoabInput, GoabInput, NgForOf, NgIf],
+  imports: [GoabInput, GoabInput],
 })
 export class Issue2404Component {
   clickEvents: string[] = [];

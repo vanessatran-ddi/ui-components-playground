@@ -11,7 +11,10 @@ import { Component } from "@angular/core";
   ]
 })
 export class ButtonComponent {
-  constructor() { }
+  isDisabled = true;
+  constructor() {
+    setTimeout(() => this.isDisabled = false, 3000);
+  }
 
   onClick() {
     console.log("clicked");

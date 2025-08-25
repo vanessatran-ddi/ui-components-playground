@@ -1,8 +1,9 @@
 import { GoabContainer, GoabDatePicker, GoabDropdown, GoabDropdownItem, GoabFormItem, GoabInput, GoabSpacer } from "@abgov/angular-components";
 import { GoabDatePickerOnChangeDetail, GoabDropdownOnChangeDetail } from "@abgov/ui-components-common";
-import { CommonModule } from "@angular/common";
+
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { JsonPipe, NgForOf } from "@angular/common";
 import { Countries, CountrySubdivisions } from "./countries.data";
 
 @Component({
@@ -18,9 +19,10 @@ import { Countries, CountrySubdivisions } from "./countries.data";
     GoabInput,
     GoabSpacer,
     ReactiveFormsModule,
-    CommonModule,
-    FormsModule
-  ]
+    FormsModule,
+    JsonPipe,
+    NgForOf
+]
 })
 export class DropdownComponent implements OnInit {
   example1: string | undefined;
@@ -70,8 +72,8 @@ export class DropdownComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("setting colors in 3 secs")
-    setTimeout(() => this.colors = ["Chris", "James", "John"], 3000);
+    // console.log("setting colors in 3 secs")
+    // setTimeout(() => this.colors = ["Chris", "James", "John"], 3000);
   }
 
   color = new FormControl("green");

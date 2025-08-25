@@ -1,5 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from "@angular/core";
-import { CommonModule } from "@angular/common";
+
 import {
   GoabFormState,
   PublicFormController,
@@ -29,7 +29,6 @@ type DependentPage = "dependent-name" | "2B.3.Review";
   templateUrl: "./issue-2827-subform.component.html",
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
-    CommonModule,
     GoabButton,
     GoabFieldset,
     GoabFormItem,
@@ -41,8 +40,8 @@ type DependentPage = "dependent-name" | "2B.3.Review";
     GoabRadioItem,
     GoabTable,
     GoabText,
-    GoabTextArea,
-  ],
+    GoabTextArea
+],
 })
 export class Issue2827SubformComponent implements OnInit {
   // Main form controller for Section2B pages

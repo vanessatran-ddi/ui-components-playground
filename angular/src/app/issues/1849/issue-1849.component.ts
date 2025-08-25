@@ -1,11 +1,11 @@
 import { Component } from "@angular/core";
 import { MockUploader, Upload } from "../../utils/file-uploader";
 import { GoabFileUploadCard, GoabFileUploadInput, GoabFormItem } from "@abgov/angular-components";
-import { NgForOf } from "@angular/common";
+
 @Component({
   selector: "abgov-issue-1849",
   standalone: true,
-  imports: [GoabFormItem, GoabFileUploadInput, GoabFileUploadCard, NgForOf],
+  imports: [GoabFormItem, GoabFileUploadInput, GoabFileUploadCard],
   templateUrl: "./issue-1849.component.html",
 })
 export class Issue1849Component {

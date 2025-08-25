@@ -2,7 +2,7 @@
 
 <goab-form-item [formGroup]="formGroup">
   <goab-input name="search" placeholder="Search requester" formControlName="txtRequesterName" trailingIcon="close"
-              (onTrailingIconClick)="searchRequesterClickIcon()" width="434px">
+    (onTrailingIconClick)="searchRequesterClickIcon()" width="434px">
   </goab-input>
   <goab-form-item-slot slot="error">Inside goab-form-item-error</goab-form-item-slot>
   <goab-form-item-slot slot="helptext">Help!</goab-form-item-slot>
@@ -68,14 +68,16 @@
 
 <goab-form-item label="Color" requirement="required">
   <goab-dropdown name="colors">
-    <goab-dropdown-item *ngFor="let color of colors" [value]="color" [label]="color" />
+    @for (color of colors; track color) {
+      <goab-dropdown-item [value]="color" [label]="color" />
+    }
   </goab-dropdown>
 </goab-form-item>
 
 <goab-form-item label="Description" requirement="required"
   [error]="form.controls['descriptionFormCtrl'].invalid && form.controls['descriptionFormCtrl'].touched ? 'You must enter other description.' : undefined">
   <goab-input name="otherDescription" goaValue width="398px" [formControl]="descriptionFormCtrl"
-    [error]="form.controls['descriptionFormCtrl'].invalid && form.controls['descriptionFormCtrl'].touched"></goab-input>
+  [error]="form.controls['descriptionFormCtrl'].invalid && form.controls['descriptionFormCtrl'].touched"></goab-input>
 </goab-form-item>
 
 <goab-block gap="m">

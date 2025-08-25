@@ -4,7 +4,7 @@ import {
   GoabButton,
   GoabContainer,
 } from "@abgov/angular-components";
-import { NgFor } from "@angular/common";
+
 import { Component, OnInit } from "@angular/core";
 
 
@@ -16,9 +16,8 @@ import { Component, OnInit } from "@angular/core";
     GoabContainer,
     GoabButton,
     GoabBlock,
-    GoabBadge,
-    NgFor,
-  ],
+    GoabBadge
+],
 })
 export class ContainerComponent implements OnInit {
   users: string[] = [];

@@ -1,7 +1,9 @@
-<div *ngIf="completed" style="margin: 20px; padding: 20px; background-color: #f5f5f5; border: 1px solid #ddd; border-radius: 5px;">
-  <h3>Form State at completion:</h3>
-  <pre style="white-space: pre-wrap; word-break: break-word;">{{ formStateDisplay }}</pre>
-</div>
+@if (completed) {
+  <div style="margin: 20px; padding: 20px; background-color: #f5f5f5; border: 1px solid #ddd; border-radius: 5px;">
+    <h3>Form State at completion:</h3>
+    <pre style="white-space: pre-wrap; word-break: break-word;">{{ formStateDisplay }}</pre>
+  </div>
+}
 
 <goa-public-form
   name="section2b-form"
@@ -9,13 +11,13 @@
   (_complete)="onCompleteSection2B($event)"
   (_init)="_mainFormController.init($event)"
   (_stateChange)="onMainFormStateChange($event)"
->
+  >
   <goa-public-form-page
     id="2B.1"
     heading="How many people currently live in your household?"
     button-text="Save and continue"
     (_continue)="onContinue($event, '2B.1')"
-  >
+    >
     <goa-fieldset>
       <goa-form-item name="How many people currently live in your household?">
         <goa-input name="household-people" trailing-content="People"></goa-input>
@@ -28,7 +30,7 @@
     heading="Do you have any dependents under the age of 18?"
     button-text="Save and continue"
     (_continue)="onContinue($event, '2B.2')"
-  >
+    >
     <goa-fieldset>
       <goa-form-item name="Do you have any dependents under the age of 18?">
         <goa-radio-group name="dependents">
@@ -44,47 +46,51 @@
     id="2B.3"
     type="multistep"
     (_continue)="onContinue($event, '2B.3')"
-  >
+    >
     <goa-public-subform
       id="2B.3"
       name="2B.3"
       (_init)="onSubformInit($event)"
       (_stateChange)="onSubformStateChange($event)"
-    >
+      >
       <goa-public-subform-index
         slot="subform-index"
         heading="Add dependants under the age of 18"
         action-button-text="Add another dependant"
         [attr.button-visibility]="continueButtonVisibility"
-      >
+        >
         <goa-text mb="l">
           Please provide information about any dependents under the age of 18 for whom you are responsible. Dependents include your biological or adopted children, stepchildren, and any other minors in your care. This information is necessary to determine eligibility for various benefits and services provided by the government. Ensure that you enter accurate details for each dependent, as this will help us process your application more efficiently and provide you with the appropriate support.
         </goa-text>
 
-        <goa-table *ngIf="dependentsList.length > 0" width="100%" mb="xl">
-          <thead>
-            <tr>
-              <th>Full name</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of dependentsList; let index = index">
-              <td>{{ item['fullName'] }}</td>
-              <td class="goa-table-number-header">
-                <goa-button (_click)="handleEditDependent(index)">
-                  Edit
-                </goa-button>
-              </td>
-              <td class="goa-table-number-header" style="width: 0px">
-                <goa-button (_click)="handleDeleteDependent(index)">
-                  Remove
-                </goa-button>
-              </td>
-            </tr>
-          </tbody>
-        </goa-table>
+        @if (dependentsList.length > 0) {
+          <goa-table width="100%" mb="xl">
+            <thead>
+              <tr>
+                <th>Full name</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (item of dependentsList; track item; let index = $index) {
+                <tr>
+                  <td>{{ item['fullName'] }}</td>
+                  <td class="goa-table-number-header">
+                    <goa-button (_click)="handleEditDependent(index)">
+                      Edit
+                    </goa-button>
+                  </td>
+                  <td class="goa-table-number-header" style="width: 0px">
+                    <goa-button (_click)="handleDeleteDependent(index)">
+                      Remove
+                    </goa-button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </goa-table>
+        }
       </goa-public-subform-index>
 
       <goa-public-form-page
@@ -93,7 +99,7 @@
         heading="Dependent information"
         button-text="Continue"
         (_continue)="onDependentContinue($event, 'dependent-name')"
-      >
+        >
         <goa-fieldset>
           <goa-form-item label="Full name">
             <goa-input name="fullName"></goa-input>
@@ -109,7 +115,7 @@
     heading="Do any dependants have long-term health conditions or disabilities?"
     button-text="Save and continue"
     (_continue)="onContinue($event, '2B.4')"
-  >
+    >
     <goa-fieldset>
       <goa-form-item name="Do any dependants have long-term health conditions or disabilities?">
         <goa-radio-group name="dependents-health">
@@ -125,7 +131,7 @@
     heading="Please provide details to help us understand any specific needs or accommodations."
     button-text="Save and continue"
     (_continue)="onContinue($event, '2B.5')"
-  >
+    >
     <goa-fieldset>
       <goa-form-item name="Please provide details to help us understand any specific needs or accommodations.">
         <goa-textarea
@@ -142,7 +148,7 @@
     type="summary"
     heading="Review your information"
     button-text="Review and Submit"
-  >
+    >
     <goa-public-form-summary></goa-public-form-summary>
   </goa-public-form-page>
 </goa-public-form>

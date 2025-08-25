@@ -9,7 +9,7 @@ import {
   GoabSpacer,
   GoabTable,
 } from "@abgov/angular-components";
-import { NgFor } from "@angular/common";
+
 
 interface User {
   id: string;
@@ -27,9 +27,8 @@ interface User {
     GoabDropdown,
     GoabDropdownItem,
     GoabSpacer,
-    GoabPagination,
-    NgFor,
-  ],
+    GoabPagination
+],
 })
 export class PaginateShowXExampleComponent {
   users: User[] = [];

@@ -3,9 +3,11 @@
 
 Dynamic GoABlock
 <goab-block>
-  <div style="background: lightblue; padding: 1rem" *ngFor="let user of users">
-    {{user}}
-  </div>
+  @for (user of users; track user) {
+    <div style="background: lightblue; padding: 1rem">
+      {{user}}
+    </div>
+  }
 </goab-block>
 
 

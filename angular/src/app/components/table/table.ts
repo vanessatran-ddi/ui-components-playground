@@ -1,6 +1,6 @@
 import { GoabBlock, GoabIcon, GoabTable, GoabTableSortHeader } from "@abgov/angular-components";
 import { GoabTableOnSortDetail } from "@abgov/ui-components-common";
-import { NgForOf } from "@angular/common";
+
 import { Component } from "@angular/core";
 import { faker } from "@faker-js/faker";
 
@@ -19,9 +19,8 @@ interface User {
     GoabBlock,
     GoabTable,
     GoabTableSortHeader,
-    GoabIcon,
-    NgForOf,
-  ],
+    GoabIcon
+],
 })
 export class TableComponent {
   users: User[] = [];
