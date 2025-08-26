@@ -1,4 +1,4 @@
-import { GoabCheckboxList, GoabCheckboxListItem, GoabFormItem } from "@abgov/react-components";
+import { GoabCheckboxList, GoabCheckbox, GoabFormItem } from "@abgov/react-components";
 import { GoabCheckboxListOnChangeDetail } from "@abgov/ui-components-common";
 import { useState } from "react";
 
@@ -14,29 +14,29 @@ export const CheckboxListPage = () => {
 
   const handleChange = (event: GoabCheckboxListOnChangeDetail) => {
     console.log("CheckboxList onChange triggered:", event);
-    setSelectedValues(event.values || []);
+    setSelectedValues(event.value || []);
   };
 
   const handleChange2 = (event: GoabCheckboxListOnChangeDetail) => {
     console.log("CheckboxList onChange2 triggered:", event);
-    setSelectedValues2(event.values || []);
+    setSelectedValues2(event.value || []);
   };
 
   const handleChange3 = (event: GoabCheckboxListOnChangeDetail) => {
     console.log("CheckboxList onChange3 triggered:", event);
-    setSelectedValues3(event.values || []);
+    setSelectedValues3(event.value || []);
   };
 
   const handleChange4 = (event: GoabCheckboxListOnChangeDetail) => {
     console.log("CheckboxList onChange4 triggered:", event);
-    setSelectedValues4(event.values || []);
+    setSelectedValues4(event.value || []);
   };
 
   const handleFormContactPreferencesChange = (event: GoabCheckboxListOnChangeDetail) => {
     console.log("Form contact preferences changed:", event);
     setFormValues(prev => ({
       ...prev,
-      contactPreferences: event.values || []
+      contactPreferences: event.value || []
     }));
   };
 
@@ -44,7 +44,7 @@ export const CheckboxListPage = () => {
     console.log("Form interests changed:", event);
     setFormValues(prev => ({
       ...prev,
-      interests: event.values || []
+      interests: event.value || []
     }));
   };
 
@@ -82,10 +82,10 @@ export const CheckboxListPage = () => {
           name="contactPrefs"
           value={selectedValues}
           onChange={handleChange}>
-          <GoabCheckboxListItem value="email" text="Email" />
-          <GoabCheckboxListItem value="phone" text="Phone" />
-          <GoabCheckboxListItem value="sms" text="SMS" />
-          <GoabCheckboxListItem value="mail" text="Mail" />
+          <GoabCheckbox name="email" text="Email" />
+          <GoabCheckbox name="phone" text="Phone" />
+          <GoabCheckbox name="sms" text="SMS" />
+          <GoabCheckbox name="mail" text="Mail" />
         </GoabCheckboxList>
       </GoabFormItem>
       <p><strong>Selected values:</strong> {JSON.stringify(selectedValues)}</p>
@@ -98,11 +98,11 @@ export const CheckboxListPage = () => {
           name="commMethods"
           value={selectedValues2}
           onChange={handleChange2}>
-          <GoabCheckboxListItem value="email" text="Email" />
-          <GoabCheckboxListItem value="phone" text="Phone Call" />
-          <GoabCheckboxListItem value="sms" text="Text Message" />
-          <GoabCheckboxListItem value="mail" text="Physical Mail" />
-          <GoabCheckboxListItem value="fax" text="Fax" />
+          <GoabCheckbox name="email" text="Email" />
+          <GoabCheckbox name="phone" text="Phone Call" />
+          <GoabCheckbox name="sms" text="Text Message" />
+          <GoabCheckbox name="mail" text="Physical Mail" />
+          <GoabCheckbox name="fax" text="Fax" />
         </GoabCheckboxList>
       </GoabFormItem>
       <p><strong>Selected values:</strong> {JSON.stringify(selectedValues2)}</p>
@@ -113,11 +113,10 @@ export const CheckboxListPage = () => {
       <GoabFormItem label="Yes/No Questions" helpText="Select all that apply">
         <GoabCheckboxList
           name="yesNoQuestions"
-          orientation="horizontal"
           value={selectedValues3}
           onChange={handleChange3}>
-          <GoabCheckboxListItem value="option1" text="Option 1" />
-          <GoabCheckboxListItem value="option2" text="Option 2" />
+          <GoabCheckbox name="option1" text="Option 1" />
+          <GoabCheckbox name="option2" text="Option 2" />
         </GoabCheckboxList>
       </GoabFormItem>
       <p><strong>Selected values:</strong> {JSON.stringify(selectedValues3)}</p>
@@ -131,9 +130,9 @@ export const CheckboxListPage = () => {
           disabled={true}
           value={selectedValues4}
           onChange={handleChange4}>
-          <GoabCheckboxListItem value="option1" text="Option 1" />
-          <GoabCheckboxListItem value="option2" text="Option 2" />
-          <GoabCheckboxListItem value="option3" text="Option 3" />
+          <GoabCheckbox name="option1" text="Option 1" />
+          <GoabCheckbox name="option2" text="Option 2" />
+          <GoabCheckbox name="option3" text="Option 3" />
         </GoabCheckboxList>
       </GoabFormItem>
       <p><strong>Selected values:</strong> {JSON.stringify(selectedValues4)}</p>
@@ -147,9 +146,9 @@ export const CheckboxListPage = () => {
           error={true}
           value={selectedValues3}
           onChange={handleChange3}>
-          <GoabCheckboxListItem value="option1" text="Option 1" />
-          <GoabCheckboxListItem value="option2" text="Option 2" />
-          <GoabCheckboxListItem value="option3" text="Option 3" />
+          <GoabCheckbox name="option1" text="Option 1" />
+          <GoabCheckbox name="option2" text="Option 2" />
+          <GoabCheckbox name="option3" text="Option 3" />
         </GoabCheckboxList>
       </GoabFormItem>
 
@@ -161,10 +160,10 @@ export const CheckboxListPage = () => {
           name="mixedAvailability"
           value={selectedValues3}
           onChange={handleChange3}>
-          <GoabCheckboxListItem value="available1" text="Available Option 1" />
-          <GoabCheckboxListItem value="available2" text="Available Option 2" />
-          <GoabCheckboxListItem value="unavailable1" text="Unavailable Option 1" disabled={true} />
-          <GoabCheckboxListItem value="unavailable2" text="Unavailable Option 2" disabled={true} />
+          <GoabCheckbox name="available1" text="Available Option 1" />
+          <GoabCheckbox name="available2" text="Available Option 2" />
+          <GoabCheckbox name="unavailable1" text="Unavailable Option 1" disabled={true} />
+          <GoabCheckbox name="unavailable2" text="Unavailable Option 2" disabled={true} />
         </GoabCheckboxList>
       </GoabFormItem>
 
@@ -177,10 +176,10 @@ export const CheckboxListPage = () => {
             name="contactPreferences"
             value={formValues.contactPreferences}
             onChange={handleFormContactPreferencesChange}>
-            <GoabCheckboxListItem value="email" text="Email" />
-            <GoabCheckboxListItem value="phone" text="Phone" />
-            <GoabCheckboxListItem value="sms" text="SMS" />
-            <GoabCheckboxListItem value="mail" text="Mail" />
+            <GoabCheckbox name="email" text="Email" />
+            <GoabCheckbox name="phone" text="Phone" />
+            <GoabCheckbox name="sms" text="SMS" />
+            <GoabCheckbox name="mail" text="Mail" />
           </GoabCheckboxList>
         </GoabFormItem>
 
@@ -189,11 +188,11 @@ export const CheckboxListPage = () => {
             name="interests"
             value={formValues.interests}
             onChange={handleFormInterestsChange}>
-            <GoabCheckboxListItem value="sports" text="Sports" />
-            <GoabCheckboxListItem value="music" text="Music" />
-            <GoabCheckboxListItem value="movies" text="Movies" />
-            <GoabCheckboxListItem value="books" text="Books" />
-            <GoabCheckboxListItem value="travel" text="Travel" />
+            <GoabCheckbox name="sports" text="Sports" />
+            <GoabCheckbox name="music" text="Music" />
+            <GoabCheckbox name="movies" text="Movies" />
+            <GoabCheckbox name="books" text="Books" />
+            <GoabCheckbox name="travel" text="Travel" />
           </GoabCheckboxList>
         </GoabFormItem>
 
@@ -217,9 +216,9 @@ export const CheckboxListPage = () => {
           maxWidth="400px"
           value={selectedValues3}
           onChange={handleChange3}>
-          <GoabCheckboxListItem value="option1" text="This is a very long option text that might wrap" />
-          <GoabCheckboxListItem value="option2" text="Another long option to demonstrate wrapping behavior" />
-          <GoabCheckboxListItem value="option3" text="Short option" />
+          <GoabCheckbox name="option1" text="This is a very long option text that might wrap" />
+          <GoabCheckbox name="option2" text="Another long option to demonstrate wrapping behavior" />
+          <GoabCheckbox name="option3" text="Short option" />
         </GoabCheckboxList>
       </GoabFormItem>
 
@@ -235,8 +234,8 @@ export const CheckboxListPage = () => {
           mr="s"
           value={selectedValues3}
           onChange={handleChange3}>
-          <GoabCheckboxListItem value="option1" text="Option 1" />
-          <GoabCheckboxListItem value="option2" text="Option 2" />
+          <GoabCheckbox name="option1" text="Option 1" />
+          <GoabCheckbox name="option2" text="Option 2" />
         </GoabCheckboxList>
       </GoabFormItem>
 
@@ -249,8 +248,8 @@ export const CheckboxListPage = () => {
           ariaLabel="Custom accessibility label for screen readers"
           value={selectedValues3}
           onChange={handleChange3}>
-          <GoabCheckboxListItem value="option1" text="Option 1" />
-          <GoabCheckboxListItem value="option2" text="Option 2" />
+          <GoabCheckbox name="option1" text="Option 1" />
+          <GoabCheckbox name="option2" text="Option 2" />
         </GoabCheckboxList>
       </GoabFormItem>
 
@@ -263,8 +262,8 @@ export const CheckboxListPage = () => {
           testId="checkbox-list-test"
           value={selectedValues3}
           onChange={handleChange3}>
-          <GoabCheckboxListItem value="option1" text="Option 1" testId="option1-test" />
-          <GoabCheckboxListItem value="option2" text="Option 2" testId="option2-test" />
+          <GoabCheckbox name="option1" text="Option 1" testId="option1-test" />
+          <GoabCheckbox name="option2" text="Option 2" testId="option2-test" />
         </GoabCheckboxList>
       </GoabFormItem>
     </>
