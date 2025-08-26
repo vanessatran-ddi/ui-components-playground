@@ -79,6 +79,9 @@ import { Issue2827SubformComponent } from "./public-form/issue-2827/issue-2827-s
 import { SupportOrderDetailsComponent } from "./public-form/SupportOrderDetails";
 import { Issue2720Component } from "./issues/2720/issue-2720.component";
 import { Issue2829Component } from "./issues/2829/issue-2829.component";
+import {
+  PublicFormWithCheckboxComponent
+} from "./public-form/public-form-with-checkbox.component";
 
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
@@ -160,6 +163,7 @@ const routes: Routes = [
   { path: "public-form/2827", component: Issue2827Component},
   { path: "public-form/2827-subform", component: Issue2827SubformComponent},
   { path: "support-order-details", component: SupportOrderDetailsComponent},
+  { path: "public-form-checkbox-list", component: PublicFormWithCheckboxComponent},
   { path: "", redirectTo: "/", pathMatch: "full" },
 ];
 

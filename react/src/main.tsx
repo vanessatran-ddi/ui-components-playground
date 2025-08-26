@@ -26,6 +26,7 @@ import { SimplePublicFormExample } from "./app/public-form/SimplePublicFormExamp
 import { Issue2827 } from "./app/public-form/issue2827";
 import { PublicFormNavigationTest } from "./app/public-form/PublicFormNavigationTest";
 import { PublicFormAccessibilityTest } from "./app/public-form/PublicFormAccessibilityTest";
+import { PublicFormWithCheckboxList } from "./app/public-form/PublicFormWithCheckboxList";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -58,8 +59,7 @@ root.render(
           <Route path={"/public-form-thomas"} element={<FormTest/>}></Route>
           <Route path={"/2827"} element={<Issue2827/>}></Route>
           <Route path={"/2574"} element={<Issue2574/>}></Route>
-          {/** Add more routes here */}
-
+          <Route path={"public-form-checkbox-list"} element={<PublicFormWithCheckboxList/>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

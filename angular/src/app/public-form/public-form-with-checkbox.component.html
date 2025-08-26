@@ -1,0 +1,59 @@
+<goab-public-form
+  name="public-form-checkbox"
+  (onComplete)="showConfirmation($event)"
+  (onInit)="init($event)"
+>
+  <goab-public-form-page
+    id="preferences"
+    heading="Your Communication Preferences"
+    summaryHeading="Preferences"
+    (onContinue)="onPageChange($event, 'preferences')"
+  >
+    <goab-fieldset>
+      <goab-form-item
+        id="communication-item"
+        label="How would you like us to contact you?"
+        labelSize="large"
+        helpText="Select all that apply"
+      >
+        <goab-checkbox-list name="contactMethods" [value]="selectedContactMethods" (onChange)="onContactMethodsChange($event)">
+          <goab-checkbox name="email" text="Email"></goab-checkbox>
+          <goab-checkbox name="phone" text="Phone Call"></goab-checkbox>
+          <goab-checkbox name="sms" text="Text Message (SMS)"></goab-checkbox>
+          <goab-checkbox name="mail" text="Physical Mail"></goab-checkbox>
+        </goab-checkbox-list>
+      </goab-form-item>
+
+      <goab-form-item
+        id="interests-item"
+        label="What are you interested in?"
+        labelSize="large"
+        helpText="Select your areas of interest"
+      >
+        <goab-checkbox-list name="interests" [value]="selectedInterests" (onChange)="onInterestsChange($event)">
+          <goab-checkbox name="news" text="Government News & Updates"></goab-checkbox>
+          <goab-checkbox name="services" text="New Services & Programs"></goab-checkbox>
+          <goab-checkbox name="events" text="Community Events"></goab-checkbox>
+          <goab-checkbox name="emergency" text="Emergency Alerts"></goab-checkbox>
+        </goab-checkbox-list>
+      </goab-form-item>
+    </goab-fieldset>
+  </goab-public-form-page>
+
+  <goab-public-form-page
+    id="summary"
+    heading="Summary"
+    type="summary"
+    (onContinue)="onPageChange($event, 'summary')"
+  >
+    <goab-public-form-summary/>
+  </goab-public-form-page>
+</goab-public-form>
+
+<goab-modal [open]="_showConfirmationModal" heading="Submit preferences">
+  Your communication preferences will be saved.
+  <goab-button-group alignment="end">
+    <goab-button type="tertiary" (onClick)="hideConfirmationModal()">Cancel</goab-button>
+    <goab-button type="primary" (onClick)="submitForm()">Submit</goab-button>
+  </goab-button-group>
+</goab-modal>

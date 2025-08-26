@@ -1,0 +1,80 @@
+<goab-public-form
+  name="public-form-textarea"
+  (onComplete)="showConfirmation($event)"
+  (onInit)="init($event)"
+>
+  <goab-public-form-page
+    id="feedback"
+    heading="Your Feedback"
+    summaryHeading="Feedback Information"
+    (onContinue)="onPageChange($event, 'feedback')"
+  >
+    <goab-fieldset>
+      <goab-form-item
+        id="comments-item"
+        label="Please share your comments or suggestions"
+        labelSize="large"
+        helpText="Your feedback helps us improve our services"
+      >
+        <goab-textarea 
+          name="comments" 
+          placeholder="Enter your comments here..."
+          rows="4"
+        />
+      </goab-form-item>
+
+      <goab-form-item
+        id="experience-item"
+        label="Describe your experience with our services"
+        helpText="Please provide as much detail as possible"
+      >
+        <goab-textarea 
+          name="experience" 
+          placeholder="Tell us about your experience..."
+          rows="6"
+        />
+      </goab-form-item>
+
+      <goab-form-item
+        id="improvements-item"
+        label="What improvements would you like to see?"
+        helpText="Share your ideas for how we can better serve you"
+      >
+        <goab-textarea 
+          name="improvements" 
+          placeholder="Suggest improvements..."
+          rows="4"
+        />
+      </goab-form-item>
+
+      <goab-form-item
+        id="additional-info-item"
+        label="Any additional information?"
+        helpText="Optional: Include any other relevant details"
+      >
+        <goab-textarea 
+          name="additional-info" 
+          placeholder="Additional information (optional)..."
+          rows="3"
+        />
+      </goab-form-item>
+    </goab-fieldset>
+  </goab-public-form-page>
+
+  <goab-public-form-page
+    id="summary"
+    heading="Summary"
+    type="summary"
+    (onContinue)="onPageChange($event, 'summary')"
+  >
+    <goab-public-form-summary/>
+  </goab-public-form-page>
+</goab-public-form>
+
+<goab-modal [open]="_showConfirmationModal" heading="Submit feedback">
+  Your feedback will be submitted to help us improve our services.
+  <goab-button-group alignment="end">
+    <goab-button type="tertiary" (onClick)="hideConfirmationModal()">Cancel</goab-button>
+    <goab-button type="primary" (onClick)="submitForm()">Submit</goab-button>
+  </goab-button-group>
+</goab-modal>

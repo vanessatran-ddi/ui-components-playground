@@ -1,0 +1,75 @@
+<goab-public-form
+  name="public-form-radio"
+  (onComplete)="showConfirmation($event)"
+  (onInit)="init($event)"
+>
+  <goab-public-form-page
+    id="survey"
+    heading="Survey Questions"
+    summaryHeading="Survey Responses"
+    (onContinue)="onPageChange($event, 'survey')"
+  >
+    <goab-fieldset>
+      <goab-form-item
+        id="satisfaction-item"
+        label="How satisfied are you with government services?"
+        labelSize="large"
+        helpText="Please select one option"
+      >
+        <goab-radio-group id="satisfaction" name="satisfaction">
+          <goab-radio-item value="very-satisfied" label="Very Satisfied" />
+          <goab-radio-item value="satisfied" label="Satisfied" />
+          <goab-radio-item value="neutral" label="Neutral" />
+          <goab-radio-item value="dissatisfied" label="Dissatisfied" />
+          <goab-radio-item value="very-dissatisfied" label="Very Dissatisfied" />
+        </goab-radio-group>
+      </goab-form-item>
+
+      <goab-form-item
+        id="frequency-item"
+        label="How often do you use government services?"
+        helpText="Select the option that best describes your usage"
+      >
+        <goab-radio-group id="frequency" name="frequency">
+          <goab-radio-item value="daily" label="Daily" />
+          <goab-radio-item value="weekly" label="Weekly" />
+          <goab-radio-item value="monthly" label="Monthly" />
+          <goab-radio-item value="yearly" label="Yearly" />
+          <goab-radio-item value="rarely" label="Rarely" />
+          <goab-radio-item value="never" label="Never" />
+        </goab-radio-group>
+      </goab-form-item>
+
+      <goab-form-item
+        id="recommendation-item"
+        label="Would you recommend our services to others?"
+        helpText="Your honest feedback helps us improve"
+      >
+        <goab-radio-group id="recommendation" name="recommendation">
+          <goab-radio-item value="definitely" label="Definitely" />
+          <goab-radio-item value="probably" label="Probably" />
+          <goab-radio-item value="maybe" label="Maybe" />
+          <goab-radio-item value="probably-not" label="Probably Not" />
+          <goab-radio-item value="definitely-not" label="Definitely Not" />
+        </goab-radio-group>
+      </goab-form-item>
+    </goab-fieldset>
+  </goab-public-form-page>
+
+  <goab-public-form-page
+    id="summary"
+    heading="Summary"
+    type="summary"
+    (onContinue)="onPageChange($event, 'summary')"
+  >
+    <goab-public-form-summary/>
+  </goab-public-form-page>
+</goab-public-form>
+
+<goab-modal [open]="_showConfirmationModal" heading="Submit survey">
+  Your survey responses will be submitted.
+  <goab-button-group alignment="end">
+    <goab-button type="tertiary" (onClick)="hideConfirmationModal()">Cancel</goab-button>
+    <goab-button type="primary" (onClick)="submitForm()">Submit</goab-button>
+  </goab-button-group>
+</goab-modal>

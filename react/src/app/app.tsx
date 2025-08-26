@@ -50,6 +50,7 @@ export function App() {
               <Link to="/public-form-navigation">Navigation Test (Issue 1)</Link>
               <Link to="/public-form-accessibility">Accessibility Test (Issue 2)</Link>
               <Link to="/2827">Issue 2827</Link>
+              <Link to="/public-form-checkbox-list">Public form with checkbox list</Link>
             </GoabSideMenuGroup>
             {/* Add links here */}
           </GoabSideMenu>
