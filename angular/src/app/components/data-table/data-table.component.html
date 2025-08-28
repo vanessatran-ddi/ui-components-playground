@@ -1,29 +1,32 @@
-@if (_selectedUsers.length > 0) {
-  <goa-block direction="row">
-    <div>{{ _selectedUsers.length }} selected</div>
-    <goa-button (click)="deleteSelected()">Delete selected</goa-button>
-  </goa-block>
-}
-<goa-data-table #dataTableEl [selectable]="true">
-  @for (user of users; track user.idNumber) {
-    <goa-data-table-row [uid]="user.idNumber">
-      <goa-data-table-item label="ID number" name="id-number">
-        {{ user.idNumber }}
-      </goa-data-table-item>
-      <goa-data-table-item label="Name of child" name="name-of-child">
-        {{ user.nameOfChild }}
-      </goa-data-table-item>
-      <goa-data-table-item label="Data started" name="data-started">
-        {{ user.dataStarted }}
-      </goa-data-table-item>
-      <goa-data-table-item label="Date submitted" name="date-submitted">
-        {{ user.dateSubmitted }}
-      </goa-data-table-item>
-      <goa-data-table-item label="Status" name="status">
-        <goab-badge [type]="getStatusBadgeType(user.status)" [content]="user.status"></goab-badge>
-      </goa-data-table-item>
-      <goa-data-table-action label="Delete" action="deleteRow" [action-arg]="user.idNumber"></goa-data-table-action>
-      <goa-data-table-action label="Open" action="openRow" [action-arg]="user.idNumber"></goa-data-table-action>
-    </goa-data-table-row>
-  }
-</goa-data-table>
+<goa-data-grid>
+  <goab-table width="100%" mb="xl" (onSort)="handleSort($event)">
+    <thead>
+    <tr data-gridrow>
+      <th style="padding-bottom:0" data-gridcell><goab-checkbox mt="2" (onChange)="selectAll($event)" [checked]="isSelectedAll"></goab-checkbox></th>
+      <th data-gridcell><goab-table-sort-header name="idNumber">ID Number</goab-table-sort-header></th>
+      <th data-gridcell><goab-table-sort-header name="dataStarted">Date Started</goab-table-sort-header></th>
+      <th data-gridcell><goab-table-sort-header name="dateSubmitted">Date Submitted</goab-table-sort-header></th>
+      <th data-gridcell><goab-table-sort-header name="status">Status</goab-table-sort-header></th>
+      <th data-gridcell>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @for (user of users; track user.idNumber) {
+      <tr data-gridrow>
+        <td data-gridcell><goab-checkbox [checked]="isSelected(user.idNumber)" (onChange)="toggleSelection(user.idNumber, $event)"></goab-checkbox></td>
+        <td data-gridcell>{{ user.idNumber }}</td>
+        <td data-gridcell>{{ user.dataStarted }}</td>
+        <td data-gridcell>{{ user.dateSubmitted }}</td>
+        <td data-gridcell><goab-badge [type]="getStatusBadgeType(user.status)" [content]="user.status"></goab-badge></td>
+        <td data-gridcell><goab-button type="tertiary" (onClick)="onDelete(user.idNumber)">
+          Delete
+        </goab-button>
+          <goab-button type="tertiary" (onClick)="onOpen(user.idNumber)">
+            Open
+          </goab-button>
+        </td>
+      </tr>
+    }
+    </tbody>
+  </goab-table>
+</goa-data-grid>

@@ -1,5 +1,11 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { GoabBadge, GoabBadgeType } from "@abgov/angular-components";
+import {
+  GoabBadge,
+  GoabBadgeType, GoabButton,
+  GoabCheckbox,
+  GoabCheckboxOnChangeDetail,
+  GoabTable, GoabTableOnSortDetail, GoabTableSortHeader,
+} from "@abgov/angular-components";
 
 type User = {
   idNumber: string;
@@ -14,7 +20,7 @@ type User = {
   standalone: true,
   templateUrl: "./data-table.component.html",
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [GoabBadge],
+  imports: [GoabBadge, GoabTable, GoabCheckbox, GoabTableSortHeader, GoabButton],
 })
 export class DataTableComponent {
   users: User[] = [
@@ -63,6 +69,8 @@ export class DataTableComponent {
   ];
   _selectedUsers: string[] = [];
 
+  isSelectedAll = false;
+
   deleteSelected() {
     this.users = this.users.filter((u) => !this._selectedUsers.includes(u.idNumber));
     this._selectedUsers = [];
@@ -70,13 +78,55 @@ export class DataTableComponent {
 
   getStatusBadgeType(status: string): GoabBadgeType {
     switch (status) {
-      case 'Submitted': return 'information';
-      case 'In review': return 'information';
-      case 'Awaiting documentation': return "important";
-      case 'Denied': return "emergency";
-      case 'Approved': return 'success';
-      case 'Closed': return 'information';
-      default: return 'information';
+      case "Submitted":
+        return "information";
+      case "In review":
+        return "information";
+      case "Awaiting documentation":
+        return "important";
+      case "Denied":
+        return "emergency";
+      case "Approved":
+        return "success";
+      case "Closed":
+        return "information";
+      default:
+        return "information";
     }
+  }
+
+  selectAll(event: GoabCheckboxOnChangeDetail) {
+    this.isSelectedAll = event.checked;
+    if (event.checked) {
+      this._selectedUsers = this.users.map(u => u.idNumber);
+    } else {
+      this._selectedUsers = [];
+    }
+  }
+
+  isSelected(userId: string): boolean {
+    return this._selectedUsers.includes(userId);
+  }
+
+  toggleSelection(userId: string, event: GoabCheckboxOnChangeDetail) {
+    if (event.checked) {
+      this._selectedUsers.push(userId);
+    } else {
+      this._selectedUsers = this._selectedUsers.filter(id => id !== userId);
+    }
+    this.isSelectedAll = this._selectedUsers.length === this.users.length;
+  }
+
+  handleSort(event: GoabTableOnSortDetail) {
+    const { sortBy, sortDir } = event;
+    this.users.sort((a: any, b: any) => (a[sortBy] > b[sortBy] ? 1 : -1) * sortDir);
+  }
+
+  onDelete(userId: string) {
+    alert("Are you sure you want to delete this user " + userId);
+  }
+
+  onOpen(userId: string) {
+    alert("We are going to open a profile of this user " + userId);
   }
 }

@@ -3,7 +3,7 @@ import { GoabText } from "@abgov/react-components";
 export const TextPage = () => {
   return (
     <>
-      <GoabText as="h1">Heading 1 with as</GoabText>
+      <GoabText as="h1" data-gridcell>Heading 1 with as</GoabText>
       <GoabText tag="h1">Heading 1</GoabText>
       <GoabText tag="h2">Heading 2</GoabText>
       <GoabText tag="h3">Heading 3</GoabText>
