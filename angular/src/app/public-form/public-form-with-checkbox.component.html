@@ -16,7 +16,7 @@
         labelSize="large"
         helpText="Select all that apply"
       >
-        <goab-checkbox-list name="contactMethods" [value]="selectedContactMethods" (onChange)="onContactMethodsChange($event)">
+        <goab-checkbox-list name="contactMethods">
           <goab-checkbox name="email" text="Email"></goab-checkbox>
           <goab-checkbox name="phone" text="Phone Call"></goab-checkbox>
           <goab-checkbox name="sms" text="Text Message (SMS)"></goab-checkbox>
@@ -30,7 +30,7 @@
         labelSize="large"
         helpText="Select your areas of interest"
       >
-        <goab-checkbox-list name="interests" [value]="selectedInterests" (onChange)="onInterestsChange($event)">
+        <goab-checkbox-list name="interests">
           <goab-checkbox name="news" text="Government News & Updates"></goab-checkbox>
           <goab-checkbox name="services" text="New Services & Programs"></goab-checkbox>
           <goab-checkbox name="events" text="Community Events"></goab-checkbox>
