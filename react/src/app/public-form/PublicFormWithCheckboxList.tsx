@@ -24,9 +24,6 @@ export const PublicFormWithCheckboxList = ({onComplete}: PublicFormWithCheckboxL
     continueTo,
   } = usePublicFormController<Page>("details");
 
-  const [selectedContactMethods, setSelectedContactMethods] = useState<string[]>([]);
-  const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
-
   const onInit = (event: Event) => {
     init(event);
     setTimeout(() => {
@@ -42,8 +39,6 @@ export const PublicFormWithCheckboxList = ({onComplete}: PublicFormWithCheckboxL
 
   const onCompleteForm = (e: GoabFormState) => {
     console.log("Complete checkbox list form", e);
-    console.log("Selected contact methods:", selectedContactMethods);
-    console.log("Selected interests:", selectedInterests);
     onComplete?.(e);
   };
 
@@ -69,21 +64,7 @@ export const PublicFormWithCheckboxList = ({onComplete}: PublicFormWithCheckboxL
   const validatePreferences = (e: Event): Page | undefined => {
     // For this example, we'll allow submission without requiring any checkboxes
     // This demonstrates that checkbox lists are typically optional
-    console.log("Validating preferences with:", {
-      contactMethods: selectedContactMethods,
-      interests: selectedInterests
-    });
     return "summary";
-  };
-
-  const onContactMethodsChange = (event: GoabCheckboxListOnChangeDetail) => {
-    console.log("Contact methods changed:", event);
-    setSelectedContactMethods(event.value || []);
-  };
-
-  const onInterestsChange = (event: GoabCheckboxListOnChangeDetail) => {
-    console.log("Interests changed:", event);
-    setSelectedInterests(event.value || []);
   };
 
   return (
@@ -97,7 +78,6 @@ export const PublicFormWithCheckboxList = ({onComplete}: PublicFormWithCheckboxL
       >
         <GoabFieldset>
           <GoabFormItem
-            name="contactMethods"
             label="How would you like us to contact you?"
             labelSize="large"
             helpText="Select all that apply"
@@ -111,7 +91,6 @@ export const PublicFormWithCheckboxList = ({onComplete}: PublicFormWithCheckboxL
           </GoabFormItem>
 
           <GoabFormItem
-            name="interests"
             label="What are you interested in?"
             labelSize="large"
             helpText="Select your areas of interest"
