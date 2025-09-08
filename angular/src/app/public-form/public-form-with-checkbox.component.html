@@ -1,59 +1,239 @@
-<goab-public-form
-  name="public-form-checkbox"
-  (onComplete)="showConfirmation($event)"
-  (onInit)="init($event)"
->
-  <goab-public-form-page
-    id="preferences"
-    heading="Your Communication Preferences"
-    summaryHeading="Preferences"
-    (onContinue)="onPageChange($event, 'preferences')"
-  >
-    <goab-fieldset>
-      <goab-form-item
-        id="communication-item"
-        label="How would you like us to contact you?"
-        labelSize="large"
-        helpText="Select all that apply"
+<div class="playground">
+
+<!--  <div>ANGULAR PLAYGROUND</div>-->
+
+<!--  <section>-->
+<!--    <h2>Disabled List</h2>-->
+<!--    <goab-checkbox-list-->
+<!--      name="disabled-selection"-->
+<!--      [value]="disabledSelection"-->
+<!--      [disabled]="true"-->
+<!--      (onChange)="onDisabledSelectionChange($event)">-->
+
+<!--      <goab-checkbox name="disabled1" value="disabled1" text="Disabled Option 1" ></goab-checkbox>-->
+<!--      <goab-checkbox name="disabled2" value="disabled2" text="Disabled Option 2"></goab-checkbox>-->
+
+<!--    </goab-checkbox-list>-->
+
+<!--    <p>Selected: {{ disabledSelection | json }}</p>-->
+<!--  </section>-->
+
+<!--  <section>-->
+<!--    <h2>Contact Preferences</h2>-->
+<!--    <goab-checkbox-list-->
+<!--      name="contact-preferences"-->
+<!--      [value]="contactPreferences"-->
+<!--      (onChange)="onContactPreferencesChange($event)">-->
+
+<!--      <goab-checkbox name="email" value="email" text="Email"></goab-checkbox>-->
+<!--      <goab-checkbox name="phone" value="phone" text="Phone"></goab-checkbox>-->
+<!--      <goab-checkbox name="sms" value="sms" text="Text message"></goab-checkbox>-->
+
+<!--    </goab-checkbox-list>-->
+
+<!--    <p>Selected: {{ contactPreferences | json }}</p>-->
+<!--  </section>-->
+
+<!--  <section>-->
+<!--    <h2>Required Selection (With Error)</h2>-->
+<!--    <goab-form-item-->
+<!--      label="Required Options"-->
+<!--      requirement="required"-->
+<!--      helpText="Please select at least one option from the list below"-->
+<!--      [error]="hasRequiredError ? 'You must select at least one option' : undefined">-->
+
+<!--      <goab-checkbox-list-->
+<!--        name="required-selection"-->
+<!--        [value]="requiredSelection"-->
+<!--        [error]="hasRequiredError"-->
+<!--        (onChange)="onRequiredSelectionChange($event)">-->
+
+<!--        <goab-checkbox name="option1" value="option1" text="Option 1"></goab-checkbox>-->
+<!--        <goab-checkbox name="option2" value="option2" text="Option 2"></goab-checkbox>-->
+<!--        <goab-checkbox name="option3" value="option3" text="Option 3"></goab-checkbox>-->
+
+<!--      </goab-checkbox-list>-->
+<!--    </goab-form-item>-->
+
+<!--    <p>Selected: {{ requiredSelection | json }}</p>-->
+<!--  </section>-->
+
+
+<!--  <section>-->
+<!--    <h2>Select All (Manual - BY DEVELOPER)</h2>-->
+<!--    <goab-checkbox-->
+<!--      name="manual-all"-->
+<!--      text="All"-->
+<!--      [checked]="manualAllChecked"-->
+<!--      [indeterminate]="manualAllIndeterminate"-->
+<!--      (onChange)="toggleManualAll()"-->
+<!--    ></goab-checkbox>-->
+<!--    <goab-checkbox-list-->
+<!--      name="manual-contact-preferences"-->
+<!--      [value]="manualContactPreferences"-->
+<!--      (onChange)="onManualContactPreferencesChange($event)"-->
+<!--      childMl="l"-->
+<!--    >-->
+<!--      <goab-checkbox name="email" value="email" text="Email" [checked]="manualContactPreferences.includes('email')"></goab-checkbox>-->
+<!--      <goab-checkbox name="phone" value="phone" text="Phone" [checked]="manualContactPreferences.includes('phone')"></goab-checkbox>-->
+<!--      <goab-checkbox name="sms" value="sms" text="Text message" [checked]="manualContactPreferences.includes('sms')"></goab-checkbox>-->
+<!--    </goab-checkbox-list>-->
+<!--    <p>Selected: {{ manualContactPreferences | json }}</p>-->
+<!--  </section>-->
+
+<!--  <section>-->
+<!--    <h2>Reactive Forms Example</h2>-->
+<!--    <form [formGroup]="rf">-->
+<!--      <goab-checkbox-list name="fruits" formControlName="fruits">-->
+<!--        <goab-checkbox name="apple" value="apple" text="Apple"></goab-checkbox>-->
+<!--        <goab-checkbox name="banana" value="banana" text="Banana"></goab-checkbox>-->
+<!--        <goab-checkbox name="cherry" value="cherry" text="Cherry"></goab-checkbox>-->
+<!--        <goab-checkbox name="date" value="date" text="Date"></goab-checkbox>-->
+<!--      </goab-checkbox-list>-->
+<!--    </form>-->
+
+<!--    <div style="display:flex; gap: 8px; align-items: center; margin-top: 8px;">-->
+<!--      <goab-button (onClick)="setReactive()">Set Value</goab-button>-->
+<!--      <goab-button (onClick)="clearReactive()" type="secondary">Clear Value</goab-button>-->
+<!--      <span style="margin-left: 12px; font-family: monospace;">Current: {{ rf.get('fruits')?.value | json }}</span>-->
+<!--    </div>-->
+<!--  </section>-->
+
+<!--  <section>-->
+<!--    <h2>Reactive Forms (Two Lists + Reset/Set)</h2>-->
+<!--    <form [formGroup]="form">-->
+<!--      <goab-form-item label="Contact Preferences" helpText="Select how you'd like to be contacted">-->
+<!--        <goab-checkbox-list formControlName="contactPreferences" name="contactPreferences">-->
+<!--          <goab-checkbox name="email" text="Email"></goab-checkbox>-->
+<!--          <goab-checkbox name="phone" text="Phone"></goab-checkbox>-->
+<!--          <goab-checkbox name="sms" text="SMS"></goab-checkbox>-->
+<!--          <goab-checkbox name="mail" text="Mail"></goab-checkbox>-->
+<!--        </goab-checkbox-list>-->
+<!--      </goab-form-item>-->
+
+<!--      <goab-form-item label="Interests" helpText="Select your interests">-->
+<!--        <goab-checkbox-list formControlName="interests" name="interests">-->
+<!--          <goab-checkbox name="sports" text="Sports"></goab-checkbox>-->
+<!--          <goab-checkbox name="music" text="Music"></goab-checkbox>-->
+<!--          <goab-checkbox name="movies" text="Movies"></goab-checkbox>-->
+<!--          <goab-checkbox name="books" text="Books"></goab-checkbox>-->
+<!--          <goab-checkbox name="travel" text="Travel"></goab-checkbox>-->
+<!--        </goab-checkbox-list>-->
+<!--      </goab-form-item>-->
+
+<!--      <div style="margin-top: 1rem; gap: 1rem; display: flex;">-->
+<!--        <goab-button type="primary" (onClick)="resetForm()">Reset Form</goab-button>-->
+<!--        <goab-button type="primary" (onClick)="setFormValues()">Set Sample Values</goab-button>-->
+<!--      </div>-->
+
+<!--      <div style="margin-top: 1rem;">-->
+<!--        <p><strong>Form Values:</strong> {{ form.value | json }}</p>-->
+<!--        <p><strong>Form Valid:</strong> {{ form.valid }}</p>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </section>-->
+
+<!--  <section>-->
+<!--    <h2>Template-driven Form with ngModel</h2>-->
+<!--    <goab-checkbox-list-->
+<!--      name="ngModelExample"-->
+<!--      [(ngModel)]="ngModelSelection"-->
+<!--    >-->
+<!--      <goab-checkbox name="template1" value="template1" text="Template Option 1"></goab-checkbox>-->
+<!--      <goab-checkbox name="template2" value="template2" text="Template Option 2"></goab-checkbox>-->
+<!--      <goab-checkbox name="template3" value="template3" text="Template Option 3"></goab-checkbox>-->
+<!--    </goab-checkbox-list>-->
+<!--    <p>ngModel Value: {{ ngModelSelection | json }}</p>-->
+<!--    <div style="margin-top: 1rem; display:flex; gap: 8px;">-->
+<!--      <goab-button type="secondary" (onClick)="setNgModelValue()">Set Values Programmatically</goab-button>-->
+<!--      <goab-button type="tertiary" (onClick)="clearNgModelValue()">Clear All</goab-button>-->
+<!--    </div>-->
+<!--  </section>-->
+
+      <goab-public-form
+        name="public-form-checkbox-list"
+        (onComplete)="showConfirmation($event)"
+        (onInit)="init($event)"
       >
-        <goab-checkbox-list name="contactMethods">
-          <goab-checkbox name="email" text="Email"></goab-checkbox>
-          <goab-checkbox name="phone" text="Phone Call"></goab-checkbox>
-          <goab-checkbox name="sms" text="Text Message (SMS)"></goab-checkbox>
-          <goab-checkbox name="mail" text="Physical Mail"></goab-checkbox>
-        </goab-checkbox-list>
-      </goab-form-item>
+        <goab-public-form-page
+          id="communication"
+          heading="Communication Preferences"
+          summaryHeading="Communication"
+          (onContinue)="onPageChange($event, 'communication')"
+        >
+          <goab-fieldset>
+            <goab-form-item
+              id="contact-methods"
+              name="Contact Methods"
+              label="How would you like to be contacted?"
+              labelSize="large"
+              helpText="Select all methods that apply to you"
+              [publicFormSummaryOrder]="1"
+            >
+              <goab-checkbox-list name="contact-methods" [value]="contactMethodsValue" (onChange)="onContactMethodsChange($event)">
+                <goab-checkbox name="email" value="email" text="Email notifications"></goab-checkbox>
+                <goab-checkbox name="phone" value="phone" text="Phone calls, business hours only"></goab-checkbox>
+                <goab-checkbox name="sms" value="sms" text="SMS/Text messages"></goab-checkbox>
+                <goab-checkbox name="mail" value="mail" text="Regular mail, letters, packages"></goab-checkbox>
+              </goab-checkbox-list>
+            </goab-form-item>
 
-      <goab-form-item
-        id="interests-item"
-        label="What are you interested in?"
-        labelSize="large"
-        helpText="Select your areas of interest"
-      >
-        <goab-checkbox-list name="interests">
-          <goab-checkbox name="news" text="Government News & Updates"></goab-checkbox>
-          <goab-checkbox name="services" text="New Services & Programs"></goab-checkbox>
-          <goab-checkbox name="events" text="Community Events"></goab-checkbox>
-          <goab-checkbox name="emergency" text="Emergency Alerts"></goab-checkbox>
-        </goab-checkbox-list>
-      </goab-form-item>
-    </goab-fieldset>
-  </goab-public-form-page>
+            <goab-form-item
+              id="newsletter-subscriptions"
+              name="Newsletter Subscriptions"
+              label="Newsletter Subscriptions"
+              helpText="Optional newsletter subscriptions"
+              [publicFormSummaryOrder]="2"
+            >
+              <goab-checkbox-list name="newsletter-subscriptions" [value]="newsletterSubscriptionsValue" (onChange)="onNewsletterSubscriptionsChange($event)">
+                <goab-checkbox name="weekly" value="weekly" text="Weekly Newsletter, Alberta Today"></goab-checkbox>
+                <goab-checkbox name="monthly" value="monthly" text="Monthly Updates"></goab-checkbox>
+                <goab-checkbox name="special" value="special" text="Special Offers, Discounts, Deals"></goab-checkbox>
+                <goab-checkbox name="events" value="events" text="Event Announcements"></goab-checkbox>
+              </goab-checkbox-list>
+            </goab-form-item>
+          </goab-fieldset>
+        </goab-public-form-page>
 
-  <goab-public-form-page
-    id="summary"
-    heading="Summary"
-    type="summary"
-    (onContinue)="onPageChange($event, 'summary')"
-  >
-    <goab-public-form-summary/>
-  </goab-public-form-page>
-</goab-public-form>
+        <goab-public-form-page
+          id="interests"
+          heading="Areas of Interest"
+          summaryHeading="Interests"
+          (onContinue)="onPageChange($event, 'interests')"
+        >
+          <goab-fieldset>
+            <goab-form-item
+              id="topics-of-interest"
+              name="Topics of Interest"
+              label="What topics are you interested in?"
+              helpText="Select all that apply"
+              [publicFormSummaryOrder]="3"
+            >
+              <goab-checkbox-list name="topics-of-interest" [value]="topicsOfInterestValue" (onChange)="onTopicsOfInterestChange($event)">
+                <goab-checkbox name="health" value="health" text="Health and Wellness"></goab-checkbox>
+                <goab-checkbox name="education" value="education" text="Education, K-12, Post-secondary"></goab-checkbox>
+                <goab-checkbox name="employment" value="employment" text="Employment Services"></goab-checkbox>
+                <goab-checkbox name="business" value="business" text="Business, Economy, Trade"></goab-checkbox>
+                <goab-checkbox name="environment" value="environment" text="Environment"></goab-checkbox>
+              </goab-checkbox-list>
+            </goab-form-item>
+          </goab-fieldset>
+        </goab-public-form-page>
 
-<goab-modal [open]="_showConfirmationModal" heading="Submit preferences">
-  Your communication preferences will be saved.
-  <goab-button-group alignment="end">
-    <goab-button type="tertiary" (onClick)="hideConfirmationModal()">Cancel</goab-button>
-    <goab-button type="primary" (onClick)="submitForm()">Submit</goab-button>
-  </goab-button-group>
-</goab-modal>
+        <goab-public-form-page
+          id="summary"
+          heading="Summary"
+          type="summary"
+          (onContinue)="onPageChange($event, 'summary')"
+        >
+          <goab-public-form-summary/>
+        </goab-public-form-page>
+      </goab-public-form>
+
+      <goab-modal [open]="_showConfirmationModal" heading="Submit Communication Preferences">
+        Your communication preferences and interests will be saved.
+        <goab-button-group alignment="end">
+          <goab-button type="tertiary" (onClick)="hideConfirmationModal()">Cancel</goab-button>
+          <goab-button type="primary" (onClick)="submitPublicForm()">Submit</goab-button>
+        </goab-button-group>
+      </goab-modal>
