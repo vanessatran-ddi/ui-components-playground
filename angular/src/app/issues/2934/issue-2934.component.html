@@ -1,0 +1,88 @@
+<h2>Issue #2934: Dropdown and Radio Support for Number|String|Boolean Values</h2>
+
+<p><strong>Problem:</strong> Dropdown and Radio components should accept values of different types (number, string, boolean for radio).</p>
+<p><strong>Expected:</strong> All value types should work correctly with proper type handling.</p>
+
+<div style="margin: 2rem 0;">
+  <h3>Dropdown Examples</h3>
+
+  <goab-form-item label="Dropdown with String Values">
+    <goab-dropdown 
+      name="stringDropdown" 
+      testId="string-dropdown"
+      [value]="stringDropdownValue" 
+      (onChange)="onStringDropdownChange($event)">
+      <goab-dropdown-item value="option1" label="Option 1"></goab-dropdown-item>
+      <goab-dropdown-item value="option2" label="Option 2"></goab-dropdown-item>
+      <goab-dropdown-item value="option3" label="Option 3"></goab-dropdown-item>
+    </goab-dropdown>
+  </goab-form-item>
+
+  <goab-form-item label="Dropdown with Number Values">
+    <goab-dropdown 
+      name="numberDropdown" 
+      testId="number-dropdown"
+      [value]="numberDropdownValue" 
+      (onChange)="onNumberDropdownChange($event)">
+      <goab-dropdown-item [value]="1" label="One"></goab-dropdown-item>
+      <goab-dropdown-item [value]="2" label="Two"></goab-dropdown-item>
+      <goab-dropdown-item [value]="3" label="Three"></goab-dropdown-item>
+    </goab-dropdown>
+  </goab-form-item>
+</div>
+
+<div style="margin: 2rem 0;">
+  <h3>Radio Group Examples</h3>
+
+  <goab-form-item label="Radio Group with String Values">
+    <goab-radio-group 
+      name="stringRadio" 
+      testId="string-radio-group"
+      [value]="stringRadioValue" 
+      (onChange)="onStringRadioChange($event)">
+      <goab-radio-item name="stringRadio" value="red" label="Red"></goab-radio-item>
+      <goab-radio-item name="stringRadio" value="green" label="Green"></goab-radio-item>
+      <goab-radio-item name="stringRadio" value="blue" label="Blue"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+
+  <goab-form-item label="Radio Group with Number Values">
+    <goab-radio-group 
+      name="numberRadio" 
+      testId="number-radio-group"
+      [value]="numberRadioValue" 
+      (onChange)="onNumberRadioChange($event)">
+      <goab-radio-item name="numberRadio" [value]="10" label="Ten"></goab-radio-item>
+      <goab-radio-item name="numberRadio" [value]="20" label="Twenty"></goab-radio-item>
+      <goab-radio-item name="numberRadio" [value]="30" label="Thirty"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+
+  <goab-form-item label="Radio Group with Boolean Values">
+    <goab-radio-group 
+      name="booleanRadio" 
+      testId="boolean-radio-group"
+      [value]="booleanRadioValue" 
+      (onChange)="onBooleanRadioChange($event)">
+      <goab-radio-item name="booleanRadio" [value]="true" label="Yes (True)"></goab-radio-item>
+      <goab-radio-item name="booleanRadio" [value]="false" label="No (False)"></goab-radio-item>
+    </goab-radio-group>
+  </goab-form-item>
+</div>
+
+<div style="margin: 2rem 0; padding: 1rem; background: #f7fafc; border-left: 4px solid #4299e1;">
+  <h3>Testing Instructions</h3>
+  <ul>
+    <li>All dropdowns should display and select their respective value types</li>
+    <li>All radio groups should work with their respective value types</li>
+    <li>Check browser console for change event details</li>
+    <li>Values should be properly typed (string, number, boolean)</li>
+  </ul>
+
+  <p><strong>Current Values:</strong></p>
+  <p>String Dropdown: {{ stringDropdownValue || 'Not selected' }}</p>
+  <p>Number Dropdown: {{ numberDropdownValue ?? 'Not selected' }}</p>
+  <p>String Radio: {{ stringRadioValue || 'Not selected' }}</p>
+  <p>Number Radio: {{ numberRadioValue ?? 'Not selected' }}</p>
+  <p>Boolean Radio: {{ booleanRadioValue ?? 'Not selected' }}</p>
+</div>
