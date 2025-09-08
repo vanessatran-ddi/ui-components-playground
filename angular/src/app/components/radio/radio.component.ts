@@ -22,7 +22,7 @@ export class RadioComponent {
   selectedValue = '';
 
   handleRadioChange(event: GoabRadioGroupOnChangeDetail) {
-    this.selectedValue = event.value;
+    this.selectedValue = event.value as string;
   }
   example2Form: FormGroup;
   example3Value = "";
@@ -57,6 +57,6 @@ export class RadioComponent {
 
   onChange(e: GoabRadioGroupOnChangeDetail) {
     console.log("onChange", e.name, e.value);
-    this.radioValue = e.value;
+    this.radioValue = e.value as string;
   }
 }
