@@ -29,6 +29,7 @@ import { Issue2547 } from "./app/issues/issue2547";
 import { PR2969TestForm } from "./app/public-form/PR2969TestForm";
 import { Issue3001 } from "./app/issues/issue3001";
 import { Issue2948Component } from "./app/issues/2948/2948";
+import { Issue2934 } from "./app/issues/Issue2934";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -64,6 +65,7 @@ root.render(
           <Route path={"/pr2969-test"} element={<PR2969TestForm/>}></Route>
           <Route path={"/3001"} element={<Issue3001/>}></Route>
           <Route path={"/2948"} element={<Issue2948Component/>}></Route>
+          <Route path={"/2934"} element={<Issue2934/>}></Route>
           {/** Add more routes here */}
 
         </Route>

@@ -34,6 +34,7 @@ export function App() {
               <GoabSideMenuGroup heading={"Dropdown"}>
                 <Link to="/2441">Issue 2441</Link>
                 <Link to="/2789">2789 width rem percentage</Link>
+                <Link to="/2934">2934 Value types (string|number|boolean)</Link>
               </GoabSideMenuGroup>
               <GoabSideMenuGroup heading={"Checkbox/Radio Reveal"}>
                 <Link to="/1216">Issue 1216</Link>
