@@ -83,6 +83,7 @@ import {
   PublicFormWithCheckboxComponent
 } from "./public-form/public-form-with-checkbox.component";
 
+
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
   { path: "badge-wrapper", component: ComponentWrapperPage },
