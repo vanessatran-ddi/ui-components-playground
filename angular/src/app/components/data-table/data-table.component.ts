@@ -1,9 +1,10 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import {
   GoabBadge,
-  GoabBadgeType, GoabButton,
+  GoabBadgeType, GoabBlock, GoabButton,
   GoabCheckbox,
-  GoabCheckboxOnChangeDetail,
+  GoabCheckboxOnChangeDetail, GoabContainer, GoabDataGrid,
+  GoabDropdown, GoabDropdownItem, GoabLink,
   GoabTable, GoabTableOnSortDetail, GoabTableSortHeader,
 } from "@abgov/angular-components";
 
@@ -13,6 +14,12 @@ type User = {
   dataStarted: string;
   dateSubmitted: string;
   status: string;
+  updated: string;
+  email: string;
+  program: string;
+  programId: string;
+  serviceAccess: string;
+  approver: string;
 };
 
 @Component({
@@ -20,51 +27,47 @@ type User = {
   standalone: true,
   templateUrl: "./data-table.component.html",
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [GoabBadge, GoabTable, GoabCheckbox, GoabTableSortHeader, GoabButton],
+  imports: [
+    GoabBadge,
+    GoabTable,
+    GoabCheckbox,
+    GoabTableSortHeader,
+    GoabButton,
+    GoabContainer,
+    GoabBlock,
+    GoabDropdown,
+    GoabDropdownItem,
+    GoabDataGrid,
+    GoabLink,
+  ],
 })
 export class DataTableComponent {
   users: User[] = [
     {
-      idNumber: "ABC126",
-      nameOfChild: "Jeanne Volkman",
+      idNumber: "1",
+      nameOfChild: "Mike Zwei",
       dataStarted: "Feb 21, 2023",
       dateSubmitted: "Feb 25, 2023",
-      status: "Submitted",
+      status: "Removed",
+      updated: "Jun 30, 2022 at 2:30 PM",
+      email: "mike.zwei@gmail.com",
+      program: "Wee Wild Ones Curry",
+      programId: "74528567",
+      serviceAccess: "Claims Adjustments",
+      approver: "Sarah Ellis",
     },
     {
-      idNumber: "ABC125",
-      nameOfChild: "Ronnie Rolfson",
+      idNumber: "2",
+      nameOfChild: "Emma Stroman",
       dataStarted: "Feb 21, 2023",
       dateSubmitted: "Feb 25, 2023",
-      status: "In review",
-    },
-    {
-      idNumber: "ABC123",
-      nameOfChild: "Andrea Cassin",
-      dataStarted: "Feb 21, 2023",
-      dateSubmitted: "Feb 25, 2023",
-      status: "Awaiting documentation",
-    },
-    {
-      idNumber: "ABC122",
-      nameOfChild: "Casey Dickinson",
-      dataStarted: "Feb 19, 2023",
-      dateSubmitted: "Feb 24, 2023",
-      status: "Denied",
-    },
-    {
-      idNumber: "ABC122",
-      nameOfChild: "Jeanette Kulas",
-      dataStarted: "Feb 19, 2023",
-      dateSubmitted: "Feb 24, 2023",
-      status: "Approved",
-    },
-    {
-      idNumber: "ABC121",
-      nameOfChild: "Rosalie Willms",
-      dataStarted: "Feb 18, 2023",
-      dateSubmitted: "Feb 23, 2023",
-      status: "Closed",
+      status: "To be removed",
+      updated: "Nov 28, 2021 at 1:30 PM",
+      email: "emma.stroman@gmail.com",
+      program: "Fort McMurray",
+      programId: "74522643",
+      serviceAccess: "Claims Adjustments",
+      approver: "Sarah Ellis",
     },
   ];
   _selectedUsers: string[] = [];
@@ -78,6 +81,10 @@ export class DataTableComponent {
 
   getStatusBadgeType(status: string): GoabBadgeType {
     switch (status) {
+      case "Removed":
+        return "success";
+      case "To be removed":
+        return "emergency";
       case "Submitted":
         return "information";
       case "In review":
@@ -98,7 +105,7 @@ export class DataTableComponent {
   selectAll(event: GoabCheckboxOnChangeDetail) {
     this.isSelectedAll = event.checked;
     if (event.checked) {
-      this._selectedUsers = this.users.map(u => u.idNumber);
+      this._selectedUsers = this.users.map((u) => u.idNumber);
     } else {
       this._selectedUsers = [];
     }
@@ -112,7 +119,7 @@ export class DataTableComponent {
     if (event.checked) {
       this._selectedUsers.push(userId);
     } else {
-      this._selectedUsers = this._selectedUsers.filter(id => id !== userId);
+      this._selectedUsers = this._selectedUsers.filter((id) => id !== userId);
     }
     this.isSelectedAll = this._selectedUsers.length === this.users.length;
   }
@@ -128,5 +135,12 @@ export class DataTableComponent {
 
   onOpen(userId: string) {
     alert("We are going to open a profile of this user " + userId);
+  }
+
+  onApproverChange(userId: string, event: any) {
+    const user = this.users.find((u) => u.idNumber === userId);
+    if (user) {
+      user.approver = event.value;
+    }
   }
 }
