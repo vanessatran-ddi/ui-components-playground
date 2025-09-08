@@ -35,6 +35,7 @@ export function App() {
               <Link to="/2547">2574 Banner hides pop over safari</Link>
               <Link to="/2720">2720 Change tab via link</Link>
               <Link to="/3001">3001 Checkbox dispatch string</Link>
+              <Link to="/2948">2948 Modal Spacing</Link>
             </GoabSideMenuGroup>
             <GoabSideMenuGroup heading="Components">
               <Link to="/">Home</Link>

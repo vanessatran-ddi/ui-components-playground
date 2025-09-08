@@ -1,0 +1,64 @@
+<h1>Issue #2948: Modal Spacing Test</h1>
+<p>Test different combinations of Modal with heading and actions to verify proper spacing.</p>
+
+<h2>Modal with string heading only (no actions)</h2>
+<goab-button (onClick)="openModal1()">Open Modal - String Heading Only</goab-button>
+<goab-modal 
+  [open]="isOpen" 
+  (onClose)="closeModal1()" 
+  [closable]="true" 
+  heading="String Heading">
+  <p>This modal has a string heading but no actions. The spacing below the heading should be consistent.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</goab-modal>
+
+<h2>Modal with template heading and actions</h2>
+<goab-button (onClick)="openModal2()">Open Modal - Template Heading + Actions</goab-button>
+<goab-modal 
+  [open]="isOpen2" 
+  (onClose)="closeModal2()" 
+  [closable]="true" 
+  [heading]="heading" 
+  [actions]="actions">
+  <p>This modal has a template heading and actions. Check spacing below heading and above actions.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  
+  <ng-template #heading>
+    <span style="color: #0070f3;">Template Heading with Styling</span>
+  </ng-template>
+  
+  <ng-template #actions>
+    <goab-button-group alignment="end">
+      <goab-button type="secondary" (onClick)="closeModal2()">Cancel</goab-button>
+      <goab-button type="primary" (onClick)="closeModal2()">Confirm</goab-button>
+    </goab-button-group>
+  </ng-template>
+</goab-modal>
+
+<h2>Modal with string heading and actions</h2>
+<goab-button (onClick)="openModal3()">Open Modal - String Heading + Actions</goab-button>
+<goab-modal 
+  [open]="isOpen3" 
+  heading="String Heading with Actions"
+  [actions]="actions">
+  <p>This modal has both a string heading and actions. Spacing should be consistent.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+  
+  <ng-template #actions>
+    <goab-button-group alignment="end">
+      <goab-button type="secondary" (onClick)="closeModal3()">Cancel</goab-button>
+      <goab-button type="primary" (onClick)="closeModal3()">Save</goab-button>
+    </goab-button-group>
+  </ng-template>
+</goab-modal>
+
+<div style="margin-top: 2rem;">
+  <h3>Expected Behavior:</h3>
+  <ul>
+    <li>Consistent spacing below headings (both string and template)</li>
+    <li>Proper spacing above action buttons</li>
+    <li>No visual inconsistencies between different heading types</li>
+  </ul>
+</div>
