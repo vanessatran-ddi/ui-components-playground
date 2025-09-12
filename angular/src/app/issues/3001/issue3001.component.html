@@ -1,0 +1,26 @@
+<form>
+  <goab-form-item [formGroup]="toppings" label="Reactive Form" >
+    <goab-checkbox formControlName="pepperoni" text="Peperoni"></goab-checkbox>
+    <goab-checkbox formControlName="extracheese" text="Extra cheese"></goab-checkbox>
+    <goab-checkbox formControlName="mushroom" text="Mushroom"></goab-checkbox>
+  </goab-form-item>
+
+
+  <goab-form-item [formGroup]="testForm" label="Reactive Form" >
+    <goab-checkbox formControlName="pepperoni" text="Peperoni"></goab-checkbox>
+  </goab-form-item>
+
+<!--  <goab-checkbox-list [formGroup]="checkboxList">-->
+<!--    <goab-checkbox value="1"></goab-checkbox>-->
+<!--    <goab-checkbox value="2"></goab-checkbox>-->
+<!--    <goab-checkbox value="3"></goab-checkbox>-->
+<!--  </goab-checkbox-list>-->
+</form>
+<h4>You chose:</h4>
+{{toppings.value | json}}
+{{testForm.value | json}}
+
+<goab-form-item label="ngModel" helpText="Value is {{item}}">
+  <goab-checkbox name="item" text="Item" value="textValue"  (onChange)="checkboxOnChange($event)" [(ngModel)]="item"></goab-checkbox>
+</goab-form-item>
+
