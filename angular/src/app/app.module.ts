@@ -17,6 +17,7 @@ import { SupportOrderDetailsComponent } from "./public-form/SupportOrderDetails"
 import { PublicFormSubFormExampleComponent } from "./public-form/PublicFormSubFormExample";
 
 import "@abgov/web-components";
+import { MenuButtonComponent } from "playground/angular/src/app/components/menu-button/menu-button.component";
 
 // ******
 // Routes
@@ -39,6 +40,7 @@ import "@abgov/web-components";
     GoabAppHeader,
     PublicFormSubFormExampleComponent,
     SupportOrderDetailsComponent,
+    MenuButtonComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
