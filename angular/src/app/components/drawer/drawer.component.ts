@@ -71,6 +71,6 @@ export class DrawerComponent {
   }
 
   changeDateTaken(e: GoabRadioGroupOnChangeDetail) {
-    this.dateTaken = e.value;
+    this.dateTaken = e.value as string;
   }
 }

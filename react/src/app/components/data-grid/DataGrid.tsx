@@ -8,7 +8,7 @@ import {
   GoabContainer,
   GoabDataGrid,
   GoabDropdown,
-  GoabDropdownItem,
+  GoabDropdownItem, GoabInputNumber,
   GoabLink,
   GoabTable,
   GoabTableSortHeader,
@@ -144,7 +144,6 @@ export const DataGrid = () => {
   return (
     <div>
       <h1>Data Grid</h1>
-
       <h3>Table</h3>
       <GoabDataGrid>
         <GoabTable width="100%" mb="xl" onSort={handleSort}>

@@ -2,27 +2,27 @@
 <goab-data-grid>
   <goab-table width="100%" mb="xl" (onSort)="handleSort($event)">
     <thead>
-    <tr data-gridrow>
-      <th style="padding-bottom:0" data-gridcell><goab-checkbox mt="2" (onChange)="selectAll($event)" [checked]="isSelectedAll"></goab-checkbox></th>
-      <th data-gridcell><goab-table-sort-header name="idNumber">ID Number</goab-table-sort-header></th>
-      <th data-gridcell><goab-table-sort-header name="dataStarted">Date Started</goab-table-sort-header></th>
-      <th data-gridcell><goab-table-sort-header name="dateSubmitted">Date Submitted</goab-table-sort-header></th>
-      <th data-gridcell><goab-table-sort-header name="status">Status</goab-table-sort-header></th>
-      <th data-gridcell>Actions</th>
+    <tr data-grid="row" data-testid="vanesa">
+      <th style="padding-bottom:0" data-grid="cell"><goab-checkbox mt="2" (onChange)="selectAll($event)" [checked]="isSelectedAll"></goab-checkbox></th>
+      <th data-grid="cell-1"><goab-table-sort-header name="idNumber">ID Number</goab-table-sort-header></th>
+      <th data-grid="cell-2"><goab-table-sort-header name="dataStarted">Date Started</goab-table-sort-header></th>
+      <th data-grid="cell-3"><goab-table-sort-header name="dateSubmitted">Date Submitted</goab-table-sort-header></th>
+      <th data-grid="cell-4"><goab-table-sort-header name="status">Status</goab-table-sort-header></th>
+      <th data-grid="cell-5">Actions</th>
     </tr>
     </thead>
     <tbody>
     @for (user of users; track user.idNumber) {
-      <tr data-gridrow>
-        <td data-gridcell><goab-checkbox [checked]="isSelected(user.idNumber)" (onChange)="toggleSelection(user.idNumber, $event)"></goab-checkbox></td>
-        <td data-gridcell>{{ user.idNumber }}</td>
-        <td data-gridcell>{{ user.dataStarted }}</td>
-        <td data-gridcell>{{ user.dateSubmitted }}</td>
-        <td data-gridcell><goab-badge [type]="getStatusBadgeType(user.status)" [content]="user.status"></goab-badge></td>
-        <td><goab-button data-gridcell  type="tertiary" (onClick)="onDelete(user.idNumber)">
+      <tr data-grid="row">
+        <td data-grid="cell"><goab-checkbox [checked]="isSelected(user.idNumber)" (onChange)="toggleSelection(user.idNumber, $event)"></goab-checkbox></td>
+        <td data-grid="cell">{{ user.idNumber }}</td>
+        <td data-grid="cell">{{ user.dataStarted }}</td>
+        <td data-grid="cell">{{ user.dateSubmitted }}</td>
+        <td data-grid="cell"><goab-badge [type]="getStatusBadgeType(user.status)" [content]="user.status"></goab-badge></td>
+        <td data-grid="cell"><goab-button type="tertiary" (onClick)="onDelete(user.idNumber)">
           Delete
         </goab-button>
-          <goab-button data-gridcell type="tertiary" (onClick)="onOpen(user.idNumber)">
+          <goab-button data-grid="cell" type="tertiary" (onClick)="onOpen(user.idNumber)">
             Open
           </goab-button>
         </td>
@@ -35,17 +35,17 @@
 <h3>Containers</h3>
 <goab-data-grid>
   @for (user of users; track user.idNumber) {
-    <goab-container mt="l" data-gridrow>
+    <goab-container mt="l" data-grid="row">
       <goab-block direction="row" gap="m" alignment="start">
         <!-- Cell 0: Checkbox -->
-        <goab-checkbox data-gridcell="0" [checked]="isSelected(user.idNumber)" (onChange)="toggleSelection(user.idNumber, $event)"></goab-checkbox>
+        <goab-checkbox data-grid="cell-0" [checked]="isSelected(user.idNumber)" (onChange)="toggleSelection(user.idNumber, $event)"></goab-checkbox>
 
         <goab-block direction="column" gap="s" alignment="start" style="flex: 1;">
           <goab-block direction="row" gap="s" alignment="center">
             <!-- Cell 1: Name -->
-            <strong data-gridcell="1">{{ user.nameOfChild }}</strong>
+            <strong data-grid="cell-1">{{ user.nameOfChild }}</strong>
             <!-- Cell 2: Status Badge -->
-            <goab-block data-gridcell="2">
+            <goab-block data-grid="cell-2">
               <goab-badge [type]="getStatusBadgeType(user.status)" [content]="user.status"></goab-badge>
             </goab-block>
           </goab-block>
@@ -53,12 +53,12 @@
           <goab-block direction="row" gap="xl" alignment="start">
             <goab-block direction="column" gap="s" alignment="start">
               <!-- Cell 4: Updated -->
-              <goab-block direction="column" gap="xs" data-gridcell="4">
+              <goab-block direction="column" gap="xs" data-grid="cell-4">
                 <strong>Updated</strong>
                 <span>{{ user.updated }}</span>
               </goab-block>
               <!-- Cell 7: Program ID -->
-              <goab-block direction="column" gap="xs" data-gridcell="7">
+              <goab-block direction="column" gap="xs" data-grid="cell-7">
                 <strong>Program ID</strong>
                 <span>{{ user.programId }}</span>
               </goab-block>
@@ -66,12 +66,12 @@
 
             <goab-block direction="column" gap="s" alignment="start">
               <!-- Cell 5: Email -->
-              <goab-block direction="column" gap="xs" data-gridcell="5">
+              <goab-block direction="column" gap="xs" data-grid="cell-5">
                 <strong>Email</strong>
                 <span>{{ user.email }}</span>
               </goab-block>
               <!-- Cell 8: Service access -->
-              <goab-block direction="column" gap="xs" data-gridcell="8">
+              <goab-block direction="column" gap="xs" data-grid="cell-8">
                 <strong>Service access</strong>
                 <span>{{ user.serviceAccess }}</span>
               </goab-block>
@@ -79,12 +79,12 @@
 
             <goab-block direction="column" gap="s" alignment="start">
               <!-- Cell 6: Program -->
-              <goab-block direction="column" gap="xs" data-gridcell="6">
+              <goab-block direction="column" gap="xs" data-grid="cell-6">
                 <strong>Program</strong>
                 <span>{{ user.program }}</span>
               </goab-block>
               <!-- Cell 9: Approver -->
-              <goab-block direction="column" gap="xs" data-gridcell="9">
+              <goab-block direction="column" gap="xs" data-grid="cell-9">
                 <strong>Approver</strong>
                 <goab-dropdown [value]="user.approver" (onChange)="onApproverChange(user.idNumber, $event)">
                   <goab-dropdown-item value="Sarah Ellis">Sarah Ellis</goab-dropdown-item>
@@ -97,7 +97,7 @@
         </goab-block>
 
         <!-- Cell 3: Open Button (positioned at the end but numbered 3 for navigation order) -->
-        <goab-button type="tertiary" data-gridcell="3" (onClick)="onOpen(user.idNumber)">
+        <goab-button type="tertiary" data-grid="cell-3" (onClick)="onOpen(user.idNumber)">
           Open
         </goab-button>
       </goab-block>
@@ -108,12 +108,12 @@
 <h3>Other examples</h3>
 <h4>Related Documents</h4>
 <goab-data-grid>
-<goab-block data-gridrow>
-  <goab-link data-gridcell><a href="https://www.w3.org/TR/wai-aria-1.1/">ARIA 1.1 Specification</a></goab-link>
-  <goab-link data-gridcell><a href="https://www.w3.org/TR/core-aam-1.1/">Core Accessibility API Mappings 1.1</a></goab-link>
-  <goab-link data-gridcell><a href="https://www.w3.org/WAI/intro/aria.php">WAI-ARIA Overview</a></goab-link>
-  <goab-link data-gridcell><a href="https://www.w3.org/WAI/intro/wcag">WCAG Overview</a></goab-link>
-  <goab-link data-gridcell><a href="https://html.spec.whatwg.org/">HTML Specification</a></goab-link>
-  <goab-link data-gridcell><a href="https://www.w3.org/TR/SVG2/">SVG 2 Specification</a></goab-link>
+<goab-block data-grid="row">
+  <goab-link data-grid="cell"><a href="https://www.w3.org/TR/wai-aria-1.1/">ARIA 1.1 Specification</a></goab-link>
+  <goab-link data-grid="cell-1"><a href="https://www.w3.org/TR/core-aam-1.1/">Core Accessibility API Mappings 1.1</a></goab-link>
+  <goab-link data-grid="cell-2"><a href="https://www.w3.org/WAI/intro/aria.php">WAI-ARIA Overview</a></goab-link>
+  <goab-link data-grid="cell-3"><a href="https://www.w3.org/WAI/intro/wcag">WCAG Overview</a></goab-link>
+  <goab-link data-grid="cell-4"><a href="https://html.spec.whatwg.org/">HTML Specification</a></goab-link>
+  <goab-link data-grid="cell-5"><a href="https://www.w3.org/TR/SVG2/">SVG 2 Specification</a></goab-link>
 </goab-block>
 </goab-data-grid>
