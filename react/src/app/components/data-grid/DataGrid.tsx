@@ -178,17 +178,17 @@ export const DataGrid = () => {
                     onChange={(event) => toggleSelection(user.idNumber, event)}
                   />
                 </td>
-                <td data-grid="cell" data-testid={`cell-${user.idNumber}-idNumber`}>{user.idNumber}</td>
+                <td data-grid="cell" data-testid={`cell-${user.idNumber}-idNumber`}><GoabLink><a href={`mailto: ${user.email}`}>{user.email}</a></GoabLink></td>
                 <td data-grid="cell" data-testid={`cell-${user.idNumber}-dateStarted`}>{user.dataStarted}</td>
                 <td data-grid="cell" data-testid={`cell-${user.idNumber}-dateSubmitted`}>{user.dateSubmitted}</td>
                 <td data-grid="cell" data-testid={`cell-${user.idNumber}-status`}>
                   <GoabBadge type={getStatusBadgeType(user.status)} content={user.status} />
                 </td>
-                <td>
-                  <GoabButton data-grid="cell" testId={`delete-${user.idNumber}`} type="tertiary" onClick={() => onDelete(user.idNumber)}>
+                <td data-grid="cell">
+                  <GoabButton testId={`delete-${user.idNumber}`} type="tertiary" onClick={() => onDelete(user.idNumber)}>
                     Delete
                   </GoabButton>
-                  <GoabButton data-grid="cell" testId={`open-${user.idNumber}`} type="tertiary" onClick={() => onOpen(user.idNumber)}>
+                  <GoabButton testId={`open-${user.idNumber}`} type="tertiary" onClick={() => onOpen(user.idNumber)}>
                     Open
                   </GoabButton>
                 </td>
