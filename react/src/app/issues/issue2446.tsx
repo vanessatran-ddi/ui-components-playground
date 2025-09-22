@@ -102,8 +102,8 @@ export const Issue2446 = () => {
           <GoabInput name="postalCode" type="text" width="100%" onChange={() => {/** do nothing */}}></GoabInput>
         </GoabFormItem>
       </GoabBlock>
-      <GoabFormItem label="Item">
-        <GoabDatePicker name="item" value={new Date()} onChange={() => {/** do nothing */}}></GoabDatePicker>
+      <GoabFormItem label="Item to up and down">
+        <GoabDatePicker name="item" value={new Date()} onChange={(e) => console.log("Change here with new value ", e)}></GoabDatePicker>
       </GoabFormItem>
 
     </form>
