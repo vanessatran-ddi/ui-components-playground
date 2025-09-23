@@ -15,7 +15,7 @@ type Page = "personal-info" | "contact-info" | "additional-details" | "summary";
 
 /**
  * Test for Issue 2: Accessibility - Change Links Tab Order
- * 
+ *
  * Test Steps:
  * 1. Fill out the form and reach summary
  * 2. Use Tab key to navigate through the summary
@@ -82,7 +82,7 @@ export const PublicFormAccessibilityTest = () => {
   return (
     <div>
       <h1>Public Form Accessibility Test</h1>
-      
+
       <GoabCallout type="information" mb="l">
         <strong>Accessibility Test Instructions:</strong>
         <ol>
@@ -106,7 +106,6 @@ export const PublicFormAccessibilityTest = () => {
           id="personal-info"
           heading="Personal Information"
           buttonText="Continue"
-          first={true}
           onContinue={(e) => onContinue(e, "personal-info")}
         >
           <GoabFieldset>
@@ -173,7 +172,7 @@ export const PublicFormAccessibilityTest = () => {
           buttonText="Submit Application"
         >
           <GoabCallout type="information" mb="l">
-            <strong>Tab Navigation Test:</strong> Use the Tab key to navigate through this summary. 
+            <strong>Tab Navigation Test:</strong> Use the Tab key to navigate through this summary.
             All "Change" links should be accessible and show focus styling.
           </GoabCallout>
           <GoabPublicFormSummary />

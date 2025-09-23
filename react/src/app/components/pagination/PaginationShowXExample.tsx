@@ -45,7 +45,7 @@ export const PaginationShowXExample = () => {
   }
 
   function handlePerPageCountChangeEvent(event: GoabDropdownOnChangeDetail) {
-    const perPageValue = parseInt(event.value || "1");
+    const perPageValue = parseInt(event.value  as string || "1");
     setPage(1);
     setPerPage(perPageValue);
     const _users = users.slice(0, perPageValue);

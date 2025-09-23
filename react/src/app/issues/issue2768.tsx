@@ -16,7 +16,7 @@ export const Issue2768 = () => {
   };
 
   const handleRadioChange = (event: GoabRadioGroupOnChangeDetail) => {
-    setSelectedValue(event.value);
+    setSelectedValue(event.value as string);
   };
 
   return (

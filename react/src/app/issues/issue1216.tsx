@@ -28,7 +28,7 @@ export const Issue1216 = () => {
 
   function radioGroupOnChange(event: GoabRadioGroupOnChangeDetail) {
     console.log("onChange", event.name, event.value);
-    setRadio(event.value);
+    setRadio(event.value  as string);
   }
 
   return (

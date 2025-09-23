@@ -115,7 +115,6 @@ export function FormTest() {
       <GoabPublicFormPage
         id="question-children"
         heading="Do you have any children?"
-        first={true}
         onContinue={(e) => onPageChange(e, 'question-children')}
       >
         <GoabFieldset>

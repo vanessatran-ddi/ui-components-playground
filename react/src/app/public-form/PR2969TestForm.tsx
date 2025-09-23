@@ -63,7 +63,6 @@ export const PR2969TestForm = () => {
       // Validate email
       const [isEmailValid] = validate(e, "email", [
         requiredValidator("Email is required."),
-        emailValidator
       ]);
 
       if (!isNameValid || !isEmailValid) {
@@ -74,7 +73,7 @@ export const PR2969TestForm = () => {
       // If validation passes, save the valid state
       setLastValidState(detail.state);
       console.log("Validation passed - saving valid state:", detail.state);
-      
+
       continueTo("review");
     }
   }
@@ -88,7 +87,7 @@ export const PR2969TestForm = () => {
   return (
     <>
       <GoabText tag="h1" size="heading-xl">PR 2969 Test Form</GoabText>
-      
+
       <GoabCallout type="information" heading="Testing Instructions" mb="xl">
         <ol>
           <li>Enter valid data (name and email) and go to summary page</li>
@@ -123,7 +122,6 @@ export const PR2969TestForm = () => {
           id="personal-info"
           heading="Enter Your Personal Information"
           buttonText={"Continue to review"}
-          first={true}
           onContinue={(e) => onContinue(e, "personal-info")}>
 
           <GoabFieldset>
@@ -139,7 +137,7 @@ export const PR2969TestForm = () => {
 
         <GoabPublicFormPage id="review" type="summary" heading="Review Your Information">
           <GoabPublicFormSummary />
-          
+
           <GoabButton type="primary" onClick={() => complete()}>
             Submit Application
           </GoabButton>

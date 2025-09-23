@@ -234,7 +234,6 @@ export const Section2B = ({onComplete}: Section2BProps) => {
          <GoabPublicSubform
           id="2B.3"
           name="2B.3"
-          summaryHeading="Dependants under 18"
           onInit={onSubformInit}
           onStateChange={onSubformStateChange}
         >
