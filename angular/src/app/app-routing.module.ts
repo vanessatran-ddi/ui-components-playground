@@ -83,6 +83,7 @@ import { PublicFormCheckboxComponent } from "./public-form/public-form-checkbox.
 import { PublicFormDatepickerComponent } from "./public-form/public-form-datepicker.component";
 import { PublicFormDropdownComponent } from "./public-form/public-form-dropdown.component";
 import { Issue3001Component } from "./issues/3001/issue3001.component";
+import { Issue2991Component } from "./issues/2991/issue-2991.component";
 
 const routes: Routes = [
   { path: "bug-1734", component: Bug1734 },
@@ -156,6 +157,7 @@ const routes: Routes = [
   { path: "2720", component: Issue2720Component},
   { path: "2829",  component: Issue2829Component},
   { path: "2837", component: Issue2837Component},
+  { path: "2991", component: Issue2991Component},
   { path: "3001", component: Issue3001Component},
   { path: "public-form", component: PublicFormComponent},
   { path: "public-form-navigation", component: PublicFormNavigationTestComponent},

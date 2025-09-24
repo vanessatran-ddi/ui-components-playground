@@ -1,0 +1,243 @@
+<div class="test-container">
+  <h1>Issue 2991: Screen Reader Accessibility Testing</h1>
+
+  <div class="test-instructions">
+    <h2>Testing Instructions</h2>
+    <p><strong>Purpose:</strong> Verify that form inputs are correctly announced by screen readers (VoiceOver, NVDA, JAWS) with proper label association, required/optional status, helper text, and error messages.</p>
+
+    <p><strong>How to test with VoiceOver on Mac:</strong></p>
+    <ol>
+      <li>Press <kbd>Cmd + F5</kbd> to enable VoiceOver</li>
+      <li>Use <kbd>Control + Option + Right Arrow</kbd> to navigate through elements</li>
+      <li>When on a form field, press <kbd>Control + Option + Space</kbd> to interact</li>
+      <li>Listen for the announced text and verify it matches expected announcements below</li>
+    </ol>
+  </div>
+
+  <!-- Scenario 1a: Form item + input (basic) -->
+  <section class="test-scenario">
+    <h3>Scenario 1a: Form Item + Input (Basic)</h3>
+    <p class="expected-announcement">
+      <strong>Expected announcement:</strong> "Street address, edit text"
+    </p>
+    <goab-form-item label="Street address">
+      <goab-input
+        name="street-address-basic"
+        [value]="streetAddress"
+        (change)="handleInputChange($event)"
+      ></goab-input>
+    </goab-form-item>
+  </section>
+
+  <!-- Scenario 1b: Form item + input with required -->
+  <section class="test-scenario">
+    <h3>Scenario 1b: Form Item + Input with Required</h3>
+    <p class="expected-announcement">
+      <strong>Expected announcement:</strong> "Email address, required, edit text"
+    </p>
+    <goab-form-item label="Email address" requirement="required">
+      <goab-input
+        name="email-required"
+        [value]="email"
+        (change)="handleInputChange($event)"
+      ></goab-input>
+    </goab-form-item>
+  </section>
+
+  <!-- Scenario 1c: Form item + input with optional -->
+  <section class="test-scenario">
+    <h3>Scenario 1c: Form Item + Input with Optional</h3>
+    <p class="expected-announcement">
+      <strong>Expected announcement:</strong> "Phone number, optional, edit text"
+    </p>
+    <goab-form-item label="Phone number" requirement="optional">
+      <goab-input
+        name="phone-optional"
+        [value]="phone"
+        (change)="handleInputChange($event)"
+      ></goab-input>
+    </goab-form-item>
+  </section>
+
+  <!-- Scenario 1d: Form item + input with helper text -->
+  <section class="test-scenario">
+    <h3>Scenario 1d: Form Item + Input with Helper Text</h3>
+    <p class="expected-announcement">
+      <strong>Expected announcement:</strong> "Username, edit text, Enter a unique username between 3-20 characters"
+    </p>
+    <goab-form-item
+      label="Username"
+      helpText="Enter a unique username between 3-20 characters">
+      <goab-input
+        name="username-help"
+        [value]="username"
+        (change)="handleInputChange($event)"
+      ></goab-input>
+    </goab-form-item>
+  </section>
+
+  <!-- Scenario 1e: Form item + input with error -->
+  <section class="test-scenario">
+    <h3>Scenario 1e: Form Item + Input with Error Message</h3>
+    <p class="expected-announcement">
+      <strong>Expected announcement:</strong> "Password, required, edit text, invalid, Password must be at least 8 characters"
+    </p>
+    <button (click)="togglePasswordError()" class="trigger-error-btn">
+      {{ showPasswordError ? 'Clear' : 'Trigger' }} Error
+    </button>
+    <goab-form-item
+      label="Password"
+      requirement="required"
+      [error]="showPasswordError ? 'Password must be at least 8 characters' : ''">
+      <goab-input
+        name="password-error"
+        type="password"
+        [value]="password"
+        [error]="showPasswordError"
+        (change)="handleInputChange($event)"
+      ></goab-input>
+    </goab-form-item>
+  </section>
+
+  <!-- Scenario 2: Standalone input with aria-label -->
+  <section class="test-scenario">
+    <h3>Scenario 2: Standalone Input with aria-label</h3>
+    <p class="expected-announcement">
+      <strong>Expected announcement:</strong> "Search products, edit text"
+    </p>
+    <goab-input
+      name="search-aria-label"
+      ariaLabel="Search products"
+      placeholder="Type to search..."
+      [value]="searchTerm"
+      (change)="handleInputChange($event)"
+    ></goab-input>
+  </section>
+
+  <!-- Scenario 3: Standalone input with aria-labelledby -->
+  <section class="test-scenario">
+    <h3>Scenario 3: Standalone Input with aria-labelledby</h3>
+    <p class="expected-announcement">
+      <strong>Expected announcement:</strong> "City name, edit text"
+    </p>
+    <label id="city-label" class="external-label">City name</label>
+    <goab-input
+      name="city-aria-labelledby"
+      ariaLabelledBy="city-label"
+      [value]="city"
+      (change)="handleInputChange($event)"
+    ></goab-input>
+  </section>
+
+  <!-- Scenario 4: Negative control - no label -->
+  <section class="test-scenario">
+    <h3>Scenario 4: Negative Control - No Label (Should Fail)</h3>
+    <p class="expected-announcement">
+      <strong>Expected behavior:</strong> Screen reader should announce "edit text" with no label - this is an accessibility failure
+    </p>
+    <goab-input
+      name="no-label"
+      placeholder="This input has no label"
+      [value]="noLabelValue"
+      (change)="handleInputChange($event)"
+    ></goab-input>
+  </section>
+
+  <!-- Result Recording Template -->
+  <section class="result-template">
+    <h2>Test Result Recording Template</h2>
+    <div class="result-box">
+      <p>Use this template to record your test results:</p>
+      <pre>
+Scenario: [1a/1b/1c/1d/1e/2/3/4]
+Platform / Browser / Screen Reader: [e.g., macOS 14 / Chrome 126 / VoiceOver]
+Announced text: [verbatim transcription]
+Help/Error/Required/Optional announced: [Yes/No - what was read]
+Pass/Fail: [/L]
+Notes: [any additional observations]
+      </pre>
+    </div>
+  </section>
+</div>
+
+<style>
+  .test-container {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .test-instructions {
+    background: #f0f4f8;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .test-instructions ol {
+    margin-left: 1.5rem;
+  }
+
+  .test-scenario {
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+
+  .test-scenario h3 {
+    color: #333;
+    margin-bottom: 1rem;
+  }
+
+  .expected-announcement {
+    background: #e8f5e9;
+    padding: 1rem;
+    border-left: 4px solid #4caf50;
+    margin-bottom: 1.5rem;
+  }
+
+  .trigger-error-btn {
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .trigger-error-btn:hover {
+    background: #1976D2;
+  }
+
+  .external-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .result-template {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: #fffbf0;
+    border: 2px dashed #ffa000;
+    border-radius: 8px;
+  }
+
+  .result-box pre {
+    background: white;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+
+  kbd {
+    background: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 2px 5px;
+    font-size: 0.9em;
+  }
+</style>
