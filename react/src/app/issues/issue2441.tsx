@@ -8,9 +8,11 @@ export const Issue2441 = () => {
   return (
     <>
       <GoabFormItem label="Basic dropdown">
-        <GoabDropdown name="item" value="" onChange={(event) => setCountry(event.value as string)}>
-          {countries.map((country) => (
-            <GoabDropdownItem key={country.code} value={country.code} label={country.name}></GoabDropdownItem>
+        <GoabDropdown name="item" value="" onChange={(event) => {
+          console.log(event);
+          setCountry(event.value as string)}}>
+          {countries.map((country, index) => (
+            <GoabDropdownItem key={country.code} value={index} label={country.name}></GoabDropdownItem>
           ))}
         </GoabDropdown>
       </GoabFormItem>
