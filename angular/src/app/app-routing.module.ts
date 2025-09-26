@@ -84,7 +84,6 @@ import { PublicFormDatepickerComponent } from "./public-form/public-form-datepic
 import { PublicFormDropdownComponent } from "./public-form/public-form-dropdown.component";
 import { Issue3001Component } from "./issues/3001/issue3001.component";
 import { Issue2991Component } from "./issues/2991/issue-2991.component";
-import { MultiActionButtonComponent } from "./components/multi-action-button/multi-action-button.component";
 import { MenuButtonComponent } from "./components/menu-button/menu-button.component";
 
 const routes: Routes = [
