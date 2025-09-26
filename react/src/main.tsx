@@ -71,7 +71,7 @@ root.render(
           <Route path={"/2934"} element={<Issue2934/>}></Route>
           {/** Add more routes here */}
 
-          <Route path={"/2574"} element={<Issue2574/>}></Route>
+          <Route path={"/2574"} element={<Issue2547/>}></Route>
           <Route path={"public-form-checkbox-list"} element={<PublicFormWithCheckboxList/>}></Route>
         </Route>
       </Routes>
