@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { GoabMenuButton, GoabMenuAction } from "@abgov/angular-components";
-import { GoabMenuButtonOnActionDetail } from "@abgov/ui-components-common";
+
 
 @Component({
   selector: "abgov-menu-button",

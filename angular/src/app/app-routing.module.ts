@@ -88,6 +88,7 @@ import { Issue2991Component } from "./issues/2991/issue-2991.component";
 import { MenuButtonComponent } from "./components/menu-button/menu-button.component";
 import { Issue2948Component } from "./issues/2948/2948.component";
 import { Issue2934Component } from "./issues/2934/issue-2934.component";
+import { Issue2054Component } from "./issues/2054/2054.component";
 import { Issue2939Component } from "./issues/2939/issue-2939.component";
 import {
   PublicFormWithCheckboxComponent
@@ -185,6 +186,7 @@ const routes: Routes = [
   { path: "public-form-datepicker", component: PublicFormDatepickerComponent},
   { path: "public-form-dropdown", component: PublicFormDropdownComponent},
   { path: "2948", component: Issue2948Component},
+  { path: "2054", component: Issue2054Component},
   { path: "", redirectTo: "/", pathMatch: "full" },
 ];
 
