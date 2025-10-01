@@ -144,8 +144,8 @@ export const DataGrid = () => {
   return (
     <div>
       <h1>Data Grid</h1>
-      <h3>Table</h3>
-      <GoabDataGrid>
+      <h3>Table (keyboardNav="table")</h3>
+      <GoabDataGrid keyboardNav={"table"}>
         <GoabTable width="100%" mb="xl" onSort={handleSort}>
           <thead>
             <tr data-grid="row">
@@ -198,8 +198,8 @@ export const DataGrid = () => {
         </GoabTable>
       </GoabDataGrid>
 
-      <h3>Containers</h3>
-      <GoabDataGrid>
+      <h3>Containers (keyboardNav="layout")</h3>
+      <GoabDataGrid keyboardNav={"layout"}>
         {users.map((user) => (
           <GoabContainer key={user.idNumber} mt="l" data-grid="row">
             <GoabBlock direction="row" gap="m" alignment="start">
@@ -271,8 +271,8 @@ export const DataGrid = () => {
       </GoabDataGrid>
 
       <h3>Other examples</h3>
-      <h4>Related Documents</h4>
-      <GoabDataGrid>
+      <h4>Related Documents (Without keyboard icon - by setting `keyboardIcon=false`) (keyboardNav="layout")</h4>
+      <GoabDataGrid keyboardIcon={false} keyboardNav={"layout"}>
         <GoabBlock data-grid="row">
           <GoabLink data-grid="cell">
             <a href="https://www.w3.org/TR/wai-aria-1.1/">ARIA 1.1 Specification</a>
@@ -314,6 +314,12 @@ export const DataGrid = () => {
           </GoabLink>
         </GoabBlock>
       </GoabDataGrid>
+
+      <GoabDropdown name="options"  filterable={true} onChange={() => console.log("changed")}>
+        <GoabDropdownItem label="Option 1" value={1} />
+        <GoabDropdownItem label="Option 2" value={2} />
+        <GoabDropdownItem label="Option 3" value={3} />
+      </GoabDropdown>
     </div>
   );
 };
