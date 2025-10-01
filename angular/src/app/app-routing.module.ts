@@ -89,6 +89,7 @@ import { MenuButtonComponent } from "./components/menu-button/menu-button.compon
 import { Issue2948Component } from "./issues/2948/2948.component";
 import { Issue2934Component } from "./issues/2934/issue-2934.component";
 import { Issue2939Component } from "./issues/2939/issue-2939.component";
+import { Issue2492Component } from "./issues/2492/issue-2492.component";
 import {
   PublicFormWithCheckboxComponent
 } from "./public-form/public-form-with-checkbox.component";
@@ -149,6 +150,7 @@ const routes: Routes = [
   { path: "2513", component: Issue2513Component },
   { path: "2433", component: Issue2433Component},
   { path: "2471", component: Issue2471Component},
+  { path: "2492", component: Issue2492Component},
   { path: "1219", component: Issue1219Component},
   { path: "2415", component: Issue2415Component},
   { path: "2409", component: Issue2409Component},

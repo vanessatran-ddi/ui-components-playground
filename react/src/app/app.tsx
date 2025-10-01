@@ -46,6 +46,9 @@ export function App() {
                 <Link to="/1769">1769 autocomplete property</Link>
                 <Link to="/2772">2772 align on input</Link>
               </GoabSideMenuGroup>
+              <GoabSideMenuGroup heading={"TextArea"}>
+                <Link to="/2492">2492 onBlur event support</Link>
+              </GoabSideMenuGroup>
               <GoabSideMenuGroup heading={"Popover"}>
                 <Link to="/2547">2574 Banner hides pop over safari</Link>
               </GoabSideMenuGroup>
