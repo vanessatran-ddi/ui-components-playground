@@ -1,0 +1,337 @@
+<goab-container>
+  <h1>Issue #2054: Tooltip, Text Area, and Dropdown MaxWidth Support</h1>
+
+  <goab-block gap="m">
+    <goab-text>
+      This page tests the <strong>maxwidth</strong> property implementation for Dropdown, TextArea, and Tooltip components.
+    </goab-text>
+  </goab-block>
+
+  <goab-divider mb="l"></goab-divider>
+
+  <!-- Dropdown Tests -->
+  <h2>Dropdown MaxWidth Tests</h2>
+
+  <goab-block gap="l">
+    <!-- Test 1: Dropdown without maxwidth (default behavior) -->
+    <goab-form-item label="Dropdown without maxwidth (baseline)">
+      <goab-dropdown
+        name="dropdown-no-maxwidth"
+        placeholder="Select a province"
+        testId="dropdown-no-maxwidth"
+        [value]="selectedValue"
+        (onChange)="onDropdownChange($event)">
+        <goab-dropdown-item *ngFor="let province of provinces"
+          [value]="province.value"
+          [label]="province.label">
+        </goab-dropdown-item>
+      </goab-dropdown>
+    </goab-form-item>
+
+    <!-- Test 2: Dropdown with maxwidth 200px -->
+    <goab-form-item label="Dropdown with maxwidth='200px'">
+      <goab-dropdown
+        name="dropdown-200px"
+        placeholder="Select a province"
+        maxWidth="200px"
+        testId="dropdown-200px"
+        [value]="selectedValue"
+        (onChange)="onDropdownChange($event)">
+        <goab-dropdown-item *ngFor="let province of provinces"
+          [value]="province.value"
+          [label]="province.label">
+        </goab-dropdown-item>
+      </goab-dropdown>
+    </goab-form-item>
+
+    <!-- Test 3: Dropdown with maxwidth 400px -->
+    <goab-form-item label="Dropdown with maxwidth='400px'">
+      <goab-dropdown
+        name="dropdown-400px"
+        placeholder="Select a province"
+        maxWidth="400px"
+        testId="dropdown-400px"
+        [value]="selectedValue"
+        (onChange)="onDropdownChange($event)">
+        <goab-dropdown-item *ngFor="let province of provinces"
+          [value]="province.value"
+          [label]="province.label">
+        </goab-dropdown-item>
+      </goab-dropdown>
+    </goab-form-item>
+
+    <!-- Test 4: Dropdown with long options and maxwidth -->
+    <goab-form-item label="Dropdown with long options and maxwidth='300px'">
+      <goab-dropdown
+        name="dropdown-long-options"
+        placeholder="Select an option"
+        maxWidth="300px"
+        testId="dropdown-long-options"
+        (onChange)="onDropdownChange($event)">
+        <goab-dropdown-item *ngFor="let option of longOptions"
+          [value]="option.value"
+          [label]="option.label">
+        </goab-dropdown-item>
+      </goab-dropdown>
+    </goab-form-item>
+
+    <!-- Test 5: Dropdown with both width and maxwidth -->
+    <goab-form-item label="Dropdown with width='500px' and maxwidth='250px' (maxwidth should win)">
+      <goab-dropdown
+        name="dropdown-both-widths"
+        placeholder="Select a province"
+        width="500px"
+        maxWidth="250px"
+        testId="dropdown-both-widths"
+        (onChange)="onDropdownChange($event)">
+        <goab-dropdown-item *ngFor="let province of provinces"
+          [value]="province.value"
+          [label]="province.label">
+        </goab-dropdown-item>
+      </goab-dropdown>
+    </goab-form-item>
+  </goab-block>
+
+  <goab-divider mt="xl" mb="l"></goab-divider>
+
+  <!-- TextArea Tests -->
+  <h2>TextArea MaxWidth Tests</h2>
+
+  <goab-block gap="l">
+    <!-- Test 1: TextArea without maxwidth (should use default 60ch) -->
+    <goab-form-item label="TextArea without maxwidth (default: 60ch)">
+      <goab-textarea
+        name="textarea-default"
+        placeholder="Type something..."
+        [value]="textValue1"
+        rows="3"
+        testId="textarea-default"
+        (onChange)="onTextAreaChange($event)">
+      </goab-textarea>
+    </goab-form-item>
+
+    <!-- Test 2: TextArea with maxwidth 300px -->
+    <goab-form-item label="TextArea with maxwidth='300px'">
+      <goab-textarea
+        name="textarea-300px"
+        placeholder="Type something..."
+        maxWidth="300px"
+        [value]="textValue2"
+        rows="3"
+        testId="textarea-300px"
+        (onChange)="onTextAreaChange($event)">
+      </goab-textarea>
+    </goab-form-item>
+
+    <!-- Test 3: TextArea with maxwidth 80ch -->
+    <goab-form-item label="TextArea with maxwidth='80ch'">
+      <goab-textarea
+        name="textarea-80ch"
+        placeholder="Type something..."
+        maxWidth="80ch"
+        [value]="textValue3"
+        rows="3"
+        testId="textarea-80ch"
+        (onChange)="onTextAreaChange($event)">
+      </goab-textarea>
+    </goab-form-item>
+
+    <!-- Test 4: TextArea with both width and maxwidth -->
+    <goab-form-item label="TextArea with width='100%' and maxwidth='400px'">
+      <goab-textarea
+        name="textarea-both"
+        placeholder="Type something..."
+        width="100%"
+        maxWidth="400px"
+        rows="4"
+        testId="textarea-both"
+        (onChange)="onTextAreaChange($event)">
+      </goab-textarea>
+    </goab-form-item>
+
+    <!-- Test 5: TextArea with small maxwidth -->
+    <goab-form-item label="TextArea with maxwidth='200px' (narrow)">
+      <goab-textarea
+        name="textarea-narrow"
+        placeholder="Narrow textarea..."
+        maxWidth="200px"
+        rows="5"
+        testId="textarea-narrow"
+        (onChange)="onTextAreaChange($event)">
+      </goab-textarea>
+    </goab-form-item>
+  </goab-block>
+
+  <goab-divider mt="xl" mb="l"></goab-divider>
+
+  <!-- Tooltip Tests -->
+  <h2>Tooltip MaxWidth Tests</h2>
+
+  <goab-block gap="xl">
+    <!-- Test 1: Tooltip without maxwidth -->
+    <goab-form-item label="Tooltip without maxwidth (default behavior)">
+      <goab-button-group alignment="start">
+        <goab-tooltip
+          content="This is a tooltip with default width behavior. It can expand as needed based on content."
+          testId="tooltip-default">
+          <goab-button>Hover for default tooltip</goab-button>
+        </goab-tooltip>
+      </goab-button-group>
+    </goab-form-item>
+
+    <!-- Test 2: Tooltip with maxwidth 150px -->
+    <goab-form-item label="Tooltip with maxwidth='150px'">
+      <goab-button-group alignment="start">
+        <goab-tooltip
+          content="This is a tooltip with maxwidth of 150px. The text should wrap within this constraint."
+          maxWidth="150px"
+          testId="tooltip-150px">
+          <goab-button>Hover for 150px tooltip</goab-button>
+        </goab-tooltip>
+      </goab-button-group>
+    </goab-form-item>
+
+    <!-- Test 3: Tooltip with maxwidth 300px -->
+    <goab-form-item label="Tooltip with maxwidth='300px'">
+      <goab-button-group alignment="start">
+        <goab-tooltip
+          content="This is a tooltip with maxwidth of 300px. This gives more room for content before wrapping occurs. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          maxWidth="300px"
+          testId="tooltip-300px">
+          <goab-button>Hover for 300px tooltip</goab-button>
+        </goab-tooltip>
+      </goab-button-group>
+    </goab-form-item>
+
+    <!-- Test 4: Tooltip with very long content and maxwidth -->
+    <goab-form-item label="Tooltip with long content and maxwidth='250px'">
+      <goab-button-group alignment="start">
+        <goab-tooltip
+          content="This is a very long tooltip content that demonstrates how the maxwidth property constrains the tooltip width. When the content exceeds the maxwidth, it should wrap to multiple lines. This helps maintain readability and prevents tooltips from becoming too wide on the screen."
+          maxWidth="250px"
+          testId="tooltip-long-content">
+          <goab-button>Hover for long content tooltip</goab-button>
+        </goab-tooltip>
+      </goab-button-group>
+    </goab-form-item>
+
+    <!-- Test 5: Multiple tooltips with different maxwidths -->
+    <goab-form-item label="Multiple tooltips with different maxwidths">
+      <goab-button-group alignment="start">
+        <goab-tooltip
+          content="100px max width tooltip"
+          maxWidth="100px"
+          testId="tooltip-100px">
+          <goab-icon-button icon="information-circle" size="medium"></goab-icon-button>
+        </goab-tooltip>
+
+        <goab-tooltip
+          content="200px max width tooltip with more content"
+          maxWidth="200px"
+          testId="tooltip-200px">
+          <goab-icon-button icon="square" size="medium"></goab-icon-button>
+        </goab-tooltip>
+
+        <goab-tooltip
+          content="400px max width tooltip with even more content to demonstrate the width constraint"
+          maxWidth="400px"
+          testId="tooltip-400px">
+          <goab-icon-button icon="pencil" size="medium"></goab-icon-button>
+        </goab-tooltip>
+      </goab-button-group>
+    </goab-form-item>
+
+    <!-- Test 6: Tooltip with invalid maxwidth (should use default) -->
+    <goab-form-item label="Tooltip with invalid maxwidth='50%' (should fallback to default)">
+      <goab-button-group alignment="start">
+        <goab-tooltip
+          content="This tooltip has an invalid maxwidth value (percentage). It should fallback to default behavior."
+          maxWidth="50%"
+          testId="tooltip-invalid">
+          <goab-button type="secondary">Hover for invalid maxwidth</goab-button>
+        </goab-tooltip>
+      </goab-button-group>
+    </goab-form-item>
+  </goab-block>
+
+  <goab-divider mt="xl" mb="l"></goab-divider>
+
+  <!-- Edge Cases and Combined Tests -->
+  <h2>Edge Cases and Combined Tests</h2>
+
+  <goab-block gap="l">
+    <!-- Test responsive behavior -->
+    <goab-form-item label="Responsive Test: Resize browser to see behavior">
+      <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+        <goab-dropdown
+          name="dropdown-responsive"
+          placeholder="Dropdown with maxwidth"
+          maxWidth="250px"
+          testId="dropdown-responsive">
+          <goab-dropdown-item *ngFor="let province of provinces"
+            [value]="province.value"
+            [label]="province.label">
+          </goab-dropdown-item>
+        </goab-dropdown>
+
+        <goab-textarea
+          name="textarea-responsive"
+          placeholder="TextArea with maxwidth"
+          maxWidth="250px"
+          rows="2"
+          testId="textarea-responsive">
+        </goab-textarea>
+      </div>
+    </goab-form-item>
+
+    <!-- Test with very small maxwidth values -->
+    <goab-form-item label="Components with very small maxwidth values">
+      <goab-block gap="m">
+        <goab-dropdown
+          name="dropdown-tiny"
+          placeholder="Tiny"
+          maxWidth="80px"
+          testId="dropdown-tiny">
+          <goab-dropdown-item value="1" label="Option 1"></goab-dropdown-item>
+          <goab-dropdown-item value="2" label="Option 2"></goab-dropdown-item>
+        </goab-dropdown>
+
+        <goab-textarea
+          name="textarea-tiny"
+          placeholder="Tiny"
+          maxWidth="100px"
+          rows="2"
+          testId="textarea-tiny">
+        </goab-textarea>
+
+        <goab-tooltip
+          content="Tiny tooltip"
+          maxWidth="50px"
+          testId="tooltip-tiny">
+          <goab-button size="compact">Tiny</goab-button>
+        </goab-tooltip>
+      </goab-block>
+    </goab-form-item>
+  </goab-block>
+
+  <goab-divider mt="xl" mb="l"></goab-divider>
+
+  <!-- Summary -->
+  <goab-block gap="m">
+    <h3>Test Summary</h3>
+    <goab-text>
+      This page tests the following scenarios for the maxwidth property:
+    </goab-text>
+    <ul>
+      <li>Components with and without maxwidth property</li>
+      <li>Different maxwidth values (px, ch units)</li>
+      <li>Components with both width and maxwidth properties</li>
+      <li>Edge cases with very small or invalid values</li>
+      <li>Responsive behavior</li>
+      <li>Long content handling</li>
+    </ul>
+    <goab-text>
+      The maxwidth property should constrain the maximum width of these components while maintaining their functionality and appearance.
+    </goab-text>
+  </goab-block>
+</goab-container>
