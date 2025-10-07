@@ -1,11 +1,11 @@
 import { Component } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { 
-  GoabDropdown, 
-  GoabDropdownItem, 
-  GoabRadioGroup, 
-  GoabRadioItem, 
-  GoabFormItem 
+import {
+  GoabDropdown,
+  GoabDropdownItem,
+  GoabRadioGroup,
+  GoabRadioItem,
+  GoabFormItem
 } from "@abgov/angular-components";
 
 @Component({
@@ -13,23 +13,23 @@ import {
   templateUrl: "./issue-2934.component.html",
   standalone: true,
   imports: [
-    GoabDropdown, 
-    GoabDropdownItem, 
-    GoabRadioGroup, 
-    GoabRadioItem, 
+    GoabDropdown,
+    GoabDropdownItem,
+    GoabRadioGroup,
+    GoabRadioItem,
     GoabFormItem,
     FormsModule
   ],
 })
 export class Issue2934Component {
   // String values
-  stringDropdownValue: string = "";
-  stringRadioValue: string = "";
-  
+  stringDropdownValue = "";
+  stringRadioValue = "";
+
   // Number values
   numberDropdownValue: number | undefined = undefined;
   numberRadioValue: number | undefined = undefined;
-  
+
   // Boolean values (radio only)
   booleanRadioValue: boolean | undefined = undefined;
 

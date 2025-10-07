@@ -32,6 +32,7 @@ export function App() {
                 <Link to="/2408">Form stepper status</Link>
               </GoabSideMenuGroup>
               <GoabSideMenuGroup heading={"Dropdown"}>
+                <Link to="/2054">Issue 2054 - MaxWidth Property</Link>
                 <Link to="/2441">Issue 2441</Link>
                 <Link to="/2789">2789 width rem percentage</Link>
                 <Link to="/2934">2934 Value types (string|number|boolean)</Link>

@@ -30,6 +30,7 @@ import { IconComponent } from "./components/icon/icon.component";
 import { IconButtonComponent } from "./components/icon-button/icon-button.component";
 import { InputComponentComponent } from "./components/input-component/input-component.component";
 import { Issue2003Component } from "./issues/2003/issue-2003.component";
+import { Issue2054Component } from "./issues/2054/issue-2054.component";
 import { Issue2365Component } from "./issues/2365/issue-2365.component";
 import { Issue2466Component } from "./issues/2466/issue-2466.component";
 import { Issue2513Component } from "./issues/2513/issue-2513.component";
@@ -146,6 +147,7 @@ const routes: Routes = [
   { path: "2365", component: Issue2365Component },
   { path: "2466", component: Issue2466Component },
   { path: "2003", component: Issue2003Component },
+  { path: "2054", component: Issue2054Component },
   { path: "2513", component: Issue2513Component },
   { path: "2433", component: Issue2433Component},
   { path: "2471", component: Issue2471Component},
