@@ -1,0 +1,155 @@
+<h1>Issue #2054: MaxWidth Property Testing</h1>
+<p>Testing maxWidth support for Dropdown, TextArea, and Tooltip components</p>
+
+<goab-divider></goab-divider>
+
+<section>
+  <h2>Dropdown Component - MaxWidth Tests</h2>
+
+  <goab-form-item label="Dropdown with maxWidth: 200px" mb="3">
+    <goab-dropdown
+      name="dropdown1"
+      [(ngModel)]="dropdownValue1"
+      placeholder="Select an option"
+      maxWidth="200px"
+      (onChange)="onDropdownChange($event, 'Dropdown 1')"
+    >
+      <goab-dropdown-item value="option1" label="Short"></goab-dropdown-item>
+      <goab-dropdown-item value="option2" label="Medium Option"></goab-dropdown-item>
+      <goab-dropdown-item value="option3" label="This is a very long option that should be constrained"></goab-dropdown-item>
+      <goab-dropdown-item value="option4" label="Another long option to test maxWidth constraint"></goab-dropdown-item>
+    </goab-dropdown>
+  </goab-form-item>
+
+  <goab-form-item label="Dropdown with maxWidth: 400px" mb="3">
+    <goab-dropdown
+      name="dropdown2"
+      [(ngModel)]="dropdownValue2"
+      placeholder="Select an option"
+      maxWidth="400px"
+      (onChange)="onDropdownChange($event, 'Dropdown 2')"
+    >
+      <goab-dropdown-item value="option1" label="Short"></goab-dropdown-item>
+      <goab-dropdown-item value="option2" label="Medium Option"></goab-dropdown-item>
+      <goab-dropdown-item value="option3" label="This is a very long option that should have more room"></goab-dropdown-item>
+      <goab-dropdown-item value="option4" label="Another long option with 400px maxWidth"></goab-dropdown-item>
+    </goab-dropdown>
+  </goab-form-item>
+
+  <goab-form-item label="Dropdown with width: 100% and maxWidth: 300px" mb="3">
+    <goab-dropdown
+      name="dropdown3"
+      [(ngModel)]="dropdownValue3"
+      placeholder="Select an option"
+      width="100%"
+      maxWidth="300px"
+      (onChange)="onDropdownChange($event, 'Dropdown 3')"
+    >
+      <goab-dropdown-item value="option1" label="Short"></goab-dropdown-item>
+      <goab-dropdown-item value="option2" label="Medium Option"></goab-dropdown-item>
+      <goab-dropdown-item value="option3" label="Testing width and maxWidth together"></goab-dropdown-item>
+      <goab-dropdown-item value="option4" label="The smaller constraint should win"></goab-dropdown-item>
+    </goab-dropdown>
+  </goab-form-item>
+
+  <goab-form-item label="Dropdown without maxWidth (default behavior)" mb="3">
+    <goab-dropdown
+      name="dropdown4"
+      [(ngModel)]="dropdownValue4"
+      placeholder="Select an option"
+      (onChange)="onDropdownChange($event, 'Dropdown 4')"
+    >
+      <goab-dropdown-item value="option1" label="Short"></goab-dropdown-item>
+      <goab-dropdown-item value="option2" label="Medium Option"></goab-dropdown-item>
+      <goab-dropdown-item value="option3" label="This dropdown has no maxWidth constraint for comparison"></goab-dropdown-item>
+      <goab-dropdown-item value="option4" label="Default behavior reference"></goab-dropdown-item>
+    </goab-dropdown>
+  </goab-form-item>
+</section>
+
+<goab-divider></goab-divider>
+
+<section>
+  <h2>TextArea Component - MaxWidth Tests</h2>
+
+  <goab-form-item label="TextArea with maxWidth: 300px" mb="3">
+    <goab-textarea
+      name="textarea1"
+      [(ngModel)]="textAreaValue1"
+      maxWidth="300px"
+      rows="3"
+      (onChange)="onTextAreaChange($event, 'TextArea 1')"
+    ></goab-textarea>
+  </goab-form-item>
+
+  <goab-form-item label="TextArea with maxWidth: 500px" mb="3">
+    <goab-textarea
+      name="textarea2"
+      [(ngModel)]="textAreaValue2"
+      maxWidth="500px"
+      rows="3"
+      (onChange)="onTextAreaChange($event, 'TextArea 2')"
+    ></goab-textarea>
+  </goab-form-item>
+
+  <goab-form-item label="TextArea with width: 100% and maxWidth: 400px" mb="3">
+    <goab-textarea
+      name="textarea3"
+      [(ngModel)]="textAreaValue3"
+      width="100%"
+      maxWidth="400px"
+      rows="3"
+      (onChange)="onTextAreaChange($event, 'TextArea 3')"
+    ></goab-textarea>
+  </goab-form-item>
+
+  <goab-form-item label="TextArea with default maxWidth: 60ch" mb="3">
+    <goab-textarea
+      name="textarea4"
+      [(ngModel)]="textAreaValue4"
+      rows="3"
+      (onChange)="onTextAreaChange($event, 'TextArea 4')"
+    ></goab-textarea>
+  </goab-form-item>
+</section>
+
+<goab-divider></goab-divider>
+
+<section>
+  <h2>Tooltip Component - MaxWidth Tests</h2>
+
+  <goab-tooltip
+    [content]="tooltipText2"
+    [maxWidth]="'400px'"
+  >
+    <goab-button type="secondary">Hover for 400px maxWidth tooltip</goab-button>
+  </goab-tooltip>
+
+  <goab-tooltip
+    [content]="tooltipText3"
+  >
+    <goab-button type="secondary">Hover for default tooltip (no maxWidth)</goab-button>
+  </goab-tooltip>
+  <goab-tooltip
+    [content]="tooltipText1"
+    [maxWidth]="'200px'"
+  >
+    <goab-button type="secondary">Hover for 200px maxWidth tooltip</goab-button>
+  </goab-tooltip>
+
+  <div style="margin-top: 2rem;">
+    <h3>Note on Tooltip maxWidth:</h3>
+    <p>According to the implementation, tooltip maxWidth only accepts 'px' values. Any non-px values will be ignored and default behavior will be used.</p>
+  </div>
+</section>
+
+<goab-divider></goab-divider>
+
+<section>
+  <h2>Test Results Summary</h2>
+  <ul>
+    <li><strong>Dropdown:</strong> MaxWidth property constrains the dropdown width as expected</li>
+    <li><strong>TextArea:</strong> MaxWidth property limits the maximum width, with the smaller value winning between width and maxWidth</li>
+    <li><strong>Tooltip:</strong> MaxWidth property only accepts px values and controls the tooltip's maximum width</li>
+  </ul>
+</section>
