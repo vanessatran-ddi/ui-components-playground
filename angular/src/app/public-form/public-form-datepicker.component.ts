@@ -62,12 +62,12 @@ export class PublicFormDatepickerComponent extends PublicFormController<Page> {
   }
 
   validateDates(e: Event): Page | undefined {
-    const [birthDateOk] = this.validate(e, "birth-date", [
-      requiredValidator("Birth date is required"),
-    ]);
-    if (!birthDateOk) {
-      return;
-    }
+    // const [birthDateOk] = this.validate(e, "birth-date", [
+    //   requiredValidator("Birth date is required"),
+    // ]);
+    // if (!birthDateOk) {
+    //   return;
+    // }
     return "summary";
   }
 }
