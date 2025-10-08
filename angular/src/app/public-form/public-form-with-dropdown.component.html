@@ -1,0 +1,86 @@
+<goab-public-form
+  name="public-form-dropdown"
+  (onComplete)="showConfirmation($event)"
+  (onInit)="init($event)"
+>
+  <goab-public-form-page
+    id="location"
+    heading="Location Information"
+    summaryHeading="Location Details"
+    (onContinue)="onPageChange($event, 'location')"
+  >
+    <goab-fieldset>
+      <goab-form-item
+        id="province-item"
+        label="Select your province or territory"
+        labelSize="large"
+        helpText="Choose your current province of residence"
+      >
+        <goab-dropdown name="province" placeholder="Choose a province">
+          <goab-dropdown-item value="AB" label="Alberta" />
+          <goab-dropdown-item value="BC" label="British Columbia" />
+          <goab-dropdown-item value="MB" label="Manitoba" />
+          <goab-dropdown-item value="NB" label="New Brunswick" />
+          <goab-dropdown-item value="NL" label="Newfoundland and Labrador" />
+          <goab-dropdown-item value="NS" label="Nova Scotia" />
+          <goab-dropdown-item value="ON" label="Ontario" />
+          <goab-dropdown-item value="PE" label="Prince Edward Island" />
+          <goab-dropdown-item value="QC" label="Quebec" />
+          <goab-dropdown-item value="SK" label="Saskatchewan" />
+          <goab-dropdown-item value="NT" label="Northwest Territories" />
+          <goab-dropdown-item value="NU" label="Nunavut" />
+          <goab-dropdown-item value="YT" label="Yukon" />
+        </goab-dropdown>
+      </goab-form-item>
+
+      <goab-form-item
+        id="language-item"
+        label="Preferred language for communication"
+        helpText="Select your preferred language"
+      >
+        <goab-dropdown name="language" placeholder="Select language">
+          <goab-dropdown-item value="en" label="English" />
+          <goab-dropdown-item value="fr" label="French" />
+          <goab-dropdown-item value="es" label="Spanish" />
+          <goab-dropdown-item value="de" label="German" />
+          <goab-dropdown-item value="zh" label="Chinese" />
+          <goab-dropdown-item value="ar" label="Arabic" />
+          <goab-dropdown-item value="other" label="Other" />
+        </goab-dropdown>
+      </goab-form-item>
+
+      <goab-form-item
+        id="service-type-item"
+        label="Type of service you're applying for"
+        helpText="Choose the service category"
+      >
+        <goab-dropdown name="service-type" placeholder="Select service type">
+          <goab-dropdown-item value="healthcare" label="Healthcare Services" />
+          <goab-dropdown-item value="education" label="Education Services" />
+          <goab-dropdown-item value="employment" label="Employment Services" />
+          <goab-dropdown-item value="housing" label="Housing Assistance" />
+          <goab-dropdown-item value="social" label="Social Services" />
+          <goab-dropdown-item value="business" label="Business Services" />
+          <goab-dropdown-item value="other" label="Other Services" />
+        </goab-dropdown>
+      </goab-form-item>
+    </goab-fieldset>
+  </goab-public-form-page>
+
+  <goab-public-form-page
+    id="summary"
+    heading="Summary"
+    type="summary"
+    (onContinue)="onPageChange($event, 'summary')"
+  >
+    <goab-public-form-summary/>
+  </goab-public-form-page>
+</goab-public-form>
+
+<goab-modal [open]="_showConfirmationModal" heading="Submit location information">
+  Your location and service preferences will be saved.
+  <goab-button-group alignment="end">
+    <goab-button type="tertiary" (onClick)="hideConfirmationModal()">Cancel</goab-button>
+    <goab-button type="primary" (onClick)="submitForm()">Submit</goab-button>
+  </goab-button-group>
+</goab-modal>

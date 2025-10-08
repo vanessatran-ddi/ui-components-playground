@@ -1,0 +1,40 @@
+<goab-public-form
+  name="public-form-checkbox"
+  (onComplete)="showConfirmation($event)"
+  (onInit)="init($event)"
+>
+  <goab-public-form-page
+    id="checkbox"
+    heading="Your Communication Preferences"
+    summaryHeading="Preferences"
+    (onContinue)="onPageChange($event, 'checkbox')"
+  >
+    <goab-fieldset>
+      <goab-form-item
+        id="communication-item"
+        label="How would you like to receive communications?"
+        labelSize="large"
+        helpText="Select all that apply"
+      >
+        <goab-checkbox name="email-comm" value="yes" text="Email notifications" />
+      </goab-form-item>
+    </goab-fieldset>
+  </goab-public-form-page>
+
+  <goab-public-form-page
+    id="summary"
+    heading="Summary"
+    type="summary"
+    (onContinue)="onPageChange($event, 'summary')"
+  >
+    <goab-public-form-summary/>
+  </goab-public-form-page>
+</goab-public-form>
+
+<goab-modal [open]="_showConfirmationModal" heading="Submit preferences">
+  Your communication preferences will be saved.
+  <goab-button-group alignment="end">
+    <goab-button type="tertiary" (onClick)="hideConfirmationModal()">Cancel</goab-button>
+    <goab-button type="primary" (onClick)="submitForm()">Submit</goab-button>
+  </goab-button-group>
+</goab-modal>

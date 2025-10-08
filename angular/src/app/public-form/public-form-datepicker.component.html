@@ -1,0 +1,56 @@
+<goab-public-form
+  name="public-form-datepicker"
+  (onComplete)="showConfirmation($event)"
+  (onInit)="init($event)"
+>
+  <goab-public-form-page
+    id="dates"
+    heading="Important Dates"
+    summaryHeading="Date Information"
+    (onContinue)="onPageChange($event, 'dates')"
+  >
+    <goab-fieldset>
+      <goab-form-item
+        id="birth-date-item"
+        label="What is your date of birth?"
+        labelSize="large"
+        helpText="Select your birth date using the date picker"
+      >
+        <goab-date-picker name="birth-date" type="calendar" />
+      </goab-form-item>
+
+      <goab-form-item
+        id="start-date-item"
+        label="When would you like to start?"
+        helpText="Select your preferred start date"
+      >
+        <goab-date-picker name="start-date" type="input" />
+      </goab-form-item>
+
+      <goab-form-item
+        id="appointment-item"
+        label="Preferred appointment date"
+        helpText="Choose a date for your appointment"
+      >
+        <goab-date-picker name="appointment-date" type="calendar" />
+      </goab-form-item>
+    </goab-fieldset>
+  </goab-public-form-page>
+
+  <goab-public-form-page
+    id="summary"
+    heading="Summary"
+    type="summary"
+    (onContinue)="onPageChange($event, 'summary')"
+  >
+    <goab-public-form-summary/>
+  </goab-public-form-page>
+</goab-public-form>
+
+<goab-modal [open]="_showConfirmationModal" heading="Submit dates">
+  Your date selections will be saved.
+  <goab-button-group alignment="end">
+    <goab-button type="tertiary" (onClick)="hideConfirmationModal()">Cancel</goab-button>
+    <goab-button type="primary" (onClick)="submitForm()">Submit</goab-button>
+  </goab-button-group>
+</goab-modal>

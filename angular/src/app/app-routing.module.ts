@@ -78,11 +78,11 @@ import { Issue2827SubformComponent } from "./public-form/issue-2827/issue-2827-s
 import { SupportOrderDetailsComponent } from "./public-form/SupportOrderDetails";
 import { Issue2720Component } from "./issues/2720/issue-2720.component";
 import { Issue2829Component } from "./issues/2829/issue-2829.component";
-// import { PublicFormWithCheckboxComponent } from "./public-form/public-form-with-checkbox.component";
-// import { PublicFormWithDatePickerComponent } from "./public-form/public-form-with-datepicker.component";
-// import { PublicFormWithDropdownComponent } from "./public-form/public-form-with-dropdown.component";
-// import { PublicFormWithRadioComponent } from "./public-form/public-form-with-radio.component";
-// import { PublicFormWithTextAreaComponent } from "./public-form/public-form-with-textarea.component";
+import { PublicFormWithCheckboxComponent } from "./public-form/public-form-with-checkbox.component";
+import { PublicFormWithDatePickerComponent } from "./public-form/public-form-with-datepicker.component";
+import { PublicFormWithDropdownComponent } from "./public-form/public-form-with-dropdown.component";
+import { PublicFormWithRadioComponent } from "./public-form/public-form-with-radio.component";
+import { PublicFormWithTextAreaComponent } from "./public-form/public-form-with-textarea.component";
 import {
   DropdownDynamicAddItemComponent
 } from "./issues/2802/dropdown-dynamic-add-item.component";
@@ -171,11 +171,11 @@ const routes: Routes = [
   { path: "public-form/2827", component: Issue2827Component},
   { path: "public-form/2827-subform", component: Issue2827SubformComponent},
   { path: "support-order-details", component: SupportOrderDetailsComponent},
-  // { path: "public-form-with-checkbox", component: PublicFormWithCheckboxComponent},
-  // { path: "public-form-with-datepicker", component: PublicFormWithDatePickerComponent},
-  // { path: "public-form-with-dropdown", component: PublicFormWithDropdownComponent},
-  // { path: "public-form-with-radio", component: PublicFormWithRadioComponent},
-  // { path: "public-form-with-textarea", component: PublicFormWithTextAreaComponent},
+  { path: "public-form-with-checkbox", component: PublicFormWithCheckboxComponent},
+  { path: "public-form-with-datepicker", component: PublicFormWithDatePickerComponent},
+  { path: "public-form-with-dropdown", component: PublicFormWithDropdownComponent},
+  { path: "public-form-with-radio", component: PublicFormWithRadioComponent},
+  { path: "public-form-with-textarea", component: PublicFormWithTextAreaComponent},
   { path: "2802-fullscreen-progress-indicator", component: ProgressIndicatorFullscreenComponent},
   { path: "2802-input-reset", component: InputResetValueComponent}
 ];
