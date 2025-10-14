@@ -1,0 +1,89 @@
+<div style="height: 100vh; display: flex;">
+  <goax-work-side-menu
+    heading="My Application"
+    url="/"
+    userName="John Doe"
+    userSecondaryText="john.doe@gov.ab.ca"
+    testId="workspace-side-menu"
+    [primaryContent]="primaryMenu"
+    [secondaryContent]="secondaryMenu"
+    [accountContent]="accountMenu"
+  >
+  </goax-work-side-menu>
+
+  <div style="flex: 1; padding: 2rem; overflow-y: auto;">
+    <h1>Workspace Side Menu Demo</h1>
+    <p>This is a demonstration of the Workspace Side Menu component.</p>
+  </div>
+</div>
+
+<!-- Primary Menu Template -->
+<ng-template #primaryMenu>
+  <goax-work-side-menu-item
+    url="#dashboard"
+    label="Dashboard"
+    icon="home"
+  />
+  <goax-work-side-menu-item
+    url="#projects"
+    label="Projects"
+    icon="folder"
+    badge="3"
+    type="success"
+  />
+  <goax-work-side-menu-item
+    url="#team"
+    label="Team"
+    icon="people"
+  />
+  <goax-work-side-menu-item
+    url="#calendar"
+    label="Calendar"
+    icon="calendar"
+    badge="5"
+    type="emergency"
+  />
+  <goax-work-side-menu-item
+    url="#documents"
+    label="Documents"
+    icon="document"
+    [divider]="true"
+  />
+  <goax-work-side-menu-item
+    url="#analytics"
+    label="Analytics"
+    icon="stats-chart"
+  />
+</ng-template>
+
+<!-- Secondary Menu Template -->
+<ng-template #secondaryMenu>
+  <goax-work-side-menu-item
+    url="#settings"
+    label="Settings"
+    icon="settings"
+  />
+  <goax-work-side-menu-item
+    url="#help"
+    label="Help & Support"
+    icon="help-circle"
+  />
+</ng-template>
+
+<ng-template #accountMenu>
+  <goax-work-side-menu-item
+    url="#profile"
+    label="My Profile"
+    icon="person"
+  />
+  <goax-work-side-menu-item
+    url="#preferences"
+    label="Preferences"
+    icon="cog"
+  />
+  <goax-work-side-menu-item
+    url="#logout"
+    label="Sign Out"
+    icon="log-out"
+  />
+</ng-template>

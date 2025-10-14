@@ -18,6 +18,9 @@ import { PublicFormSubFormExampleComponent } from "./public-form/PublicFormSubFo
 
 import "@abgov/web-components";
 import { MenuButtonComponent } from "playground/angular/src/app/components/menu-button/menu-button.component";
+import {
+  WorkspaceSideMenuComponent
+} from "playground/angular/src/app/components/workspace/workspace-side-menu/workspace-side-menu.component";
 
 // ******
 // Routes
@@ -41,6 +44,7 @@ import { MenuButtonComponent } from "playground/angular/src/app/components/menu-
     PublicFormSubFormExampleComponent,
     SupportOrderDetailsComponent,
     MenuButtonComponent,
+    WorkspaceSideMenuComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
