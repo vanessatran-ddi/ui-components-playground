@@ -1,0 +1,116 @@
+.container-2361 {
+  padding: 2rem;
+  max-width: 1200px;
+}
+
+.container-2361 h1 {
+  color: #333;
+  border-bottom: 2px solid #0070c4;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.container-2361 h2 {
+  color: #0070c4;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.container-2361 h3 {
+  color: #555;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.container-2361 .description {
+  background-color: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+
+.container-2361 .description p {
+  margin: 0.75rem 0;
+  line-height: 1.6;
+}
+
+.container-2361 .test-section {
+  margin-top: 2rem;
+}
+
+.container-2361 .test-case {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.container-2361 .instructions {
+  background-color: #e3f2fd;
+  padding: 1rem;
+  border-left: 4px solid #0070c4;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+.container-2361 .component-group {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: #fafafa;
+  border-radius: 4px;
+}
+
+.container-2361 .component-group goab-checkbox,
+.container-2361 .component-group goab-radio-item {
+  display: block;
+  margin: 1rem 0;
+}
+
+.container-2361 .status {
+  background-color: #f0f0f0;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+.container-2361 .status strong {
+  color: #333;
+}
+
+.container-2361 .status ul {
+  margin: 0.5rem 0 0 0;
+  padding-left: 1.5rem;
+}
+
+.container-2361 .status ul li {
+  margin: 0.25rem 0;
+}
+
+.container-2361 .checklist {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.container-2361 .checklist li {
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+.container-2361 .implementation-notes {
+  background-color: #fffbea;
+  border: 1px solid #ffc107;
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.container-2361 .implementation-notes ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.container-2361 .implementation-notes li {
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}

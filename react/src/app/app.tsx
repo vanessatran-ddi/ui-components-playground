@@ -36,8 +36,9 @@ export function App() {
                 <Link to="/2789">2789 width rem percentage</Link>
                 <Link to="/2934">2934 Value types (string|number|boolean)</Link>
               </GoabSideMenuGroup>
-              <GoabSideMenuGroup heading={"Checkbox/Radio Reveal"}>
-                <Link to="/1216">Issue 1216</Link>
+              <GoabSideMenuGroup heading={"Checkbox/Radio"}>
+                <Link to="/2361">2361 - Increased clickable area</Link>
+                <Link to="/1216">1216 Checkbox/Radio Reveal</Link>
                 <Link to="/2768">2768 Radio dynamic disabled state</Link>
                 <Link to="/3001">3001 Checkbox dispatch string</Link>
               </GoabSideMenuGroup>

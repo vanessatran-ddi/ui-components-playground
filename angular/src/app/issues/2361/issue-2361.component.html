@@ -1,0 +1,164 @@
+<div class="container">
+  <h1>Issue #2361: Increased Clickable Area for Radio and Checkbox</h1>
+
+  <section class="description">
+    <h2>Overview</h2>
+    <p>
+      This issue addresses accessibility improvements by increasing the clickable/touch target area
+      for radio buttons and checkboxes to 44px x 44px (WCAG AAA standard), while maintaining the
+      current visual size of 24px x 24px.
+    </p>
+    <p>
+      <strong>Acceptance Criteria:</strong> The clickable area around each radio button and checkbox
+      should be 44px x 44px to meet accessibility standards.
+    </p>
+  </section>
+
+  <section class="test-section">
+    <h2>Manual QA Test Cases</h2>
+
+    <div class="test-case">
+      <h3>Test 1: Checkbox Click Target Area</h3>
+      <p class="instructions">
+        <strong>Instructions:</strong> Try clicking around the edges of each checkbox (not on the checkbox itself,
+        but in the area surrounding it within ~10px). The checkbox should still toggle.
+      </p>
+
+      <goab-checkbox
+        name="checkbox1"
+        text="Checkbox 1 - Click around the edges"
+        [checked]="checkbox1Checked"
+        (onChange)="onCheckbox1Change($event)"
+      ></goab-checkbox>
+
+      <goab-checkbox
+        name="checkbox2"
+        text="Checkbox 2 - Try clicking above and below"
+        [checked]="checkbox2Checked"
+        (onChange)="onCheckbox2Change($event)"
+      ></goab-checkbox>
+
+      <goab-checkbox
+        name="checkbox3"
+        text="Checkbox 3 - Test left and right sides"
+        [checked]="checkbox3Checked"
+        (onChange)="onCheckbox3Change($event)"
+      ></goab-checkbox>
+
+      <div class="status">
+        <strong>Current States:</strong>
+        <ul>
+          <li>Checkbox 1: {{ checkbox1Checked ? 'Checked' : 'Unchecked' }}</li>
+          <li>Checkbox 2: {{ checkbox2Checked ? 'Checked' : 'Unchecked' }}</li>
+          <li>Checkbox 3: {{ checkbox3Checked ? 'Checked' : 'Unchecked' }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="test-case">
+      <h3>Test 2: Radio Button Click Target Area</h3>
+      <p class="instructions">
+        <strong>Instructions:</strong> Try clicking around the edges of each radio button (not directly on it,
+        but in the surrounding area within ~10px). The radio should still select.
+      </p>
+
+      <div class="component-group">
+        <goab-radio-group
+          name="testRadio"
+          [value]="selectedRadio"
+          (onChange)="onRadioChange($event)"
+        >
+          <goab-radio-item
+            name="testRadio"
+            value="option1"
+            label="Option 1 - Click around the edges"
+          ></goab-radio-item>
+
+          <goab-radio-item
+            name="testRadio"
+            value="option2"
+            label="Option 2 - Try clicking above and below"
+          ></goab-radio-item>
+
+          <goab-radio-item
+            name="testRadio"
+            value="option3"
+            label="Option 3 - Test left and right sides"
+          ></goab-radio-item>
+        </goab-radio-group>
+      </div>
+
+      <div class="status">
+        <strong>Selected Option:</strong> {{ selectedRadio }}
+      </div>
+    </div>
+
+    <div class="test-case">
+      <h3>Test 3: Visual Verification</h3>
+      <p class="instructions">
+        <strong>Instructions:</strong> Use browser DevTools to inspect the checkbox/radio elements.
+        Verify that:
+      </p>
+      <ul class="checklist">
+        <li>The visual size remains 24px x 24px</li>
+        <li>The ::before pseudo-element has dimensions of 44px x 44px</li>
+        <li>The ::before pseudo-element is positioned absolutely and centered on the visual element</li>
+        <li>The transform property is set to translate(-50%, -50%)</li>
+      </ul>
+    </div>
+
+    <div class="test-case">
+      <h3>Test 4: Accessibility Testing</h3>
+      <p class="instructions">
+        <strong>Instructions:</strong> Test with assistive technologies:
+      </p>
+      <ul class="checklist">
+        <li>Use keyboard navigation (Tab/Space) - should work as expected</li>
+        <li>Use screen reader - should announce checkbox/radio states correctly</li>
+        <li>Use touch device (if available) - 44px target should be easier to tap</li>
+        <li>Test with different zoom levels (100%, 150%, 200%)</li>
+      </ul>
+    </div>
+
+    <div class="test-case">
+      <h3>Test 5: Disabled State</h3>
+      <p class="instructions">
+        <strong>Instructions:</strong> Verify that disabled controls still have the correct click target size
+        but don't respond to clicks.
+      </p>
+
+      <div class="component-group">
+        <goab-checkbox
+          name="disabledCheckbox"
+          text="Disabled checkbox"
+          [checked]="false"
+          disabled="true"
+        ></goab-checkbox>
+
+        <goab-radio-group name="disabledRadio" value="disabled1">
+          <goab-radio-item
+            name="disabledRadio"
+            value="disabled1"
+            label="Disabled radio option"
+            disabled="true"
+          ></goab-radio-item>
+        </goab-radio-group>
+      </div>
+    </div>
+  </section>
+
+  <section class="implementation-notes">
+    <h2>Implementation Details</h2>
+    <p>The solution uses a ::before pseudo-element to create an invisible 44px x 44px click target:</p>
+    <ul>
+      <li><strong>Container:</strong> position: relative</li>
+      <li><strong>::before pseudo-element:</strong> position: absolute, 44px x 44px</li>
+      <li><strong>Centering:</strong> top: 50%, left: 50%, transform: translate(-50%, -50%)</li>
+      <li><strong>Visual element:</strong> Remains 24px x 24px (unchanged)</li>
+    </ul>
+    <p>
+      This approach maintains backward compatibility while meeting WCAG AAA accessibility standards
+      for touch target size.
+    </p>
+  </section>
+</div>
