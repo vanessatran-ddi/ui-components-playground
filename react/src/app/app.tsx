@@ -9,6 +9,7 @@ import {
   GoabSideMenuGroup,
 } from "@abgov/react-components";
 import { DataGrid } from "./components/data-grid/DataGrid";
+import { SearchPage } from "./workspace/SearchPage";
 
 export function App() {
   return (
@@ -20,7 +21,8 @@ export function App() {
         </GoabAppHeader>
       </section>
       <section className="content">
-        <DataGrid/>
+        {/*<DataGrid/>*/}
+        <SearchPage/>
         {/*<section className="side-menu">*/}
         {/*  <GoabSideMenu>*/}
         {/*    <GoabSideMenuGroup heading="Bugs">*/}
