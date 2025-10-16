@@ -79,6 +79,7 @@ root.render(
 
           <Route path={"/2574"} element={<Issue2547/>}></Route>
           <Route path={"public-form-checkbox-list"} element={<PublicFormWithCheckboxList/>}></Route>
+          <Route path={"workspace-side-menu"} element={<WorkSpaceSideMenu/>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

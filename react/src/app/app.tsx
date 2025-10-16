@@ -72,6 +72,9 @@ export function App() {
               <Link to="/public-form-checkbox-list">Public form with checkbox list</Link>
               <Link to="/pr2969-test">PR 2969 Test Form</Link>
             </GoabSideMenuGroup>
+            <GoabSideMenuGroup heading="WorkSpace">
+              <Link to={"/workspace-side-menu"}>Menu</Link>
+            </GoabSideMenuGroup>
             {/* Add links here */}
           </GoabSideMenu>
         </section>
