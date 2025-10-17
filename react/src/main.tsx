@@ -27,6 +27,7 @@ import { Issue2827 } from "./app/public-form/Issue2827";
 import { Issue2547 } from "./app/issues/issue2547";
 import { PR2969TestForm } from "./app/public-form/PR2969TestForm";
 import { DataGrid } from "./app/components/data-grid/DataGrid";
+import { SearchPage } from "./app/workspace/SearchPage";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -60,6 +61,7 @@ root.render(
           <Route path={"/2547"} element={<Issue2547/>}></Route>
           <Route path={"/pr2969-test"} element={<PR2969TestForm/>}></Route>
           <Route path={"/data-grid"} element={<DataGrid/>}></Route>
+          <Route path={"/workspace-search-page"} element={<SearchPage/>}></Route>
           {/** Add more routes here */}
 
         </Route>
