@@ -209,6 +209,8 @@ const routes: Routes = [
   { path: "public-form-with-radio", component: PublicFormWithRadioComponent},
   { path: "public-form-with-textarea", component: PublicFormWithTextAreaComponent},
   { path: "2802-fullscreen-progress-indicator", component: ProgressIndicatorFullscreenComponent},
+  { path: "2802-input-reset", component: InputResetValueComponent},
+  { path: "", redirectTo: "/", pathMatch: "full" },
   { path: "2802-input-reset", component: InputResetValueComponent}
   { path: "public-form-checkbox-list", component: PublicFormWithCheckboxComponent},
   { path: "public-form-checkbox", component: PublicFormCheckboxComponent},

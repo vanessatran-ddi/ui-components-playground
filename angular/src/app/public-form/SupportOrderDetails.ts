@@ -1,8 +1,8 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from "@angular/core";
+import { CommonModule } from "@angular/common";
 import { Router } from "@angular/router";
 import {
   dateValidator,
-  GoabBlock,
   GoabButton,
   GoabButtonGroup,
   GoabCircularProgress,
