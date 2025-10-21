@@ -1,9 +1,26 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from "@angular/core";
+import { CommonModule } from "@angular/common";
 import { Router } from "@angular/router";
 import {
   dateValidator,
   lengthValidator,
   requiredValidator,
+  GoabButton,
+  GoabButtonGroup,
+  GoabCircularProgress,
+  GoabPublicForm,
+  GoabPublicFormPage,
+  GoabPublicFormSummary,
+  GoabFieldset,
+  GoabFormItem,
+  GoabRadioGroup,
+  GoabRadioItem,
+  GoabModal,
+  GoabTable,
+  GoabInput,
+  GoabDetails,
+  GoabText,
+  GoabDatePicker
 } from "@abgov/angular-components";
 
 import { PublicFormController } from "@abgov/ui-components-common";

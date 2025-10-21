@@ -180,7 +180,7 @@ const routes: Routes = [
   { path: "public-form-with-radio", component: PublicFormWithRadioComponent},
   { path: "public-form-with-textarea", component: PublicFormWithTextAreaComponent},
   { path: "2802-fullscreen-progress-indicator", component: ProgressIndicatorFullscreenComponent},
-  { path: "2802-input-reset", component: InputResetValueComponent}
+  { path: "2802-input-reset", component: InputResetValueComponent},
   { path: "data-table", component: DataTableComponent},
   { path: "", redirectTo: "/", pathMatch: "full" },
 ];
