@@ -78,6 +78,8 @@ import { Issue2827SubformComponent } from "./public-form/issue-2827/issue-2827-s
 import { SupportOrderDetailsComponent } from "./public-form/SupportOrderDetails";
 import { Issue2720Component } from "./issues/2720/issue-2720.component";
 import { Issue2829Component } from "./issues/2829/issue-2829.component";
+import { Issue2837Component } from "./issues/2837/issue-2837.component";
+import { DataTableComponent } from "./components/data-table/data-table.component";
 import { PublicFormWithCheckboxComponent } from "./public-form/public-form-with-checkbox.component";
 import { PublicFormWithDatePickerComponent } from "./public-form/public-form-with-datepicker.component";
 import { PublicFormWithDropdownComponent } from "./public-form/public-form-with-dropdown.component";
@@ -163,6 +165,7 @@ const routes: Routes = [
   { path: "2720", component: Issue2720Component},
   { path: "2829",  component: Issue2829Component},
   { path: "2802-dropdown-dynamic-add-item", component: DropdownDynamicAddItemComponent},
+  { path: "2837", component: Issue2837Component},
   { path: "public-form", component: PublicFormComponent},
   { path: "public-form-navigation", component: PublicFormNavigationTestComponent},
   { path: "public-form-accessibility", component: PublicFormAccessibilityTestComponent},
@@ -178,6 +181,8 @@ const routes: Routes = [
   { path: "public-form-with-textarea", component: PublicFormWithTextAreaComponent},
   { path: "2802-fullscreen-progress-indicator", component: ProgressIndicatorFullscreenComponent},
   { path: "2802-input-reset", component: InputResetValueComponent}
+  { path: "data-table", component: DataTableComponent},
+  { path: "", redirectTo: "/", pathMatch: "full" },
 ];
 
 @NgModule({

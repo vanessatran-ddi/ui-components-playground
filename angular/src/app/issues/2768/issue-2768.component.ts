@@ -36,6 +36,6 @@ export class Issue2768Component {
   }
 
   handleRadioChange(event: GoabRadioGroupOnChangeDetail) {
-    this.selectedValue = event.value;
+    this.selectedValue = event.value as string;
   }
 }

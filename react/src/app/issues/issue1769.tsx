@@ -32,7 +32,7 @@ export const Issue1769 = () => {
               placeholder="Enter your email"
               type="email"
               autoComplete="new-email"
-              onChange={(e) => setEmailValue(e.detail.value)}
+              onChange={(e) => setEmailValue(e.value)}
             />
           </GoabFormItem>
           <p style={{ marginTop: "10px", fontSize: "14px", color: "#666", fontStyle: "italic" }}>
@@ -48,7 +48,7 @@ export const Issue1769 = () => {
               value={batchIdValue}
               placeholder="Enter unique batch ID"
               autoComplete="batch-id"
-              onChange={(e) => setBatchIdValue(e.detail.value)}
+              onChange={(e) => setBatchIdValue(e.value)}
             />
           </GoabFormItem>
           <p style={{ marginTop: "10px", fontSize: "14px", color: "#666", fontStyle: "italic" }}>
@@ -64,7 +64,7 @@ export const Issue1769 = () => {
               value={orgNameValue}
               placeholder="Enter organization name"
               autoComplete="organization"
-              onChange={(e) => setOrgNameValue(e.detail.value)}
+              onChange={(e) => setOrgNameValue(e.value)}
             />
           </GoabFormItem>
           <p style={{ marginTop: "10px", fontSize: "14px", color: "#666", fontStyle: "italic" }}>
@@ -84,7 +84,7 @@ export const Issue1769 = () => {
               value={descriptionValue}
               placeholder="Enter description"
               rows={3}
-              onChange={(e) => setDescriptionValue(e.detail.value)}
+              onChange={(e) => setDescriptionValue(e.value)}
             />
           </GoabFormItem>
           <p style={{ marginTop: "10px", fontSize: "14px", color: "#666", fontStyle: "italic" }}>
@@ -101,7 +101,7 @@ export const Issue1769 = () => {
               placeholder="Enter unique notes for this record"
               autoComplete="off"
               rows={3}
-              onChange={(e) => setNotesValue(e.detail.value)}
+              onChange={(e) => setNotesValue(e.value)}
             />
           </GoabFormItem>
           <p style={{ marginTop: "10px", fontSize: "14px", color: "#666", fontStyle: "italic" }}>
@@ -121,7 +121,7 @@ export const Issue1769 = () => {
               value={countryValue}
               placeholder="Select a country"
               filterable={true}
-              onChange={(e) => setCountryValue(e.detail.value)}
+              onChange={(e) => setCountryValue(e.value  as string)}
             >
               <GoabDropdownItem value="ca" label="Canada" />
               <GoabDropdownItem value="us" label="United States" />
@@ -142,7 +142,7 @@ export const Issue1769 = () => {
               placeholder="Select processing location"
               filterable={true}
               autoComplete="off"
-              onChange={(e) => setLocationValue(e.detail.value)}
+              onChange={(e) => setLocationValue(e.value  as string)}
             >
               <GoabDropdownItem value="loc1" label="Location A" />
               <GoabDropdownItem value="loc2" label="Location B" />

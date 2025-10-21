@@ -81,11 +81,9 @@ export const Section1B = ({ onComplete, onBack }: Section1BProps) => {
       <GoabPublicFormPage
         id="terms-of-use"
         heading="Terms of use"
-        first={true}
         buttonText={"Continue to next section"}
         onContinue={(e) => onContinue(e, "terms-of-use")}
-        onBack={onBack}>
-
+        >
         <GoabText tag="p" size="body-m" color="secondary" mt="l">
           Donec malesuada sagittis fringilla pulvinar in molestie. Sagittis felis congue
           pellentesque tristique urna in habitasse. At faucibus commodo pellentesque enim
@@ -93,7 +91,7 @@ export const Section1B = ({ onComplete, onBack }: Section1BProps) => {
           elementum nibh at justo.
         </GoabText>
 
-        <GoabFieldset mt="xl">
+        <GoabFieldset>
           <GoabFormItem name="Terms of use">
             <GoabCheckbox
               id="terms-of-use"

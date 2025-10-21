@@ -46,7 +46,7 @@ export class DropdownComponent implements OnInit {
   }
 
   onChangeExample1(event: GoabDropdownOnChangeDetail) {
-    this.example1 = event.value;
+    this.example1 = event.value as string;
   }
 
 
@@ -134,7 +134,7 @@ export class DropdownComponent implements OnInit {
 
   selectColor(event: GoabDropdownOnChangeDetail) {
     console.log("Select Color", event);
-    this.selectedColor = event.value || "";
+    this.selectedColor = event.value as string || "";
   }
 
   selectProvince(event: any) {

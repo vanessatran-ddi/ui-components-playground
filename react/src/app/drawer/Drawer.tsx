@@ -5,11 +5,13 @@ import {
   GoabDrawer,
   GoabFormItem,
   GoabRadioGroup,
-  GoabRadioGroupOnChangeDetail, GoabRadioGroupOrientation,
   GoabRadioItem,
 } from "@abgov/react-components";
 import { useState } from "react";
-import { GoabDrawerPosition } from "@abgov/ui-components-common";
+import {
+  GoabDrawerPosition,
+  GoabRadioGroupOnChangeDetail,
+} from "@abgov/ui-components-common";
 
 export const Drawer = () => {
   const [open, setOpen] = useState(false);
@@ -18,7 +20,7 @@ export const Drawer = () => {
   const [dateTaken, setDateTaken] = useState("today");
   const [hasActionsSlot, setActionsSlot] = useState<string>("y");
   const changeDateTaken = (event: GoabRadioGroupOnChangeDetail) => {
-    setDateTaken(event.value);
+    setDateTaken(event.value  as string);
   };
 
   const openDrawer = () => {
@@ -89,7 +91,7 @@ export const Drawer = () => {
       </GoabDrawer>
 
       <GoabFormItem label="Has Actions Slot">
-        <GoabRadioGroup name={"hasActionsSlot"} value={hasActionsSlot} onChange={(e: GoabRadioGroupOnChangeDetail) => setActionsSlot(e.value)}>
+        <GoabRadioGroup name={"hasActionsSlot"} value={hasActionsSlot} onChange={(e: GoabRadioGroupOnChangeDetail) => setActionsSlot(e.value  as string)}>
           <GoabRadioItem value={"y"} label={"Has Actions Slot"} />
           <GoabRadioItem value={"n"} label={"Not have actions slot"} />
         </GoabRadioGroup>

@@ -202,7 +202,6 @@ export const Section1A = ({ onComplete }: Section1AProps) => {
         <GoabPublicFormPage
           id="live-in-alberta"
           heading="Do you currently live in Alberta?"
-          first={true}
           buttonText={"Save and continue"}
           onContinue={(e) => onContinue(e, "live-in-alberta")}
           backUrl={window.location.origin}>

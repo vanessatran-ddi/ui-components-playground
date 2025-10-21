@@ -8,6 +8,7 @@ import {
   GoabSideMenu,
   GoabSideMenuGroup,
 } from "@abgov/react-components";
+import { DataGrid } from "./components/data-grid/DataGrid";
 
 export function App() {
   return (
@@ -42,6 +43,7 @@ export function App() {
               <Link to="/temporary-notification">Temporary Notification</Link>
               <Link to="/Text">Text</Link>
               <Link to="/progress-indicator">Progress Indicator</Link>
+              <Link to="/data-grid">Data Grid</Link>
 
               {/* Add links here */}
             </GoabSideMenuGroup>
@@ -50,6 +52,10 @@ export function App() {
               <Link to="/public-form-navigation">Navigation Test (Issue 1)</Link>
               <Link to="/public-form-accessibility">Accessibility Test (Issue 2)</Link>
               <Link to="/2827">Issue 2827</Link>
+              <Link to="/pr2969-test">PR 2969 Test Form</Link>
+            </GoabSideMenuGroup>
+            <GoabSideMenuGroup heading={"Workspace"}>
+              <Link to={"/workspace-search-page"}>Search page</Link>
             </GoabSideMenuGroup>
             {/* Add links here */}
           </GoabSideMenu>
