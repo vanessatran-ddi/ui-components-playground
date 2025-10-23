@@ -10,63 +10,176 @@ import {
 } from "@abgov/react-components";
 import { DataGrid } from "./components/data-grid/DataGrid";
 import { SearchPage } from "./workspace/SearchPage";
+import { useEffect, useState } from "react";
+import { MenuContext } from "./workspace/context/MenuContext";
+import {
+  GoaxWorkSideMenu,
+  GoaxWorkSideMenuItem,
+} from "@abgov/react-components/experimental";
 
 export function App() {
-  return (
-    <GoabOneColumnLayout>
-      <section slot="header">
-        <GoabMicrositeHeader type="alpha" version="UAT" />
-        <GoabAppHeader url="/" heading="Design System">
-          <a href="/login">Sign in</a>
-        </GoabAppHeader>
-      </section>
-      <section className="content">
-        {/*<DataGrid/>*/}
-        <SearchPage/>
-        {/*<section className="side-menu">*/}
-        {/*  <GoabSideMenu>*/}
-        {/*    <GoabSideMenuGroup heading="Bugs">*/}
-        {/*      <Link to="/2446">Popover inside a scrolling modal</Link>*/}
-        {/*      <Link to="/2408">Form stepper status</Link>*/}
-        {/*      <Link to="/2441">Issue 2441</Link>*/}
-        {/*      <Link to="/1216">Issue 1216</Link>*/}
-        {/*      <Link to="/2404">2404 Angular Input TrailingIcon Fix</Link>*/}
-        {/*      <Link to="/1769">1769 autocomplete property</Link>*/}
-        {/*      <Link to="/2768">2768 Radio dynamic disabled state</Link>*/}
-        {/*      <Link to="/2772">2772 align on input</Link>*/}
-        {/*      <Link to="/2789">2789 width rem percentage</Link>*/}
-        {/*      <Link to="/2829">2829 modal focus fix</Link>*/}
-        {/*      <Link to="/2547">2574 Banner hides pop over safari</Link>*/}
-        {/*      <Link to="/2720">2720 Change tab via link</Link>*/}
-        {/*    </GoabSideMenuGroup>*/}
-        {/*    <GoabSideMenuGroup heading="Components">*/}
-        {/*      <Link to="/">Home</Link>*/}
-        {/*      <Link to="/pagination">Pagination</Link>*/}
-        {/*      <Link to="/drawer">Drawer</Link>*/}
-        {/*      <Link to="/temporary-notification">Temporary Notification</Link>*/}
-        {/*      <Link to="/Text">Text</Link>*/}
-        {/*      <Link to="/data-grid">Data Grid</Link>*/}
+  // On mobile (< 624px), start with menu closed; on desktop, start with menu open
+  const [menuOpen, setMenuOpen] = useState(window.innerWidth >= 624);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 624);
 
-        {/*      /!* Add links here *!/*/}
-        {/*    </GoabSideMenuGroup>*/}
-        {/*    <GoabSideMenuGroup heading={"Public Form"}>*/}
-        {/*      <Link to="/public-form">Public Form</Link>*/}
-        {/*      <Link to="/public-form-navigation">Navigation Test (Issue 1)</Link>*/}
-        {/*      <Link to="/public-form-accessibility">Accessibility Test (Issue 2)</Link>*/}
-        {/*      <Link to="/2827">Issue 2827</Link>*/}
-        {/*      <Link to="/pr2969-test">PR 2969 Test Form</Link>*/}
-        {/*    </GoabSideMenuGroup>*/}
-        {/*    /!* Add links here *!/*/}
-        {/*  </GoabSideMenu>*/}
-        {/*</section>*/}
-        {/*<main className="main">*/}
-        {/*  <Outlet />*/}
-        {/*</main>*/}
-      </section>
-      <section slot="footer">
-        <GoabAppFooter />
-      </section>
-    </GoabOneColumnLayout>
+  console.log('[App] menuOpen:', menuOpen, 'isMobile:', isMobile, 'window.innerWidth:', window.innerWidth);
+
+  // Single resize handler - manages both isMobile state and menu visibility
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const mobile = width < 624;
+
+      console.log('[App] Resize detected - width:', width, 'isMobile:', mobile);
+
+      setIsMobile(mobile);
+
+      // When resizing to mobile, close the menu
+      if (mobile) {
+        console.log('[App] Setting menuOpen to false due to mobile resize');
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return (
+    <MenuContext.Provider value={{ menuOpen, setMenuOpen, isMobile }}>
+      <div style={{
+        display: "flex",
+        height: "100vh",
+        overflow: "hidden",
+        backgroundColor: "#F8F8F8"
+      }}>
+        <GoaxWorkSideMenu
+          heading="Income and Employment Support (IES)"
+          url="/"
+          userName="Edna Mode"
+          userSecondaryText="edna.mode@example.com"
+          open={menuOpen}
+          onToggle={() => {
+            console.log('[App] onToggle called, toggling menuOpen from', menuOpen, 'to', !menuOpen);
+            setMenuOpen(prev => !prev);
+          }}
+          primaryContent={
+            <>
+              <GoaxWorkSideMenuItem
+                icon="search"
+                label="Search"
+                badge="30"
+                url="/search"
+              />
+
+              <GoaxWorkSideMenuItem
+                icon="list"
+                label="Clients"
+                type="success"
+                badge="New"
+                url="/clients"
+              />
+
+              <GoaxWorkSideMenuItem
+                icon="calendar"
+                label="Schedule"
+                type="emergency"
+                badge="Urgent"
+                url="/schedule"
+              />
+
+              <GoaxWorkSideMenuItem
+                icon="document"
+                label="Documents"
+                url="/documents"
+              >
+                <GoaxWorkSideMenuItem
+                  url="/documents/sub1"
+                  label="Sub menu item 1"
+                />
+                <GoaxWorkSideMenuItem
+                  url="/documents/sub2"
+                  label="Sub menu item 2"
+                />
+                <GoaxWorkSideMenuItem
+                  url="/documents/sub3"
+                  label="Sub menu item 3"
+                />
+              </GoaxWorkSideMenuItem>
+
+              <GoaxWorkSideMenuItem
+                icon="people"
+                label="Team"
+                url="/team"
+              />
+            </>
+          }
+          secondaryContent={
+            <>
+              <GoaxWorkSideMenuItem
+                icon="notifications"
+                label="Notifications"
+                type="success"
+                badge="1"
+                url="/notifications"
+              />
+              <GoaxWorkSideMenuItem
+                icon="help-circle"
+                label="Support"
+                url="/support"
+              />
+              <GoaxWorkSideMenuItem
+                icon="settings"
+                label="Settings"
+                url="/settings"
+              />
+            </>
+          }
+          accountContent={
+            <>
+              <GoaxWorkSideMenuItem
+                icon="person"
+                label="Account management"
+                url="/account"
+              />
+              <GoaxWorkSideMenuItem
+                icon="log-out"
+                label="Log out"
+                url="/logout"
+              />
+            </>
+          }
+        />
+
+        <div style={{
+          flex: 1,
+          padding: isMobile ? "0" : "20px 20px 20px 0",
+          overflow: "auto"
+        }}>
+          {isMobile ? (
+            // Mobile: No card container, content directly rendered
+            <div style={{
+              backgroundColor: "white",
+              minHeight: "100vh",
+              padding: "1rem"
+            }}>
+              <Outlet />
+            </div>
+          ) : (
+            // Desktop: Keep the card container
+            <div style={{
+              backgroundColor: "white",
+              border: "1px solid #E9E9E9",
+              borderRadius: "24px",
+              minHeight: "calc(100vh - 40px)",
+              padding: "2rem"
+            }}>
+              <Outlet />
+            </div>
+          )}
+        </div>
+      </div>
+    </MenuContext.Provider>
   );
 }
 

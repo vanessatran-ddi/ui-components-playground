@@ -19,13 +19,14 @@ import {
 } from "@abgov/react-components";
 import { SearchResult, SortConfig } from "./types/SearchResult";
 import mockData from "./data/mockSearchResults.json";
-import { filterData, sortData, getEventValue, getEventKey } from "./utils/searchUtils";
+import { filterData, sortData, getEventValue } from "./utils/searchUtils";
 import { getTypeBadgeProps } from "./utils/badgeUtils";
 import {
   GoabCheckboxOnChangeDetail,
   GoabInputOnChangeDetail,
   GoabInputOnKeyPressDetail
 } from "@abgov/ui-components-common";
+import { PageHeader } from "./PageHeader";
 
 export function SearchPage() {
   const [searchKeyword, setSearchKeyword] = useState('');
@@ -110,6 +111,7 @@ export function SearchPage() {
 
   return (
     <GoabPageBlock width="full">
+      <PageHeader title="Search" />
       <GoabFormItem id="searchInput" error={searchErrorMessage}>
         <GoabBlock gap="xs" direction="row" alignment="start">
           <div style={{ flex: 1 }}>
