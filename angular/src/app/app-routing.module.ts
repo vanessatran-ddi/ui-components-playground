@@ -100,15 +100,6 @@ import { Issue2948Component } from "./issues/2948/2948.component";
 import { Issue2934Component } from "./issues/2934/issue-2934.component";
 import { Issue2939Component } from "./issues/2939/issue-2939.component";
 import {
-  PublicFormWithCheckboxComponent
-} from "./public-form/public-form-with-checkbox.component";
-
-import { PublicFormWithCheckboxComponent } from "./public-form/public-form-with-checkbox.component";
-import { PublicFormWithDatePickerComponent } from "./public-form/public-form-with-datepicker.component";
-import { PublicFormWithDropdownComponent } from "./public-form/public-form-with-dropdown.component";
-import { PublicFormWithRadioComponent } from "./public-form/public-form-with-radio.component";
-import { PublicFormWithTextAreaComponent } from "./public-form/public-form-with-textarea.component";
-import {
   DropdownDynamicAddItemComponent
 } from "./issues/2802/dropdown-dynamic-add-item.component";
 import {
@@ -211,7 +202,7 @@ const routes: Routes = [
   { path: "2802-fullscreen-progress-indicator", component: ProgressIndicatorFullscreenComponent},
   { path: "2802-input-reset", component: InputResetValueComponent},
   { path: "", redirectTo: "/", pathMatch: "full" },
-  { path: "2802-input-reset", component: InputResetValueComponent}
+  { path: "2802-input-reset", component: InputResetValueComponent},
   { path: "public-form-checkbox-list", component: PublicFormWithCheckboxComponent},
   { path: "public-form-checkbox", component: PublicFormCheckboxComponent},
   { path: "public-form-datepicker", component: PublicFormDatepickerComponent},

@@ -7,10 +7,10 @@
   <h3>Dropdown Examples</h3>
 
   <goab-form-item label="Dropdown with String Values">
-    <goab-dropdown 
-      name="stringDropdown" 
+    <goab-dropdown
+      name="stringDropdown"
       testId="string-dropdown"
-      [value]="stringDropdownValue" 
+      [value]="stringDropdownValue"
       (onChange)="onStringDropdownChange($event)">
       <goab-dropdown-item value="option1" label="Option 1"></goab-dropdown-item>
       <goab-dropdown-item value="option2" label="Option 2"></goab-dropdown-item>
@@ -19,14 +19,14 @@
   </goab-form-item>
 
   <goab-form-item label="Dropdown with Number Values">
-    <goab-dropdown 
-      name="numberDropdown" 
+    <goab-dropdown
+      name="numberDropdown"
       testId="number-dropdown"
-      [value]="numberDropdownValue" 
+      [value]="numberDropdownValue"
       (onChange)="onNumberDropdownChange($event)">
-      <goab-dropdown-item [value]="1" label="One"></goab-dropdown-item>
-      <goab-dropdown-item [value]="2" label="Two"></goab-dropdown-item>
-      <goab-dropdown-item [value]="3" label="Three"></goab-dropdown-item>
+      <goab-dropdown-item value="1" label="One"></goab-dropdown-item>
+      <goab-dropdown-item value="2" label="Two"></goab-dropdown-item>
+      <goab-dropdown-item value="3" label="Three"></goab-dropdown-item>
     </goab-dropdown>
   </goab-form-item>
 </div>
@@ -35,10 +35,10 @@
   <h3>Radio Group Examples</h3>
 
   <goab-form-item label="Radio Group with String Values">
-    <goab-radio-group 
-      name="stringRadio" 
+    <goab-radio-group
+      name="stringRadio"
       testId="string-radio-group"
-      [value]="stringRadioValue" 
+      [value]="stringRadioValue"
       (onChange)="onStringRadioChange($event)">
       <goab-radio-item name="stringRadio" value="red" label="Red"></goab-radio-item>
       <goab-radio-item name="stringRadio" value="green" label="Green"></goab-radio-item>
@@ -47,25 +47,25 @@
   </goab-form-item>
 
   <goab-form-item label="Radio Group with Number Values">
-    <goab-radio-group 
-      name="numberRadio" 
+    <goab-radio-group
+      name="numberRadio"
       testId="number-radio-group"
-      [value]="numberRadioValue" 
+      [value]="numberRadioValue"
       (onChange)="onNumberRadioChange($event)">
-      <goab-radio-item name="numberRadio" [value]="10" label="Ten"></goab-radio-item>
-      <goab-radio-item name="numberRadio" [value]="20" label="Twenty"></goab-radio-item>
-      <goab-radio-item name="numberRadio" [value]="30" label="Thirty"></goab-radio-item>
+      <goab-radio-item name="numberRadio" value="10" label="Ten"></goab-radio-item>
+      <goab-radio-item name="numberRadio" value="20" label="Twenty"></goab-radio-item>
+      <goab-radio-item name="numberRadio" value="30" label="Thirty"></goab-radio-item>
     </goab-radio-group>
   </goab-form-item>
 
   <goab-form-item label="Radio Group with Boolean Values">
-    <goab-radio-group 
-      name="booleanRadio" 
+    <goab-radio-group
+      name="booleanRadio"
       testId="boolean-radio-group"
-      [value]="booleanRadioValue" 
+      [value]="booleanRadioValue"
       (onChange)="onBooleanRadioChange($event)">
-      <goab-radio-item name="booleanRadio" [value]="true" label="Yes (True)"></goab-radio-item>
-      <goab-radio-item name="booleanRadio" [value]="false" label="No (False)"></goab-radio-item>
+      <goab-radio-item name="booleanRadio" value="true" label="Yes (True)"></goab-radio-item>
+      <goab-radio-item name="booleanRadio" value="false" label="No (False)"></goab-radio-item>
     </goab-radio-group>
   </goab-form-item>
 </div>
