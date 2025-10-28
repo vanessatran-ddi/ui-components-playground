@@ -1,0 +1,64 @@
+{
+  "todayNotifications": [
+    {
+      "id": "1",
+      "type": "default",
+      "title": "Comments",
+      "description": "Harvey Don commented on your assigned case.",
+      "timestamp": "2 minutes ago",
+      "timestampMs": -120000
+    },
+    {
+      "id": "2",
+      "type": "default",
+      "title": "Assignment",
+      "description": "Rita Lee assigned you a new case.",
+      "timestamp": "4 hours ago",
+      "timestampMs": -14400000,
+      "badge": {
+        "type": "success",
+        "content": "New"
+      }
+    },
+    {
+      "id": "3",
+      "type": "warning",
+      "title": "Incoming outage",
+      "description": "Income and Employment Support (IES) service will be under maintenance from Thursday, September 15, 2024 at 10pm to Friday, September 16,2024 at 10am.",
+      "badge": {
+        "type": "information",
+        "content": "Outage"
+      }
+    }
+  ],
+  "yesterdayNotifications": [
+    {
+      "id": "4",
+      "type": "default",
+      "title": "Case Update",
+      "description": "John Smith updated the status of case #12345.",
+      "timestamp": "26 hours ago",
+      "timestampMs": -93600000
+    },
+    {
+      "id": "5",
+      "type": "default",
+      "title": "Document Uploaded",
+      "description": "Sarah Johnson uploaded new documents to your shared folder.",
+      "timestamp": "30 hours ago",
+      "timestampMs": -108000000,
+      "badge": {
+        "type": "information",
+        "content": "Documents"
+      }
+    },
+    {
+      "id": "6",
+      "type": "default",
+      "title": "Meeting Reminder",
+      "description": "You have a scheduled meeting tomorrow at 2:00 PM.",
+      "timestamp": "36 hours ago",
+      "timestampMs": -129600000
+    }
+  ]
+}

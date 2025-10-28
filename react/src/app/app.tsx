@@ -1,21 +1,17 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import "@abgov/style";
-import {
-  GoabAppFooter,
-  GoabAppHeader,
-  GoabMicrositeHeader,
-  GoabOneColumnLayout,
-  GoabSideMenu,
-  GoabSideMenuGroup,
-} from "@abgov/react-components";
-import { DataGrid } from "./components/data-grid/DataGrid";
-import { SearchPage } from "./workspace/SearchPage";
 import { useEffect, useState } from "react";
 import { MenuContext } from "./workspace/context/MenuContext";
 import {
   GoaxWorkSideMenu,
   GoaxWorkSideMenuItem,
 } from "@abgov/react-components/experimental";
+import {
+  GoabPopover,
+  GoabBadge,
+  GoabIcon
+} from "@abgov/react-components";
+import { NotificationPopover } from "./NotificationPopover";
 
 export function App() {
   // On mobile (< 624px), start with menu closed; on desktop, start with menu open
@@ -44,6 +40,7 @@ export function App() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
 
   return (
     <MenuContext.Provider value={{ menuOpen, setMenuOpen, isMobile }}>
@@ -116,13 +113,7 @@ export function App() {
           }
           secondaryContent={
             <>
-              <GoaxWorkSideMenuItem
-                icon="notifications"
-                label="Notifications"
-                type="success"
-                badge="1"
-                url="/notifications"
-              />
+              <NotificationPopover/>
               <GoaxWorkSideMenuItem
                 icon="help-circle"
                 label="Support"

@@ -24,7 +24,8 @@ import { getTypeBadgeProps } from "./utils/badgeUtils";
 import {
   GoabCheckboxOnChangeDetail,
   GoabInputOnChangeDetail,
-  GoabInputOnKeyPressDetail
+  GoabInputOnKeyPressDetail,
+  GoabTableOnSortDetail,
 } from "@abgov/ui-components-common";
 import { PageHeader } from "./PageHeader";
 
@@ -59,13 +60,13 @@ export function SearchPage() {
     setSearchErrorMessage("");
   }, [searchKeyword, typedChips]);
 
-  const handleSort = useCallback((event: CustomEvent | { detail: { sortBy: string; sortDir: number } }) => {
-    const { sortBy, sortDir } = event.detail || event;
+  const handleSort = (event: GoabTableOnSortDetail) => {
+    const { sortBy, sortDir } = event;
     setSortConfig({
       key: sortBy as keyof SearchResult,
       direction: sortDir === 1 ? 'asc' : sortDir === -1 ? 'desc' : 'none'
     });
-  }, []);
+  }
 
   const handleSelectAll = (event: GoabCheckboxOnChangeDetail) => {
     const newValue = event.checked;
