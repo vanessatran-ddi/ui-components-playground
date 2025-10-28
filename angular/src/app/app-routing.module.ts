@@ -79,7 +79,6 @@ import { Issue2827SubformComponent } from "./public-form/issue-2827/issue-2827-s
 import { SupportOrderDetailsComponent } from "./public-form/SupportOrderDetails";
 import { Issue2720Component } from "./issues/2720/issue-2720.component";
 import { Issue2829Component } from "./issues/2829/issue-2829.component";
-import { PublicFormWithCheckboxComponent } from "./public-form/public-form-with-checkbox.component";
 import { PublicFormWithDatePickerComponent } from "./public-form/public-form-with-datepicker.component";
 import { PublicFormWithDropdownComponent } from "./public-form/public-form-with-dropdown.component";
 import { PublicFormWithRadioComponent } from "./public-form/public-form-with-radio.component";
@@ -99,16 +98,10 @@ import { MenuButtonComponent } from "./components/menu-button/menu-button.compon
 import { Issue2948Component } from "./issues/2948/2948.component";
 import { Issue2934Component } from "./issues/2934/issue-2934.component";
 import { Issue2939Component } from "./issues/2939/issue-2939.component";
-import {
-  PublicFormWithCheckboxComponent
-} from "./public-form/public-form-with-checkbox.component";
+import { PublicFormWithCheckboxComponent } from "./public-form/public-form-with-checkbox.component";
 import { WorkspaceSideMenuComponent } from "./components/workspace/workspace-side-menu/workspace-side-menu.component";
-
-  DropdownDynamicAddItemComponent
-} from "./issues/2802/dropdown-dynamic-add-item.component";
-import {
-  ProgressIndicatorFullscreenComponent
-} from "./issues/2802/progress-indicator-fullscreen.component";
+import { DropdownDynamicAddItemComponent } from "./issues/2802/dropdown-dynamic-add-item.component";
+import { ProgressIndicatorFullscreenComponent } from "./issues/2802/progress-indicator-fullscreen.component";
 import { InputResetValueComponent } from "./issues/2802/input-reset-value.component";
 
 const routes: Routes = [

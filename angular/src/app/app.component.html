@@ -1,184 +1,186 @@
-<goa-two-column-layout maxcontentwidth="1400px" navcolumnwidth="30ch">
-  <section slot="header">
-    <goa-microsite-header type="alpha" level="alpha" version="UAT"></goa-microsite-header>
-    <goa-app-header
-      heading="Design Systems"
-      maxcontentwidth="1500px"
-      [fullmenubreakpoint]="1700"
-    >
-      <a href="/get-started">Get started </a>
-      <a href="/patterns">Patterns and templates</a>
-      <a href="/components">Components</a>
-      <a href="/design-tokens">Styles</a>
-      <a href="/content/capitalization">Content</a>
-      <a href="/support">Support</a>
-      <a
-        href="https://github.com/GovAlta/ui-components/issues/new/choose"
-        target="_blank"
-      >
-        Report a bug
-      </a>
-      <a href="#">Support</a>
-      <goa-app-header-menu heading="Tickets" leadingIcon="ticket">
-        <a href="#">Cases</a>
-        <a href="#">Payments</a>
-        <a href="#">Outstanding</a>
-      </goa-app-header-menu>
-      <a href="#" className="interactive">Sign in</a>
-    </goa-app-header>
-  </section>
+<!--<goa-two-column-layout maxcontentwidth="1400px" navcolumnwidth="30ch">-->
+<!--  <section slot="header">-->
+<!--    <goa-microsite-header type="alpha" level="alpha" version="UAT"></goa-microsite-header>-->
+<!--    <goa-app-header-->
+<!--      heading="Design Systems"-->
+<!--      maxcontentwidth="1500px"-->
+<!--      [fullmenubreakpoint]="1700"-->
+<!--    >-->
+<!--      <a href="/get-started">Get started </a>-->
+<!--      <a href="/patterns">Patterns and templates</a>-->
+<!--      <a href="/components">Components</a>-->
+<!--      <a href="/design-tokens">Styles</a>-->
+<!--      <a href="/content/capitalization">Content</a>-->
+<!--      <a href="/support">Support</a>-->
+<!--      <a-->
+<!--        href="https://github.com/GovAlta/ui-components/issues/new/choose"-->
+<!--        target="_blank"-->
+<!--      >-->
+<!--        Report a bug-->
+<!--      </a>-->
+<!--      <a href="#">Support</a>-->
+<!--      <goa-app-header-menu heading="Tickets" leadingIcon="ticket">-->
+<!--        <a href="#">Cases</a>-->
+<!--        <a href="#">Payments</a>-->
+<!--        <a href="#">Outstanding</a>-->
+<!--      </goa-app-header-menu>-->
+<!--      <a href="#" className="interactive">Sign in</a>-->
+<!--    </goa-app-header>-->
+<!--  </section>-->
 
-  <section slot="nav">
-    <goa-side-menu>
-      <goa-side-menu-group heading="Bugs">
-        <goa-side-menu-group heading="Progress indicator">
-          <a routerLink="/2802-fullscreen-progress-indicator">Full screen</a>
-        </goa-side-menu-group>
-        <goa-side-menu-group heading="Dropdown">
-          <a routerLink="/bug-1734">Bug 1734</a>
-          <a routerLink="/2003">Remove relative property</a>
-          <a routerLink="/2789">Width rem and percentage</a>
-          <a routerLink="/2802-dropdown-dynamic-add-item">Dynamically change items in a dropdown</a>
-          <a routerLink="/2934">2934 Value types (string|number|boolean)</a>
-        </goa-side-menu-group>
+<!--&lt;!&ndash;  <section slot="nav">&ndash;&gt;-->
+<!--&lt;!&ndash;    <goa-side-menu>&ndash;&gt;-->
+<!--&lt;!&ndash;      <goa-side-menu-group heading="Bugs">&ndash;&gt;-->
+<!--&lt;!&ndash;        <goa-side-menu-group heading="Progress indicator">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2802-fullscreen-progress-indicator">Full screen</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </goa-side-menu-group>&ndash;&gt;-->
+<!--&lt;!&ndash;        <goa-side-menu-group heading="Dropdown">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/bug-1734">Bug 1734</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2003">Remove relative property</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2789">Width rem and percentage</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2802-dropdown-dynamic-add-item">Dynamically change items in a dropdown</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2934">2934 Value types (string|number|boolean)</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </goa-side-menu-group>&ndash;&gt;-->
 
-        <goa-side-menu-group heading="Checkbox">
-          <a routerLink="/2365">Screen reader slotted content</a>
-          <a routerLink="/1216">Checkbox with reveal slotted content</a>
-        </goa-side-menu-group>
-        <goa-side-menu-group heading="Radio">
-          <a routerLink="/3001">Checkbox dispatch string from value</a>
-          <a routerLink="/1216">Radio with reveal slotted content</a>
-          <a routerLink="/2768">Dynamic disabled state</a>
-        </goa-side-menu-group>
-        <goa-side-menu-group heading="Modal">
-          <a routerLink="/2466">Popover inside a scrolling modal</a>
-          <a routerLink="/2415">Without heading modal</a>
-          <a routerLink="/2410">Modal-2410</a>
-          <a routerLink="/2829">Modal 2829 alert dialog</a>
-          <a routerLink="/2948">Issue 2948 - Modal Spacing</a>
-        </goa-side-menu-group>
-        <goa-side-menu-group heading="Badge">
-          <a routerLink="/2513">Badge is out of alignment</a>
-        </goa-side-menu-group>
+<!--&lt;!&ndash;        <goa-side-menu-group heading="Checkbox">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2365">Screen reader slotted content</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/1216">Checkbox with reveal slotted content</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </goa-side-menu-group>&ndash;&gt;-->
+<!--&lt;!&ndash;        <goa-side-menu-group heading="Radio">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/3001">Checkbox dispatch string from value</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/1216">Radio with reveal slotted content</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2768">Dynamic disabled state</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </goa-side-menu-group>&ndash;&gt;-->
+<!--&lt;!&ndash;        <goa-side-menu-group heading="Modal">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2466">Popover inside a scrolling modal</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2415">Without heading modal</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2410">Modal-2410</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2829">Modal 2829 alert dialog</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2948">Issue 2948 - Modal Spacing</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </goa-side-menu-group>&ndash;&gt;-->
+<!--&lt;!&ndash;        <goa-side-menu-group heading="Badge">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2513">Badge is out of alignment</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </goa-side-menu-group>&ndash;&gt;-->
 
-        <goa-side-menu-group heading="Tabs">
-          <a routerLink="/2433">Tabs issues</a>
-          <a routerLink="/2471">Tab with initialTab is not working</a>
-          <a routerLink="/2720">Change tab via link</a>
-        </goa-side-menu-group>
-        <goa-side-menu-group heading="Input">
-          <a routerLink="/1219">Input date type iOS</a>
-          <a routerLink="/2404">TrailingIcon rendering fix</a>
-          <a routerLink="/1769">Autocomplete property</a>
-          <a routerLink="/2409">Input width</a>
-          <a routerLink="/2772">Text align</a>
-          <a routerLink="/2789">Width rem and percentage</a>
-          <a routerLink="/2837">Leading/Trailing Content</a>
-          <a routerLink="/2991">Voice Over</a>
-          <a routerLink="/2802-input-reset">Input reset value</a>
-        </goa-side-menu-group>
+<!--&lt;!&ndash;        <goa-side-menu-group heading="Tabs">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2433">Tabs issues</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2471">Tab with initialTab is not working</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2720">Change tab via link</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </goa-side-menu-group>&ndash;&gt;-->
+<!--&lt;!&ndash;        <goa-side-menu-group heading="Input">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/1219">Input date type iOS</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2404">TrailingIcon rendering fix</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/1769">Autocomplete property</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2409">Input width</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2772">Text align</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2789">Width rem and percentage</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2837">Leading/Trailing Content</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2991">Voice Over</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2802-input-reset">Input reset value</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </goa-side-menu-group>&ndash;&gt;-->
 
-        <goa-side-menu-group heading="AppHeaderMenu">
-          <a routerLink="/2662">AppHeaderMenu mobile not expand</a>
-        </goa-side-menu-group>
-        <goa-side-menu-group heading="Popover">
-          <a routerLink="/2693">Button handles action vs args</a>
-        </goa-side-menu-group>
-        <goa-side-menu-group heading="Spacer">
-          <a routerLink="/2455">spacer hspacing=fill</a>
-        </goa-side-menu-group>
-        <goa-side-menu-group heading="Form Stepper">
-          <a routerLink="/2408">Form Stepper Not-started</a>
-        </goa-side-menu-group>
-        <goa-side-menu-group heading="Pagination">
-          <a routerLink="/2395">Pagination trigger 2 times</a>
-        </goa-side-menu-group>
-        <goa-side-menu-group heading="File Upload">
-          <a routerLink="/1849">File input case-sensitive accept</a>
-        </goa-side-menu-group>
-        <goa-side-menu-group heading="App Footer">
-          <a routerLink="/1572">App Footer Tab index</a>
-        </goa-side-menu-group>
-        <goa-side-menu-group heading="Microsite Header">
-          <a routerLink="/2939">Issue 2939 - Feedback Link Test</a>
-        </goa-side-menu-group>
-      </goa-side-menu-group>
-      <goa-side-menu-group heading="Public Form">
-        <a routerLink="/public-form">Public Form</a>
-        <a routerLink="/support-order-details">Support Order Details</a>
-        <a routerLink="/public-form-subform-example">Public Form SubForm Example</a>
-        <a routerLink="/public-form-navigation">Navigation Test (Issue 1)</a>
-        <a routerLink="/public-form-accessibility">Accessibility Test (Issue 2)</a>
-        <a routerLink="/public-form/2827">Issue 2827</a>
-        <a routerLink="/public-form/2827-subform">Issue 2827 Subform</a>
-        <a routerLink="/support-order-details">Support Order Details</a>
-        <a routerLink="/public-form-with-checkbox">Public Form with Checkbox</a>
-        <a routerLink="/public-form-with-datepicker">Public Form with Date Picker</a>
-        <a routerLink="/public-form-with-dropdown">Public Form with Dropdown</a>
-        <a routerLink="/public-form-with-radio">Public Form with Radio</a>
-        <a routerLink="/public-form-with-textarea">Public Form with TextArea</a>
-        <a routerLink="/public-form-checkbox-list">Public form vs checkbox list</a>
-        <a routerLink="/public-form-checkbox">Public Form vs checkbox</a>
-        <a routerLink="/public-form-datepicker">Public form vs datepicker</a>
-        <a routerLink="/public-form-dropdown">Public form vs dropdown</a>
-      </goa-side-menu-group>
-      <goa-side-menu-group heading="Components">
-        <a routerLink="/badge-wrapper">Badge Wrapper</a>
-        <a routerLink="/accordion"> Accordion </a>
-        <a routerLink="/app-footer"> AppFooter </a>
-        <a routerLink="/app-header"> App Header </a>
-        <a routerLink="/badge"> Badge </a>
-        <a routerLink="/button"> Button </a>
-        <a routerLink="/button-group"> Button Group </a>
-        <a routerLink="/callout"> Callout </a>
-        <a routerLink="/checkbox"> Checkbox </a>
-        <a routerLink="/checkbox-list"> Checkbox List </a>
-        <a routerLink="/chip"> Chip </a>
-        <a routerLink="/circular-progress"> Circular Progress </a>
-        <a routerLink="/container"> Container </a>
-        <a routerLink="/date-picker">Date picker</a>
-        <a routerLink="/divider"> Divider </a>
-        <a routerLink="/drawer"> Drawer </a>
-        <a routerLink="/dropdown"> Dropdown </a>
-        <a routerLink="/detail"> Detail </a>
-        <a routerLink="/file-upload"> File Upload </a>
-        <a routerLink="/form-item"> Form Item </a>
-        <a routerLink="/form-stepper"> Form Stepper </a>
-        <a routerLink="/hero-banner"> Hero Banner </a>
-        <a routerLink="/icon"> Icon </a>
-        <a routerLink="/icon-button"> Icon Button </a>
-        <a routerLink="/input"> Input </a>
-        <a routerLink="/microsite-header"> Microsite header </a>
-        <a routerLink="/modal"> Modal </a>
-        <a routerLink="/menu-button"> Menu Button </a>
-        <a routerLink="/notification-banner"> Notification Banner </a>
-        <a routerLink="/paginate"> Pagination </a>
-        <a routerLink="/popover"> Popover </a>
-        <a routerLink="/radio"> Radio </a>
-        <a routerLink="/side-menu"> Side Menu </a>
-        <a routerLink="/skeleton"> Skeleton </a>
-        <a routerLink="/table"> Table </a>
-        <a routerLink="/temporary-notification"> Temporary Notification </a>
-        <a routerLink="/text"> Text </a>
-        <a routerLink="/textarea"> TextArea </a>
-        <a routerLink="/tooltip"> Tooltip </a>
-        <a routerLink="/tabs"> Tabs </a>
-      </goa-side-menu-group>
-      <goa-side-menu-group heading="Utils">
-        <a routerLink="/spacing"> Spacing </a>
-        <a routerLink="/grid"> Grid </a>
-        <a routerLink="/styles"> Styles </a>
-      </goa-side-menu-group>
-      <goa-side-menu-group heading="Layouts">
-        <a routerLink="/column-layout">Column layout</a>
-        <a routerLink="/two-column-layout"> Two Column Layout </a>
-        <a routerLink="/three-column-layout"> Three Column Layout </a>
-      </goa-side-menu-group>
-    </goa-side-menu>
-  </section>
-  <div class="container">
-    <router-outlet></router-outlet>
-  </div>
-  <goa-app-footer slot="footer" maxcontentwidth="1400px"></goa-app-footer>
-</goa-two-column-layout>
+<!--&lt;!&ndash;        <goa-side-menu-group heading="AppHeaderMenu">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2662">AppHeaderMenu mobile not expand</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </goa-side-menu-group>&ndash;&gt;-->
+<!--&lt;!&ndash;        <goa-side-menu-group heading="Popover">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2693">Button handles action vs args</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </goa-side-menu-group>&ndash;&gt;-->
+<!--&lt;!&ndash;        <goa-side-menu-group heading="Spacer">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2455">spacer hspacing=fill</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </goa-side-menu-group>&ndash;&gt;-->
+<!--&lt;!&ndash;        <goa-side-menu-group heading="Form Stepper">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2408">Form Stepper Not-started</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </goa-side-menu-group>&ndash;&gt;-->
+<!--&lt;!&ndash;        <goa-side-menu-group heading="Pagination">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2395">Pagination trigger 2 times</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </goa-side-menu-group>&ndash;&gt;-->
+<!--&lt;!&ndash;        <goa-side-menu-group heading="File Upload">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/1849">File input case-sensitive accept</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </goa-side-menu-group>&ndash;&gt;-->
+<!--&lt;!&ndash;        <goa-side-menu-group heading="App Footer">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/1572">App Footer Tab index</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </goa-side-menu-group>&ndash;&gt;-->
+<!--&lt;!&ndash;        <goa-side-menu-group heading="Microsite Header">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/2939">Issue 2939 - Feedback Link Test</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </goa-side-menu-group>&ndash;&gt;-->
+<!--&lt;!&ndash;      </goa-side-menu-group>&ndash;&gt;-->
+<!--&lt;!&ndash;      <goa-side-menu-group heading="Public Form">&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/public-form">Public Form</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/support-order-details">Support Order Details</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/public-form-subform-example">Public Form SubForm Example</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/public-form-navigation">Navigation Test (Issue 1)</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/public-form-accessibility">Accessibility Test (Issue 2)</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/public-form/2827">Issue 2827</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/public-form/2827-subform">Issue 2827 Subform</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/support-order-details">Support Order Details</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/public-form-with-checkbox">Public Form with Checkbox</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/public-form-with-datepicker">Public Form with Date Picker</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/public-form-with-dropdown">Public Form with Dropdown</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/public-form-with-radio">Public Form with Radio</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/public-form-with-textarea">Public Form with TextArea</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/public-form-checkbox-list">Public form vs checkbox list</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/public-form-checkbox">Public Form vs checkbox</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/public-form-datepicker">Public form vs datepicker</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/public-form-dropdown">Public form vs dropdown</a>&ndash;&gt;-->
+<!--&lt;!&ndash;      </goa-side-menu-group>&ndash;&gt;-->
+<!--&lt;!&ndash;      <goa-side-menu-group heading="Components">&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/badge-wrapper">Badge Wrapper</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/accordion"> Accordion </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/app-footer"> AppFooter </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/app-header"> App Header </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/badge"> Badge </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/button"> Button </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/button-group"> Button Group </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/callout"> Callout </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/checkbox"> Checkbox </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/checkbox-list"> Checkbox List </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/chip"> Chip </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/circular-progress"> Circular Progress </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/container"> Container </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/date-picker">Date picker</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/divider"> Divider </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/drawer"> Drawer </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/dropdown"> Dropdown </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/detail"> Detail </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/file-upload"> File Upload </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/form-item"> Form Item </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/form-stepper"> Form Stepper </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/hero-banner"> Hero Banner </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/icon"> Icon </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/icon-button"> Icon Button </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/input"> Input </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/microsite-header"> Microsite header </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/modal"> Modal </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/menu-button"> Menu Button </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/notification-banner"> Notification Banner </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/paginate"> Pagination </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/popover"> Popover </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/radio"> Radio </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/side-menu"> Side Menu </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/skeleton"> Skeleton </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/table"> Table </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/temporary-notification"> Temporary Notification </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/text"> Text </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/textarea"> TextArea </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/tooltip"> Tooltip </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/tabs"> Tabs </a>&ndash;&gt;-->
+<!--&lt;!&ndash;      </goa-side-menu-group>&ndash;&gt;-->
+<!--&lt;!&ndash;      <goa-side-menu-group heading="Utils">&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/spacing"> Spacing </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/grid"> Grid </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/styles"> Styles </a>&ndash;&gt;-->
+<!--&lt;!&ndash;      </goa-side-menu-group>&ndash;&gt;-->
+<!--&lt;!&ndash;      <goa-side-menu-group heading="Layouts">&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/column-layout">Column layout</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/two-column-layout"> Two Column Layout </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a routerLink="/three-column-layout"> Three Column Layout </a>&ndash;&gt;-->
+<!--&lt;!&ndash;      </goa-side-menu-group>&ndash;&gt;-->
+<!--&lt;!&ndash;    </goa-side-menu>&ndash;&gt;-->
+<!--&lt;!&ndash;  </section>&ndash;&gt;-->
+
+<!--&lt;!&ndash;  <div class="container">&ndash;&gt;-->
+
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--  <goa-app-footer slot="footer" maxcontentwidth="1400px"></goa-app-footer>-->
+<!--</goa-two-column-layout>-->
+<router-outlet></router-outlet>
