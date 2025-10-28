@@ -1,6 +1,6 @@
 import {
-  GoaxWorkSideMenu,
-  GoaxWorkSideMenuItem,
+  GoabxWorkSideMenu,
+  GoabxWorkSideMenuItem,
 } from "@abgov/react-components/experimental";
 import { GoabButton } from "@abgov/react-components";
 import { useState } from "react";
@@ -11,7 +11,7 @@ export const WorkSpaceSideMenu = () => {
   return (
     <>
       <GoabButton onClick={() => setMenuOpen(!menuOpen)}>Toggle</GoabButton>
-      <GoaxWorkSideMenu
+      <GoabxWorkSideMenu
         heading="Income and Employment Support (IES)"
         url="/"
         userName="Edna Mode"
@@ -23,14 +23,14 @@ export const WorkSpaceSideMenu = () => {
         }}
         primaryContent={
           <>
-            <GoaxWorkSideMenuItem
+            <GoabxWorkSideMenuItem
               icon="search"
               label="Search"
               badge="30"
               url="/search"
             />
 
-            <GoaxWorkSideMenuItem
+            <GoabxWorkSideMenuItem
               icon="list"
               label="Clients"
               type="success"
@@ -38,7 +38,7 @@ export const WorkSpaceSideMenu = () => {
               url="/clients"
             />
 
-            <GoaxWorkSideMenuItem
+            <GoabxWorkSideMenuItem
               icon="calendar"
               label="Schedule"
               type="emergency"
@@ -46,26 +46,26 @@ export const WorkSpaceSideMenu = () => {
               url="/schedule"
             />
 
-            <GoaxWorkSideMenuItem
+            <GoabxWorkSideMenuItem
               icon="document"
               label="Documents"
               url="/documents"
             >
-              <GoaxWorkSideMenuItem
+              <GoabxWorkSideMenuItem
                 url="/documents/sub1"
                 label="Sub menu item 1"
               />
-              <GoaxWorkSideMenuItem
+              <GoabxWorkSideMenuItem
                 url="/documents/sub2"
                 label="Sub menu item 2"
               />
-              <GoaxWorkSideMenuItem
+              <GoabxWorkSideMenuItem
                 url="/documents/sub3"
                 label="Sub menu item 3"
               />
-            </GoaxWorkSideMenuItem>
+            </GoabxWorkSideMenuItem>
 
-            <GoaxWorkSideMenuItem
+            <GoabxWorkSideMenuItem
               icon="people"
               label="Team"
               url="/team"
@@ -74,19 +74,19 @@ export const WorkSpaceSideMenu = () => {
         }
         secondaryContent={
           <>
-            <GoaxWorkSideMenuItem
+            <GoabxWorkSideMenuItem
               icon="notifications"
               label="Notifications"
               type="success"
               badge="1"
               url="/notifications"
             />
-            <GoaxWorkSideMenuItem
+            <GoabxWorkSideMenuItem
               icon="help-circle"
               label="Support"
               url="/support"
             />
-            <GoaxWorkSideMenuItem
+            <GoabxWorkSideMenuItem
               icon="settings"
               label="Settings"
               url="/settings"
@@ -95,12 +95,12 @@ export const WorkSpaceSideMenu = () => {
         }
         accountContent={
           <>
-            <GoaxWorkSideMenuItem
+            <GoabxWorkSideMenuItem
               icon="person"
               label="Account management"
               url="/account"
             />
-            <GoaxWorkSideMenuItem
+            <GoabxWorkSideMenuItem
               icon="log-out"
               label="Log out"
               url="/logout"
