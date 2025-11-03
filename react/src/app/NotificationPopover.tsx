@@ -19,6 +19,7 @@ import {
 } from "@abgov/react-components/experimental";
 import { createPortal } from "react-dom";
 import "./notification-popover.css";
+import { NotificationContent } from "./workspace/NotificationContent";
 
 export const NotificationPopover = () => {
   const [notifications] = useState([
@@ -208,53 +209,7 @@ export const NotificationPopover = () => {
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
-          <GoabText tag={"h1"} size={"heading-m"}>
-            Notifications
-          </GoabText>
-          <GoabButton type={"tertiary"} mt={"l"}>Mark all as read</GoabButton>
-        </div>
-        <GoabTabs>
-          <GoabTab heading={"All"}>
-            <GoabText tag={"h4"} size={"heading-s"} color={"secondary"}>Today</GoabText>
-            {notifications.map((notif) => (
-              <GoaxWorkSideNotificationCard
-                maxWidth={"px"}
-                id={notif.id}
-                key={notif.id}
-                type={notif.type as WorkSideNotificationType}
-                title={notif.title}
-                description={notif.description}
-                timestamp={notif.timestamp}
-                badge={notif.badge}
-                onClick={() => console.log("Notification clicked", notif.id)}
-              />
-            ))}
-            <GoabText tag={"h4"} size={"heading-s"} color={"secondary"}>Yesterday</GoabText>
-            {yesterdayNotifications.map((notif) => (
-              <GoaxWorkSideNotificationCard
-                maxWidth={"468px"}
-                id={notif.id}
-                key={notif.id}
-                type={notif.type as WorkSideNotificationType}
-                title={notif.title}
-                description={notif.description}
-                timestamp={notif.timestamp}
-                badge={notif.badge}
-                onClick={() => console.log("Notification clicked", notif.id)}
-              />
-            ))}
-            <GoabButtonGroup alignment={"center"} mb={"xl"} mt={"l"}>
-              <GoabButton type={"tertiary"}>See all notifications</GoabButton>
-            </GoabButtonGroup>
-          </GoabTab>
-          <GoabTab heading={"Unread"}>
-
-          </GoabTab>
-          <GoabTab heading={"Urgent"}>
-
-          </GoabTab>
-        </GoabTabs>
+       <NotificationContent/>
       </div>,
       document.body,
     );

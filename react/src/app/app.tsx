@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { MenuContext } from "./workspace/context/MenuContext";
 import {
   GoaxWorkSideMenu,
-  GoaxWorkSideMenuItem,
+  GoaxWorkSideMenuItem, GoaxWorkSideNotificationPopover,
 } from "@abgov/react-components/experimental";
 import {
   GoabPopover,
@@ -12,11 +12,13 @@ import {
   GoabIcon
 } from "@abgov/react-components";
 import { NotificationPopover } from "./NotificationPopover";
+import { NotificationContent } from "./workspace/NotificationContent";
 
 export function App() {
   // On mobile (< 624px), start with menu closed; on desktop, start with menu open
   const [menuOpen, setMenuOpen] = useState(window.innerWidth >= 624);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 624);
+  const [notificationOpen, setNotificationOpen] = useState(false);
 
   console.log('[App] menuOpen:', menuOpen, 'isMobile:', isMobile, 'window.innerWidth:', window.innerWidth);
 
@@ -60,6 +62,9 @@ export function App() {
             console.log('[App] onToggle called, toggling menuOpen from', menuOpen, 'to', !menuOpen);
             setMenuOpen(prev => !prev);
           }}
+          popoverContent={
+          <NotificationContent/>
+          }
           primaryContent={
             <>
               <GoaxWorkSideMenuItem
@@ -113,7 +118,7 @@ export function App() {
           }
           secondaryContent={
             <>
-              <NotificationPopover/>
+              <GoaxWorkSideMenuItem icon={"notifications"} label={"Notifications"} badge={"3"} type={"success"} triggerPopover={true}/>
               <GoaxWorkSideMenuItem
                 icon="help-circle"
                 label="Support"
