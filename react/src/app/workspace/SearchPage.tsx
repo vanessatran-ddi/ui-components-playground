@@ -113,7 +113,7 @@ export function SearchPage() {
   return (
     <GoabPageBlock width="full">
       <PageHeader title="Search" />
-      <GoabFormItem id="searchInput" error={searchErrorMessage}>
+      <GoabFormItem id="searchInput" error={searchErrorMessage} mt={"m"}>
         <GoabBlock gap="xs" direction="row" alignment="start">
           <div style={{ flex: 1 }}>
             <GoabInput
