@@ -3,3 +3,28 @@
   <goab-menu-action text="View" action="view" icon="eye"></goab-menu-action>
   <goab-menu-action text="Delete" action="delete" icon="trash"></goab-menu-action>
 </goab-menu-button>
+
+<goab-menu-button text="Menu Button with a long width" type="primary" (onAction)="onMenuAction($event)">
+  <goab-menu-action text="Longest width with some example and have an icon, to see if it really works" action="edit" icon="create"></goab-menu-action>
+  <goab-menu-action text="View" action="view" icon="eye"></goab-menu-action>
+  <goab-menu-action text="Very short label" action="delete" icon="trash"></goab-menu-action>
+</goab-menu-button>
+
+<goab-button-group alignment="center">
+  <goab-menu-button leadingIcon="menu" text="Menu Button with a long width" type="primary" (onAction)="onMenuAction($event)">
+    <goab-menu-action text="Longest width with some example and have an icon, to see if it really works" action="edit" icon="create"></goab-menu-action>
+    <goab-menu-action text="View" action="view" icon="eye"></goab-menu-action>
+    <goab-menu-action text="Very short label" action="delete" icon="trash"></goab-menu-action>
+  </goab-menu-button>
+  <goab-menu-button text="Menu Button" type="primary" (onAction)="onMenuAction($event)">
+    <goab-menu-action text="Edit" action="edit" icon="create"></goab-menu-action>
+    <goab-menu-action text="View" action="view" icon="eye"></goab-menu-action>
+    <goab-menu-action text="Delete" action="delete" icon="trash"></goab-menu-action>
+  </goab-menu-button>
+
+  <goab-menu-button text="Menu Button with a long width" type="primary" (onAction)="onMenuAction($event)">
+    <goab-menu-action text="Longest width with some example and have an icon, to see if it really works" action="edit" icon="create"></goab-menu-action>
+    <goab-menu-action text="View" action="view" icon="eye"></goab-menu-action>
+    <goab-menu-action text="Very short label" action="delete" icon="trash"></goab-menu-action>
+  </goab-menu-button>
+</goab-button-group>
