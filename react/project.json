@@ -1,5 +1,5 @@
 {
-  "name": "react",
+  "name": "react-playground",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "playground/react/src",
   "projectType": "application",
@@ -24,15 +24,15 @@
       "executor": "@nx/vite:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "react:build"
+        "buildTarget": "react-playground:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "react:build:development",
+          "buildTarget": "react-playground:build:development",
           "hmr": true
         },
         "production": {
-          "buildTarget": "react:build:production",
+          "buildTarget": "react-playground:build:production",
           "hmr": false
         }
       }
@@ -41,14 +41,14 @@
       "executor": "@nx/vite:preview-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "react:build"
+        "buildTarget": "react-playground:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "react:build:development"
+          "buildTarget": "react-playground:build:development"
         },
         "production": {
-          "buildTarget": "react:build:production"
+          "buildTarget": "react-playground:build:production"
         }
       }
     },
