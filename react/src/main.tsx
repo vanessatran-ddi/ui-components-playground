@@ -35,6 +35,7 @@ import { Issue3001 } from "./app/issues/issue3001";
 import { Issue2948Component } from "./app/issues/2948/2948";
 import { Issue2934 } from "./app/issues/Issue2934";
 import { PublicFormWithCheckboxList } from "./app/public-form/PublicFormWithCheckboxList";
+import { DatePicker } from "./app/components/date-picker/DatePicker";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -73,6 +74,7 @@ root.render(
           <Route path={"/2948"} element={<Issue2948Component/>}></Route>
           <Route path={"/2934"} element={<Issue2934/>}></Route>
           <Route path={"/progress-indicator"} element={<ProgressIndicatorExamples/>}></Route>
+          <Route path={"/date-picker"} element={<DatePicker/>}></Route>
           {/** Add more routes here */}
 
           <Route path={"/2574"} element={<Issue2547/>}></Route>

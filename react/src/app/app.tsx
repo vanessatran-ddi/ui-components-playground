@@ -57,6 +57,7 @@ export function App() {
               </GoabSideMenuGroup>
             <GoabSideMenuHeading>Components</GoabSideMenuHeading>
             <Link to="/pagination">Pagination</Link>
+            <Link to={"/date-picker"}>DatePicker</Link>
             <Link to="/drawer">Drawer</Link>
             <Link to="/temporary-notification">Temporary Notification</Link>
             <Link to="/Text">Text</Link>

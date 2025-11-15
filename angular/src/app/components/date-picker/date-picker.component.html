@@ -25,4 +25,75 @@
 
 <goab-button (onClick)="reset()">Reset</goab-button>
 
+<hr style="margin: 40px 0;">
+
+<h2>Timezone Issue Demonstration</h2>
+<p>This example shows why using strings is better than Date objects for date selection.</p>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+
+  <!-- Date Object Example (OLD - has timezone issues) -->
+  <div style="border: 2px solid #f44336; padding: 20px; border-radius: 8px;">
+    <h3 style="color: #f44336;">❌ Using Date Object (Problematic)</h3>
+
+    <goab-form-item label="Select your birthdate">
+      <goab-date-picker
+        (onChange)="onBirthdateWithDateChange($event)"
+        [value]="birthdateAsDate"
+        name="birthdate-date">
+      </goab-date-picker>
+    </goab-form-item>
+
+    <div style="background: #fff3cd; padding: 15px; border-radius: 4px; margin-top: 10px;">
+      <p><strong>Selected value:</strong></p>
+      <code>{{ birthdateAsDate | json }}</code>
+
+      <p style="margin-top: 10px;"><strong>What gets sent to API (JSON.stringify):</strong></p>
+      <code style="color: #d32f2f;">{{ birthdateAsDateJSON }}</code>
+
+      <p style="margin-top: 10px;"><strong>⚠️ Problem:</strong></p>
+      <small>If you select "May 15, 1990" in Mountain Time (GMT-6), it might serialize as
+      <code>"1990-05-15T06:00:00.000Z"</code> or even shift to <code>"1990-05-14"</code>
+      when converted to UTC! Your birthdate changes based on timezone.</small>
+    </div>
+  </div>
+
+  <!-- String Example (NEW - no timezone issues) -->
+  <div style="border: 2px solid #4caf50; padding: 20px; border-radius: 8px;">
+    <h3 style="color: #4caf50;">✅ Using String (Recommended)</h3>
+
+    <goab-form-item label="Select your birthdate">
+      <goab-date-picker
+        (onChange)="onBirthdateWithStringChange($event)"
+        [value]="birthdateAsString"
+        name="birthdate-string">
+      </goab-date-picker>
+    </goab-form-item>
+
+    <div style="background: #d4edda; padding: 15px; border-radius: 4px; margin-top: 10px;">
+      <p><strong>Selected value:</strong></p>
+      <code>{{ birthdateAsString }}</code>
+
+      <p style="margin-top: 10px;"><strong>What gets sent to API (JSON.stringify):</strong></p>
+      <code style="color: #388e3c;">{{ birthdateAsStringJSON }}</code>
+
+      <p style="margin-top: 10px;"><strong>✓ Solution:</strong></p>
+      <small>Always returns <code>"1990-05-15"</code> regardless of timezone.
+      No unexpected date shifts! Perfect for birthdates, event dates, deadlines, etc.</small>
+    </div>
+  </div>
+
+</div>
+
+<div style="background: #e3f2fd; padding: 20px; border-radius: 8px; margin-top: 20px;">
+  <h4>📝 Why This Matters:</h4>
+  <ul>
+    <li><strong>Birthdates:</strong> You were born on a specific calendar date, not a moment in time</li>
+    <li><strong>Event Dates:</strong> "Christmas is December 25th" - not "December 24th 11pm UTC"</li>
+    <li><strong>Deadlines:</strong> "Submit by March 15th" should be the same date everywhere</li>
+    <li><strong>API Calls:</strong> Date objects get converted to ISO strings with timezone info, causing confusion</li>
+    <li><strong>Database Storage:</strong> Storing "2024-03-15" is clearer than a timestamp with timezone</li>
+  </ul>
+</div>
+
 
