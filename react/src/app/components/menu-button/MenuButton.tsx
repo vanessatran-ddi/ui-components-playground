@@ -1,4 +1,5 @@
 import { GoabMenuButton, GoabMenuAction, GoabButtonGroup } from "@abgov/react-components";
+import { DustinExample } from "./DustinExample";
 
 export function MenuButton() {
   const handleMenuAction = (action: string) => {
@@ -71,6 +72,8 @@ export function MenuButton() {
           <GoabMenuAction text={"Very short label"} action={"delete"} icon={"trash"}></GoabMenuAction>
         </GoabMenuButton>
       </GoabButtonGroup>
+
+      <DustinExample/>
 
 </div>
   );
