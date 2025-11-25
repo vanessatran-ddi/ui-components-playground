@@ -36,6 +36,7 @@ import { Issue2948Component } from "./app/issues/2948/2948";
 import { Issue2934 } from "./app/issues/Issue2934";
 import { PublicFormWithCheckboxList } from "./app/public-form/PublicFormWithCheckboxList";
 import { DatePicker } from "./app/components/date-picker/DatePicker";
+import { WorkSpaceSideMenu } from "./app/workspace/WorkSpaceSideMenu";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
