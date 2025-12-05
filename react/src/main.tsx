@@ -1,42 +1,35 @@
 import { StrictMode } from "react";
 import * as ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import "@abgov/web-components";
+import "../../../dist/libs/web-components/index.css";
 
-import App from "./app/app";
-import { Pagination } from "./app/components/pagination/Pagination";
-import { Issue2446 } from "./app/issues/issue2446";
-import { Issue2408 } from "./app/issues/issue2408";
-import { Issue2441 } from "./app/issues/issue2441";
-import { Issue2772 } from "./app/issues/issue2772";
-import { TemporaryNotificationPage } from "./app/components/temporary-notification/TemporaryNotification";
-import { TextPage } from "./app/components/text/Text";
-import { CheckboxListPage } from "./app/components/checkbox-list/CheckboxList";
-import { Drawer } from "./app/drawer/Drawer";
-import { Issue1216 } from "./app/issues/issue1216";
-import Issue2404 from "./app/issues/issue2404";
-import { Issue2789 } from "./app/issues/issue2789";
-import { Issue2720 } from "./app/issues/issue2720";
-import { Issue1769 } from "./app/issues/issue1769";
-import { Issue2768 } from "./app/issues/issue2768";
-import { Issue2829 } from "./app/issues/issue2829";
-import FormTest from "./app/public-form/ThomasPublicForm";
-import { SimplePublicFormExample } from "./app/public-form/SimplePublicFormExample";
-import { MenuButton } from "./app/components/menu-button/MenuButton";
-import { PublicFormNavigationTest } from "./app/public-form/PublicFormNavigationTest";
-import { PublicFormAccessibilityTest } from "./app/public-form/PublicFormAccessibilityTest";
-import { Issue2827 } from "./app/public-form/Issue2827";
-import { Issue2547 } from "./app/issues/issue2547";
-import {
-  ProgressIndicatorExamples
-} from "./app/components/progress-indicator/ProgressIndicatorExamples";
-import { PR2969TestForm } from "./app/public-form/PR2969TestForm";
-import { Issue3001 } from "./app/issues/issue3001";
-import { Issue2948Component } from "./app/issues/2948/2948";
-import { Issue2934 } from "./app/issues/Issue2934";
-import { PublicFormWithCheckboxList } from "./app/public-form/PublicFormWithCheckboxList";
-import { DatePicker } from "./app/components/date-picker/DatePicker";
-import { WorkSpaceSideMenu } from "./app/workspace/WorkSpaceSideMenu";
+// Workspace imports
+import { App as WorkspaceApp } from "./app/workspace/WorkspaceApp";
+import { NotificationProvider } from "./app/workspace/contexts/NotificationContext";
+import { ErrorBoundary } from "./app/workspace/components/ErrorBoundary";
+import { SearchPage } from "./app/workspace/routes/SearchPage";
+import { ClientsPage } from "./app/workspace/routes/ClientsPage";
+import { ClientDetailPage } from "./app/workspace/routes/ClientDetailPage";
+import { SchedulePage } from "./app/workspace/routes/SchedulePage";
+import { DocumentsPage } from "./app/workspace/routes/DocumentsPage";
+import { TeamPage } from "./app/workspace/routes/TeamPage";
+import { NotificationsPage } from "./app/workspace/routes/NotificationsPage";
+import { SupportPage } from "./app/workspace/routes/SupportPage";
+import { SettingsPage } from "./app/workspace/routes/SettingsPage";
+import { AccountPage } from "./app/workspace/routes/AccountPage";
+import { SubMenuItem1Page } from "./app/workspace/routes/SubMenuItem1Page";
+import { SubMenuItem2Page } from "./app/workspace/routes/SubMenuItem2Page";
+import { SubMenuItem3Page } from "./app/workspace/routes/SubMenuItem3Page";
+import { OverviewPage } from "./app/workspace/routes/OverviewPage";
+import { NotFoundPage } from "./app/workspace/routes/NotFoundPage";
+import { UnauthorizedPage } from "./app/workspace/routes/UnauthorizedPage";
+import { ServerErrorPage } from "./app/workspace/routes/ServerErrorPage";
+import { LogoutPage } from "./app/workspace/routes/LogoutPage";
+import { NotificationAdmin } from "./app/workspace/routes/NotificationAdmin";
+
+// Workspace CSS
+import "./app/workspace/Workspace.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -44,45 +37,35 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route path={"/pagination"} element={<Pagination/>}></Route>
-          <Route path={"/drawer"} element={<Drawer/>}> </Route>
-          <Route path={"/temporary-notification"} element={<TemporaryNotificationPage/>}></Route>
-          <Route path={"/text"} element={<TextPage/>}></Route>
-          <Route path={"/menu-button"} element={<MenuButton/>}></Route>
-          <Route path={"/checkbox-list"} element={<CheckboxListPage/>}></Route>
-          <Route path={"/2446"} element={<Issue2446/>}></Route>
-          <Route path={"/2408"} element={<Issue2408/>}></Route>
-          <Route path={"/2441"} element={<Issue2441/>}></Route>
-          <Route path="/2404" element={<Issue2404/>}></Route>
-          <Route path="/2772" element={<Issue2772/>}></Route>
-          <Route path="/2789" element={<Issue2789/>}></Route>
-          <Route path="/1769" element={<Issue1769/>}></Route>
-          <Route path="/2768" element={<Issue2768/>}></Route>
-          <Route path="/2720" element={<Issue2720/>}></Route>
-          <Route path="/2829" element={<Issue2829/>}></Route>
-          <Route path={"/public-form"} element={<SimplePublicFormExample/>}></Route>
-          <Route path={"/public-form-navigation"} element={<PublicFormNavigationTest/>}></Route>
-          <Route path={"/public-form-accessibility"} element={<PublicFormAccessibilityTest/>}></Route>
-          <Route path={"/1216"} element={<Issue1216/>}></Route>
-          <Route path={"/public-form-thomas"} element={<FormTest/>}></Route>
-          <Route path={"/2827"} element={<Issue2827/>}></Route>
-          <Route path={"/2547"} element={<Issue2547/>}></Route>
-          <Route path={"/pr2969-test"} element={<PR2969TestForm/>}></Route>
-          <Route path={"/3001"} element={<Issue3001/>}></Route>
-          <Route path={"/2948"} element={<Issue2948Component/>}></Route>
-          <Route path={"/2934"} element={<Issue2934/>}></Route>
-          <Route path={"/progress-indicator"} element={<ProgressIndicatorExamples/>}></Route>
-          <Route path={"/date-picker"} element={<DatePicker/>}></Route>
-          {/** Add more routes here */}
-
-          <Route path={"/2574"} element={<Issue2547/>}></Route>
-          <Route path={"public-form-checkbox-list"} element={<PublicFormWithCheckboxList/>}></Route>
-          <Route path={"workspace-side-menu"} element={<WorkSpaceSideMenu/>}></Route>
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <NotificationProvider>
+          <Routes>
+            <Route path="/" element={<WorkspaceApp />}>
+              <Route index element={<Navigate to="/search" replace />} />
+              <Route path="search" element={<SearchPage />} />
+              <Route path="clients" element={<ClientsPage />} />
+              <Route path="client/:id" element={<ClientDetailPage />} />
+              <Route path="schedule" element={<SchedulePage />} />
+              <Route path="documents" element={<DocumentsPage />} />
+              <Route path="documents/sub1" element={<SubMenuItem1Page />} />
+              <Route path="documents/sub2" element={<SubMenuItem2Page />} />
+              <Route path="documents/sub3" element={<SubMenuItem3Page />} />
+              <Route path="team" element={<TeamPage />} />
+              <Route path="notifications" element={<NotificationsPage />} />
+              <Route path="support" element={<SupportPage />} />
+              <Route path="settings" element={<SettingsPage />} />
+              <Route path="account" element={<AccountPage />} />
+              <Route path="overview" element={<OverviewPage />} />
+              <Route path="notification-admin" element={<NotificationAdmin />} />
+              <Route path="401" element={<UnauthorizedPage />} />
+              <Route path="500" element={<ServerErrorPage />} />
+              <Route path="logout" element={<LogoutPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Route>
+          </Routes>
+        </NotificationProvider>
+      </BrowserRouter>
+    </ErrorBoundary>
   </StrictMode>,
 );

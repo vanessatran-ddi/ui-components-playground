@@ -10,6 +10,7 @@ import {
   GoabSideMenuHeading,
 } from "@abgov/react-components";
 import { WorkSpaceSideMenu } from "./workspace/WorkSpaceSideMenu";
+import WorkspaceApp from "./workspace/WorkspaceApp";
 
 export function App() {
   return (
@@ -86,7 +87,7 @@ export function App() {
     //     <GoabAppFooter />
     //   </section>
     // </GoabOneColumnLayout>
-    <WorkSpaceSideMenu/>
+    <WorkspaceApp/>
     // <GoabOneColumnLayout>
     //   <section slot="header">
     //     <GoabMicrositeHeader type="alpha" version="UAT" />
